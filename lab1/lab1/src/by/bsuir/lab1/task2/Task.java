@@ -6,8 +6,10 @@ public class Task {
     private static final double MAX_X_NEGATIVE_Y = 6;
     private static final double MAX_X_POSITIVE_Y = 4;
 
-    public static void main(String[] args){ System.out.println(solve(2.5, 3.5)); }
-    public static boolean solve(double x, double y){
+    public static void main(String[] args) {
+        System.out.println(solve(2.5, 3.5));
+    }
+    private static boolean solve(double x, double y){
         boolean result;
 
         if (isPositive(y)) {

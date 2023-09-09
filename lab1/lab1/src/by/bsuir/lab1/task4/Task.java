@@ -5,9 +5,9 @@ public class Task {
         solve(new int[]{1, 2, 2, 4, 5, 101});
     }
 
-    public static void solve(int[] numbers){
-        for(int i = 0; i < numbers.length; i++){
-            if (isPrime(numbers[i])){
+    private static void solve(int[] numbers){
+        for(int i = 0; i < numbers.length; i++) {
+            if (isPrime(numbers[i])) {
                 System.out.println(i);
             }
         }

@@ -5,7 +5,7 @@ public class Task {
         solve(new int[]{2, 4, 4, 4, 3, 5, 6});
     }
 
-    public static void solve(int[] numbers){
+    private static void solve(int[] numbers){
         System.out.printf("Non-strict search result: %d%n", numbers.length - findIncSubsequenceLength(numbers));
         System.out.printf("Strict search result: %d%n", numbers.length - find(numbers, new int[numbers.length]));
     }
