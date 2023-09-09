@@ -1,6 +1,6 @@
-import java.lang.Math;
-// NOT DONE YET
-public class Task_2 {
+package by.bsuir.lab1.task2;
+
+public class Solution {
     static final double MAX_Y = 5;
     static final double MAX_X_NEGATIVE_Y = 6;
     static final double MAX_X_POSITIVE_Y = 4;
