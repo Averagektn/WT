@@ -1,5 +1,5 @@
 # WT
- Web Tech Jav
+ Web Tech Java language
 ---
 ## Lab №1
 ### Task №1
