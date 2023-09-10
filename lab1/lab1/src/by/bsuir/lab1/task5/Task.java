@@ -5,9 +5,15 @@ public class Task {
         solve(new int[]{2, 4, 4, 4, 3, 5, 6});
     }
 
-    private static void solve(int[] numbers){
-        System.out.printf("Non-strict search result: %d%n", numbers.length - findIncSubsequenceLength(numbers));
-        System.out.printf("Strict search result: %d%n", numbers.length - find(numbers, new int[numbers.length]));
+    public static int solve(int[] numbers){
+        return solve(numbers, false);
+    }
+    public static int solve(int[] numbers, boolean isStrict){
+        if (isStrict){
+            return numbers.length - findIncSubsequenceLength(numbers);
+        } else {
+            return find(numbers, new int[numbers.length]);
+        }
     }
 
     private static int findIncSubsequenceLength(int[] sequence){
@@ -61,7 +67,7 @@ public class Task {
                 length = size[i];
             }
         }
-        return length + 1;
+        return length;
     }
 
     private static int ceilIndex(int[] subsequence, int startRight, int key){

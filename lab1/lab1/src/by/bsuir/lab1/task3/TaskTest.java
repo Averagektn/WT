@@ -10,21 +10,21 @@ public class TaskTest {
     public void test_1(){
         ArrayList<Double> actual = Task.solve(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 0.1);
         ArrayList<Double> expected = new ArrayList<>();
-        Assert.assertArrayEquals(expected.toArray(), actual.toArray());
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void test_2(){
         ArrayList<Double> actual = Task.solve(Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, 0.1);
         ArrayList<Double> expected = new ArrayList<>();
-        Assert.assertArrayEquals(expected.toArray(), actual.toArray());
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void test_3(){
         ArrayList<Double> actual = Task.solve(0, Double.POSITIVE_INFINITY, 0.1);
         ArrayList<Double> expected = new ArrayList<>();
-        Assert.assertArrayEquals(expected.toArray(), actual.toArray());
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -33,14 +33,14 @@ public class TaskTest {
         ArrayList<Double> expected = new ArrayList<>();
         expected.add(3.38);
         actual.replaceAll(aDouble -> Math.floor(aDouble * 100) / 100);
-        Assert.assertArrayEquals(expected.toArray(), actual.toArray());
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void test_5(){
         ArrayList<Double> actual = Task.solve(-5, 0, -1);
         ArrayList<Double> expected = new ArrayList<>();
-        Assert.assertArrayEquals(expected.toArray(), actual.toArray());
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -59,7 +59,7 @@ public class TaskTest {
         expected.add(-2.93);
         expected.add(-2.19);
         actual.replaceAll(aDouble -> Math.floor(aDouble * 100) / 100);
-        Assert.assertArrayEquals(expected.toArray(), actual.toArray());
+        Assert.assertEquals(expected, actual);
     }
 
 }

@@ -12,14 +12,30 @@ public class Book {
         this.price = price;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public static void setEdition(int edition) {
+        Book.edition = edition;
+    }
+
     @Override
     public String toString(){
-        return title + " " + author + " " + price + " " + edition;
+        return title + " " + author + " " + price;
     }
 
     @Override
     public int hashCode() {
-        return price * edition * title.hashCode() + author.hashCode();
+        return price * title.hashCode() + author.hashCode();
     }
 
     @Override

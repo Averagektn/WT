@@ -5,7 +5,7 @@ public class Task {
         printArray(solve(new int[]{ 1, 2, 3, 4, 5 }));
     }
 
-    private static int[][] solve(int[] numbers){
+    public static int[][] solve(int[] numbers){
         int length = numbers.length;
         int[][] result = new int[length][length];
         for (int i = 0; i < length; i++){

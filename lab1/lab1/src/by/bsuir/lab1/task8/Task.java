@@ -6,7 +6,7 @@ public class Task {
         printArray(test);
     }
 
-    private static int[] solve(double[] a, double[] b) {
+    public static int[] solve(double[] a, double[] b) {
         int[] res = new int[b.length];
         int j = 0;
         for (int i = 0; i < a.length; i++){

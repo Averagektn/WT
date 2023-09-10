@@ -1,27 +1,39 @@
 package by.bsuir.lab1.task4;
 
+import java.util.ArrayList;
+
 public class Task {
     public static void main(String[] args){
-        solve(new int[]{1, 2, 2, 4, 5, 101});
+        System.out.println(solve(new int[]{ 1, 2, 2, 4, 5, 101 }));
     }
 
-    private static void solve(int[] numbers){
+    public static ArrayList<Integer> solve(int[] numbers){
+        ArrayList<Integer> indexes = new ArrayList<>();
+
         for(int i = 0; i < numbers.length; i++) {
             if (isPrime(numbers[i])) {
-                System.out.println(i);
+                indexes.add(i);
             }
         }
+
+        return indexes;
     }
 
     private static boolean isPrime(int n){
-        if (n % 2 == 0) {
-            return false;
-        }
+
         if (n <= 1) {
             return false;
         }
 
-        for (int i = 3; i <= Math.sqrt(n) + 1; i += 2) {
+        if (n <= 3){
+            return true;
+        }
+
+        if (n % 2 == 0) {
+            return false;
+        }
+
+        for (int i = 5; i <= Math.sqrt(n) + 1; i += 2) {
             if (n % i == 0) {
                 return false;
             }
