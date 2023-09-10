@@ -5,9 +5,21 @@ public class Task {
         solve(new int[]{2, 4, 4, 4, 3, 5, 6});
     }
 
+    /**
+     * Counts the least number of elements to be deleted to get non-decreasing sequence
+     * @param numbers initial sequence
+     * @return Number of elements to be deleted
+     */
     public static int solve(int[] numbers){
         return solve(numbers, false);
     }
+
+    /**
+     * Counts the least number of elements to be deleted to get increasing or non-decreasing sequence
+     * @param numbers initial sequence
+     * @param isStrict increasing(true) or non-decreasing(false) sequence
+     * @return Number of elements to be deleted
+     */
     public static int solve(int[] numbers, boolean isStrict){
         if (isStrict){
             return numbers.length - findIncSubsequenceLength(numbers);
@@ -16,6 +28,11 @@ public class Task {
         }
     }
 
+    /**
+     * Finds non-decreasing subsequence in given sequence
+     * @param sequence sequence to search
+     * @return Length of non-decreasing subsequence
+     */
     private static int findIncSubsequenceLength(int[] sequence){
         if (sequence.length == 1) {
             return 1;
@@ -42,6 +59,12 @@ public class Task {
         return max + 1;
     }
 
+    /**
+     * Finds the longest increasing subsequence
+     * @param arr given sequence
+     * @param subsequence subsequence of indices
+     * @return Length of the subsequence
+     */
     private static int find(int[] arr, int[] subsequence) {
 
         if (arr.length <= 1) {
@@ -70,6 +93,13 @@ public class Task {
         return length;
     }
 
+    /**
+     * Finds ceil index
+     * @param subsequence given subsequence
+     * @param startRight right border
+     * @param key key to compare
+     * @return Ceil index
+     */
     private static int ceilIndex(int[] subsequence, int startRight, int key){
         int mid, left = 0, right = startRight, index = 0;
         boolean isIndex = false;

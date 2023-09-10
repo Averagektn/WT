@@ -7,6 +7,11 @@ public class Task {
         System.out.println(solve(new int[]{ 1, 2, 2, 4, 5, 101 }));
     }
 
+    /**
+     * Finds primes in the given array
+     * @param numbers array to find primes
+     * @return List of prime indices
+     */
     public static ArrayList<Integer> solve(int[] numbers){
         ArrayList<Integer> indexes = new ArrayList<>();
 
@@ -19,6 +24,11 @@ public class Task {
         return indexes;
     }
 
+    /**
+     * Checks if n is prime value
+     * @param n number to check
+     * @return true if n is prime, false otherwise
+     */
     private static boolean isPrime(int n){
 
         if (n <= 1) {

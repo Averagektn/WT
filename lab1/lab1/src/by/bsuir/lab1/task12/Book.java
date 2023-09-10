@@ -1,11 +1,20 @@
 package by.bsuir.lab1.task12;
 
+/**
+ * A book with title, author, price and edition
+ */
 public class Book {
     private String title;
     private String author;
     private int price;
     private static int edition;
 
+    /**
+     * Creates new book with given title, author and price
+     * @param title name
+     * @param author writer
+     * @param price cost of the book
+     */
     public Book(String title, String author, int price){
         this.title = title;
         this.author = author;

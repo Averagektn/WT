@@ -4,6 +4,10 @@ import by.bsuir.lab1.task12.Book;
 
 import java.util.Objects;
 
+/**
+ * Extends Book class
+ * @see by.bsuir.lab1.task12.Book
+ */
 public class ProgrammersBook extends Book {
     private final String language;
     private final int level;

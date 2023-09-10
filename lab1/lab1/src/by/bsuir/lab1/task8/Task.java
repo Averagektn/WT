@@ -6,6 +6,13 @@ public class Task {
         printArray(test);
     }
 
+    /**
+     * Searches where to put elements of b sequence in a sequence,
+     * so that a sequence still be non-decreasing
+     * @param a sequence to put elements to
+     * @param b sequence to take elements from
+     * @return array of indices of elements to be changed
+     */
     public static int[] solve(double[] a, double[] b) {
         int[] res = new int[b.length];
         int j = 0;
@@ -22,6 +29,10 @@ public class Task {
         return res;
     }
 
+    /**
+     * Prints given array
+     * @param array array to print
+     */
     private static void printArray(int[] array){
         for (int elem : array){
             System.out.printf("%3d ", elem);
