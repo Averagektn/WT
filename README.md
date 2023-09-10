@@ -7,13 +7,13 @@
 Для модульного тестирования приложения разработайте JUnit-тесты.
 * Calculate the value of the expression using the formula (all variables take real values). 
 Create JUnit tests for unit testing of the application.
-* ![Alt text](image.png)
+* ![Alt text](screenshots/image.png)
 ### Task №2
 * Для данной области составить программу, котораяпечатает true, если точка с координатами (х, у) принадлежит закрашенной области, и false — в противном случае. 
 Для модульного тестирования приложения разработайте JUnit-тесты.
 * Create a program for the given area that prints true if the point with coordinates (x, y) belongs to the painted area and false otherwise. 
 Create JUnit tests for unit testing of the application.
-* ![Alt text](image-1.png)
+* ![Alt text](screenshots/image-1.png)
 ### Task №3
 * Составить программу для вычисления значений функции F(x) на отрезке [а, b] с шагом h. Результат представить в виде таблицы, первый столбец которой – значения аргумента, второй - соответствующие значения функции.
 Для модульного тестирования приложения разработайте JUnit-тесты.
@@ -37,7 +37,7 @@ Create JUnit tests for unit testing of the application.
 Для модульного тестирования приложения разработайте JUnit-тесты.
 * The real numbers a1, a2, ..., an are given. Obtain the following square matrix of order n. 
 Create JUnit tests for unit testing of the application.
-* ![Alt text](image-2.png)
+* ![Alt text](screenshots/image-2.png)
 ### Task №7
 * Дан массив n действительных чисел. Требуется упорядочить его по возрастанию. 
 Делается это следующим образом: сравниваются два соседних элемента ai и ai+1 . Если ai <= ai+1, то продвигаются на один элемент вперед. Если ai > ai+1, то производится перестановка и сдвигаются на один элемент назад. Составить алгоритм этой сортировки. 
@@ -68,13 +68,13 @@ Create JUnit tests for unit testing of the application.
 Не пользуясь средствами автогенерации кода переопределить для класса Book методы equals(), hashCode() и toString().
 * Override methods equals(), hashCode() and toString().
 Override equals(), hashCode() and toString() methods for Book class without using code autogeneration tools.
-* ![Alt text](image-3.png)
+* ![Alt text](screenshots/image-3.png)
 ### Task №13
 * Переопределить методы equals(), hashCode() и toString().
 Не пользуясь средствами автогенерации кода переопределить для класса ProgrammerBook методы equals(), hashCode() и toString().
 * Override methods equals(), hashCode() and toString().
 Override equals(), hashCode() and toString() methods for ProgrammerBook class without using code autogeneration tools.
-* ![Alt text](image-4.png)
+* ![Alt text](screenshots/image-4.png)
 ### Task №14
 * Переопределить метод clone(). Не пользуясь средствами автогенерации кода переопределить для класса Book из задачи 12 метод clone(). 
 Напишите тесты JUnit, проверяющие корректность клонирования.
