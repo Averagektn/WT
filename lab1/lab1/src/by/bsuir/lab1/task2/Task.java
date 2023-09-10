@@ -9,7 +9,7 @@ public class Task {
     public static void main(String[] args) {
         System.out.println(solve(2.5, 3.5));
     }
-    private static boolean solve(double x, double y){
+    public static boolean solve(double x, double y){
         boolean result;
 
         if (isPositive(y)) {
