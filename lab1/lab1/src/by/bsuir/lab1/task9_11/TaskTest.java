@@ -7,8 +7,8 @@ import java.awt.*;
 
 public class TaskTest {
     @Test
-    public void test_1(){
-        Ball[] testBalls = new Ball[] {
+    public void test_1() {
+        Ball[] testBalls = new Ball[]{
                 new Ball(Color.RED, 1.0),
                 new Ball(Color.GREEN, 2.6),
                 new Ball(Color.BLUE, 5.9)
@@ -22,8 +22,8 @@ public class TaskTest {
     }
 
     @Test
-    public void test_2(){
-        Ball[] testBalls = new Ball[] {
+    public void test_2() {
+        Ball[] testBalls = new Ball[]{
                 new Ball(Color.RED, 1.0),
                 new Ball(Color.GREEN, 2.6),
                 new Ball(Color.BLUE, 5.9)
@@ -37,8 +37,8 @@ public class TaskTest {
     }
 
     @Test
-    public void test_3(){
-        Ball[] testBalls = new Ball[] {
+    public void test_3() {
+        Ball[] testBalls = new Ball[]{
                 new Ball(Color.RED, 1.0),
                 new Ball(Color.GREEN, 2.6),
                 new Ball(Color.BLUE, 5.9)
@@ -50,4 +50,5 @@ public class TaskTest {
         int expected = 1;
         Assert.assertEquals(expected, actual);
     }
+
 }

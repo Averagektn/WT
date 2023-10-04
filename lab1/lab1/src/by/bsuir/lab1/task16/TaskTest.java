@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class TaskTest {
     @Test
-    public void test_1(){
+    public void test_1() {
         ArrayList<Book> actual = new ArrayList<>();
 
         actual.add(new Book("title4", "author3", 14));
@@ -29,7 +29,7 @@ public class TaskTest {
     }
 
     @Test
-    public void test_2(){
+    public void test_2() {
         ArrayList<Book> actual = new ArrayList<>();
 
         actual.add(new Book("title4", "author3", 14));
@@ -52,7 +52,7 @@ public class TaskTest {
     }
 
     @Test
-    public void test_3(){
+    public void test_3() {
         ArrayList<Book> actual = new ArrayList<>();
 
         actual.add(new Book("title4", "author3", 14));

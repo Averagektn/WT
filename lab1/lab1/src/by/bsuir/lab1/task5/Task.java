@@ -1,27 +1,29 @@
 package by.bsuir.lab1.task5;
 
 public class Task {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         solve(new int[]{2, 4, 4, 4, 3, 5, 6});
     }
 
     /**
      * Counts the least number of elements to be deleted to get non-decreasing sequence
+     *
      * @param numbers initial sequence
      * @return Number of elements to be deleted
      */
-    public static int solve(int[] numbers){
+    public static int solve(int[] numbers) {
         return solve(numbers, false);
     }
 
     /**
      * Counts the least number of elements to be deleted to get increasing or non-decreasing sequence
-     * @param numbers initial sequence
+     *
+     * @param numbers  initial sequence
      * @param isStrict increasing(true) or non-decreasing(false) sequence
      * @return Number of elements to be deleted
      */
-    public static int solve(int[] numbers, boolean isStrict){
-        if (isStrict){
+    public static int solve(int[] numbers, boolean isStrict) {
+        if (isStrict) {
             return numbers.length - findIncSubsequenceLength(numbers);
         } else {
             return find(numbers, new int[numbers.length]);
@@ -30,10 +32,11 @@ public class Task {
 
     /**
      * Finds non-decreasing subsequence in given sequence
+     *
      * @param sequence sequence to search
      * @return Length of non-decreasing subsequence
      */
-    private static int findIncSubsequenceLength(int[] sequence){
+    private static int findIncSubsequenceLength(int[] sequence) {
         if (sequence.length == 1) {
             return 1;
         }
@@ -61,7 +64,8 @@ public class Task {
 
     /**
      * Finds the longest increasing subsequence
-     * @param arr given sequence
+     *
+     * @param arr         given sequence
      * @param subsequence subsequence of indices
      * @return Length of the subsequence
      */
@@ -95,20 +99,20 @@ public class Task {
 
     /**
      * Finds ceil index
+     *
      * @param subsequence given subsequence
-     * @param startRight right border
-     * @param key key to compare
+     * @param startRight  right border
+     * @param key         key to compare
      * @return Ceil index
      */
-    private static int ceilIndex(int[] subsequence, int startRight, int key){
+    private static int ceilIndex(int[] subsequence, int startRight, int key) {
         int mid, left = 0, right = startRight, index = 0;
         boolean isIndex = false;
 
         for (mid = (left + right) / 2; left <= right && !isIndex; mid = (left + right) / 2) {
             if (subsequence[mid] < key) {
                 right = mid - 1;
-            }
-            else if (mid + 1 <= right && subsequence[mid + 1] < key) {
+            } else if (mid + 1 <= right && subsequence[mid + 1] < key) {
                 subsequence[mid + 1] = key;
                 index = mid + 1;
                 isIndex = true;
@@ -121,8 +125,7 @@ public class Task {
             if (mid == left) {
                 subsequence[mid] = key;
                 index = mid;
-            }
-            else {
+            } else {
                 subsequence[mid + 1] = key;
                 index = mid + 1;
             }
@@ -130,4 +133,5 @@ public class Task {
 
         return index;
     }
+
 }

@@ -27,11 +27,12 @@ public class Task {
 
     /**
      * Calculates if the {x, y} point is in the marked area
+     *
      * @param x horizontal coordinate
      * @param y vertical coordinate
      * @return true if {x, y} is in the area, false in other cases
      */
-    public static boolean solve(double x, double y){
+    public static boolean solve(double x, double y) {
         boolean result;
 
         if (isPositive(y)) {
@@ -45,19 +46,22 @@ public class Task {
 
     /**
      * Checks if value is positive
+     *
      * @param y value
      * @return result of comparison with 0
      */
-    private static boolean isPositive(double y){
+    private static boolean isPositive(double y) {
         return y >= 0;
     }
 
     /**
      * Checks if value is positive
+     *
      * @param y value
      * @return result of comparison with 0
      */
-    private static boolean isPositive(int y){
+    private static boolean isPositive(int y) {
         return y >= 0;
     }
+
 }

@@ -7,28 +7,28 @@ import java.util.ArrayList;
 
 public class TaskTest {
     @Test
-    public void test_1(){
+    public void test_1() {
         ArrayList<Double> actual = Task.solve(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 0.1);
         ArrayList<Double> expected = new ArrayList<>();
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void test_2(){
+    public void test_2() {
         ArrayList<Double> actual = Task.solve(Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, 0.1);
         ArrayList<Double> expected = new ArrayList<>();
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void test_3(){
+    public void test_3() {
         ArrayList<Double> actual = Task.solve(0, Double.POSITIVE_INFINITY, 0.1);
         ArrayList<Double> expected = new ArrayList<>();
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void test_4(){
+    public void test_4() {
         ArrayList<Double> actual = Task.solve(-5, 0, Double.POSITIVE_INFINITY);
         ArrayList<Double> expected = new ArrayList<>();
         expected.add(3.38);
@@ -37,14 +37,14 @@ public class TaskTest {
     }
 
     @Test
-    public void test_5(){
+    public void test_5() {
         ArrayList<Double> actual = Task.solve(-5, 0, -1);
         ArrayList<Double> expected = new ArrayList<>();
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void test_6(){
+    public void test_6() {
         ArrayList<Double> actual = Task.solve(1, 2, 0.1);
         ArrayList<Double> expected = new ArrayList<>();
         expected.add(1.55);

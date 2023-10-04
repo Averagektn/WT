@@ -2,26 +2,28 @@ package by.bsuir.lab1.task13;
 
 import by.bsuir.lab1.task12.Book;
 
-import java.util.Objects;
-
 /**
  * Extends Book class
+ *
  * @see by.bsuir.lab1.task12.Book
  */
 public class ProgrammersBook extends Book {
+
     private final String language;
+
     private final int level;
+
     public ProgrammersBook(String title, String author, int price, String language, int level) {
         super(title, author, price);
         this.language = language;
         this.level = level;
     }
 
-    public String getLanguage(){
+    public String getLanguage() {
         return language;
     }
 
-    public int getLevel(){
+    public int getLevel() {
         return level;
     }
 
@@ -46,4 +48,5 @@ public class ProgrammersBook extends Book {
     public int hashCode() {
         return super.hashCode() * level - language.hashCode();
     }
+
 }

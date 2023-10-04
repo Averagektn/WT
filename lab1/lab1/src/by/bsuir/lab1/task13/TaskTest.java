@@ -2,9 +2,11 @@ package by.bsuir.lab1.task13;
 
 import org.junit.Assert;
 import org.junit.Test;
+
 public class TaskTest {
+
     @Test
-    public void test_1(){
+    public void test_1() {
         ProgrammersBook book1 = new ProgrammersBook("MyCoolBook", "CoolAuthor",
                 1488, "C#", 100);
         ProgrammersBook book2 = new ProgrammersBook("AnotherBook", "Noname", 0,
@@ -13,7 +15,7 @@ public class TaskTest {
     }
 
     @Test
-    public void test_2(){
+    public void test_2() {
         ProgrammersBook book1 = new ProgrammersBook("MyCoolBook", "CoolAuthor",
                 1488, "C#", 100);
         ProgrammersBook book2 = new ProgrammersBook("MyCoolBook", "CoolAuthor",
@@ -39,4 +41,5 @@ public class TaskTest {
         int actual = book1.hashCode();
         Assert.assertEquals(expected, actual);
     }
+
 }

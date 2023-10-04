@@ -1,10 +1,10 @@
 package by.bsuir.lab1.task9_11;
 
-import java.awt.Color;
+import java.awt.*;
 
 public class Task {
-    public static void main(String[] args){
-        Ball[] myBalls = new Ball[] {
+    public static void main(String[] args) {
+        Ball[] myBalls = new Ball[]{
                 new Ball(Color.RED, 1.0),
                 new Ball(Color.GREEN, 2.6),
                 new Ball(Color.BLUE, 5.9)
@@ -17,4 +17,5 @@ public class Task {
         System.out.printf("Total weight: %3.2f %n", totalWeight);
         System.out.printf("Total blue balls: %3d", counter);
     }
+
 }

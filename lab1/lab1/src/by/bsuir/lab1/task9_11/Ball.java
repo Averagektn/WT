@@ -1,4 +1,5 @@
 package by.bsuir.lab1.task9_11;
+
 import java.awt.Color;
 
 /**
@@ -6,31 +7,34 @@ import java.awt.Color;
  */
 public class Ball {
     private Color color;
+
     private double weight;
 
     /**
      * Creates ball with given color anf weight
-     * @param color ball color
+     *
+     * @param color  ball color
      * @param weight ball weight
      */
-    public Ball(Color color, double weight){
+    public Ball(Color color, double weight) {
         this.color = color;
         this.weight = weight;
     }
 
-    public Color getColor(){
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(Color color){
+    public void setColor(Color color) {
         this.color = color;
     }
 
-    public double getWeight(){
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight){
+    public void setWeight(double weight) {
         this.weight = weight;
     }
+
 }

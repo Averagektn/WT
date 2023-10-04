@@ -1,31 +1,40 @@
 package by.bsuir.lab1.task16;
 
-public class Book{
+public class Book {
+
     private final String title;
+
     private final String author;
+
     private final int price;
+
     private static int edition;
 
-    public Book(String title, String author){
+    public Book(String title, String author) {
         this.title = title;
         this.author = author;
         price = 0;
     }
-    public Book(String title, String author, int price){
+
+    public Book(String title, String author, int price) {
         this.title = title;
         this.author = author;
         this.price = price;
     }
 
-    public String getTitle(){
+    public static void setEdition(int edition) {
+        Book.edition = edition;
+    }
+
+    public String getTitle() {
         return title;
     }
 
-    public String getAuthor(){
+    public String getAuthor() {
         return author;
     }
 
-    public int getPrice(){
+    public int getPrice() {
         return price;
     }
 
@@ -34,7 +43,7 @@ public class Book{
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return title + " " + author + " " + price + " " + edition;
     }
 
@@ -54,4 +63,5 @@ public class Book{
 
         return this.title.equals(book.title) && this.author.equals(book.author) && this.price == book.price;
     }
+
 }

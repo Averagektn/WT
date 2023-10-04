@@ -3,7 +3,8 @@ package by.bsuir.lab1.task15;
 import java.util.ArrayList;
 
 public class Task {
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         Book book1 = new Book("MyCoolBook", "CoolAuthor", 1488, 12);
         Book book2 = new Book("My", "Cool", 14880, 12);
         Book book3 = new Book("Cool", "Cool", 1485, 2);
@@ -16,4 +17,5 @@ public class Task {
         books.sort(Book::compareTo);
         System.out.println(books);
     }
+
 }

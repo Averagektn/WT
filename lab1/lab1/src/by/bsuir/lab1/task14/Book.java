@@ -1,28 +1,34 @@
 package by.bsuir.lab1.task14;
 
-import java.lang.ref.Cleaner;
-
 public class Book implements Cloneable {
+
     private final String title;
+
     private final String author;
+
     private final int price;
+
     private static int edition;
 
-    public Book(String title, String author, int price){
+    public Book(String title, String author, int price) {
         this.title = title;
         this.author = author;
         this.price = price;
     }
 
-    public String getTitle(){
+    public static void setEdition(int edition) {
+        Book.edition = edition;
+    }
+
+    public String getTitle() {
         return title;
     }
 
-    public String getAuthor(){
+    public String getAuthor() {
         return author;
     }
 
-    public int getPrice(){
+    public int getPrice() {
         return price;
     }
 
@@ -31,7 +37,7 @@ public class Book implements Cloneable {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return title + " " + author + " " + price + " " + edition;
     }
 
@@ -56,4 +62,5 @@ public class Book implements Cloneable {
     protected Object clone() {
         return new Book(title, author, price);
     }
+
 }

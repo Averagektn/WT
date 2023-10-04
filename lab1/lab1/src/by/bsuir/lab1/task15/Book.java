@@ -1,28 +1,37 @@
 package by.bsuir.lab1.task15;
 
 public class Book implements Comparable<Book> {
+
     private final String title;
+
     private final String author;
+
     private final int price;
+
     private static int edition;
+
     private final int isbn;
 
-    public Book(String title, String author, int price, int isbn){
+    public Book(String title, String author, int price, int isbn) {
         this.title = title;
         this.author = author;
         this.price = price;
         this.isbn = isbn;
     }
 
-    public String getTitle(){
+    public static void setEdition(int edition) {
+        Book.edition = edition;
+    }
+
+    public String getTitle() {
         return title;
     }
 
-    public String getAuthor(){
+    public String getAuthor() {
         return author;
     }
 
-    public int getPrice(){
+    public int getPrice() {
         return price;
     }
 
@@ -31,7 +40,7 @@ public class Book implements Comparable<Book> {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return title + " " + author + " " + price + " " + edition;
     }
 
@@ -54,12 +63,13 @@ public class Book implements Comparable<Book> {
 
     @Override
     public int compareTo(Book o) {
-        if (o.isbn == isbn){
+        if (o.isbn == isbn) {
             return 0;
         }
-        if (isbn > o.isbn){
+        if (isbn > o.isbn) {
             return 1;
         }
         return -1;
     }
+
 }
