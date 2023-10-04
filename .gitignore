@@ -27,7 +27,7 @@ replay_pid*
 *.iml
 .idea
 
-# my files
+# documents
 *.pdf
 *.docx
 *.doc
