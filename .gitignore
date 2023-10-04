@@ -26,6 +26,7 @@ replay_pid*
 # idea
 *.iml
 .idea
+*.MF
 
 # documents
 *.pdf
