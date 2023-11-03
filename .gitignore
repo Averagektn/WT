@@ -107,6 +107,7 @@ fabric.properties
 *.docx
 *.doc
 *.txt
+log.txt
 *.log
 tomcat
 Done
