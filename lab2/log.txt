@@ -1,0 +1,53 @@
+Using CATALINA_BASE:   "C:\Users\rylon\AppData\Local\JetBrains\IntelliJIdea2023.2\tomcat\159cbee4-e9db-47e3-a6de-076b2a29ca5c"
+Using CATALINA_HOME:   "C:\Archive\5 semester\WT\tomcat"
+Using CATALINA_TMPDIR: "C:\Archive\5 semester\WT\tomcat\temp"
+Using JRE_HOME:        "C:\Users\rylon\.jdks\corretto-17.0.9"
+Using CLASSPATH:       "C:\Archive\5 semester\WT\tomcat\bin\bootstrap.jar;C:\Archive\5 semester\WT\tomcat\bin\tomcat-juli.jar"
+Using CATALINA_OPTS:   ""
+03-Nov-2023 16:55:10.924 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.15
+03-Nov-2023 16:55:10.926 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 11 2023 23:38:40 UTC
+03-Nov-2023 16:55:10.926 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.15.0
+03-Nov-2023 16:55:10.927 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+03-Nov-2023 16:55:10.927 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             10.0
+03-Nov-2023 16:55:10.928 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           amd64
+03-Nov-2023 16:55:10.928 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Users\rylon\.jdks\corretto-17.0.9
+03-Nov-2023 16:55:10.928 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            17.0.9+8-LTS
+03-Nov-2023 16:55:10.928 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Amazon.com Inc.
+03-Nov-2023 16:55:10.929 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\rylon\AppData\Local\JetBrains\IntelliJIdea2023.2\tomcat\159cbee4-e9db-47e3-a6de-076b2a29ca5c
+03-Nov-2023 16:55:10.929 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Archive\5 semester\WT\tomcat
+03-Nov-2023 16:55:10.932 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\rylon\AppData\Local\JetBrains\IntelliJIdea2023.2\tomcat\159cbee4-e9db-47e3-a6de-076b2a29ca5c\conf\logging.properties
+03-Nov-2023 16:55:10.932 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+03-Nov-2023 16:55:10.933 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcom.sun.management.jmxremote=
+03-Nov-2023 16:55:10.933 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcom.sun.management.jmxremote.port=1099
+03-Nov-2023 16:55:10.933 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcom.sun.management.jmxremote.ssl=false
+03-Nov-2023 16:55:10.933 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcom.sun.management.jmxremote.password.file=C:\Users\rylon\AppData\Local\JetBrains\IntelliJIdea2023.2\tomcat\159cbee4-e9db-47e3-a6de-076b2a29ca5c\jmxremote.password
+03-Nov-2023 16:55:10.933 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcom.sun.management.jmxremote.access.file=C:\Users\rylon\AppData\Local\JetBrains\IntelliJIdea2023.2\tomcat\159cbee4-e9db-47e3-a6de-076b2a29ca5c\jmxremote.access
+03-Nov-2023 16:55:10.933 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.rmi.server.hostname=127.0.0.1
+03-Nov-2023 16:55:10.933 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+03-Nov-2023 16:55:10.934 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+03-Nov-2023 16:55:10.934 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+03-Nov-2023 16:55:10.934 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+03-Nov-2023 16:55:10.934 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+03-Nov-2023 16:55:10.934 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+03-Nov-2023 16:55:10.935 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+03-Nov-2023 16:55:10.935 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\rylon\AppData\Local\JetBrains\IntelliJIdea2023.2\tomcat\159cbee4-e9db-47e3-a6de-076b2a29ca5c
+03-Nov-2023 16:55:10.936 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Archive\5 semester\WT\tomcat
+03-Nov-2023 16:55:10.936 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Archive\5 semester\WT\tomcat\temp
+03-Nov-2023 16:55:10.950 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [C:\Users\rylon\.jdks\corretto-17.0.9\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Embarcadero\Studio\22.0\bin;C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl;C:\Program Files (x86)\Embarcadero\Studio\22.0\bin64;C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\Win64;C:\Program Files\Common Files\Oracle\Java\javapath;C:\PROGRA~2\Borland\REMOTE~1\7.0\Bin;C:\Program Files (x86)\Embarcadero\Studio\21.0\bin;C:\Users\Public\Documents\Embarcadero\Studio\21.0\Bpl;C:\Program Files (x86)\Embarcadero\Studio\21.0\bin64;C:\Users\Public\Documents\Embarcadero\Studio\21.0\Bpl\Win64;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\dotnet\;C:\Users\rylon\AppData\Local\Microsoft\WindowsApps;C:\Users\rylon\.dotnet\tools;C:\BSUIR\Java\IntelliJ IDEA Community Edition 2021.2.1\bin;;C:\Microsoft VS Code\bin;C:\msys64\mingw64\bin;C:\Users\rylon\AppData\Local\GitHubDesktop\bin;C:\Program Files\JetBrains\PhpStorm 2023.2.1\bin;;C:\Archive\soft\php;;C:\Program Files\JetBrains\IntelliJ IDEA 2023.2.4\bin;;.]
+03-Nov-2023 16:55:11.198 INFO [main] org.apache.coyote.AbstractProtocol.init �?нициализация ProtocolHandler ["http-nio-8080"]
+03-Nov-2023 16:55:11.221 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [578] milliseconds
+03-Nov-2023 16:55:11.297 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+03-Nov-2023 16:55:11.297 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.15]
+03-Nov-2023 16:55:11.316 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+03-Nov-2023 16:55:11.378 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [156] milliseconds
+Connected to server
+03-Nov-2023 16:55:21.331 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Archive\5 semester\WT\tomcat\webapps\manager]
+03-Nov-2023 16:55:21.455 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Archive\5 semester\WT\tomcat\webapps\manager] has finished in [124] ms
+Using CATALINA_BASE:   "C:\Users\rylon\AppData\Local\JetBrains\IntelliJIdea2023.2\tomcat\159cbee4-e9db-47e3-a6de-076b2a29ca5c"
+Using CATALINA_HOME:   "C:\Archive\5 semester\WT\tomcat"
+Using CATALINA_TMPDIR: "C:\Archive\5 semester\WT\tomcat\temp"
+Using JRE_HOME:        "C:\Users\rylon\.jdks\corretto-17.0.9"
+Using CLASSPATH:       "C:\Archive\5 semester\WT\tomcat\bin\bootstrap.jar;C:\Archive\5 semester\WT\tomcat\bin\tomcat-juli.jar"
+Using CATALINA_OPTS:   ""
+03-Nov-2023 16:55:31.919 SEVERE [main] org.apache.catalina.startup.Catalina.stopServer No shutdown port configured. Shut down server through OS signal. Server not shut down.
+Disconnected from server
