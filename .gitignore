@@ -108,7 +108,6 @@ fabric.properties
 *.doc
 *.txt
 log.txt
-*.log
 tomcat
 Done
 Config.java
