@@ -1,4 +1,4 @@
-package by.bsuir.mycoolsite.ConnectionPool;
+package by.bsuir.mycoolsite.сonnectionPool;
 
 import by.bsuir.mycoolsite.config.Config;
 
