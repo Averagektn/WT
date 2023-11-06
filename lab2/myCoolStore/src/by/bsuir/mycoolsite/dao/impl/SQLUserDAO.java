@@ -22,14 +22,15 @@ public class SQLUserDAO implements UserDAO {
 
         // LOG
         System.out.println("Authorization of " + email);
+        User user = new User(email, password);
 
         try {
             Class.forName(Config.DBConnectionClassname);
             con = DriverManager.getConnection(Config.DBConnectionURL, Config.DBUser, Config.DBPassword);
 
             ps = con.prepareStatement(QUERY_AUTHORIZATION);
-            ps.setString(1, email);
-            ps.setString(2, User.getHashSha512Password(password));
+            ps.setString(1, user.getEmail());
+            ps.setString(2, user.getEmail());
 
             rs = ps.executeQuery();
 
@@ -88,7 +89,7 @@ public class SQLUserDAO implements UserDAO {
 
             ps = con.prepareStatement(QUERY_REGISTER);
             ps.setString(1, user.getEmail());
-            ps.setString(2, User.getHashSha512Password(user.getPassword()));
+            ps.setString(2, user.getPassword());
             ps.setString(3, user.getRole().toString());
             if (user.isBanned()) {
                 //LOG

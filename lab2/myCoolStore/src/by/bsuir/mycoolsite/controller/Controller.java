@@ -1,7 +1,11 @@
 package by.bsuir.mycoolsite.controller;
 
 import by.bsuir.mycoolsite.controller.command.Command;
+import by.bsuir.mycoolsite.controller.command.CommandProvider;
 import by.bsuir.mycoolsite.controller.command.exception.CommandException;
+import by.bsuir.mycoolsite.controller.page.Page;
+import by.bsuir.mycoolsite.controller.page.PageProvider;
+import by.bsuir.mycoolsite.controller.page.exception.PageException;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -19,7 +23,35 @@ public class Controller extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // TODO Auto-generated method stub
+        String requestURI = request.getRequestURI();
+        Page pageContent = PageProvider.getInstance().getPage(requestURI);
+        String page = null;
+
+        // LOG
+        System.out.println("URI " + requestURI + " received");
+
+        try {
+            page = pageContent.generate(request);
+        } catch (PageException e) {
+            //LOG
+            System.out.println("Command exception in Controller " + e.toString());
+            page = JSPPageName.PAGE_ERROR;
+        } catch (Exception e) {
+            //LOG
+            System.out.println("Exception in Controller " + e.toString());
+            page = JSPPageName.PAGE_ERROR;
+        }
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+
+        if (dispatcher != null) {
+            dispatcher.forward(request, response);
+        } else {
+            //LOG
+            System.out.println("RequestDispatcher is NULL");
+            errorMessageDirectlyFromResponse(response);
+        }
+
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

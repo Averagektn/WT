@@ -1,7 +1,5 @@
-package by.bsuir.mycoolsite.controller;
+package by.bsuir.mycoolsite.controller.command;
 
-import by.bsuir.mycoolsite.controller.command.Command;
-import by.bsuir.mycoolsite.controller.command.CommandName;
 import by.bsuir.mycoolsite.controller.command.impl.AddFilm;
 import by.bsuir.mycoolsite.controller.command.impl.Register;
 import by.bsuir.mycoolsite.controller.command.impl.SignIn;
@@ -10,11 +8,11 @@ import by.bsuir.mycoolsite.controller.command.impl.WrongRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-final class CommandProvider {
+public final class CommandProvider {
     private static final CommandProvider instance = new CommandProvider();
     private final Map<CommandName, Command> repository = new HashMap<>();
 
-    CommandProvider() {
+    public CommandProvider() {
         repository.put(CommandName.SIGN_IN, new SignIn());
         repository.put(CommandName.REGISTER, new Register());
         repository.put(CommandName.ADD_FILM, new AddFilm());
@@ -26,7 +24,7 @@ final class CommandProvider {
         return instance;
     }
 
-    Command getCommand(String name) {
+    public Command getCommand(String name) {
         CommandName commandName = null;
         Command command = null;
 
