@@ -10,8 +10,14 @@
         Go to
         <a href="main">main.jsp</a>
     </h1>
-    <form action="Controller" method="post">
-        <input type="submit" value="Form Button"/>
+    <form action="Register" method="post">
+        <input type="submit" value="register"/>
     </form>
+    <form action="Authorization" method="post">
+        <input type="submit" value="authorization"/>
+    </form>
+
+
+
 </body>
 </html>

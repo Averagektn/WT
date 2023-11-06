@@ -5,9 +5,19 @@
         http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
         id="WebApp_ID" version="2.5">
 
+  <display-name>SimpleServletAppStructure</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
   <servlet>
     <servlet-name>Controller</servlet-name>
-    <servlet-class>myapp.Controller</servlet-class>
+    <servlet-class>by.bsuir.mycoolsite.controller.Controller</servlet-class>
   </servlet>
 
   <servlet-mapping>
@@ -33,6 +43,26 @@
   <servlet-mapping>
     <servlet-name>PageMain</servlet-name>
     <url-pattern>/main</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Register</servlet-name>
+    <jsp-file>/jsp/register.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>Register</servlet-name>
+    <url-pattern>/Register</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Authorization</servlet-name>
+    <jsp-file>/jsp/authorization.jsp</jsp-file>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Authorization</servlet-name>
+    <url-pattern>/Authorization</url-pattern>
   </servlet-mapping>
   
 </web-app> 

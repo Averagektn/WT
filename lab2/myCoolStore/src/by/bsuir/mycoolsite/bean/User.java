@@ -12,14 +12,23 @@ public class User {
     private final static String salt = "";
     private String password;
     private Role role;
-    private boolean isBan;
+    private long isBannedBy;
+    public static final int NOT_BANNED = -1;
 
-    public User(long id, String email, String password, Role role, boolean isBan) {
+    public User(long id, String email, String password, Role role, long isBannedBy) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.role = role;
-        this.isBan = isBan;
+        this.isBannedBy = isBannedBy;
+    }
+
+    public User(String email, String password, Role role, long isBannedBy){
+        this.id = -1;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.isBannedBy = isBannedBy;
     }
 
     public String getEmail() {
@@ -69,16 +78,20 @@ public class User {
         this.role = role;
     }
 
-    public boolean isBan() {
-        return isBan;
+    public boolean isBanned(){
+        return isBannedBy != NOT_BANNED;
     }
 
-    public void ban() {
-        this.isBan = true;
+    public long getBannedBy() {
+        return isBannedBy;
+    }
+
+    public void ban(long bannerId) {
+        this.isBannedBy = bannerId;
     }
 
     public void unban() {
-        this.isBan = false;
+        this.isBannedBy = NOT_BANNED;
     }
 
     public long getId() {
