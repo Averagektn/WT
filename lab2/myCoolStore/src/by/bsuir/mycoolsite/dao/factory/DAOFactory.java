@@ -7,7 +7,7 @@ import by.bsuir.mycoolsite.dao.impl.SQLUserDAO;
 
 public final class DAOFactory {
     private static final DAOFactory instance = new DAOFactory();
-    private final FilmDAO sqlBookImpl = new SQLFilmDAO();
+    private final FilmDAO sqlFilmImpl = new SQLFilmDAO();
     private final UserDAO sqlUserImpl = new SQLUserDAO();
 
     private DAOFactory() {
@@ -19,7 +19,7 @@ public final class DAOFactory {
     }
 
     public FilmDAO getFilmDAO() {
-        return sqlBookImpl;
+        return sqlFilmImpl;
     }
 
     public UserDAO getUserDAO() {

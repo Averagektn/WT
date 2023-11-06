@@ -1,4 +1,4 @@
-package by.bsuir.mycoolsite.bean;
+package by.bsuir.mycoolsite.bean.enums;
 
 public enum AgeRestriction {
     ZERO("0+"),

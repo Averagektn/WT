@@ -7,8 +7,8 @@ import by.bsuir.mycoolsite.service.impl.UserServiceImpl;
 
 public final class ServiceFactory {
     private static final ServiceFactory instance = new ServiceFactory();
-    private final UserService clientService = new UserServiceImpl();
-    private final FilmService libraryService = new FilmServiceImpl();
+    private final UserService userService = new UserServiceImpl();
+    private final FilmService filmService = new FilmServiceImpl();
 
     private ServiceFactory() {
     }
@@ -18,10 +18,10 @@ public final class ServiceFactory {
     }
 
     public UserService getUserService() {
-        return clientService;
+        return userService;
     }
 
     public FilmService getFilmService() {
-        return libraryService;
+        return filmService;
     }
 }

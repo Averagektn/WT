@@ -1,5 +1,7 @@
 package by.bsuir.mycoolsite.bean;
 
+import by.bsuir.mycoolsite.bean.enums.AgeRestriction;
+
 import java.math.BigDecimal;
 
 public class Film {

@@ -8,19 +8,20 @@ import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 public class SignIn implements Command {
     @Override
     public String execute(String request) {
-        String login = null;
+        String email = null;
         String password = null;
         String response = null;
 
-// get parameters from request and initialize the variables login and password
+        // get parameters from request and initialize the variables login and password
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         UserService clientService = serviceFactory.getUserService();
+
         try {
-            clientService.singIn(login, password);
+            clientService.singIn(email, password);
             response = "Welcome";
         } catch (ServiceException e) {
-// write log
+            // write log
             response = "Error duiring login procedure";
         }
         return response;

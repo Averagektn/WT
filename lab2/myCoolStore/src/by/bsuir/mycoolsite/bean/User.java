@@ -1,5 +1,7 @@
 package by.bsuir.mycoolsite.bean;
 
+import by.bsuir.mycoolsite.bean.enums.Role;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
