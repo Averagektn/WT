@@ -9,20 +9,28 @@ import by.bsuir.mycoolsite.service.exception.ServiceException;
 
 public class UserServiceImpl implements UserService {
     @Override
-    public void singIn(String email, String password) throws ServiceException {
-/*        // проверяем параметры
+    public void signIn(String email, String password) throws ServiceException {
         if (email == null || email.isEmpty()) {
-            throw new ServiceException("Incorrect login");
+            //LOG
+            System.out.println("ServiceException, incorrect email");
+            throw new ServiceException("Incorrect email");
         }
-        // реализуем функционал логинации пользователя в системе
+
+        if (password.length() < 7) {
+            //LOG
+            System.out.println("Service exception, incorrect password length");
+            throw new ServiceException("Password length is too low");
+        }
+
         try {
             DAOFactory daoObjectFactory = DAOFactory.getInstance();
             UserDAO userDAO = daoObjectFactory.getUserDAO();
             userDAO.signIn(email, password);
         } catch (DAOException e) {
+            //LOG
+            System.out.println("DAOException in UserServiceImpl " + e.toString());
             throw new ServiceException(e);
         }
-        //....*/
     }
 
     @Override
@@ -49,7 +57,7 @@ public class UserServiceImpl implements UserService {
             userDAO.registration(user);
         } catch (DAOException e) {
             //LOG
-            System.out.println("DAOException in UserServiceImpl");
+            System.out.println("DAOException in UserServiceImpl " + e.toString());
             throw new ServiceException(e);
         }
     }

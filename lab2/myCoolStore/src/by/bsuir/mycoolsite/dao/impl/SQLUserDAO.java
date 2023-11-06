@@ -10,11 +10,59 @@ import java.sql.*;
 public class SQLUserDAO implements UserDAO {
 
     private static final String QUERY_REGISTER =
-            "INSERT INTO user (usr_email, usr_password, usr_role, usr_banned_by) Values (?,?,?,?)";
+            "INSERT INTO user (usr_email, usr_password, usr_role, usr_banned_by) VALUES (?,?,?,?)";
+    private static final String QUERY_AUTHORIZATION =
+            "SELECT usr_id FROM user WHERE usr_email = ? AND usr_password = ?";
 
     @Override
     public void signIn(String email, String password) throws DAOException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
 
+        // LOG
+        System.out.println("Authorization of " + email);
+
+        try {
+            Class.forName(Config.DBConnectionClassname);
+            con = DriverManager.getConnection(Config.DBConnectionURL, Config.DBUser, Config.DBPassword);
+
+            ps = con.prepareStatement(QUERY_AUTHORIZATION);
+            ps.setString(1, email);
+            ps.setString(2, User.getHashSha512Password(password));
+
+            rs = ps.executeQuery();
+
+            if (!rs.next()) {
+                //LOG
+                System.out.println("0 rows affected. Selection error");
+                throw new DAOException("Authorization failed");
+            }
+        } catch (ClassNotFoundException e) {
+            //LOG
+            System.out.println("ClassNotFound exception in SQLUserDAO");
+            throw new DAOException("Class not found");
+        } catch (SQLException e) {
+            //LOG
+            System.out.println("SQL Exception in SQLUserDAO " + e.toString());
+            throw new DAOException("Sql error");
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                //LOG
+                System.out.println("Connection closing exception in SQLUserDAO");
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     @Override

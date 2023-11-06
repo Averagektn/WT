@@ -7,14 +7,14 @@
 <body>
 <h1>Авторизация</h1>
 <form action="Controller" method="post">
-    <label for="emailAuth">Электронная почта:</label>
-    <input type="email" id="emailAuth" name="emailAuth" required>
+    <label for="emailAuthorization">Электронная почта:</label>
+    <input type="email" id="emailAuthorization" name="emailAuthorization" required>
     <br>
-    <label for="passwordAuth">Пароль:</label>
-    <input type="password" id="passwordAuth" name="passwordAuth" required>
+    <label for="passwordAuthorization">Пароль:</label>
+    <input type="password" id="passwordAuthorization" name="passwordAuthorization" required>
     <br>
     <input type="submit" value="Авторизоваться">
-    <input type="hidden" name="command" value="sign_in" />
+    <input type="hidden" name="command" value="sign_in"/>
 </form>
 </body>
 </html>

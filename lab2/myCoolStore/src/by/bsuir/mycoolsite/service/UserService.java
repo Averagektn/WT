@@ -4,7 +4,7 @@ import by.bsuir.mycoolsite.bean.User;
 import by.bsuir.mycoolsite.service.exception.ServiceException;
 
 public interface UserService {
-    void singIn(String email, String password) throws ServiceException;
+    void signIn(String email, String password) throws ServiceException;
 
     void signOut(String email) throws ServiceException;
 

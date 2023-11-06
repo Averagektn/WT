@@ -2,7 +2,7 @@ package by.bsuir.mycoolsite.controller.command.impl;
 
 import by.bsuir.mycoolsite.bean.User;
 import by.bsuir.mycoolsite.bean.enums.Role;
-import by.bsuir.mycoolsite.controller.JspPageName;
+import by.bsuir.mycoolsite.controller.JSPPageName;
 import by.bsuir.mycoolsite.controller.command.Command;
 import by.bsuir.mycoolsite.controller.command.exception.CommandException;
 import by.bsuir.mycoolsite.service.UserService;
@@ -30,8 +30,10 @@ public class Register implements Command {
 
         try {
             userService.registration(user);
-            response = JspPageName.REGISTER_PAGE;
+            response = JSPPageName.PAGE_REGISTER;
         } catch (ServiceException e) {
+            //LOG
+            System.out.println("Service exception: " + e.toString());
             throw new CommandException("Service exception: ", e);
         }
 

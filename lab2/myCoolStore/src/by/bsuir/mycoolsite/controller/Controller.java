@@ -35,12 +35,12 @@ public class Controller extends HttpServlet {
             page = command.execute(request);
         } catch (CommandException e) {
             //LOG
-            System.out.println("Command exception in Controller");
-            page = JspPageName.ERROR_PAGE;
+            System.out.println("Command exception in Controller " + e.toString());
+            page = JSPPageName.PAGE_ERROR;
         } catch (Exception e) {
             //LOG
-            System.out.println("Exception in Controller");
-            page = JspPageName.ERROR_PAGE;
+            System.out.println("Exception in Controller " + e.toString());
+            page = JSPPageName.PAGE_ERROR;
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(page);
