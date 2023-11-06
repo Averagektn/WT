@@ -12,7 +12,7 @@ public class SQLUserDAO implements UserDAO {
     private static final String QUERY_REGISTER =
             "INSERT INTO user (usr_email, usr_password, usr_role, usr_banned_by) VALUES (?,?,?,?)";
     private static final String QUERY_AUTHORIZATION =
-            "SELECT usr_id FROM user WHERE usr_email = ? AND usr_password = ?";
+            "SELECT usr_id, usr_banned_by FROM user WHERE usr_email = ? AND usr_password = ?";
 
     @Override
     public void signIn(String email, String password) throws DAOException {
@@ -37,6 +37,14 @@ public class SQLUserDAO implements UserDAO {
                 //LOG
                 System.out.println("0 rows affected. Selection error");
                 throw new DAOException("Authorization failed");
+            } else {
+                long usrBannedBy = rs.getLong(2);
+                if (!rs.wasNull()) {
+                    //LOG
+                    System.out.println("User is banned");
+                    throw new DAOException("User is banned");
+                }
+
             }
         } catch (ClassNotFoundException e) {
             //LOG
