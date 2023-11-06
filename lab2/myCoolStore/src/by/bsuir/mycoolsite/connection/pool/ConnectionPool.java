@@ -1,8 +1,9 @@
-package by.bsuir.mycoolsite.сonnectionPool;
+package by.bsuir.mycoolsite.connection.pool;
 
 import by.bsuir.mycoolsite.config.Config;
 
 import java.sql.*;
+import java.sql.Connection;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
@@ -11,8 +12,8 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 
 public final class ConnectionPool {
-    private BlockingQueue<Connection> connectionQueue;
-    private BlockingQueue<Connection> givenAwayConQueue;
+    private BlockingQueue<java.sql.Connection> connectionQueue;
+    private BlockingQueue<java.sql.Connection> givenAwayConQueue;
     private final String driverName;
     private final String url;
     private final String user;
@@ -32,10 +33,10 @@ public final class ConnectionPool {
         try {
             Class.forName(driverName);
             givenAwayConQueue = new
-                    ArrayBlockingQueue<Connection>(poolSize);
-            connectionQueue = new ArrayBlockingQueue<Connection>(poolSize);
+                    ArrayBlockingQueue<java.sql.Connection>(poolSize);
+            connectionQueue = new ArrayBlockingQueue<java.sql.Connection>(poolSize);
             for (int i = 0; i < poolSize; i++) {
-                Connection connection = DriverManager.getConnection(url,
+                java.sql.Connection connection = DriverManager.getConnection(url,
                         user,
                         password);
                 PooledConnection pooledConnection = new PooledConnection(
@@ -62,8 +63,8 @@ public final class ConnectionPool {
         }
     }
 
-    public Connection takeConnection() throws ConnectionPoolException {
-        Connection connection = null;
+    public java.sql.Connection takeConnection() throws ConnectionPoolException {
+        java.sql.Connection connection = null;
         try {
             connection = connectionQueue.take();
             givenAwayConQueue.add(connection);
@@ -73,7 +74,7 @@ public final class ConnectionPool {
         return connection;
     }
 
-    public void closeConnection(Connection con, Statement st, ResultSet rs) {
+    public void closeConnection(java.sql.Connection con, Statement st, ResultSet rs) {
         try {
             con.close();
         } catch (SQLException e) {
@@ -91,7 +92,7 @@ public final class ConnectionPool {
         }
     }
 
-    public void closeConnection(Connection con, Statement st) {
+    public void closeConnection(java.sql.Connection con, Statement st) {
         try {
             con.close();
         } catch (SQLException e) {
@@ -104,9 +105,9 @@ public final class ConnectionPool {
         }
     }
 
-    private void closeConnectionsQueue(BlockingQueue<Connection> queue)
+    private void closeConnectionsQueue(BlockingQueue<java.sql.Connection> queue)
             throws SQLException {
-        Connection connection;
+        java.sql.Connection connection;
         while ((connection = queue.poll()) != null) {
             if (!connection.getAutoCommit()) {
                 connection.commit();
@@ -115,8 +116,8 @@ public final class ConnectionPool {
         }
     }
 
-    private class PooledConnection implements Connection {
-        private Connection connection;
+    private class PooledConnection implements java.sql.Connection {
+        private java.sql.Connection connection;
 
         public PooledConnection(Connection c) throws SQLException {
             this.connection = c;

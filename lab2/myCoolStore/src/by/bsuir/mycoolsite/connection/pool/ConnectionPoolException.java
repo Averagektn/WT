@@ -1,4 +1,4 @@
-package by.bsuir.mycoolsite.сonnectionPool;
+package by.bsuir.mycoolsite.connection.pool;
 
 import java.io.Serial;
 
