@@ -8,22 +8,37 @@ public class Film {
     private long id;
     private String description;
     private BigDecimal price;
-    private String filmFilepath;
-    private String trailerFilepath;
+    private long filmFileId;
+    private long trailerId;
     private int discount;
     private String author;
     private AgeRestriction ageRestriction;
+    private String name;
 
-    public Film(long id, String description, BigDecimal price, String filmFilepath, String trailerFilepath, int discount,
-                String author, AgeRestriction ageRestriction) {
+    public Film(long id, String description, BigDecimal price, long filmFileId, long trailerId, int discount,
+                String author, AgeRestriction ageRestriction, String name) {
         this.id = id;
         this.description = description;
         this.price = price;
-        this.filmFilepath = filmFilepath;
-        this.trailerFilepath = trailerFilepath;
+        this.filmFileId = filmFileId;
+        this.trailerId = trailerId;
         this.discount = discount;
         this.author = author;
         this.ageRestriction = ageRestriction;
+        this.name = name;
+    }
+
+    public Film(String description, BigDecimal price, long filmFileId, long trailerId, int discount,
+                String author, AgeRestriction ageRestriction, String name) {
+        this(-1, description, price, filmFileId, trailerId, discount, author, ageRestriction, name);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public long getId() {
@@ -38,8 +53,8 @@ public class Film {
         return author;
     }
 
-    public String getFilmFilepath() {
-        return filmFilepath;
+    public long getFilmFileId() {
+        return filmFileId;
     }
 
     public AgeRestriction getAgeRestriction() {
@@ -54,16 +69,16 @@ public class Film {
         return discount;
     }
 
-    public String getTrailerFilepath() {
-        return trailerFilepath;
+    public long getTrailerId() {
+        return trailerId;
     }
 
     public void setAgeRestriction(AgeRestriction ageRestriction) {
         this.ageRestriction = ageRestriction;
     }
 
-    public void setFilmFilepath(String filmFilepath) {
-        this.filmFilepath = filmFilepath;
+    public void setFilmFileId(long filmFileId) {
+        this.filmFileId = filmFileId;
     }
 
     public void setAuthor(String author) {
@@ -82,8 +97,8 @@ public class Film {
         this.price = price;
     }
 
-    public void setTrailerFilepath(String trailerFilepath) {
-        this.trailerFilepath = trailerFilepath;
+    public void setTrailerId(long trailerId) {
+        this.trailerId = trailerId;
     }
 
     public void setId(long id) {

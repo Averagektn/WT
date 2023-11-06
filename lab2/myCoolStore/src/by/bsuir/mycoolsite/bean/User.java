@@ -9,26 +9,25 @@ import java.security.NoSuchAlgorithmException;
 public class User {
     private long id;
     private String email;
-    private final static String salt = "";
     private String password;
     private Role role;
-    private long isBannedBy;
+    private long bannedBy;
     public static final int NOT_BANNED = -1;
 
-    public User(long id, String email, String password, Role role, long isBannedBy) {
+    public User(long id, String email, String password, Role role, long bannedBy) {
         this.id = id;
         this.email = email;
-        this.password = password;
+        this.password = getHashSha512Password(password);
         this.role = role;
-        this.isBannedBy = isBannedBy;
+        this.bannedBy = bannedBy;
     }
 
-    public User(String email, String password, Role role, long isBannedBy){
-        this.id = -1;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-        this.isBannedBy = isBannedBy;
+    public User(String email, String password, Role role, long bannedBy) {
+        this(-1, email, password, role, bannedBy);
+    }
+
+    public User(String email, String password) {
+        this(-1, email, password, Role.Customer, NOT_BANNED);
     }
 
     public String getEmail() {
@@ -47,15 +46,13 @@ public class User {
         this.password = password;
     }
 
-    public static String getHashSha512Password(String Password) {
+    private static String getHashSha512Password(String Password) {
         String passwordHash = null;
 
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");
             byte[] bytes = md.digest(Password.getBytes(StandardCharsets.UTF_8));
             StringBuilder sb = new StringBuilder();
-
-            md.update(salt.getBytes(StandardCharsets.UTF_8));
 
             for (byte aByte : bytes) {
                 sb.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
@@ -78,20 +75,20 @@ public class User {
         this.role = role;
     }
 
-    public boolean isBanned(){
-        return isBannedBy != NOT_BANNED;
+    public boolean isBanned() {
+        return bannedBy != NOT_BANNED;
     }
 
     public long getBannedBy() {
-        return isBannedBy;
+        return bannedBy;
     }
 
     public void ban(long bannerId) {
-        this.isBannedBy = bannerId;
+        this.bannedBy = bannerId;
     }
 
     public void unban() {
-        this.isBannedBy = NOT_BANNED;
+        this.bannedBy = NOT_BANNED;
     }
 
     public long getId() {
