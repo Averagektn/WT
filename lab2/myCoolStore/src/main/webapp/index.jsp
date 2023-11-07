@@ -33,7 +33,7 @@
     <jsp:useBean id="films" scope="request" type="java.util.List"/>
     <c:forEach var="film" items="${films}">
         <li>
-            <a href="film?id=${film.id}">${film.name}</a><br>
+            <a href="Film?id=${film.id}">${film.name}</a><br>
             <c:choose>
                 <c:when test="${film.discount != 0}">
                     <strike>${film.price}</strike> ${film.getRealPrice()}<br>

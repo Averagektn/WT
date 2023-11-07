@@ -1,9 +1,6 @@
 package by.bsuir.mycoolsite.controller.command;
 
-import by.bsuir.mycoolsite.controller.command.impl.AddFilm;
-import by.bsuir.mycoolsite.controller.command.impl.Register;
-import by.bsuir.mycoolsite.controller.command.impl.SignIn;
-import by.bsuir.mycoolsite.controller.command.impl.WrongRequest;
+import by.bsuir.mycoolsite.controller.command.impl.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +14,7 @@ public final class CommandProvider {
         repository.put(CommandName.REGISTER, new Register());
         repository.put(CommandName.ADD_FILM, new AddFilm());
         repository.put(CommandName.WRONG_REQUEST, new WrongRequest());
+        repository.put(CommandName.SIGN_OUT, new SignOut());
         //...
     }
 
@@ -25,14 +23,15 @@ public final class CommandProvider {
     }
 
     public Command getCommand(String name) {
-        CommandName commandName = null;
-        Command command = null;
+        CommandName commandName;
+        Command command;
 
         try {
             commandName = CommandName.valueOf(name.toUpperCase());
             command = repository.get(commandName);
         } catch (IllegalArgumentException | NullPointerException e) {
-            //write log
+            //LOG
+            System.out.println("Command provider didn't find command: " + name);
             command = repository.get(CommandName.WRONG_REQUEST);
         }
 

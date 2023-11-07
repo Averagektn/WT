@@ -6,7 +6,5 @@ import by.bsuir.mycoolsite.service.exception.ServiceException;
 public interface UserService {
     User signIn(String email, String password) throws ServiceException;
 
-    void signOut(String email) throws ServiceException;
-
     long registration(User user) throws ServiceException;
 }

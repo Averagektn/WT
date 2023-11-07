@@ -38,10 +38,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void signOut(String email) throws ServiceException {
-    }
-
-    @Override
     public long registration(User user) throws ServiceException {
         long id;
 
