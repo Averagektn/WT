@@ -5,10 +5,12 @@ import by.bsuir.mycoolsite.bean.enums.Role;
 import by.bsuir.mycoolsite.controller.command.Command;
 import by.bsuir.mycoolsite.controller.command.exception.CommandException;
 import by.bsuir.mycoolsite.controller.page.PageName;
+import by.bsuir.mycoolsite.controller.session.SessionAttribute;
 import by.bsuir.mycoolsite.service.UserService;
 import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 public class Register implements Command {
 
@@ -26,10 +28,14 @@ public class Register implements Command {
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         UserService userService = serviceFactory.getUserService();
-        User user = new User(email, password, Role.Customer, User.NOT_BANNED);
+        User user = new User(email, password, Role.CUSTOMER, User.NOT_BANNED);
 
         try {
-            userService.registration(user);
+            long id = userService.registration(user);
+
+            HttpSession session = request.getSession(true);
+            session.setAttribute(SessionAttribute.ID, id);
+
             response = PageName.MAIN.getUrlPattern();
         } catch (ServiceException e) {
             //LOG

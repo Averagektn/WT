@@ -27,7 +27,11 @@ public class User {
     }
 
     public User(String email, String password) {
-        this(-1, email, password, Role.Customer, NOT_BANNED);
+        this(-1, email, password, Role.CUSTOMER, NOT_BANNED);
+    }
+
+    public boolean isAdmin(){
+        return role == Role.ADMIN;
     }
 
     public String getEmail() {

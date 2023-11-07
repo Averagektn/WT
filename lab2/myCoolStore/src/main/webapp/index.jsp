@@ -7,12 +7,28 @@
     <title>My Cool Site</title>
 </head>
 <body>
-<form action="Register" method="post">
-    <input type="submit" value="register"/>
-</form>
-<form action="Authorization" method="post">
-    <input type="submit" value="authorization"/>
-</form>
+
+
+<c:if test="${not empty sessionScope.isAdmin}">
+    <h1>ADMIN MODE</h1>
+</c:if>
+
+<c:choose>
+    <c:when test="${empty sessionScope.userID}">
+        <form action="Register" method="post">
+            <input type="submit" name="command" value="register"/>
+        </form>
+        <form action="Authorization" method="post">
+            <input type="submit" name="command" value="authorization"/>
+        </form>
+    </c:when>
+    <c:otherwise>
+        <form action="Controller" method="post">
+            <input type="submit" name="command" value="sign_out"/>
+        </form>
+    </c:otherwise>
+</c:choose>
+
 <ul>
     <jsp:useBean id="films" scope="request" type="java.util.List"/>
     <c:forEach var="film" items="${films}">

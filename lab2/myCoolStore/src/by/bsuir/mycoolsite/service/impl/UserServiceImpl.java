@@ -9,7 +9,9 @@ import by.bsuir.mycoolsite.service.exception.ServiceException;
 
 public class UserServiceImpl implements UserService {
     @Override
-    public void signIn(String email, String password) throws ServiceException {
+    public User signIn(String email, String password) throws ServiceException {
+        User user;
+
         if (email == null || email.isEmpty()) {
             //LOG
             System.out.println("ServiceException, incorrect email");
@@ -25,12 +27,14 @@ public class UserServiceImpl implements UserService {
         try {
             DAOFactory daoObjectFactory = DAOFactory.getInstance();
             UserDAO userDAO = daoObjectFactory.getUserDAO();
-            userDAO.signIn(email, password);
+            user = userDAO.signIn(email, password);
         } catch (DAOException e) {
             //LOG
             System.out.println("DAOException in UserServiceImpl " + e);
             throw new ServiceException(e);
         }
+
+        return user;
     }
 
     @Override
@@ -38,7 +42,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void registration(User user) throws ServiceException {
+    public long registration(User user) throws ServiceException {
+        long id;
+
         if (user.getEmail() == null || user.getEmail().isEmpty()) {
             //LOG
             System.out.println("ServiceException, incorrect email");
@@ -54,11 +60,13 @@ public class UserServiceImpl implements UserService {
         try {
             DAOFactory daoObjectFactory = DAOFactory.getInstance();
             UserDAO userDAO = daoObjectFactory.getUserDAO();
-            userDAO.registration(user);
+            id = userDAO.registration(user);
         } catch (DAOException e) {
             //LOG
             System.out.println("DAOException in UserServiceImpl " + e);
             throw new ServiceException(e);
         }
+
+        return id;
     }
 }
