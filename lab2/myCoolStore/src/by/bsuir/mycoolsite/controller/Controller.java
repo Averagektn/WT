@@ -35,7 +35,7 @@ public class Controller extends HttpServlet {
             page = pageContent.generate(request);
         } catch (PageException e) {
             //LOG
-            System.out.println("Command exception in Controller " + e.toString());
+            System.out.println("Page exception in Controller " + e.toString());
             page = JSPPageName.PAGE_ERROR;
         } catch (Exception e) {
             //LOG
@@ -66,6 +66,7 @@ public class Controller extends HttpServlet {
 
         try {
             page = command.execute(request);
+            System.out.println(page);
         } catch (CommandException e) {
             //LOG
             System.out.println("Command exception in Controller " + e.toString());

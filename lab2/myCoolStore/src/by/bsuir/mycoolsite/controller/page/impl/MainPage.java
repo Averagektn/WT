@@ -28,7 +28,7 @@ public class MainPage implements Page {
             for (String film: filmNames) {
                 System.out.println(film);
             }
-            request.setAttribute("filmNames", filmNames);
+            request.setAttribute("films", films);
 
             response = JSPPageName.PAGE_MAIN;
         } catch (ServiceException e) {

@@ -20,19 +20,19 @@ public class SQLFilmDAO implements FilmDAO {
 
     private static final String QUERY_GET_FILMS =
             "SELECT " +
-                    "flm_id, " +
-                    "flm_description, " +
-                    "flm_price, " +
-                    "fm_trailer_path, " +
-                    "flm_discount, " +
-                    "flm_author, " +
-                    "flm_age, " +
-                    "flm_name, " +
-                    "cat_name " +
-                    "FROM film " +
-                    "LEFT JOIN film_media ON flm_media = fm_id " +
-                    "LEFT JOIN m2m_film_category ON flm_id = fc_film " +
-                    "LEFT JOIN mycoolstore.category ON cat_id = fc_category";
+                "flm_id, " +
+                "flm_description, " +
+                "flm_price, " +
+                "fm_trailer_path, " +
+                "flm_discount, " +
+                "flm_author, " +
+                "flm_age, " +
+                "flm_name, " +
+                "cat_name " +
+            "FROM film " +
+                "LEFT JOIN film_media ON flm_media = fm_id " +
+                "LEFT JOIN m2m_film_category ON flm_id = fc_film " +
+                "LEFT JOIN mycoolstore.category ON cat_id = fc_category";
 
     @Override
     public List<Film> getFilms() throws DAOException {
@@ -72,7 +72,9 @@ public class SQLFilmDAO implements FilmDAO {
                             filmAuthor,
                             filmAge,
                             filmName,
-                            new ArrayList<>()
+                            new ArrayList<>() {{
+                                add(filmCategory);
+                            }}
                     ));
                 }
             }

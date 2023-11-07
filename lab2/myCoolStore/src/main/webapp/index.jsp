@@ -18,9 +18,31 @@
     <input type="submit" value="authorization"/>
 </form>
 <ul>
-    <jsp:useBean id="filmNames" scope="request" type="java.util.List"/>
-    <c:forEach var="filmName" items="${filmNames}">
-        <li>${filmName}</li>
+    <jsp:useBean id="films" scope="request" type="java.util.List" />
+    <c:forEach var="film" items="${films}">
+        <li>
+            <a href="film?id=${film.id}">${film.name}</a><br>
+            <c:choose>
+                <c:when test="${film.discount != 0}">
+                    <strike>${film.price}</strike> ${film.getRealPrice()}<br>
+                </c:when>
+                <c:otherwise>
+                    ${film.price}<br>
+                </c:otherwise>
+            </c:choose>
+
+            Возрастные ограничения: ${film.ageRestriction.toString()}<br>
+            Автор: ${film.author}<br>
+            Категории:
+            <c:forEach var="category" items="${film.categories}">
+                ${category.name}
+            </c:forEach><br>
+<%--            <video width="320" height="240" controls>
+                <source src="${film.media.trailerPath}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video><br>--%>
+            ${film.description}
+        </li>
     </c:forEach>
 </ul>
 </body>

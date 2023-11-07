@@ -3,6 +3,7 @@ package by.bsuir.mycoolsite.bean;
 import by.bsuir.mycoolsite.bean.enums.AgeRestriction;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 public class Film {
@@ -33,6 +34,16 @@ public class Film {
                 String author, AgeRestriction ageRestriction, String name, List<Category> categories) {
         this(-1, description, price, media, discount, author, ageRestriction, name, categories);
     }
+
+    public BigDecimal getRealPrice() {
+        float percent = 1 - (float) discount / 100;
+        BigDecimal result = price.multiply(BigDecimal.valueOf(percent));
+
+        result = result.setScale(2, RoundingMode.HALF_UP);
+
+        return result;
+    }
+
 
     public String getName() {
         return name;
