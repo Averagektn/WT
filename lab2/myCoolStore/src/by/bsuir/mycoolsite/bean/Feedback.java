@@ -2,12 +2,12 @@ package by.bsuir.mycoolsite.bean;
 
 public class Feedback {
     private long id;
-    private long author;
-    private long film;
+    private User author;
+    private Film film;
     private String text;
     private int rating;
 
-    public Feedback(long id, long author, long film, String text, int rating) {
+    public Feedback(long id, User author, Film film, String text, int rating) {
         this.id = id;
         this.author = author;
         this.film = film;
@@ -15,7 +15,7 @@ public class Feedback {
         this.text = text;
     }
 
-    public Feedback(long author, long film, String text, int rating) {
+    public Feedback(User author, Film film, String text, int rating) {
         this(-1, author, film, text, rating);
     }
 
@@ -31,15 +31,15 @@ public class Feedback {
         return rating;
     }
 
-    public void setAuthor(long author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 
-    public long getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public long getFilm() {
+    public Film getFilm() {
         return film;
     }
 
@@ -47,7 +47,7 @@ public class Feedback {
         return text;
     }
 
-    public void setFilm(long film) {
+    public void setFilm(Film film) {
         this.film = film;
     }
 

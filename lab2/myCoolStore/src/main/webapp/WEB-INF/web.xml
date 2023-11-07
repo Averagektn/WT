@@ -29,7 +29,7 @@
   
   <servlet>
     <servlet-name>Register</servlet-name>
-    <jsp-file>/jsp/register.jsp</jsp-file>
+    <jsp-file>/WEB-INF/jsp/register.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>Register</servlet-name>
@@ -38,20 +38,11 @@
 
   <servlet>
     <servlet-name>Authorization</servlet-name>
-    <jsp-file>/jsp/authorization.jsp</jsp-file>
+    <jsp-file>/WEB-INF/jsp/authorization.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>Authorization</servlet-name>
     <url-pattern>/Authorization</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
-    <servlet-name>AddFilm</servlet-name>
-    <jsp-file>/jsp/adminFilm.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AddFilm</servlet-name>
-    <url-pattern>/Admin/AddFilm</url-pattern>
   </servlet-mapping>
 
   <filter>

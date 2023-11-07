@@ -32,7 +32,7 @@
             </c:when>
             <c:otherwise>
                 <h1>ADMIN MODE</h1>
-                <form action="Admin/AddFilm" method="post">
+                <form action="Controller" method="post">
                     <input type="submit" name="command" value="add_film"/>
                 </form>
             </c:otherwise>

@@ -18,8 +18,9 @@ public class CustomerFilter extends HttpFilter {
         HttpSession session = req.getSession(false);
 
         Object id = session.getAttribute(SessionAttribute.ID);
+        Object isAdmin = session.getAttribute(SessionAttribute.IS_ADMIN);
 
-        if (id == null){
+        if (id == null || isAdmin != null){
             res.sendRedirect(PageName.MAIN.getUrlPattern());
         } else {
             chain.doFilter(req, res);
