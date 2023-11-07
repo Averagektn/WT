@@ -24,12 +24,7 @@ public class MainPage implements Page {
 
         try {
             films = filmService.getFilms();
-            List<String> filmNames = films.stream().map(Film::getAuthor).toList();
-            for (String film: filmNames) {
-                System.out.println(film);
-            }
             request.setAttribute("films", films);
-
             response = JSPPageName.PAGE_MAIN;
         } catch (ServiceException e) {
             //LOG

@@ -5,7 +5,7 @@ import by.bsuir.mycoolsite.bean.enums.Role;
 import by.bsuir.mycoolsite.controller.command.Command;
 import by.bsuir.mycoolsite.controller.command.exception.CommandException;
 import by.bsuir.mycoolsite.controller.page.Page;
-import by.bsuir.mycoolsite.controller.page.exception.PageException;
+import by.bsuir.mycoolsite.controller.page.PageName;
 import by.bsuir.mycoolsite.controller.page.impl.MainPage;
 import by.bsuir.mycoolsite.service.UserService;
 import by.bsuir.mycoolsite.service.exception.ServiceException;
@@ -35,16 +35,17 @@ public class Register implements Command {
 
         try {
             userService.registration(user);
-            response = pageContent.generate(request);
+            System.out.println("CONTEXT" + request.getContextPath());
+            response = PageName.MAIN.getUrlPattern();
         } catch (ServiceException e) {
             //LOG
             System.out.println("Service exception: " + e);
             throw new CommandException("Service exception: ", e);
-        } catch (PageException e){
+        } /*catch (PageException e){
             //LOG
             System.out.println("Page exception" + e);
             throw new CommandException("Command page exception: ", e);
-        }
+        }*/
 
         return response;
     }
