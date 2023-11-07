@@ -12,7 +12,7 @@ import java.util.List;
 public class FilmServiceImpl implements FilmService {
     @Override
     public List<Film> getFilms() throws ServiceException {
-        List<Film> films = null;
+        List<Film> films;
 
         try {
             DAOFactory daoObjectFactory = DAOFactory.getInstance();
@@ -20,7 +20,7 @@ public class FilmServiceImpl implements FilmService {
             films = filmDAO.getFilms();
         } catch (DAOException e) {
             //LOG
-            System.out.println("DAOException in FilmServiceImpl " + e.toString());
+            System.out.println("DAOException in FilmServiceImpl " + e);
             throw new ServiceException(e);
         }
 

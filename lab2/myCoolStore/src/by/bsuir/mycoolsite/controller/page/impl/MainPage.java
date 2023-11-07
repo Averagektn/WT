@@ -9,25 +9,28 @@ import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.http.HttpServletRequest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainPage implements Page {
+    private static final String FILM_NAMES = "filmNames";
+
     @Override
     public String generate(HttpServletRequest request) throws PageException {
         String response = null;
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         FilmService filmService = serviceFactory.getFilmService();
-        List<Film> films = new ArrayList<>();
+        List<Film> films;
 
         try {
             films = filmService.getFilms();
+            List<String> filmNames = films.stream().map(Film::getAuthor).toList();
+            for (String film: filmNames) {
+                System.out.println(film);
+            }
+            request.setAttribute("filmNames", filmNames);
+
             response = JSPPageName.PAGE_MAIN;
-
-            //List<String> filmNames = films.stream().map(Film::getAuthor).toList();
-            //request.setAttribute();
-
         } catch (ServiceException e) {
             //LOG
             System.out.println("Page exception: " + e.toString());

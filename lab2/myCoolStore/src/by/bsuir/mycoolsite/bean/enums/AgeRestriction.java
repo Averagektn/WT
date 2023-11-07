@@ -18,4 +18,14 @@ public enum AgeRestriction {
     public String toString() {
         return stringValue;
     }
+
+    public static AgeRestriction getAgeRestrictionFromString(String ageString) {
+        for (AgeRestriction ageRestriction : AgeRestriction.values()) {
+            if (ageRestriction.toString().equals(ageString)) {
+                return ageRestriction;
+            }
+        }
+        return null;
+    }
+
 }

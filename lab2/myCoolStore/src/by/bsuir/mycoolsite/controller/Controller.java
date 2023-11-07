@@ -24,6 +24,7 @@ public class Controller extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String requestURI = request.getRequestURI();
+        System.out.println(requestURI);
         Page pageContent = PageProvider.getInstance().getPage(requestURI);
         String page = null;
 
