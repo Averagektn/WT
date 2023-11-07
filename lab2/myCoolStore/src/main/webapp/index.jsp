@@ -8,11 +8,6 @@
 </head>
 <body>
 
-
-<c:if test="${not empty sessionScope.isAdmin}">
-    <h1>ADMIN MODE</h1>
-</c:if>
-
 <c:choose>
     <c:when test="${empty sessionScope.userID}">
         <form action="Register" method="post">
@@ -26,6 +21,22 @@
         <form action="Controller" method="post">
             <input type="submit" name="command" value="sign_out"/>
         </form>
+        <c:choose>
+            <c:when test="${empty sessionScope.isAdmin}">
+                <form action="Controller" method="post">
+                    <input type="submit" name="command" value="library"/>
+                </form>
+                <form action="Controller" method="post">
+                    <input type="submit" name="command" value="cart"/>
+                </form>
+            </c:when>
+            <c:otherwise>
+                <h1>ADMIN MODE</h1>
+                <form action="Admin/AddFilm" method="post">
+                    <input type="submit" name="command" value="add_film"/>
+                </form>
+            </c:otherwise>
+        </c:choose>
     </c:otherwise>
 </c:choose>
 
@@ -33,7 +44,7 @@
     <jsp:useBean id="films" scope="request" type="java.util.List"/>
     <c:forEach var="film" items="${films}">
         <li>
-            <a href="Film?id=${film.id}">${film.name}</a><br>
+            <a href="Controller?id=${film.id}">${film.name}</a><br>
             <c:choose>
                 <c:when test="${film.discount != 0}">
                     <strike>${film.price}</strike> ${film.getRealPrice()}<br>
@@ -55,6 +66,11 @@
                             </video><br>--%>
                 ${film.description}
         </li>
+        <c:if test="${not empty sessionScope.isAdmin}">
+            <form action="Controller" method="post">
+                <input type="submit" name="command" value="edit_film"/>
+            </form>
+        </c:if>
     </c:forEach>
 </ul>
 </body>

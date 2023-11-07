@@ -44,5 +44,33 @@
     <servlet-name>Authorization</servlet-name>
     <url-pattern>/Authorization</url-pattern>
   </servlet-mapping>
-  
+
+  <servlet>
+    <servlet-name>AddFilm</servlet-name>
+    <jsp-file>/jsp/adminFilm.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddFilm</servlet-name>
+    <url-pattern>/Admin/AddFilm</url-pattern>
+  </servlet-mapping>
+
+  <filter>
+    <filter-name>AdminFilter</filter-name>
+    <filter-class>by.bsuir.mycoolsite.filter.AdminFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AdminFilter</filter-name>
+    <url-pattern>/Admin/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>CustomerFilter</filter-name>
+    <filter-class>by.bsuir.mycoolsite.filter.CustomerFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CustomerFilter</filter-name>
+    <url-pattern>/Customer/*</url-pattern>
+  </filter-mapping>
+
+
 </web-app> 
