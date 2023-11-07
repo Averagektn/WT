@@ -41,7 +41,7 @@ public class SQLFilmDAO implements FilmDAO {
         ResultSet rs = null;
         List<Film> films = new ArrayList<>();
         DBConnection dbConnection = DBConnection.getInstance();
-
+        System.out.println("Connected");
         try {
             con = dbConnection.getConnection();
             ps = con.prepareStatement(QUERY_GET_FILMS);
@@ -82,7 +82,7 @@ public class SQLFilmDAO implements FilmDAO {
             System.out.println("SQL Exception " + e.toString());
             throw new DAOException("Sql error");
         } finally {
-            dbConnection.closeConnection(ps, rs);
+            dbConnection.close(ps, rs);
         }
 
         return films;

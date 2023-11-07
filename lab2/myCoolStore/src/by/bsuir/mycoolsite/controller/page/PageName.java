@@ -2,7 +2,7 @@ package by.bsuir.mycoolsite.controller.page;
 
 public enum PageName {
     WRONG_REQUEST(""),
-    MAIN("/myCoolStore/Controller");
+    MAIN("/myCoolStore/");
 
     private final String urlPattern;
 

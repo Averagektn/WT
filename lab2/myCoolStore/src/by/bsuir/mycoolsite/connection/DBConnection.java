@@ -49,9 +49,8 @@ public class DBConnection {
         }
     }
 
-    public void closeConnection(PreparedStatement ps, ResultSet rs) throws RuntimeException {
+    public void close(PreparedStatement ps, ResultSet rs) throws RuntimeException {
         try {
-            closeConnection();
             if (ps != null) {
                 ps.close();
             }
