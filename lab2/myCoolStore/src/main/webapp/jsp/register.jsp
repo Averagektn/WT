@@ -14,7 +14,7 @@
     <input type="password" id="passwordRegister" name="passwordRegister" required>
     <br>
     <input type="submit" value="Зарегистрироваться">
-    <input type="hidden" name="command" value="register" />
+    <input type="hidden" name="command" value="register"/>
 </form>
 </body>
 </html>

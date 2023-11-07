@@ -1,14 +1,13 @@
 package by.bsuir.mycoolsite.dao.impl;
 
 import by.bsuir.mycoolsite.bean.User;
-import by.bsuir.mycoolsite.config.Config;
+import by.bsuir.mycoolsite.connection.DBConnection;
 import by.bsuir.mycoolsite.dao.UserDAO;
 import by.bsuir.mycoolsite.dao.exception.DAOException;
 
 import java.sql.*;
 
 public class SQLUserDAO implements UserDAO {
-
     private static final String QUERY_REGISTER =
             "INSERT INTO user (usr_email, usr_password, usr_role, usr_banned_by) VALUES (?,?,?,?)";
     private static final String QUERY_AUTHORIZATION =
@@ -16,21 +15,22 @@ public class SQLUserDAO implements UserDAO {
 
     @Override
     public void signIn(String email, String password) throws DAOException {
-        Connection con = null;
+        Connection con;
         PreparedStatement ps = null;
         ResultSet rs = null;
+
+        DBConnection dbConnection = DBConnection.getInstance();
 
         // LOG
         System.out.println("Authorization of " + email);
         User user = new User(email, password);
 
         try {
-            Class.forName(Config.DBConnectionClassname);
-            con = DriverManager.getConnection(Config.DBConnectionURL, Config.DBUser, Config.DBPassword);
+            con = dbConnection.getConnection();
 
             ps = con.prepareStatement(QUERY_AUTHORIZATION);
             ps.setString(1, user.getEmail());
-            ps.setString(2, user.getEmail());
+            ps.setString(2, user.getPassword());
 
             rs = ps.executeQuery();
 
@@ -45,52 +45,34 @@ public class SQLUserDAO implements UserDAO {
                     System.out.println("User is banned");
                     throw new DAOException("User is banned");
                 }
-
             }
-        } catch (ClassNotFoundException e) {
-            //LOG
-            System.out.println("ClassNotFound exception in SQLUserDAO");
-            throw new DAOException("Class not found");
         } catch (SQLException e) {
             //LOG
-            System.out.println("SQL Exception in SQLUserDAO " + e.toString());
+            System.out.println("SQL Exception in SQLUserDAO " + e);
             throw new DAOException("Sql error");
         } finally {
-            try {
-                if (con != null) {
-                    con.close();
-                }
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-                //LOG
-                System.out.println("Connection closing exception in SQLUserDAO");
-                throw new RuntimeException(e);
-            }
+            dbConnection.close(ps, rs);
         }
     }
 
     @Override
     public void registration(User user) throws DAOException {
-        Connection con = null;
+        Connection con;
         PreparedStatement ps = null;
-        ResultSet rs = null;
+
+        DBConnection dbConnection = DBConnection.getInstance();
 
         // LOG
         System.out.println("Registration of " + user.getEmail());
 
         try {
-            Class.forName(Config.DBConnectionClassname);
-            con = DriverManager.getConnection(Config.DBConnectionURL, Config.DBUser, Config.DBPassword);
+            con = dbConnection.getConnection();
 
             ps = con.prepareStatement(QUERY_REGISTER);
             ps.setString(1, user.getEmail());
             ps.setString(2, user.getPassword());
             ps.setString(3, user.getRole().toString());
+
             if (user.isBanned()) {
                 //LOG
                 System.out.println("User is banned");
@@ -108,30 +90,12 @@ public class SQLUserDAO implements UserDAO {
                 System.out.println("0 rows affected. Insertion error");
                 throw new DAOException("Registration failed");
             }
-        } catch (ClassNotFoundException e) {
-            //LOG
-            System.out.println("ClassNotFound exception in SQLUserDAO");
-            throw new DAOException("Class not found");
         } catch (SQLException e) {
             //LOG
-            System.out.println("SQL Exception in SQLUserDAO " + e.toString());
+            System.out.println("SQL Exception in SQLUserDAO " + e);
             throw new DAOException("Sql error");
         } finally {
-            try {
-                if (con != null) {
-                    con.close();
-                }
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-                //LOG
-                System.out.println("Connection closing exception in SQLUserDAO");
-                throw new RuntimeException(e);
-            }
+            dbConnection.close(ps, null);
         }
     }
 }

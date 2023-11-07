@@ -36,14 +36,19 @@ public class SQLFilmDAO implements FilmDAO {
 
     @Override
     public List<Film> getFilms() throws DAOException {
-        Connection con = null;
+        Connection con;
         PreparedStatement ps = null;
         ResultSet rs = null;
+
         List<Film> films = new ArrayList<>();
+
         DBConnection dbConnection = DBConnection.getInstance();
+
         System.out.println("Connected");
+
         try {
             con = dbConnection.getConnection();
+
             ps = con.prepareStatement(QUERY_GET_FILMS);
             rs = ps.executeQuery();
 

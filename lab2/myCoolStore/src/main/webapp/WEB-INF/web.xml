@@ -18,27 +18,15 @@
     <servlet-name>Controller</servlet-name>
     <servlet-class>by.bsuir.mycoolsite.controller.Controller</servlet-class>
   </servlet>
-
   <servlet-mapping>
     <servlet-name>Controller</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
   
   <servlet>
-    <servlet-name>PageMain</servlet-name>
-    <jsp-file>/WEB-INF/jsp/main.jsp</jsp-file>
-  </servlet>  
-  
-  <servlet-mapping>
-    <servlet-name>PageMain</servlet-name>
-    <url-pattern>/main</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
     <servlet-name>Register</servlet-name>
     <jsp-file>/jsp/register.jsp</jsp-file>
   </servlet>
-  
   <servlet-mapping>
     <servlet-name>Register</servlet-name>
     <url-pattern>/Register</url-pattern>
@@ -48,7 +36,6 @@
     <servlet-name>Authorization</servlet-name>
     <jsp-file>/jsp/authorization.jsp</jsp-file>
   </servlet>
-
   <servlet-mapping>
     <servlet-name>Authorization</servlet-name>
     <url-pattern>/Authorization</url-pattern>

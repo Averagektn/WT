@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
             userDAO.signIn(email, password);
         } catch (DAOException e) {
             //LOG
-            System.out.println("DAOException in UserServiceImpl " + e.toString());
+            System.out.println("DAOException in UserServiceImpl " + e);
             throw new ServiceException(e);
         }
     }
@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
             userDAO.registration(user);
         } catch (DAOException e) {
             //LOG
-            System.out.println("DAOException in UserServiceImpl " + e.toString());
+            System.out.println("DAOException in UserServiceImpl " + e);
             throw new ServiceException(e);
         }
     }

@@ -68,11 +68,11 @@ public class Controller extends HttpServlet {
             System.out.println(page);
         } catch (CommandException e) {
             //LOG
-            System.out.println("Command exception in Controller " + e.toString());
+            System.out.println("Command exception in Controller " + e);
             page = JSPPageName.PAGE_ERROR;
         } catch (Exception e) {
             //LOG
-            System.out.println("Exception in Controller " + e.toString());
+            System.out.println("Exception in Controller " + e);
             page = JSPPageName.PAGE_ERROR;
         }
 
