@@ -17,10 +17,10 @@ public class CustomerFilter extends HttpFilter {
             throws IOException, ServletException {
         HttpSession session = req.getSession(false);
 
-        Object id = session.getAttribute(SessionAttribute.ID);
-        Object isAdmin = session.getAttribute(SessionAttribute.IS_ADMIN);
+        boolean isCustomer = session.getAttribute(SessionAttribute.ID) != null;
+        boolean isAdmin = session.getAttribute(SessionAttribute.IS_ADMIN) != null;
 
-        if (id == null || isAdmin != null){
+        if (!isCustomer || isAdmin){
             res.sendRedirect(PageName.MAIN.getUrlPattern());
         } else {
             chain.doFilter(req, res);

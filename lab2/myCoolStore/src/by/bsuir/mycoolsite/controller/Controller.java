@@ -35,11 +35,11 @@ public class Controller extends HttpServlet {
             page = pageContent.generate(request);
         } catch (PageException e) {
             //LOG
-            System.out.println("Page exception in Controller " + e.toString());
+            System.out.println("Page exception in Controller " + e);
             page = JSPPageName.PAGE_ERROR;
         } catch (Exception e) {
             //LOG
-            System.out.println("Exception in Controller " + e.toString());
+            System.out.println("Exception in Controller " + e);
             page = JSPPageName.PAGE_ERROR;
         }
 
@@ -80,9 +80,7 @@ public class Controller extends HttpServlet {
         } catch (IOException e){
             //LOG
             System.out.println("Send redirect exception: " + e);
-
         }
-
     }
 
     private void errorMessageDirectlyFromResponse(HttpServletResponse response) throws IOException {

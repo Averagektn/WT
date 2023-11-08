@@ -1,8 +1,8 @@
 package by.bsuir.mycoolsite.filter;
 
-
 import by.bsuir.mycoolsite.controller.page.PageName;
 import by.bsuir.mycoolsite.controller.session.SessionAttribute;
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpFilter;
@@ -17,13 +17,12 @@ public class AdminFilter extends HttpFilter {
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
             throws IOException, ServletException {
         HttpSession session = req.getSession(false);
+        boolean isAdmin = session.getAttribute(SessionAttribute.IS_ADMIN) != null;
 
-        Object isAdmin = session.getAttribute(SessionAttribute.IS_ADMIN);
-
-        if (isAdmin == null){
-            res.sendRedirect(PageName.MAIN.getUrlPattern());
-        } else {
+        if (isAdmin){
             chain.doFilter(req, res);
+        } else {
+            res.sendRedirect(PageName.MAIN.getUrlPattern());
         }
     }
 }

@@ -2,6 +2,7 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 
 <jsp:useBean id="films" scope="request" type="java.util.List"/>
+<jsp:useBean id="isAdmin" scope="request" type="java.lang.Boolean"/>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -25,18 +26,18 @@
             <input type="submit" name="command" value="sign_out"/>
         </form>
         <c:choose>
-            <c:when test="${empty sessionScope.isAdmin}">
+            <c:when test="${isAdmin}">
+                <h1>ADMIN MODE</h1>
+                <form action="Controller" method="post">
+                    <input type="submit" name="command" value="add_film"/>
+                </form>
+            </c:when>
+            <c:otherwise>
                 <form action="Controller" method="post">
                     <input type="submit" name="command" value="library"/>
                 </form>
                 <form action="Controller" method="post">
                     <input type="submit" name="command" value="cart"/>
-                </form>
-            </c:when>
-            <c:otherwise>
-                <h1>ADMIN MODE</h1>
-                <form action="Controller" method="post">
-                    <input type="submit" name="command" value="add_film"/>
                 </form>
             </c:otherwise>
         </c:choose>
@@ -46,7 +47,7 @@
 <ul>
     <c:forEach var="film" items="${films}">
         <li>
-            <a href="Customer/Film?id=${film.id}">${film.name}</a><br>
+            <a href="Film?id=${film.id}">${film.name}</a><br>
             <c:choose>
                 <c:when test="${film.discount != 0}">
                     <strike>${film.price}</strike> ${film.getRealPrice()}<br>
@@ -62,13 +63,8 @@
             <c:forEach var="category" items="${film.categories}">
                 ${category.name}
             </c:forEach><br>
-                <%--            <video width="320" height="240" controls>
-                                <source src="${film.media.trailerPath}" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video><br>--%>
-            ${film.description}
         </li>
-        <c:if test="${not empty sessionScope.isAdmin}">
+        <c:if test="${isAdmin}">
             <form action="Controller" method="post">
                 <input type="submit" name="command" value="edit_film"/>
             </form>

@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.List;
 
-public class CustomerFilmPage implements Page {
+public class FilmPage implements Page {
 
     private static final String FILM = "film";
     private static final String IS_FILM_PAID = "paid";
@@ -26,7 +26,7 @@ public class CustomerFilmPage implements Page {
         try {
             films = filmService.getFilms();
             //request.setAttribute(FILMS, films);
-            response = JSPPageName.PAGE_MAIN;
+            response = JSPPageName.PAGE_ERROR;
         } catch (ServiceException e) {
             //LOG
             System.out.println("Page exception: " + e);
