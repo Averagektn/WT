@@ -46,7 +46,7 @@
 <ul>
     <c:forEach var="film" items="${films}">
         <li>
-            <a href="Controller?id=${film.id}">${film.name}</a><br>
+            <a href="Customer/Film?id=${film.id}">${film.name}</a><br>
             <c:choose>
                 <c:when test="${film.discount != 0}">
                     <strike>${film.price}</strike> ${film.getRealPrice()}<br>

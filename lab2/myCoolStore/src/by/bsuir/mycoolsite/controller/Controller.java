@@ -52,7 +52,6 @@ public class Controller extends HttpServlet {
             System.out.println("RequestDispatcher is NULL");
             errorMessageDirectlyFromResponse(response);
         }
-
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {

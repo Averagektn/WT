@@ -1,7 +1,8 @@
 package by.bsuir.mycoolsite.controller.page;
 
+import by.bsuir.mycoolsite.controller.page.impl.CustomerFilmPage;
 import by.bsuir.mycoolsite.controller.page.impl.MainPage;
-import by.bsuir.mycoolsite.controller.page.impl.WrongRequest;
+import by.bsuir.mycoolsite.controller.page.impl.WrongRequestPage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +13,8 @@ public final class PageProvider {
 
     public PageProvider() {
         repository.put(PageName.MAIN, new MainPage());
-        repository.put(PageName.WRONG_REQUEST, new WrongRequest());
+        repository.put(PageName.WRONG_REQUEST, new WrongRequestPage());
+        repository.put(PageName.CUSTOMER_FILM, new CustomerFilmPage());
         //...
     }
 

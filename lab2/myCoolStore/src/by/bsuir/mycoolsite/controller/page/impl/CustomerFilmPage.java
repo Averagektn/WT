@@ -11,9 +11,10 @@ import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.List;
 
-public class MainPage implements Page {
-    private static final String FILMS = "films";
+public class CustomerFilmPage implements Page {
 
+    private static final String FILM = "film";
+    private static final String IS_FILM_PAID = "paid";
     @Override
     public String generate(HttpServletRequest request) throws PageException {
         String response;
@@ -24,7 +25,7 @@ public class MainPage implements Page {
 
         try {
             films = filmService.getFilms();
-            request.setAttribute(FILMS, films);
+            //request.setAttribute(FILMS, films);
             response = JSPPageName.PAGE_MAIN;
         } catch (ServiceException e) {
             //LOG
