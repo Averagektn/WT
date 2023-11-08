@@ -38,6 +38,58 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean isFilmOwner(long userId, long filmId) throws ServiceException {
+        boolean isFilmOwner;
+
+        if (userId < 1){
+            //LOG
+            System.out.println("ServiceException, incorrect user ID");
+            throw new ServiceException("Incorrect user ID");
+        }
+
+        if (filmId < 1){
+            //LOG
+            System.out.println("ServiceException, incorrect film ID");
+            throw new ServiceException("Incorrect film ID");
+        }
+
+        try {
+            DAOFactory daoObjectFactory = DAOFactory.getInstance();
+            UserDAO userDAO = daoObjectFactory.getUserDAO();
+            isFilmOwner = userDAO.isFilmOwner(userId, filmId);
+        } catch (DAOException e) {
+            //LOG
+            System.out.println("DAOException in UserServiceImpl " + e);
+            throw new ServiceException(e);
+        }
+
+        return isFilmOwner;
+    }
+
+    @Override
+    public boolean isBanned(long id) throws ServiceException {
+        boolean isBanned;
+
+        if (id < 1){
+            //LOG
+            System.out.println("ServiceException, incorrect user ID");
+            throw new ServiceException("Incorrect user ID");
+        }
+
+        try {
+            DAOFactory daoObjectFactory = DAOFactory.getInstance();
+            UserDAO userDAO = daoObjectFactory.getUserDAO();
+            isBanned = userDAO.isBanned(id);
+        } catch (DAOException e) {
+            //LOG
+            System.out.println("DAOException in UserServiceImpl " + e);
+            throw new ServiceException(e);
+        }
+
+        return isBanned;
+    }
+
+    @Override
     public long registration(User user) throws ServiceException {
         long id;
 

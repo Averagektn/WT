@@ -13,6 +13,10 @@ public class SQLUserDAO implements UserDAO {
             "INSERT INTO user (usr_email, usr_password, usr_role, usr_banned_by) VALUES (?,?,?,?)";
     private static final String QUERY_AUTHORIZATION =
             "SELECT usr_id, usr_role, usr_banned_by FROM user WHERE usr_email = ? AND usr_password = ?";
+    private static final String QUERY_USER_FILM =
+            "SELECT * FROM user_film WHERE uf_user = ? AND uf_film = ?";
+    private static final String QUERY_USER_BANNED =
+            "SELECT usr_banned_by FROM user WHERE usr_id = ?";
 
     @Override
     public User signIn(String email, String password) throws DAOException {
@@ -57,6 +61,74 @@ public class SQLUserDAO implements UserDAO {
         }
 
         return user;
+    }
+
+    @Override
+    public boolean isFilmOwner(long userId, long filmId) throws DAOException {
+        boolean isFilmOwner = false;
+
+        Connection con;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        DBConnection dbConnection = DBConnection.getInstance();
+
+        // LOG
+        System.out.println("Checking film ownership");
+
+        try {
+            con = dbConnection.getConnection();
+
+            ps = con.prepareStatement(QUERY_USER_FILM);
+            ps.setLong(1, userId);
+            ps.setLong(2, filmId);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                isFilmOwner = true;
+            }
+        } catch (SQLException e) {
+            //LOG
+            System.out.println("SQL Exception " + e);
+            throw new DAOException("Sql error");
+        } finally {
+            dbConnection.close(ps, rs);
+        }
+
+        return isFilmOwner;
+    }
+
+    @Override
+    public boolean isBanned(long id) throws DAOException {
+        boolean isBanned = false;
+
+        Connection con;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        DBConnection dbConnection = DBConnection.getInstance();
+
+        System.out.println("Connected");
+
+        try {
+            con = dbConnection.getConnection();
+
+            ps = con.prepareStatement(QUERY_USER_BANNED);
+            ps.setLong(1, id);
+            rs = ps.executeQuery();
+
+            rs.getLong(1);
+            if (!rs.wasNull()) {
+                isBanned = true;
+            }
+        } catch (SQLException e) {
+            //LOG
+            System.out.println("SQL Exception " + e);
+            throw new DAOException("Sql error");
+        } finally {
+            dbConnection.close(ps, rs);
+        }
+
+        return isBanned;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package by.bsuir.mycoolsite.dao.impl;
 
 import by.bsuir.mycoolsite.bean.Category;
+import by.bsuir.mycoolsite.bean.Feedback;
 import by.bsuir.mycoolsite.bean.Film;
 import by.bsuir.mycoolsite.bean.Media;
 import by.bsuir.mycoolsite.bean.enums.AgeRestriction;
@@ -17,7 +18,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SQLFilmDAO implements FilmDAO {
+/*    SELECT flm_id, flm_description, flm_price, flm_discount, flm_author, flm_age, flm_name, cat_name
+    FROM film
+    LEFT JOIN feedback ON flm_id = fbk_film
+    LEFT JOIN film_media ON flm_media = fm_id
+    LEFT JOIN m2m_film_category ON flm_id = fc_film
+    LEFT JOIN mycoolstore.category ON cat_id = fc_category
+    WHERE flm_id = 1;
 
+    SELECT fm_film_path, fm_trailer_path FROM film_media WHERE fm_id = 1;
+
+    SELECT fbk_author, fbk_rating, fbk_text FROM feedback WHERE fbk_film = 1;
+
+    SELECT cat_name FROM category
+    LEFT JOIN m2m_film_category ON cat_id = fc_category
+    WHERE fc_film = 1;*/
     private static final String QUERY_GET_FILMS =
             "SELECT " +
                 "flm_id, " +
@@ -93,6 +108,16 @@ public class SQLFilmDAO implements FilmDAO {
         }
 
         return films;
+    }
+
+    @Override
+    public Film getFilmById(long id) throws DAOException {
+        return null;
+    }
+
+    @Override
+    public List<Feedback> getFilmFeedbacks(long id) throws DAOException {
+        return null;
     }
 
     @Override

@@ -2,7 +2,6 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 
 <jsp:useBean id="films" scope="request" type="java.util.List"/>
-<jsp:useBean id="isAdmin" scope="request" type="java.lang.Boolean"/>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -26,7 +25,7 @@
             <input type="submit" name="command" value="sign_out"/>
         </form>
         <c:choose>
-            <c:when test="${isAdmin}">
+            <c:when test="${not empty sessionScope.isAdmin}">
                 <h1>ADMIN MODE</h1>
                 <form action="Controller" method="post">
                     <input type="submit" name="command" value="add_film"/>
@@ -47,7 +46,7 @@
 <ul>
     <c:forEach var="film" items="${films}">
         <li>
-            <a href="Film?id=${film.id}">${film.name}</a><br>
+            <a href="Film?filmId=${film.id}">${film.name}</a><br>
             <c:choose>
                 <c:when test="${film.discount != 0}">
                     <strike>${film.price}</strike> ${film.getRealPrice()}<br>
@@ -64,7 +63,7 @@
                 ${category.name}
             </c:forEach><br>
         </li>
-        <c:if test="${isAdmin}">
+        <c:if test="${not empty sessionScope.isAdmin}">
             <form action="Controller" method="post">
                 <input type="submit" name="command" value="edit_film"/>
             </form>

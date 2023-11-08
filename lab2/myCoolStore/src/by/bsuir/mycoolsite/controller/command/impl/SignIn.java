@@ -38,6 +38,7 @@ public class SignIn implements Command {
             response = PageName.MAIN.getUrlPattern();
             HttpSession session = request.getSession(true);
             session.setAttribute(SessionAttribute.ID, user.getId());
+
             if (user.isAdmin()){
                 session.setAttribute(SessionAttribute.IS_ADMIN, true);
             }
