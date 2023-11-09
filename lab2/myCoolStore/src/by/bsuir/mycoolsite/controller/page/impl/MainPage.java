@@ -24,7 +24,9 @@ public class MainPage implements Page {
 
         try {
             films = filmService.getFilms();
+
             request.setAttribute(FILMS, films);
+
             response = JSPPageName.PAGE_MAIN;
         } catch (ServiceException e) {
             //LOG

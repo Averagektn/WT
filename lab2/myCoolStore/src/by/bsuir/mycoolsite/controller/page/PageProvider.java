@@ -23,8 +23,8 @@ public final class PageProvider {
     }
 
     public Page getPage(String mapping) {
-        PageName pageName = null;
-        Page page = null;
+        PageName pageName;
+        Page page;
 
         try {
             pageName = PageName.fromURI(mapping);

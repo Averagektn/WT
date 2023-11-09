@@ -35,20 +35,27 @@ public class FilmPage implements Page {
         UserService userService = serviceFactory.getUserService();
 
         try {
-            long userId = (long)session.getAttribute(SessionAttribute.ID);
             long filmId = Long.parseLong(request.getParameter(FILM_ID));
 
-            isFilmOwner = userService.isFilmOwner(userId, filmId);
-            isBanned = userService.isBanned(userId);
             feedbacks = filmService.getFilmFeedbacks(filmId);
             film = filmService.getFilmById(filmId);
-
             request.setAttribute(FILM, film);
             request.setAttribute(FEEDBACKS, feedbacks);
-            request.setAttribute(IS_BANNED, isBanned);
-            request.setAttribute(IS_FILM_PAID, isFilmOwner);
+            System.out.println(film.getDiscount());
 
-            response = JSPPageName.PAGE_ERROR;
+            if (session != null && session.getAttribute(SessionAttribute.ID) != null){
+                long userId = (long)session.getAttribute(SessionAttribute.ID);
+
+                isFilmOwner = userService.isFilmOwner(userId, filmId);
+                isBanned = userService.isBanned(userId);
+                request.setAttribute(IS_BANNED, isBanned);
+                request.setAttribute(IS_FILM_PAID, isFilmOwner);
+            } else {
+                request.setAttribute(IS_BANNED, Boolean.TRUE);
+                request.setAttribute(IS_FILM_PAID, Boolean.FALSE);
+            }
+
+            response = JSPPageName.PAGE_FILM;
         } catch (ServiceException e) {
             //LOG
             System.out.println("Page exception: " + e);

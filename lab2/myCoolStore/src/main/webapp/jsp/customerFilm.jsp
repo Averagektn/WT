@@ -12,14 +12,18 @@
 </head>
 <body>
 <h1>${film.name}</h1><br>
+
 <c:if test="${not isPaid}">
-    <c:when test="${film.discount != 0}">
-        <strike>${film.price}</strike> ${film.getRealPrice()}<br>
-    </c:when>
-    <c:otherwise>
-        ${film.price}<br>
-    </c:otherwise>
+    <c:choose>
+        <c:when test="${film.discount != 0}">
+            <strike>${film.price}</strike> ${film.getRealPrice()}<br>
+        </c:when>
+        <c:otherwise>
+            ${film.price}<br>
+        </c:otherwise>
+    </c:choose>
 </c:if>
+
 
 Возрастные ограничения: ${film.ageRestriction.toString()}<br>
 Автор: ${film.author}<br>
@@ -31,7 +35,7 @@
                 <source src="${film.media.trailerPath}" type="video/mp4">
                 Your browser does not support the video tag.
             </video><br>--%>
-${film.description}
+${film.description}<br>
 
 <c:if test="${isPaid && not isBanned}">
     <%--        <video width="320" height="240" controls>
@@ -42,11 +46,16 @@ ${film.description}
 
 <c:forEach var="feedback" items="${feedbacks}">
     ${feedback.author.email}<br>
+    <c:if test="${not empty sessionScope.isAdmin}">
+        <form action="Controller" method="post">
+            <input type="submit" name="command" value="ban"/>
+        </form>
+    </c:if>
     ${feedback.rating}<br>
     <p>${feedback.text}</p>
 </c:forEach>
 
-<c:if test="${not isBanned}">
+<c:if test="${not isBanned || empty sessionScope.isAdmin}">
     <form action="Controller" method="post">
         <label for="filmFeedback">Отзыв:</label>
         <textarea id="filmFeedback" name="filmFeedback" rows="4"></textarea>

@@ -45,7 +45,8 @@ public class SQLUserDAO implements UserDAO {
             } else {
                 user.setId(rs.getLong(1));
                 user.setRole(Role.valueOf(rs.getString(2).toUpperCase()));
-                long bannedBy = rs.getLong(3);
+                rs.getLong(3);
+
                 if (!rs.wasNull()) {
                     //LOG
                     System.out.println("User is banned");
@@ -107,7 +108,7 @@ public class SQLUserDAO implements UserDAO {
         ResultSet rs = null;
         DBConnection dbConnection = DBConnection.getInstance();
 
-        System.out.println("Connected");
+        System.out.println("Checking if user is banned");
 
         try {
             con = dbConnection.getConnection();
@@ -116,14 +117,17 @@ public class SQLUserDAO implements UserDAO {
             ps.setLong(1, id);
             rs = ps.executeQuery();
 
-            rs.getLong(1);
-            if (!rs.wasNull()) {
-                isBanned = true;
+            if (rs.next()) {
+                rs.getLong(1);
+
+                if (!rs.wasNull()) {
+                    isBanned = true;
+                }
             }
         } catch (SQLException e) {
             //LOG
             System.out.println("SQL Exception " + e);
-            throw new DAOException("Sql error");
+            throw new DAOException("Sql error in isBanned");
         } finally {
             dbConnection.close(ps, rs);
         }
@@ -135,7 +139,7 @@ public class SQLUserDAO implements UserDAO {
     public long registration(User user) throws DAOException {
         Connection con;
         PreparedStatement ps = null;
-        ResultSet rs;
+        ResultSet rs = null;
         DBConnection dbConnection = DBConnection.getInstance();
 
         long id;
@@ -173,7 +177,7 @@ public class SQLUserDAO implements UserDAO {
             System.out.println("SQL Exception in SQLUserDAO " + e);
             throw new DAOException("Sql error");
         } finally {
-            dbConnection.close(ps, null);
+            dbConnection.close(ps, rs);
         }
 
         return id;

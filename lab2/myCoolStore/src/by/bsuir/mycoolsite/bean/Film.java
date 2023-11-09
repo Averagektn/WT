@@ -4,6 +4,7 @@ import by.bsuir.mycoolsite.bean.enums.AgeRestriction;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Film {
@@ -16,6 +17,17 @@ public class Film {
     private String author;
     private AgeRestriction ageRestriction;
     private String name;
+    public Film(long id){
+        this.id = id;
+        this.description = "";
+        this.price = BigDecimal.ZERO;
+        this.media = null;
+        this.categories = new ArrayList<>();
+        this.discount = 0;
+        this.author = "";
+        this.ageRestriction = null;
+        this.name = "";
+    }
 
     public Film(long id, String description, BigDecimal price, Media media, int discount,
                 String author, AgeRestriction ageRestriction, String name, List<Category> categories) {
