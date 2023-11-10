@@ -60,8 +60,14 @@
     <form action="Controller" method="post">
         <label for="filmFeedback">Отзыв:</label>
         <textarea id="filmFeedback" name="filmFeedback" rows="4"></textarea>
-        <input type="submit" value="Оставить отзыв">
+
+        <label for="rating">Оценка:</label>
+        <input type="number" id="rating" name="rating"><br>
+
+        <input type="hidden" name="filmID" value="${film.id}">
         <input type="hidden" name="command" value="add_feedback"/>
+
+        <input type="submit" value="Оставить отзыв">
     </form>
 </c:if>
 

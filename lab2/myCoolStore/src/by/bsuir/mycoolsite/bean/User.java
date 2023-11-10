@@ -14,6 +14,10 @@ public class User {
     private long bannedBy;
     public static final int NOT_BANNED = -1;
 
+    public User(long id){
+        this(id, "", "", Role.CUSTOMER, 0);
+    }
+
     public User(long id, String email, String password, Role role, long bannedBy) {
         this.id = id;
         this.email = email;

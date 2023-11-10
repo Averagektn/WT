@@ -10,6 +10,7 @@ public interface FilmService {
     List<Film> getFilms() throws ServiceException;
 
     Film getFilmById(long id) throws ServiceException;
+    void addFeedback(Feedback feedback) throws ServiceException;
 
     List<Feedback> getFilmFeedbacks(long filmId) throws ServiceException;
 

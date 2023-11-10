@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SQLFilmDAO implements FilmDAO {
+    private static final String QUERY_ADD_FEEDBACK =
+            "INSERT INTO feedback (fbk_author, fbk_film, fbk_text, fbk_rating) VALUES (?,?,?,?)";
     private static final String QUERY_GET_FILM_BY_ID =
             "SELECT flm_description, flm_price, flm_discount, flm_author, flm_age, flm_name " +
                     "FROM film " +
@@ -216,6 +218,40 @@ public class SQLFilmDAO implements FilmDAO {
         }
 
         return feedbacks;
+    }
+
+    @Override
+    public void addFeedback(Feedback feedback) throws DAOException {
+        Connection con;
+        PreparedStatement ps = null;
+        DBConnection dbConnection = DBConnection.getInstance();
+
+        long author = feedback.getAuthor().getId();
+        long film = feedback.getFilm().getId();
+        String text = feedback.getText();
+        int rating = feedback.getRating();
+
+        try{
+            con = dbConnection.getConnection();
+
+            ps = con.prepareStatement(QUERY_ADD_FEEDBACK);
+            ps.setLong(1, author);
+            ps.setLong(2, film);
+            ps.setString(3, text);
+            ps.setInt(4, rating);
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected == 0) {
+                //LOG
+                System.out.println("Query failed");
+                throw new DAOException("Query " + QUERY_ADD_FEEDBACK + " failed");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            dbConnection.close(ps, null);
+        }
     }
 
     @Override

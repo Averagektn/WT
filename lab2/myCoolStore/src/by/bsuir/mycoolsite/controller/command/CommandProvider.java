@@ -15,6 +15,7 @@ public final class CommandProvider {
         repository.put(CommandName.ADD_FILM, new AddFilm());
         repository.put(CommandName.WRONG_REQUEST, new WrongRequest());
         repository.put(CommandName.SIGN_OUT, new SignOut());
+        repository.put(CommandName.ADD_FEEDBACK, new AddFeedback());
         //...
     }
 

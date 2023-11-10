@@ -5,5 +5,6 @@ public enum CommandName {
     REGISTER,
     ADD_FILM,
     SIGN_OUT,
+    ADD_FEEDBACK,
     WRONG_REQUEST;
 }
