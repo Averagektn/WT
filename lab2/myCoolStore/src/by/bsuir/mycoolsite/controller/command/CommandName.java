@@ -6,5 +6,6 @@ public enum CommandName {
     ADD_FILM,
     SIGN_OUT,
     ADD_FEEDBACK,
+    ADD_TO_CART,
     WRONG_REQUEST;
 }

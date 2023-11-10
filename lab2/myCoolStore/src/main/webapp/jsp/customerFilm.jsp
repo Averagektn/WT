@@ -67,10 +67,10 @@
 <c:if test="${not isBanned && empty sessionScope.isAdmin}">
     <form action="Controller" method="post">
         <label for="filmFeedback">Отзыв:</label>
-        <textarea id="filmFeedback" name="filmFeedback" rows="4"></textarea>
+        <textarea id="filmFeedback" name="filmFeedback" maxlength="5000"></textarea>
 
         <label for="rating">Оценка:</label>
-        <input type="number" id="rating" name="rating"><br>
+        <input type="number" min="0" max="10" id="rating" name="rating"><br>
 
         <input type="hidden" name="filmID" value="${film.id}">
         <input type="hidden" name="command" value="add_feedback"/>
