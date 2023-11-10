@@ -36,9 +36,10 @@ public class FeedbackServiceImpl implements FeedbackService {
             throw new ServiceException("Invalid rating value in feedback adding");
         }
 
+        DAOFactory daoFactory = DAOFactory.getInstance();
+        FeedbackDAO feedbackDAO = daoFactory.getFeedbackDAO();
+
         try {
-            DAOFactory daoFactory = DAOFactory.getInstance();
-            FeedbackDAO feedbackDAO = daoFactory.getFeedbackDAO();
             feedbackDAO.addFeedback(feedback);
         } catch (DAOException e) {
             //LOG
@@ -57,9 +58,10 @@ public class FeedbackServiceImpl implements FeedbackService {
             throw new ServiceException("Incorrect film ID");
         }
 
+        DAOFactory daoObjectFactory = DAOFactory.getInstance();
+        FeedbackDAO feedbackDAO = daoObjectFactory.getFeedbackDAO();
+
         try {
-            DAOFactory daoObjectFactory = DAOFactory.getInstance();
-            FeedbackDAO feedbackDAO = daoObjectFactory.getFeedbackDAO();
             feedbacks = feedbackDAO.getFilmFeedbacks(filmId);
         } catch (DAOException e) {
             //LOG

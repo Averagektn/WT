@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SQLCartDAO implements CartDAO {
+    private static final String QUERY_CLEAR_CART =
+            "DELETE FROM cart WHERE crt_user = ?";
     private static final String QUERY_REMOVE_FILM =
             "DELETE FROM cart WHERE crt_film = ? AND crt_user = ?";
     private static final String QUERY_ADD_FILM =
@@ -115,6 +117,26 @@ public class SQLCartDAO implements CartDAO {
             //LOG
             System.out.println("Deleting from cart DAO error");
             throw new DAOException("Deleting from cart DAO error");
+        }
+    }
+
+    @Override
+    public void clear(long userId) throws DAOException {
+        DBConnection dbConnection = DBConnection.getInstance();
+        Connection con = dbConnection.getConnection();
+        PreparedStatement ps = null;
+
+        try{
+            ps = con.prepareStatement(QUERY_CLEAR_CART);
+            ps.setLong(1, userId);
+
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            //LOG
+            System.out.println("Clear query DAO error");
+            throw new DAOException("Clear query DAO error");
+        } finally {
+            dbConnection.close(ps, null);
         }
     }
 }

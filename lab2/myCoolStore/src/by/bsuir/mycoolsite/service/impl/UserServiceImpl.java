@@ -24,9 +24,10 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException("Password length is too low");
         }
 
+        DAOFactory daoObjectFactory = DAOFactory.getInstance();
+        UserDAO userDAO = daoObjectFactory.getUserDAO();
+
         try {
-            DAOFactory daoObjectFactory = DAOFactory.getInstance();
-            UserDAO userDAO = daoObjectFactory.getUserDAO();
             user = userDAO.signIn(email, password);
         } catch (DAOException e) {
             //LOG
@@ -53,9 +54,10 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException("Incorrect film ID");
         }
 
+        DAOFactory daoObjectFactory = DAOFactory.getInstance();
+        UserDAO userDAO = daoObjectFactory.getUserDAO();
+
         try {
-            DAOFactory daoObjectFactory = DAOFactory.getInstance();
-            UserDAO userDAO = daoObjectFactory.getUserDAO();
             isFilmOwner = userDAO.isFilmOwner(userId, filmId);
         } catch (DAOException e) {
             //LOG
@@ -76,9 +78,10 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException("Incorrect user ID");
         }
 
+        DAOFactory daoObjectFactory = DAOFactory.getInstance();
+        UserDAO userDAO = daoObjectFactory.getUserDAO();
+
         try {
-            DAOFactory daoObjectFactory = DAOFactory.getInstance();
-            UserDAO userDAO = daoObjectFactory.getUserDAO();
             isBanned = userDAO.isBanned(id);
         } catch (DAOException e) {
             //LOG

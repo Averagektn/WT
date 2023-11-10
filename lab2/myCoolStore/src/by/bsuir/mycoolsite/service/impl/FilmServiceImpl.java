@@ -14,9 +14,10 @@ public class FilmServiceImpl implements FilmService {
     public List<Film> getFilms() throws ServiceException {
         List<Film> films;
 
+        DAOFactory daoObjectFactory = DAOFactory.getInstance();
+        FilmDAO filmDAO = daoObjectFactory.getFilmDAO();
+
         try {
-            DAOFactory daoObjectFactory = DAOFactory.getInstance();
-            FilmDAO filmDAO = daoObjectFactory.getFilmDAO();
             films = filmDAO.getFilms();
         } catch (DAOException e) {
             //LOG
@@ -37,9 +38,10 @@ public class FilmServiceImpl implements FilmService {
             throw new ServiceException("Incorrect film ID");
         }
 
+        DAOFactory daoObjectFactory = DAOFactory.getInstance();
+        FilmDAO filmDAO = daoObjectFactory.getFilmDAO();
+
         try {
-            DAOFactory daoObjectFactory = DAOFactory.getInstance();
-            FilmDAO filmDAO = daoObjectFactory.getFilmDAO();
             film = filmDAO.getFilmById(id);
         } catch (DAOException e) {
             //LOG

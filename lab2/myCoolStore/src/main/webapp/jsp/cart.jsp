@@ -34,11 +34,12 @@
     </form>
 </c:forEach>
 
-<form action="Controller" method="post">
-    <input type="submit" value="Оплатить ${total}">
-    <input type="hidden" name="command" value="buy"/>
-</form>
-
+<c:if test="${total != 0}">
+    <form action="Controller" method="post">
+        <input type="submit" value="Оплатить ${total}">
+        <input type="hidden" name="command" value="buy"/>
+    </form>
+</c:if>
 <a href="/myCoolStore/">На главную страницу</a>
 
 </body>

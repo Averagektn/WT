@@ -1,13 +1,7 @@
 package by.bsuir.mycoolsite.service.factory;
 
-import by.bsuir.mycoolsite.service.CartService;
-import by.bsuir.mycoolsite.service.FeedbackService;
-import by.bsuir.mycoolsite.service.FilmService;
-import by.bsuir.mycoolsite.service.UserService;
-import by.bsuir.mycoolsite.service.impl.CartServiceImpl;
-import by.bsuir.mycoolsite.service.impl.FeedbackServiceImpl;
-import by.bsuir.mycoolsite.service.impl.FilmServiceImpl;
-import by.bsuir.mycoolsite.service.impl.UserServiceImpl;
+import by.bsuir.mycoolsite.service.*;
+import by.bsuir.mycoolsite.service.impl.*;
 
 public final class ServiceFactory {
     private static final ServiceFactory instance = new ServiceFactory();
@@ -15,6 +9,7 @@ public final class ServiceFactory {
     private final FilmService filmService = new FilmServiceImpl();
     private final FeedbackService feedbackService = new FeedbackServiceImpl();
     private final CartService cartService = new CartServiceImpl();
+    private final LibraryService libraryService = new LibraryServiceImpl();
     private ServiceFactory() {
     }
 
@@ -31,4 +26,5 @@ public final class ServiceFactory {
     }
     public FeedbackService getFeedbackService() { return feedbackService; }
     public CartService getCartService() { return cartService; }
+    public LibraryService getLibraryService() { return libraryService; }
 }

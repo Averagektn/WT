@@ -8,5 +8,6 @@ public enum CommandName {
     ADD_FEEDBACK,
     ADD_TO_CART,
     REMOVE_FROM_CART,
+    BUY,
     WRONG_REQUEST;
 }
