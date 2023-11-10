@@ -35,7 +35,7 @@
                 <source src="${film.media.trailerPath}" type="video/mp4">
                 Your browser does not support the video tag.
             </video><br>--%>
-${film.description}<br>
+<p>${film.description}</p>
 
 <c:if test="${isPaid && not isBanned}">
     <%--        <video width="320" height="240" controls>
@@ -48,17 +48,19 @@ ${film.description}<br>
     ${feedback.author.email}<br>
     <c:if test="${not empty sessionScope.isAdmin}">
         <form action="Controller" method="post">
-            <input type="submit" name="command" value="ban"/>
+            <input type="submit"  value="Забанить"/>
+            <input type="hidden" name="command" value="ban"/>
         </form>
     </c:if>
     ${feedback.rating}<br>
     <p>${feedback.text}</p>
 </c:forEach>
 
-<c:if test="${not isBanned || empty sessionScope.isAdmin}">
+<c:if test="${not isBanned && empty sessionScope.isAdmin}">
     <form action="Controller" method="post">
         <label for="filmFeedback">Отзыв:</label>
         <textarea id="filmFeedback" name="filmFeedback" rows="4"></textarea>
+        <input type="submit" value="Оставить отзыв">
         <input type="hidden" name="command" value="add_feedback"/>
     </form>
 </c:if>

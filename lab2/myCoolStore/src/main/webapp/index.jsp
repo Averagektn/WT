@@ -14,29 +14,35 @@
 <c:choose>
     <c:when test="${empty sessionScope.userID}">
         <form action="Register" method="post">
-            <input type="submit" name="command" value="register"/>
+            <input type="submit"  value="Регистрация"/>
+            <input type="hidden" name="command" value="register"/>
         </form>
         <form action="Authorization" method="post">
-            <input type="submit" name="command" value="authorization"/>
+            <input type="submit" value="Авторизация"/>
+            <input type="hidden" name="command" value="authorization"/>
         </form>
     </c:when>
     <c:otherwise>
         <form action="Controller" method="post">
-            <input type="submit" name="command" value="sign_out"/>
+            <input type="submit"  value="Выйти"/>
+            <input type="hidden" name="command" value="sign_out"/>
         </form>
         <c:choose>
             <c:when test="${not empty sessionScope.isAdmin}">
                 <h1>ADMIN MODE</h1>
                 <form action="Controller" method="post">
-                    <input type="submit" name="command" value="add_film"/>
+                    <input type="submit"  value="Добавить фильм"/>
+                    <input type="hidden" name="command" value="add_film"/>
                 </form>
             </c:when>
             <c:otherwise>
                 <form action="Controller" method="post">
-                    <input type="submit" name="command" value="library"/>
+                    <input type="submit"  value="Библиотека фильмов"/>
+                    <input type="hidden" name="command" value="library"/>
                 </form>
                 <form action="Controller" method="post">
-                    <input type="submit" name="command" value="cart"/>
+                    <input type="submit"  value="Корзина"/>
+                    <input type="hidden" name="command" value="cart"/>
                 </form>
             </c:otherwise>
         </c:choose>
@@ -65,7 +71,8 @@
         </li>
         <c:if test="${not empty sessionScope.isAdmin}">
             <form action="Controller" method="post">
-                <input type="submit" name="command" value="edit_film"/>
+                <input type="submit"  value="Редактировать фильм"/>
+                <input type="hidden" name="command" value="edit_film"/>
             </form>
         </c:if>
     </c:forEach>
