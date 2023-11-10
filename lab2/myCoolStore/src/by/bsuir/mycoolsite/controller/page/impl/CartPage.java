@@ -6,6 +6,7 @@ import by.bsuir.mycoolsite.controller.page.Page;
 import by.bsuir.mycoolsite.controller.page.exception.PageException;
 import by.bsuir.mycoolsite.controller.session.SessionAttribute;
 import by.bsuir.mycoolsite.service.CartService;
+import by.bsuir.mycoolsite.service.UserService;
 import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,9 +28,14 @@ public class CartPage implements Page {
         HttpSession session = request.getSession(false);
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         CartService cartService = serviceFactory.getCartService();
+        UserService userService = serviceFactory.getUserService();
 
         try {
             long userId = (long) session.getAttribute(SessionAttribute.ID);
+
+            if (userService.isBanned(userId)){
+                return JSPPageName.PAGE_BAN;
+            }
 
             films = cartService.getCart(userId);
 

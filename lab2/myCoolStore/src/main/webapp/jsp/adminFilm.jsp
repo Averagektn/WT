@@ -17,7 +17,7 @@
     <input type="text" id="filmAuthor" name="filmAuthor"><br>
 
     <label for="filmCategory">Категория:</label>
-    <select id="filmCategory" name="filmCategory">
+    <select id="filmCategory" name="filmCategory" multiple>
         <option value="категория1">Категория 1</option>
         <option value="категория2">Категория 2</option>
         <option value="категория3">Категория 3</option>
