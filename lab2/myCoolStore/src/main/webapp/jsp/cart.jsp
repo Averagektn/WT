@@ -4,9 +4,11 @@
 <jsp:useBean id="films" scope="request" type="java.util.List"/>
 <jsp:useBean id="total" scope="request" type="java.math.BigDecimal"/>
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Cart</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>My Cool Site</title>
 </head>
 <body>
 <h1>Cart</h1>
@@ -36,6 +38,8 @@
     <input type="submit" value="Оплатить ${total}">
     <input type="hidden" name="command" value="buy"/>
 </form>
+
+<a href="/myCoolStore/">На главную страницу</a>
 
 </body>
 </html>

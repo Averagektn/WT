@@ -40,9 +40,7 @@
                     <input type="submit"  value="Библиотека фильмов"/>
                     <input type="hidden" name="command" value="library"/>
                 </form>
-                <form action="Cart" method="get">
-                    <input type="submit"  value="Корзина"/>
-                </form>
+                <a href="Cart">Корзина</a>
             </c:otherwise>
         </c:choose>
     </c:otherwise>

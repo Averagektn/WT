@@ -6,7 +6,6 @@ import by.bsuir.mycoolsite.controller.command.exception.CommandException;
 import by.bsuir.mycoolsite.controller.page.Page;
 import by.bsuir.mycoolsite.controller.page.PageProvider;
 import by.bsuir.mycoolsite.controller.page.exception.PageException;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -44,7 +43,6 @@ public class Controller extends HttpServlet {
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-
         if (dispatcher != null) {
             dispatcher.forward(request, response);
         } else {
@@ -54,7 +52,7 @@ public class Controller extends HttpServlet {
         }
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String commandName = request.getParameter(RequestParameterName.COMMAND_NAME);
         Command command = CommandProvider.getInstance().getCommand(commandName);
         String page;
@@ -80,6 +78,7 @@ public class Controller extends HttpServlet {
         } catch (IOException e){
             //LOG
             System.out.println("Send redirect exception: " + e);
+            errorMessageDirectlyFromResponse(response);
         }
     }
 

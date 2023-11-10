@@ -26,7 +26,7 @@ public class AddToCart implements Command {
         try{
             cartService.addFilm(filmId, userId);
 
-            response = PageName.MAIN.getUrlPattern() + "?filmId=" + filmId;
+            response = PageName.MAIN.getUrlPattern();
         } catch (ServiceException e) {
             //LOG
             System.out.println("Service exception: " + e);
