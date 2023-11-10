@@ -36,13 +36,12 @@
                 </form>
             </c:when>
             <c:otherwise>
-                <form action="Controller" method="post">
+                <form action="Controller" method="get">
                     <input type="submit"  value="Библиотека фильмов"/>
                     <input type="hidden" name="command" value="library"/>
                 </form>
-                <form action="Controller" method="post">
+                <form action="Cart" method="get">
                     <input type="submit"  value="Корзина"/>
-                    <input type="hidden" name="command" value="cart"/>
                 </form>
             </c:otherwise>
         </c:choose>

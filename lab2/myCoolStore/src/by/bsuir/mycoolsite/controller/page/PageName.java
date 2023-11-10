@@ -3,6 +3,7 @@ package by.bsuir.mycoolsite.controller.page;
 public enum PageName {
     WRONG_REQUEST(""),
     MAIN("/myCoolStore/"),
+    CART(MAIN.getUrlPattern() + "Cart"),
     FILM(MAIN.getUrlPattern() + "Film");
 
     private final String urlPattern;

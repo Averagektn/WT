@@ -1,5 +1,6 @@
 package by.bsuir.mycoolsite.controller.page;
 
+import by.bsuir.mycoolsite.controller.page.impl.CartPage;
 import by.bsuir.mycoolsite.controller.page.impl.FilmPage;
 import by.bsuir.mycoolsite.controller.page.impl.MainPage;
 import by.bsuir.mycoolsite.controller.page.impl.WrongRequestPage;
@@ -15,6 +16,7 @@ public final class PageProvider {
         repository.put(PageName.MAIN, new MainPage());
         repository.put(PageName.WRONG_REQUEST, new WrongRequestPage());
         repository.put(PageName.FILM, new FilmPage());
+        repository.put(PageName.CART, new CartPage());
         //...
     }
 

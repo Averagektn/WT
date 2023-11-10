@@ -1,7 +1,12 @@
 package by.bsuir.mycoolsite.service;
 
+import by.bsuir.mycoolsite.bean.Film;
 import by.bsuir.mycoolsite.service.exception.ServiceException;
 
+import java.util.List;
+
 public interface CartService {
-    public void addFilm(long filmId, long userId) throws ServiceException;
+    void addFilm(long filmId, long userId) throws ServiceException;
+    List<Film> getCart(long userId) throws ServiceException;
+    void remove(long filmId, long userId) throws ServiceException;
 }

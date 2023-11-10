@@ -10,23 +10,25 @@ import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
-public class AddToCart implements Command {
+public class RemoveFromCart implements Command {
     private static final String FILM_ID = "filmID";
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         String response;
         HttpSession session = request.getSession(false);
 
-        long filmId = Long.parseLong(request.getParameter(FILM_ID));
         long userId = (long) session.getAttribute(SessionAttribute.ID);
+        System.out.println(userId);
+        long filmId = Long.parseLong(request.getParameter(FILM_ID));
+        System.out.println(filmId);
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         CartService cartService = serviceFactory.getCartService();
 
         try{
-            cartService.addFilm(filmId, userId);
+            cartService.remove(filmId, userId);
 
-            response = PageName.MAIN.getUrlPattern() + "?filmId=" + filmId;
+            response = PageName.CART.getUrlPattern();
         } catch (ServiceException e) {
             //LOG
             System.out.println("Service exception: " + e);

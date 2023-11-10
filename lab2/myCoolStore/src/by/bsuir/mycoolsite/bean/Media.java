@@ -1,11 +1,14 @@
 package by.bsuir.mycoolsite.bean;
 
 public class Media {
-    private int id;
+    private long id;
     private String trailerPath;
     private String filmPath;
+    public Media(long id){
+        this(id, "", "");
+    }
 
-    public Media(int id, String trailerPath, String filmPath) {
+    public Media(long id, String trailerPath, String filmPath) {
         this.id = id;
         this.trailerPath = trailerPath;
         this.filmPath = filmPath;
@@ -19,11 +22,11 @@ public class Media {
         this(-1, trailerPath, "");
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

@@ -7,5 +7,6 @@ public enum CommandName {
     SIGN_OUT,
     ADD_FEEDBACK,
     ADD_TO_CART,
+    REMOVE_FROM_CART,
     WRONG_REQUEST;
 }

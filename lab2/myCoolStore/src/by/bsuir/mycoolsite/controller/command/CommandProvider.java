@@ -17,6 +17,7 @@ public final class CommandProvider {
         repository.put(CommandName.SIGN_OUT, new SignOut());
         repository.put(CommandName.ADD_FEEDBACK, new AddFeedback());
         repository.put(CommandName.ADD_TO_CART, new AddToCart());
+        repository.put(CommandName.REMOVE_FROM_CART, new RemoveFromCart());
         //...
     }
 

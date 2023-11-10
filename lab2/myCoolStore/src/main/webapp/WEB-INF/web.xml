@@ -26,6 +26,7 @@
     <servlet-name>Controller</servlet-name>
     <url-pattern>/</url-pattern>
     <url-pattern>/Film</url-pattern>
+    <url-pattern>/Cart</url-pattern>
   </servlet-mapping>
   
   <servlet>
