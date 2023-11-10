@@ -22,6 +22,14 @@
             ${film.price}<br>
         </c:otherwise>
     </c:choose>
+    <c:if test="${not isBanned && empty sessionScope.isAdmin}">
+        <form action="Controller" method="post">
+            <input type="hidden" name="filmID" value="${film.id}">
+            <input type="hidden" name="command" value="add_to_cart"/>
+
+            <input type="submit" value="Добавить в корзину">
+        </form>
+    </c:if>
 </c:if>
 
 

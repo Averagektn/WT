@@ -6,6 +6,7 @@ import by.bsuir.mycoolsite.controller.JSPPageName;
 import by.bsuir.mycoolsite.controller.page.Page;
 import by.bsuir.mycoolsite.controller.page.exception.PageException;
 import by.bsuir.mycoolsite.controller.session.SessionAttribute;
+import by.bsuir.mycoolsite.service.FeedbackService;
 import by.bsuir.mycoolsite.service.FilmService;
 import by.bsuir.mycoolsite.service.UserService;
 import by.bsuir.mycoolsite.service.exception.ServiceException;
@@ -32,12 +33,13 @@ public class FilmPage implements Page {
         HttpSession session = request.getSession(false);
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         FilmService filmService = serviceFactory.getFilmService();
+        FeedbackService feedbackService = serviceFactory.getFeedbackService();
         UserService userService = serviceFactory.getUserService();
 
         try {
             long filmId = Long.parseLong(request.getParameter(FILM_ID));
 
-            feedbacks = filmService.getFilmFeedbacks(filmId);
+            feedbacks = feedbackService.getFilmFeedbacks(filmId);
             film = filmService.getFilmById(filmId);
             request.setAttribute(FILM, film);
             request.setAttribute(FEEDBACKS, feedbacks);

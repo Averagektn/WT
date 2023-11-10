@@ -7,7 +7,7 @@ import by.bsuir.mycoolsite.controller.command.Command;
 import by.bsuir.mycoolsite.controller.command.exception.CommandException;
 import by.bsuir.mycoolsite.controller.page.PageName;
 import by.bsuir.mycoolsite.controller.session.SessionAttribute;
-import by.bsuir.mycoolsite.service.FilmService;
+import by.bsuir.mycoolsite.service.FeedbackService;
 import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,11 +29,11 @@ public class AddFeedback implements Command {
         int rating = Integer.parseInt(request.getParameter(FILM_RATING));
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        FilmService filmService = serviceFactory.getFilmService();
+        FeedbackService feedbackService = serviceFactory.getFeedbackService();
         Feedback feedback = new Feedback(new User(author), new Film(filmId), text, rating);
 
         try {
-            filmService.addFeedback(feedback);
+            feedbackService.addFeedback(feedback);
 
             response = PageName.FILM.getUrlPattern() + "?filmId=" + filmId;
         } catch (ServiceException e) {
