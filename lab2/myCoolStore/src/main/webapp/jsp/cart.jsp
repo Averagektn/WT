@@ -13,6 +13,8 @@
 <body>
 <h1>Cart</h1>
 
+<a href="/myCoolStore/">На главную страницу</a><br>
+
 <c:forEach var="film" items="${films}">
     <a href="Film?filmId=${film.id}">${film.name}</a><br>
     <c:choose>
@@ -40,7 +42,6 @@
         <input type="hidden" name="command" value="buy"/>
     </form>
 </c:if>
-<a href="/myCoolStore/">На главную страницу</a>
 
 </body>
 </html>

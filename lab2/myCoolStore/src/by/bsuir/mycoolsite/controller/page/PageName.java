@@ -4,7 +4,8 @@ public enum PageName {
     WRONG_REQUEST(""),
     MAIN("/myCoolStore/"),
     CART(MAIN.getUrlPattern() + "Cart"),
-    FILM(MAIN.getUrlPattern() + "Film");
+    FILM(MAIN.getUrlPattern() + "Film"),
+    LIBRARY(MAIN.getUrlPattern() + "Library");
 
     private final String urlPattern;
 

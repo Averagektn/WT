@@ -36,11 +36,8 @@
                 </form>
             </c:when>
             <c:otherwise>
-                <form action="Controller" method="get">
-                    <input type="submit"  value="Библиотека фильмов"/>
-                    <input type="hidden" name="command" value="library"/>
-                </form>
-                <a href="Cart">Корзина</a>
+                <a href="Library">Библиотека фильмов</a><br>
+                <a href="Cart">Корзина</a><br>
             </c:otherwise>
         </c:choose>
     </c:otherwise>

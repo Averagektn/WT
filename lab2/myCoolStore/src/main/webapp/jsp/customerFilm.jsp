@@ -15,6 +15,8 @@
 <body>
 <h1>${film.name}</h1><br>
 
+<a href="/myCoolStore/">На главную страницу</a><br>
+
 <c:if test="${not isPaid}">
     <c:choose>
         <c:when test="${film.discount != 0}">

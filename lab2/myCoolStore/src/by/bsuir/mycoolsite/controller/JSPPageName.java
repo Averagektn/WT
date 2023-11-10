@@ -4,6 +4,7 @@ public class JSPPageName {
     private JSPPageName() {
     }
 
+    public static final String PAGE_LIBRARY = "jsp/library.jsp";
     public static final String PAGE_CART = "jsp/cart.jsp";
     public static final String PAGE_MAIN = "index.jsp";
     public static final String PAGE_AUTHORIZATION = "jsp/authorization.jsp";
