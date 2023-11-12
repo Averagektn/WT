@@ -18,6 +18,21 @@
 
 <a href="/myCoolStore/">На главную страницу</a><br>
 
+<c:if test="${not empty sessionScope.userID}">
+    <form action="Controller" method="post">
+        <input type="submit"  value="Выйти"/>
+        <input type="hidden" name="command" value="sign_out"/>
+    </form>
+</c:if>
+
+<c:if test="${not isBanned && empty sessionScope.isAdmin}">
+    <a href="Cart">В корзину</a><br>
+</c:if>
+
+<c:if test="${not isBanned && empty sessionScope.isAdmin}">
+    <a href="Library">В библиотеку</a><br>
+</c:if>
+
 <c:if test="${not isPaid}">
     <c:choose>
         <c:when test="${film.discount != 0}">
@@ -27,21 +42,15 @@
             ${film.price}<br>
         </c:otherwise>
     </c:choose>
-    <c:choose>
-        <c:when test="${not isBanned && empty sessionScope.isAdmin && not isFilmInCart}">
-            <form action="Controller" method="post">
-                <input type="hidden" name="filmID" value="${film.id}">
-                <input type="hidden" name="command" value="add_to_cart"/>
 
-                <input type="submit" value="Добавить в корзину">
-            </form>
-        </c:when>
-        <c:otherwise>
-            <a href="Cart">В корзину</a><br>
-        </c:otherwise>
-    </c:choose>
+    <c:if test="${not isFilmInCart && not isBanned && empty sessionScope.isAdmin}">
+        <form action="Controller" method="post">
+            <input type="hidden" name="filmID" value="${film.id}">
+            <input type="hidden" name="command" value="add_to_cart"/>
+            <input type="submit" value="Добавить в корзину">
+        </form>
+    </c:if>
 </c:if>
-
 
 Возрастные ограничения: ${film.ageRestriction.toString()}<br>
 Автор: ${film.author}<br>

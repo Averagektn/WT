@@ -58,6 +58,7 @@ public class FilmPage implements Page {
                 request.setAttribute(IS_BANNED, isBanned);
                 request.setAttribute(IS_FILM_PAID, isFilmOwner);
             } else {
+                request.setAttribute(IS_FILM_IN_CART, Boolean.FALSE);
                 request.setAttribute(IS_BANNED, Boolean.TRUE);
                 request.setAttribute(IS_FILM_PAID, Boolean.FALSE);
             }
