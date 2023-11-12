@@ -10,6 +10,8 @@ public final class DAOFactory {
     private final FeedbackDAO sqlFeedbackImpl = new SQLFeedbackDAO();
     private final CartDAO sqlCartImpl = new SQLCartDAO();
     private final LibraryDAO sqlLibraryImpl = new SQLLibraryDAO();
+    private final AgeRestrictionDAO enumAgeRestrictionImpl = new EnumAgeRestrictionDAO();
+    private final CategoryDAO sqlCategoryImpl = new SQLCategoryDAO();
 
     private DAOFactory() {
 
@@ -18,22 +20,20 @@ public final class DAOFactory {
     public static DAOFactory getInstance() {
         return instance;
     }
-
+    public CategoryDAO getCategoryDAO() { return sqlCategoryImpl; }
+    public AgeRestrictionDAO getAgeRestrictionDAO() { return enumAgeRestrictionImpl; }
     public FilmDAO getFilmDAO() {
         return sqlFilmImpl;
     }
-
     public UserDAO getUserDAO() {
         return sqlUserImpl;
     }
-
     public FeedbackDAO getFeedbackDAO() {
         return sqlFeedbackImpl;
     }
     public CartDAO getCartDAO(){
         return sqlCartImpl;
     }
-
     public LibraryDAO getLibraryDAO(){
         return sqlLibraryImpl;
     }

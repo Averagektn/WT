@@ -10,9 +10,9 @@
     <title>Библиотека фильмов</title>
 </head>
 <body>
-<a href="/myCoolStore/">На главную страницу</a><br>
+<a href="${pageContext.request.contextPath}">На главную страницу</a><br>
 <c:forEach var="film" items="${films}">
-    <a href="Film?filmId=${film.id}">${film.name}</a><br>
+    <a href="${pageContext.request.contextPath}/Film?filmId=${film.id}">${film.name}</a><br>
 
     Возрастные ограничения: ${film.ageRestriction.toString()}<br>
     Автор: ${film.author}<br>

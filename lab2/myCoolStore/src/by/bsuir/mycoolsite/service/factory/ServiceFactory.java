@@ -10,13 +10,16 @@ public final class ServiceFactory {
     private final FeedbackService feedbackService = new FeedbackServiceImpl();
     private final CartService cartService = new CartServiceImpl();
     private final LibraryService libraryService = new LibraryServiceImpl();
+    private final AgeRestrictionService ageRestrictionService = new AgeRestrictionServiceImpl();
+    private final CategoryService categoryService = new CategoryServiceImpl();
     private ServiceFactory() {
     }
 
     public static ServiceFactory getInstance() {
         return instance;
     }
-
+    public AgeRestrictionService getAgeRestrictionService() { return ageRestrictionService; }
+    public CategoryService getCategoryService() { return categoryService; }
     public UserService getUserService() {
         return userService;
     }

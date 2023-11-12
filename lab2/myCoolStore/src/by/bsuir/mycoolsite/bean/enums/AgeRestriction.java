@@ -1,6 +1,7 @@
 package by.bsuir.mycoolsite.bean.enums;
 
 public enum AgeRestriction {
+    EMPTY(""),
     ZERO("0+"),
     THREE("3+"),
     SIX("6+"),

@@ -8,7 +8,8 @@
 </head>
 <body>
 <h1>Авторизация</h1>
-<form action="Controller" method="post">
+<a href="${pageContext.request.contextPath}">На главную страницу</a><br>
+<form action="${pageContext.request.contextPath}/Controller" method="post">
     <label for="emailAuthorization">Электронная почта:</label>
     <input type="email" id="emailAuthorization" name="emailAuthorization" required>
     <br>

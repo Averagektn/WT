@@ -1,4 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+
+<jsp:useBean id="categories" scope="request" type="java.util.List"/>
+<jsp:useBean id="ageRestrictions" scope="request" type="java.util.List"/>
+<jsp:useBean id="film" scope="request" type="by.bsuir.mycoolsite.bean.Film"/>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,27 +14,29 @@
 <body>
 <h1>Admin film</h1>
 
-<form action="Controller" method="post" enctype="multipart/form-data">
+<form action="${pageContext.request.contextPath}/Controller" method="post" enctype="multipart/form-data">
     <label for="filmTitle">Название фильма:</label>
-    <input type="text" id="filmTitle" name="filmTitle"><br>
+    <input type="text" id="filmTitle" name="filmTitle" value="${film.name}"> <br>
 
     <label for="filmAuthor">Автор фильма:</label>
-    <input type="text" id="filmAuthor" name="filmAuthor"><br>
+    <input type="text" id="filmAuthor" name="filmAuthor" value="${film.author}"><br>
 
     <label for="filmCategory">Категория:</label>
     <select id="filmCategory" name="filmCategory" multiple>
-        <option value="категория1">Категория 1</option>
-        <option value="категория2">Категория 2</option>
-        <option value="категория3">Категория 3</option>
+        <c:forEach var="category" items="${film.categories}">
+            <option value="${category}" selected>${category.name}</option>
+        </c:forEach>
+        <c:forEach var="category" items="${categories}">
+            <option value="${category}">${category.name}</option>
+        </c:forEach>
     </select><br>
 
-    <label for="ageCategory">Возрастная категория:</label>
-    <select id="ageCategory" name="ageCategory">
-        <option value="0+">0+</option>
-        <option value="6+">6+</option>
-        <option value="12+">12+</option>
-        <option value="16+">16+</option>
-        <option value="18+">18+</option>
+    <label for="filmAgeRestriction">Возрастная категория:</label>
+    <select id="filmAgeRestriction" name="filmAgeRestriction">
+        <option value="${film.ageRestriction}" selected>${film.ageRestriction.toString()}</option>
+        <c:forEach var="ageRestriction" items="${ageRestrictions}">
+            <option value="${ageRestriction}">${ageRestriction.toString()}</option>
+        </c:forEach>
     </select><br>
 
     <label for="videoFile">Файл видео:</label>
@@ -39,13 +46,15 @@
     <input type="file" id="trailerFile" name="trailerFile"><br>
 
     <label for="filmDescription">Описание фильма:</label>
-    <textarea id="filmDescription" name="filmDescription" rows="4"></textarea><br>
+    <textarea id="filmDescription" name="filmDescription"></textarea><br>
 
     <label for="filmPrice">Цена:</label>
-    <input type="text" id="filmPrice" name="filmPrice"><br>
+    <input type="number" step="0.01" id="filmPrice" name="filmPrice" min="0" value="${film.price}"><br>
 
     <label for="filmDiscount">Скидка:</label>
-    <input type="text" id="filmDiscount" name="filmDiscount"><br>
+    <input type="number" id="filmDiscount" name="filmDiscount" min="0" max="100" value="${film.discount}"><br>
+
+    <input type="hidden" name="command" value="add_film">
 
     <input type="submit" value="Добавить фильм">
 </form>

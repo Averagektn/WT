@@ -16,10 +16,10 @@
 <body>
 <h1>${film.name}</h1><br>
 
-<a href="/myCoolStore/">На главную страницу</a><br>
+<a href="${pageContext.request.contextPath}">На главную страницу</a><br>
 
 <c:if test="${not empty sessionScope.userID}">
-    <form action="Controller" method="post">
+    <form action="${pageContext.request.contextPath}/Controller" method="post">
         <input type="submit"  value="Выйти"/>
         <input type="hidden" name="command" value="sign_out"/>
     </form>
@@ -44,7 +44,7 @@
     </c:choose>
 
     <c:if test="${not isFilmInCart && not isBanned && empty sessionScope.isAdmin}">
-        <form action="Controller" method="post">
+        <form action="${pageContext.request.contextPath}/Controller" method="post">
             <input type="hidden" name="filmID" value="${film.id}">
             <input type="hidden" name="command" value="add_to_cart"/>
             <input type="submit" value="Добавить в корзину">
@@ -74,7 +74,7 @@
 <c:forEach var="feedback" items="${feedbacks}">
     ${feedback.author.email}<br>
     <c:if test="${not empty sessionScope.isAdmin}">
-        <form action="Controller" method="post">
+        <form action="${pageContext.request.contextPath}/Controller" method="post">
             <input type="submit" value="Забанить"/>
             <input type="hidden" name="command" value="ban"/>
         </form>
@@ -84,7 +84,7 @@
 </c:forEach>
 
 <c:if test="${not isBanned && empty sessionScope.isAdmin && isPaid}">
-    <form action="Controller" method="post">
+    <form action="${pageContext.request.contextPath}/Controller" method="post">
         <label for="filmFeedback">Отзыв:</label>
         <textarea id="filmFeedback" name="filmFeedback" maxlength="5000"></textarea>
 

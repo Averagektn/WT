@@ -8,7 +8,8 @@
 </head>
 <body>
 <h1>Регистрация</h1>
-<form action="Controller" method="post">
+<a href="${pageContext.request.contextPath}">На главную страницу</a><br>
+<form action="${pageContext.request.contextPath}/Controller" method="post">
     <label for="emailRegister">Электронная почта:</label>
     <input type="email" id="emailRegister" name="emailRegister" required><br>
 

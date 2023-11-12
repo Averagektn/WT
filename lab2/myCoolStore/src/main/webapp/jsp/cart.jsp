@@ -13,10 +13,10 @@
 <body>
 <h1>Cart</h1>
 
-<a href="/myCoolStore/">На главную страницу</a><br>
+<a href="${pageContext.request.contextPath}">На главную страницу</a><br>
 
 <c:forEach var="film" items="${films}">
-    <a href="Film?filmId=${film.id}">${film.name}</a><br>
+    <a href="${pageContext.request.contextPath}/Film?filmId=${film.id}">${film.name}</a><br>
     <c:choose>
         <c:when test="${film.discount != 0}">
             <strike>${film.price}</strike> ${film.getRealPrice()}<br>
@@ -29,7 +29,7 @@
     Возрастные ограничения: ${film.ageRestriction.toString()}<br>
     Автор: ${film.author}<br>
 
-    <form action="Controller" method="post">
+    <form action="${pageContext.request.contextPath}/Controller" method="post">
         <input type="submit" value="Удалить">
         <input type="hidden" name="filmID" value="${film.id}">
         <input type="hidden" name="command" value="remove_from_cart"/>
@@ -37,7 +37,7 @@
 </c:forEach>
 
 <c:if test="${total != 0}">
-    <form action="Controller" method="post">
+    <form action="${pageContext.request.contextPath}/Controller" method="post">
         <input type="submit" value="Оплатить ${total}">
         <input type="hidden" name="command" value="buy"/>
     </form>

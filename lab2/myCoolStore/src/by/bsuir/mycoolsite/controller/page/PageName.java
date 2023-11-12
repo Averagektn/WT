@@ -5,7 +5,8 @@ public enum PageName {
     MAIN("/myCoolStore/"),
     CART(MAIN.getUrlPattern() + "Cart"),
     FILM(MAIN.getUrlPattern() + "Film"),
-    LIBRARY(MAIN.getUrlPattern() + "Library");
+    LIBRARY(MAIN.getUrlPattern() + "Library"),
+    ADD_FILM(MAIN.getUrlPattern() + "Admin/Film");
 
     private final String urlPattern;
 

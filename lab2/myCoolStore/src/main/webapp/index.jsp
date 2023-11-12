@@ -30,10 +30,7 @@
         <c:choose>
             <c:when test="${not empty sessionScope.isAdmin}">
                 <h1>ADMIN MODE</h1>
-                <form action="Controller" method="post">
-                    <input type="submit"  value="Добавить фильм"/>
-                    <input type="hidden" name="command" value="add_film"/>
-                </form>
+                <a href="Admin/Film">Добавить фильм</a><br>
             </c:when>
             <c:otherwise>
                 <a href="Library">Библиотека фильмов</a><br>

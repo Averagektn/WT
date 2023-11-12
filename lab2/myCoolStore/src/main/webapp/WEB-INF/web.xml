@@ -28,6 +28,7 @@
     <url-pattern>/Film</url-pattern>
     <url-pattern>/Cart</url-pattern>
     <url-pattern>/Library</url-pattern>
+    <url-pattern>/Admin/Film</url-pattern>
   </servlet-mapping>
   
   <servlet>

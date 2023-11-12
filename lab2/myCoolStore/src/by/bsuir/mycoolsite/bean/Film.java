@@ -21,11 +21,11 @@ public class Film {
         this.id = id;
         this.description = "";
         this.price = BigDecimal.ZERO;
-        this.media = null;
+        this.media = new Media(0);
         this.categories = new ArrayList<>();
         this.discount = 0;
         this.author = "";
-        this.ageRestriction = null;
+        this.ageRestriction = AgeRestriction.EMPTY;
         this.name = "";
     }
 
