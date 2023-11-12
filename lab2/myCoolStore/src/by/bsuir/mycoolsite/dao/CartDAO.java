@@ -10,4 +10,5 @@ public interface CartDAO {
     List<Film> getCart(long userId) throws DAOException;
     void remove(long filmId, long userId) throws DAOException;
     void clear(long userId) throws DAOException;
+    boolean contains(long userId, long filmId) throws DAOException;
 }

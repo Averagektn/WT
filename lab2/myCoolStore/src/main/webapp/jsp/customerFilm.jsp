@@ -5,6 +5,7 @@
 <jsp:useBean id="feedbacks" scope="request" type="java.util.List"/>
 <jsp:useBean id="isPaid" scope="request" type="java.lang.Boolean"/>
 <jsp:useBean id="isBanned" scope="request" type="java.lang.Boolean"/>
+<jsp:useBean id="isFilmInCart" scope="request" type="java.lang.Boolean"/>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -26,14 +27,19 @@
             ${film.price}<br>
         </c:otherwise>
     </c:choose>
-    <c:if test="${not isBanned && empty sessionScope.isAdmin}">
-        <form action="Controller" method="post">
-            <input type="hidden" name="filmID" value="${film.id}">
-            <input type="hidden" name="command" value="add_to_cart"/>
+    <c:choose>
+        <c:when test="${not isBanned && empty sessionScope.isAdmin && not isFilmInCart}">
+            <form action="Controller" method="post">
+                <input type="hidden" name="filmID" value="${film.id}">
+                <input type="hidden" name="command" value="add_to_cart"/>
 
-            <input type="submit" value="Добавить в корзину">
-        </form>
-    </c:if>
+                <input type="submit" value="Добавить в корзину">
+            </form>
+        </c:when>
+        <c:otherwise>
+            <a href="Cart">В корзину</a><br>
+        </c:otherwise>
+    </c:choose>
 </c:if>
 
 
@@ -60,7 +66,7 @@
     ${feedback.author.email}<br>
     <c:if test="${not empty sessionScope.isAdmin}">
         <form action="Controller" method="post">
-            <input type="submit"  value="Забанить"/>
+            <input type="submit" value="Забанить"/>
             <input type="hidden" name="command" value="ban"/>
         </form>
     </c:if>
@@ -68,7 +74,7 @@
     <p>${feedback.text}</p>
 </c:forEach>
 
-<c:if test="${not isBanned && empty sessionScope.isAdmin}">
+<c:if test="${not isBanned && empty sessionScope.isAdmin && isPaid}">
     <form action="Controller" method="post">
         <label for="filmFeedback">Отзыв:</label>
         <textarea id="filmFeedback" name="filmFeedback" maxlength="5000"></textarea>

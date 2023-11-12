@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SQLCartDAO implements CartDAO {
+    private static final String QUERY_GET_FILM =
+            "SELECT crt_film FROM cart WHERE crt_user = ? AND crt_film = ?";
     private static final String QUERY_CLEAR_CART =
             "DELETE FROM cart WHERE crt_user = ?";
     private static final String QUERY_REMOVE_FILM =
@@ -41,14 +43,11 @@ public class SQLCartDAO implements CartDAO {
             ps.setLong(1, filmId);
             ps.setLong(2, userId);
 
-            int rowsAffected = ps.executeUpdate();
-            if (rowsAffected == 0){
-                //LOG
-                System.out.println("Adding to cart failed");
-                throw new DAOException("Adding to cart failed");
-            }
+            ps.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            //LOG
+            System.out.println("Query error while adding film to cart");
+            throw new DAOException("Query error while adding film to cart");
         } finally {
             dbConnection.close(ps, null);
         }
@@ -86,7 +85,9 @@ public class SQLCartDAO implements CartDAO {
             }
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            //LOG
+            System.out.println("Query error while receiving films from cart");
+            throw new DAOException("Query error while receiving films from cart");
         } finally {
             dbConnection.close(ps, rs);
         }
@@ -117,6 +118,8 @@ public class SQLCartDAO implements CartDAO {
             //LOG
             System.out.println("Deleting from cart DAO error");
             throw new DAOException("Deleting from cart DAO error");
+        } finally {
+            dbConnection.close(ps, null);
         }
     }
 
@@ -138,5 +141,35 @@ public class SQLCartDAO implements CartDAO {
         } finally {
             dbConnection.close(ps, null);
         }
+    }
+
+    @Override
+    public boolean contains(long userId, long filmId) throws DAOException {
+        boolean contains = false;
+
+        DBConnection dbConnection = DBConnection.getInstance();
+        Connection con = dbConnection.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try{
+            ps = con.prepareStatement(QUERY_GET_FILM);
+            ps.setLong(1, userId);
+            ps.setLong(2, filmId);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()){
+                contains = true;
+            }
+        } catch (SQLException e) {
+            //LOG
+            System.out.println("Contains in cart query DAO error");
+            throw new DAOException("Contains in cart query DAO error");
+        } finally {
+            dbConnection.close(ps, rs);
+        }
+
+        return contains;
     }
 }

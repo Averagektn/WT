@@ -11,4 +11,5 @@ public interface CartService {
     void remove(long filmId, long userId) throws ServiceException;
 
     void clear(long userId) throws ServiceException;
+    boolean contains(long userId, long filmId) throws ServiceException;
 }

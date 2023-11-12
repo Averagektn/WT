@@ -105,4 +105,34 @@ public class CartServiceImpl implements CartService {
             throw new ServiceException(e);
         }
     }
+
+    @Override
+    public boolean contains(long userId, long filmId) throws ServiceException {
+        boolean contains;
+
+        if (filmId < 1) {
+            //LOG
+            System.out.println("Invalid film id in contains");
+            throw new ServiceException("Invalid film id in contains");
+        }
+
+        if (userId < 1) {
+            //LOG
+            System.out.println("Invalid user id in contains");
+            throw new ServiceException("Invalid user id in contains");
+        }
+
+        DAOFactory daoFactory = DAOFactory.getInstance();
+        CartDAO cartDAO = daoFactory.getCartDAO();
+
+        try {
+            contains = cartDAO.contains(userId, filmId);
+        } catch (DAOException e) {
+            //LOG
+            System.out.println("DAO: " + e);
+            throw new ServiceException(e);
+        }
+
+        return contains;
+    }
 }

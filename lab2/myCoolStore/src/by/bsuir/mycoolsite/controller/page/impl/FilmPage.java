@@ -6,6 +6,7 @@ import by.bsuir.mycoolsite.controller.JSPPageName;
 import by.bsuir.mycoolsite.controller.page.Page;
 import by.bsuir.mycoolsite.controller.page.exception.PageException;
 import by.bsuir.mycoolsite.controller.session.SessionAttribute;
+import by.bsuir.mycoolsite.service.CartService;
 import by.bsuir.mycoolsite.service.FeedbackService;
 import by.bsuir.mycoolsite.service.FilmService;
 import by.bsuir.mycoolsite.service.UserService;
@@ -21,12 +22,13 @@ public class FilmPage implements Page {
     private static final String FEEDBACKS = "feedbacks";
     private static final String FILM = "film";
     private static final String IS_FILM_PAID = "isPaid";
+    private static final String IS_FILM_IN_CART = "isFilmInCart";
     private static final String IS_BANNED = "isBanned";
     private static final String FILM_ID = "filmId";
     @Override
     public String generate(HttpServletRequest request) throws PageException {
         String response;
-        boolean isFilmOwner, isBanned;
+        boolean isFilmOwner, isBanned, isFilmInCart;
         Film film;
         List<Feedback> feedbacks;
 
@@ -35,6 +37,7 @@ public class FilmPage implements Page {
         FilmService filmService = serviceFactory.getFilmService();
         FeedbackService feedbackService = serviceFactory.getFeedbackService();
         UserService userService = serviceFactory.getUserService();
+        CartService cartService = serviceFactory.getCartService();
 
         try {
             long filmId = Long.parseLong(request.getParameter(FILM_ID));
@@ -43,13 +46,15 @@ public class FilmPage implements Page {
             film = filmService.getFilmById(filmId);
             request.setAttribute(FILM, film);
             request.setAttribute(FEEDBACKS, feedbacks);
-            System.out.println(film.getDiscount());
 
             if (session != null && session.getAttribute(SessionAttribute.ID) != null){
                 long userId = (long)session.getAttribute(SessionAttribute.ID);
 
                 isFilmOwner = userService.isFilmOwner(userId, filmId);
                 isBanned = userService.isBanned(userId);
+                isFilmInCart = cartService.contains(userId, filmId);
+
+                request.setAttribute(IS_FILM_IN_CART, isFilmInCart);
                 request.setAttribute(IS_BANNED, isBanned);
                 request.setAttribute(IS_FILM_PAID, isFilmOwner);
             } else {
