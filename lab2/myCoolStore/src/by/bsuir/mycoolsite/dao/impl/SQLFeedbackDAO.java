@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SQLFeedbackDAO implements FeedbackDAO {
+    private static final String QUERY_DELETE_USER_FEEDBACKS =
+            "DELETE FROM feedback WHERE fbk_author = ?";
     private static final String QUERY_ADD_FEEDBACK =
             "INSERT INTO feedback (fbk_author, fbk_film, fbk_text, fbk_rating) VALUES (?,?,?,?)";
     private static final String QUERY_GET_FEEDBACK_BY_FILM_ID =
@@ -93,7 +95,26 @@ public class SQLFeedbackDAO implements FeedbackDAO {
             }
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DAOException("Query failed");
+        } finally {
+            dbConnection.close(ps, null);
+        }
+    }
+
+    @Override
+    public void deleteUserFeedbacks(long userId) throws DAOException {
+        DBConnection dbConnection = DBConnection.getInstance();
+        Connection con = dbConnection.getConnection();
+        PreparedStatement ps = null;
+
+        try{
+            ps = con.prepareStatement(QUERY_DELETE_USER_FEEDBACKS);
+
+            ps.setLong(1, userId);
+
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException("Query failed");
         } finally {
             dbConnection.close(ps, null);
         }

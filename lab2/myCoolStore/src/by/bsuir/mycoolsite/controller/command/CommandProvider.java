@@ -19,6 +19,7 @@ public final class CommandProvider {
         repository.put(CommandName.ADD_TO_CART, new AddToCart());
         repository.put(CommandName.REMOVE_FROM_CART, new RemoveFromCart());
         repository.put(CommandName.BUY, new BuyFilms());
+        repository.put(CommandName.BAN, new Ban());
         //...
     }
 

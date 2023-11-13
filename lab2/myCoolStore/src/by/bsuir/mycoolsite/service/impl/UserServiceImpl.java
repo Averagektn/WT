@@ -120,4 +120,30 @@ public class UserServiceImpl implements UserService {
 
         return id;
     }
+
+    @Override
+    public void ban(long userId, long adminId) throws ServiceException {
+        if (userId < 1){
+            //LOG
+            System.out.println("ServiceException, incorrect user ID");
+            throw new ServiceException("Incorrect user ID");
+        }
+
+        if (adminId < 1){
+            //LOG
+            System.out.println("ServiceException, incorrect admin ID");
+            throw new ServiceException("Incorrect admin ID");
+        }
+
+        DAOFactory daoObjectFactory = DAOFactory.getInstance();
+        UserDAO userDAO = daoObjectFactory.getUserDAO();
+
+        try {
+            userDAO.ban(userId, adminId);
+        } catch (DAOException e) {
+            //LOG
+            System.out.println("DAOException in UserServiceImpl " + e);
+            throw new ServiceException(e);
+        }
+    }
 }

@@ -9,6 +9,8 @@ import by.bsuir.mycoolsite.dao.exception.DAOException;
 import java.sql.*;
 
 public class SQLUserDAO implements UserDAO {
+    private static final String QUERY_BAN =
+            "UPDATE user SET usr_banned_by = ? WHERE usr_id = ?";
     private static final String QUERY_REGISTER =
             "INSERT INTO user (usr_email, usr_password, usr_role, usr_banned_by) VALUES (?,?,?,?)";
     private static final String QUERY_AUTHORIZATION =
@@ -181,5 +183,32 @@ public class SQLUserDAO implements UserDAO {
         }
 
         return id;
+    }
+
+    @Override
+    public void ban(long userId, long adminId) throws DAOException {
+        DBConnection dbConnection = DBConnection.getInstance();
+        Connection con = dbConnection.getConnection();
+        PreparedStatement ps = null;
+
+        try {
+            ps = con.prepareStatement(QUERY_BAN);
+
+            ps.setLong(1, adminId);
+            ps.setLong(2, userId);
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected <= 0) {
+                //LOG
+                System.out.println("0 rows affected. Update error");
+                throw new DAOException("Ban failed");
+            }
+        } catch (SQLException e) {
+            //LOG
+            System.out.println("SQL Exception in SQLUserDAO " + e);
+            throw new DAOException("Sql error");
+        } finally {
+            dbConnection.close(ps, null);
+        }
     }
 }

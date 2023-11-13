@@ -11,4 +11,6 @@ public interface UserService {
     boolean isBanned(long id) throws ServiceException;
 
     long registration(User user) throws ServiceException;
+
+    void ban(long userId, long adminId) throws ServiceException;
 }

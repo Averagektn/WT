@@ -71,4 +71,24 @@ public class FeedbackServiceImpl implements FeedbackService {
 
         return feedbacks;
     }
+
+    @Override
+    public void deleteUserFeedbacks(long userId) throws ServiceException {
+        if (userId < 1) {
+            //LOG
+            System.out.println("Incorrect user ID");
+            throw new ServiceException("Incorrect user ID");
+        }
+
+        DAOFactory daoObjectFactory = DAOFactory.getInstance();
+        FeedbackDAO feedbackDAO = daoObjectFactory.getFeedbackDAO();
+
+        try {
+            feedbackDAO.deleteUserFeedbacks(userId);
+        } catch (DAOException e) {
+            //LOG
+            System.out.println("DAOException: " + e);
+            throw new ServiceException(e);
+        }
+    }
 }

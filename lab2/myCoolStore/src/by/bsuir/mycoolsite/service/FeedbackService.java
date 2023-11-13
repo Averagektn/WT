@@ -6,6 +6,7 @@ import by.bsuir.mycoolsite.service.exception.ServiceException;
 import java.util.List;
 
 public interface FeedbackService {
-    public void addFeedback(Feedback feedback) throws ServiceException;
-    public List<Feedback> getFilmFeedbacks(long filmId) throws ServiceException;
+    void addFeedback(Feedback feedback) throws ServiceException;
+    List<Feedback> getFilmFeedbacks(long filmId) throws ServiceException;
+    void deleteUserFeedbacks(long userId) throws ServiceException;
 }

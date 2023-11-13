@@ -75,8 +75,11 @@
     ${feedback.author.email}<br>
     <c:if test="${not empty sessionScope.isAdmin}">
         <form action="${pageContext.request.contextPath}/Controller" method="post">
-            <input type="submit" value="Забанить"/>
+            <input type="hidden" name="authorId" value="${feedback.author.id}">
+            <input type="hidden" name="filmId" value="${film.id}">
             <input type="hidden" name="command" value="ban"/>
+
+            <input type="submit" value="Забанить"/>
         </form>
     </c:if>
     ${feedback.rating}<br>

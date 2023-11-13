@@ -9,5 +9,6 @@ public enum CommandName {
     ADD_TO_CART,
     REMOVE_FROM_CART,
     BUY,
+    BAN,
     WRONG_REQUEST;
 }
