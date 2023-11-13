@@ -16,6 +16,7 @@ public final class PageProvider {
         repository.put(PageName.CART, new CartPage());
         repository.put(PageName.LIBRARY, new LibraryPage());
         repository.put(PageName.ADD_FILM, new AdminFilmPage());
+        repository.put(PageName.BAN_LIST, new BanListPage());
         //...
     }
 

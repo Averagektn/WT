@@ -7,6 +7,8 @@ import by.bsuir.mycoolsite.dao.factory.DAOFactory;
 import by.bsuir.mycoolsite.service.UserService;
 import by.bsuir.mycoolsite.service.exception.ServiceException;
 
+import java.util.List;
+
 public class UserServiceImpl implements UserService {
     @Override
     public User signIn(String email, String password) throws ServiceException {
@@ -145,5 +147,43 @@ public class UserServiceImpl implements UserService {
             System.out.println("DAOException in UserServiceImpl " + e);
             throw new ServiceException(e);
         }
+    }
+
+    @Override
+    public void unban(long userId) throws ServiceException {
+        if (userId < 1){
+            //LOG
+            System.out.println("ServiceException, incorrect user ID");
+            throw new ServiceException("Incorrect user ID");
+        }
+
+        DAOFactory daoObjectFactory = DAOFactory.getInstance();
+        UserDAO userDAO = daoObjectFactory.getUserDAO();
+
+        try {
+             userDAO.unban(userId);
+        } catch (DAOException e) {
+            //LOG
+            System.out.println("DAOException in UserServiceImpl " + e);
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<User> getBannedUsers() throws ServiceException {
+        List<User> users;
+
+        DAOFactory daoObjectFactory = DAOFactory.getInstance();
+        UserDAO userDAO = daoObjectFactory.getUserDAO();
+
+        try {
+            users = userDAO.getBannedUsers();
+        } catch (DAOException e) {
+            //LOG
+            System.out.println("DAOException in UserServiceImpl " + e);
+            throw new ServiceException(e);
+        }
+
+        return users;
     }
 }

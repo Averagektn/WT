@@ -11,6 +11,10 @@
 </head>
 <body>
 <a href="${pageContext.request.contextPath}">На главную страницу</a><br>
+<form action="${pageContext.request.contextPath}/Controller" method="post">
+    <input type="submit"  value="Выйти"/>
+    <input type="hidden" name="command" value="sign_out"/>
+</form>
 <c:forEach var="film" items="${films}">
     <a href="${pageContext.request.contextPath}/Film?filmId=${film.id}">${film.name}</a><br>
 

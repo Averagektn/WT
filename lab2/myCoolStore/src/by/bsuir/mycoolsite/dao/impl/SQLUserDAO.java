@@ -7,8 +7,14 @@ import by.bsuir.mycoolsite.dao.UserDAO;
 import by.bsuir.mycoolsite.dao.exception.DAOException;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SQLUserDAO implements UserDAO {
+    private static final String QUERY_UNBAN =
+            "UPDATE user SET usr_banned_by = NULL WHERE usr_id = ?";
+    private static final String QUERY_GET_BANNED_USERS =
+            "SELECT usr_id, usr_email, usr_banned_by FROM user WHERE usr_banned_by IS NOT NULL";
     private static final String QUERY_BAN =
             "UPDATE user SET usr_banned_by = ? WHERE usr_id = ?";
     private static final String QUERY_REGISTER =
@@ -210,5 +216,64 @@ public class SQLUserDAO implements UserDAO {
         } finally {
             dbConnection.close(ps, null);
         }
+    }
+
+    @Override
+    public void unban(long userId) throws DAOException {
+        DBConnection dbConnection = DBConnection.getInstance();
+        Connection con = dbConnection.getConnection();
+        PreparedStatement ps = null;
+
+        try {
+            ps = con.prepareStatement(QUERY_UNBAN);
+
+            ps.setLong(1, userId);
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected <= 0) {
+                //LOG
+                System.out.println("0 rows affected. Update error");
+                throw new DAOException("Unban failed");
+            }
+        } catch (SQLException e) {
+            //LOG
+            System.out.println("SQL Exception in SQLUserDAO " + e);
+            throw new DAOException("Sql error");
+        } finally {
+            dbConnection.close(ps, null);
+        }
+    }
+
+    @Override
+    public List<User> getBannedUsers() throws DAOException {
+        List<User> users = new ArrayList<>();
+
+        DBConnection dbConnection = DBConnection.getInstance();
+        Connection con = dbConnection.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            ps = con.prepareStatement(QUERY_GET_BANNED_USERS);
+
+            rs = ps.executeQuery();
+            while (rs.next()){
+                long id = rs.getLong(1);
+                String email = rs.getString(2);
+                long bannedBy = rs.getLong(3);
+
+                User user = new User(id, email, "", Role.CUSTOMER, bannedBy);
+
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            //LOG
+            System.out.println("SQL Exception in SQLUserDAO " + e);
+            throw new DAOException("Sql error");
+        } finally {
+            dbConnection.close(ps, rs);
+        }
+
+        return users;
     }
 }

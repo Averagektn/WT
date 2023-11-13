@@ -10,5 +10,6 @@ public enum CommandName {
     REMOVE_FROM_CART,
     BUY,
     BAN,
+    UNBAN,
     WRONG_REQUEST;
 }

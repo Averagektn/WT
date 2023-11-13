@@ -6,7 +6,8 @@ public enum PageName {
     CART(MAIN.getUrlPattern() + "Cart"),
     FILM(MAIN.getUrlPattern() + "Film"),
     LIBRARY(MAIN.getUrlPattern() + "Library"),
-    ADD_FILM(MAIN.getUrlPattern() + "Admin/Film");
+    ADD_FILM(MAIN.getUrlPattern() + "Admin/Film"),
+    BAN_LIST(MAIN.getUrlPattern() + "Admin/BanList");
 
     private final String urlPattern;
 

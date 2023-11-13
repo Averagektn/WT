@@ -13,7 +13,11 @@
 </head>
 <body>
 <h1>Admin film</h1>
-
+<a href="${pageContext.request.contextPath}">На главную страницу</a><br>
+<form action="${pageContext.request.contextPath}/Controller" method="post">
+    <input type="submit"  value="Выйти"/>
+    <input type="hidden" name="command" value="sign_out"/>
+</form>
 <form action="${pageContext.request.contextPath}/Controller" method="post" enctype="multipart/form-data">
     <label for="filmTitle">Название фильма:</label>
     <input type="text" id="filmTitle" name="filmTitle" value="${film.name}"> <br>

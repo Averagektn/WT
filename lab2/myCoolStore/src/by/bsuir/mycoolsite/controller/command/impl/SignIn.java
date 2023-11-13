@@ -39,7 +39,7 @@ public class SignIn implements Command {
             HttpSession session = request.getSession(true);
             session.setAttribute(SessionAttribute.ID, user.getId());
 
-            if (user.isAdmin()){
+            if (user.isAdmin()) {
                 session.setAttribute(SessionAttribute.IS_ADMIN, true);
             }
         } catch (ServiceException e) {

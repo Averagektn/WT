@@ -23,7 +23,7 @@
         </form>
     </c:when>
     <c:otherwise>
-        <form action="Controller" method="post">
+        <form action="${pageContext.request.contextPath}/Controller" method="post">
             <input type="submit"  value="Выйти"/>
             <input type="hidden" name="command" value="sign_out"/>
         </form>
@@ -31,6 +31,7 @@
             <c:when test="${not empty sessionScope.isAdmin}">
                 <h1>ADMIN MODE</h1>
                 <a href="Admin/Film">Добавить фильм</a><br>
+                <a href="Admin/BanList">К списку заблокированных пользователей</a>
             </c:when>
             <c:otherwise>
                 <a href="Library">Библиотека фильмов</a><br>
@@ -61,7 +62,7 @@
             </c:forEach><br>
         </li>
         <c:if test="${not empty sessionScope.isAdmin}">
-            <form action="Controller" method="post">
+            <form action="${pageContext.request.contextPath}/Controller" method="post">
                 <input type="submit"  value="Редактировать фильм"/>
                 <input type="hidden" name="command" value="edit_film"/>
             </form>
