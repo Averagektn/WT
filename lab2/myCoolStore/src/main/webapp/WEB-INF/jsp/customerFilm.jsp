@@ -68,8 +68,14 @@
     <%--        <video width="320" height="240" controls>
                 <source src="${film.media.filmPath}" type="video/mp4">
                 Your browser does not support the video tag.
-            </video><br>--%>
+            </video><br>
+            "C:\Archive\5 semester\WT\tomcat\webapps\myCoolStore\film\turnip turns up.mp4"
+            --%>
 </c:if>
+
+<video width="320" height="240" controls>
+    <source src="http://localhost:8080/files/1.mp4" type="video/mp4">
+</video><br>
 
 <c:forEach var="feedback" items="${feedbacks}">
     ${feedback.author.email}<br>

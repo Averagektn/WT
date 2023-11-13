@@ -14,6 +14,27 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 
+  <context-param>
+    <param-name>filesPath</param-name>
+    <param-value>C:/Archive/5 semester/WT/tomcat/webapps/files</param-value>
+  </context-param>
+
+
+  <servlet>
+    <servlet-name>default</servlet-name>
+    <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+    <init-param>
+      <param-name>readonly</param-name>
+      <param-value>false</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/files/*</url-pattern>
+  </servlet-mapping>
+
   <session-config>
     <session-timeout>10</session-timeout>
   </session-config>

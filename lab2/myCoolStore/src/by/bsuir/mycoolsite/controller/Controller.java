@@ -8,14 +8,16 @@ import by.bsuir.mycoolsite.controller.page.PageProvider;
 import by.bsuir.mycoolsite.controller.page.exception.PageException;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+@MultipartConfig
 public class Controller extends HttpServlet {
-
+    public static final String REAL_PATH = "resourcesPath";
     public Controller() {
         super();
     }
@@ -56,6 +58,11 @@ public class Controller extends HttpServlet {
         String commandName = request.getParameter(RequestParameterName.COMMAND_NAME);
         Command command = CommandProvider.getInstance().getCommand(commandName);
         String page;
+
+        // For file downloading
+        String realPath = getServletContext().getInitParameter("filesPath");
+        System.out.println("Real path: " + realPath);
+        request.setAttribute(REAL_PATH, realPath);
 
         // LOG
         System.out.println("Command " + commandName + " received");

@@ -13,11 +13,14 @@
 </head>
 <body>
 <h1>Admin film</h1>
+
 <a href="${pageContext.request.contextPath}">На главную страницу</a><br>
+
 <form action="${pageContext.request.contextPath}/Controller" method="post">
     <input type="submit"  value="Выйти"/>
     <input type="hidden" name="command" value="sign_out"/>
 </form>
+
 <form action="${pageContext.request.contextPath}/Controller" method="post" enctype="multipart/form-data">
     <label for="filmTitle">Название фильма:</label>
     <input type="text" id="filmTitle" name="filmTitle" value="${film.name}"> <br>
@@ -43,8 +46,8 @@
         </c:forEach>
     </select><br>
 
-    <label for="videoFile">Файл видео:</label>
-    <input type="file" id="videoFile" name="videoFile"><br>
+    <label for="filmFile">Файл фильма:</label>
+    <input type="file" id="filmFile" name="filmFile"><br>
 
     <label for="trailerFile">Файл трейлера:</label>
     <input type="file" id="trailerFile" name="trailerFile"><br>
