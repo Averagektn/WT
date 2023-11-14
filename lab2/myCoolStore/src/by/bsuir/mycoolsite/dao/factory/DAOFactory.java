@@ -12,6 +12,7 @@ public final class DAOFactory {
     private final LibraryDAO sqlLibraryImpl = new SQLLibraryDAO();
     private final AgeRestrictionDAO enumAgeRestrictionImpl = new EnumAgeRestrictionDAO();
     private final CategoryDAO sqlCategoryImpl = new SQLCategoryDAO();
+    private final MediaDAO sqlMediaImpl = new SQLMediaDAO();
 
     private DAOFactory() {
 
@@ -20,6 +21,7 @@ public final class DAOFactory {
     public static DAOFactory getInstance() {
         return instance;
     }
+    public MediaDAO getMediaDAO() { return sqlMediaImpl; }
     public CategoryDAO getCategoryDAO() { return sqlCategoryImpl; }
     public AgeRestrictionDAO getAgeRestrictionDAO() { return enumAgeRestrictionImpl; }
     public FilmDAO getFilmDAO() {

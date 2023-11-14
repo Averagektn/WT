@@ -4,11 +4,12 @@ import by.bsuir.mycoolsite.bean.Category;
 import by.bsuir.mycoolsite.bean.Film;
 import by.bsuir.mycoolsite.bean.Media;
 import by.bsuir.mycoolsite.bean.enums.AgeRestriction;
-import by.bsuir.mycoolsite.controller.Controller;
+import by.bsuir.mycoolsite.config.Config;
 import by.bsuir.mycoolsite.controller.command.Command;
 import by.bsuir.mycoolsite.controller.command.exception.CommandException;
 import by.bsuir.mycoolsite.controller.page.PageName;
 import by.bsuir.mycoolsite.service.FilmService;
+import by.bsuir.mycoolsite.service.MediaService;
 import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.ServletException;
@@ -39,10 +40,12 @@ public class AddFilm implements Command {
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         FilmService filmService = serviceFactory.getFilmService();
+        MediaService mediaService = serviceFactory.getMediaService();
 
         try {
             Film film = getFilm(request);
 
+            mediaService.addMedia(film.getMedia());
             filmService.addNewFilm(film);
 
             response = PageName.ADD_FILM.getUrlPattern();
@@ -82,22 +85,19 @@ public class AddFilm implements Command {
     }
 
     private Media loadFiles(HttpServletRequest request) throws ServletException, IOException {
-        String realPath = (String) request.getAttribute(Controller.REAL_PATH);
-        System.out.println("real path in loadFiles: " + realPath);
-
         Part trailerPart = request.getPart(FILM_TRAILER);
         String trailerFileName = generateUniqueFileName(getFileName(trailerPart));
-        String trailerFilePath = realPath + "/" + TRAILER_DIRECTORY + "/" + trailerFileName;
+        String trailerFilePath = Config.VIDEO_DIRECTORY_PATH + "/" + TRAILER_DIRECTORY + "/" + trailerFileName;
         System.out.println("trailer path: " + trailerFilePath);
-        trailerPart.write(trailerFileName);
+        trailerPart.write(trailerFilePath);
 
         Part filmPart = request.getPart(FILM_FILE);
         String filmFileName = generateUniqueFileName(getFileName(filmPart));
-        String filmFilePath = realPath + "/" + FILM_DIRECTORY + "/" + filmFileName;
+        String filmFilePath = Config.VIDEO_DIRECTORY_PATH + "/" + FILM_DIRECTORY + "/" + filmFileName;
         System.out.println("film path: " + filmFilePath);
-        filmPart.write(filmFileName);
+        filmPart.write(filmFilePath);
 
-        return new Media(trailerFilePath, filmFilePath);
+        return new Media(trailerFileName, filmFileName);
     }
 
     private String generateUniqueFileName(String fileName) {

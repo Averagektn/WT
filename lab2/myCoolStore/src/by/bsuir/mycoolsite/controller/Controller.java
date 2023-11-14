@@ -59,11 +59,6 @@ public class Controller extends HttpServlet {
         Command command = CommandProvider.getInstance().getCommand(commandName);
         String page;
 
-        // For file downloading
-        String realPath = getServletContext().getInitParameter("filesPath");
-        System.out.println("Real path: " + realPath);
-        request.setAttribute(REAL_PATH, realPath);
-
         // LOG
         System.out.println("Command " + commandName + " received");
 

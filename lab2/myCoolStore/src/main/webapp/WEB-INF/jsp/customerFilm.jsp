@@ -74,16 +74,10 @@
 </c:if>
 
 <video width="320" height="240" controls>
-    <source src="http://localhost:8080/files/2.mp4" type="video/mp4">
-</video><br>
-<video width="320" height="240" controls>
     <source src="${pageContext.request.contextPath}/VideoDisplay?filmId=${film.id}" type="video/mp4">
 </video><br>
 <video width="320" height="240" controls>
     <source src="${pageContext.request.contextPath}/VideoDisplay?trailerId=${film.id}" type="video/mp4">
-</video><br>
-<video width="320" height="240" controls>
-    <source src="${pageContext.request.contextPath}/VideoDisplay" type="video/mp4">
 </video><br>
 
 
