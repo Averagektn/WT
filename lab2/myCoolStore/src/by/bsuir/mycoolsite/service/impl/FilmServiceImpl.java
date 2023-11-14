@@ -68,10 +68,6 @@ public class FilmServiceImpl implements FilmService {
             throw new ServiceException("");
         }
 
-        if (film.getMedia().getId() < 0){
-            throw new ServiceException("");
-        }
-
         if (film.getAuthor().isEmpty()){
             throw new ServiceException("");
         }
@@ -81,6 +77,14 @@ public class FilmServiceImpl implements FilmService {
         }
 
         if (film.getAgeRestriction() == AgeRestriction.EMPTY || film.getAgeRestriction() == null){
+            throw new ServiceException("");
+        }
+
+        if (film.getMedia().getFilmPath().isEmpty()){
+            throw new ServiceException("");
+        }
+
+        if (film.getMedia().getTrailerPath().isEmpty()){
             throw new ServiceException("");
         }
 

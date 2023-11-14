@@ -42,7 +42,7 @@
     <select id="filmAgeRestriction" name="filmAgeRestriction">
         <option value="${film.ageRestriction}" selected>${film.ageRestriction.toString()}</option>
         <c:forEach var="ageRestriction" items="${ageRestrictions}">
-            <option value="${ageRestriction}">${ageRestriction.toString()}</option>
+            <option value="${ageRestriction}">${ageRestriction}</option>
         </c:forEach>
     </select><br>
 

@@ -9,10 +9,13 @@ import java.util.List;
 
 public class EnumAgeRestrictionDAO implements AgeRestrictionDAO {
     @Override
-    public List<AgeRestriction> getAgeRestrictions() throws DAOException {
-        List<AgeRestriction> ageRestrictions = new ArrayList<>(List.of(AgeRestriction.values()));
+    public List<String> getAgeRestrictions() throws DAOException {
+        List<String> ageRestrictions = new ArrayList<>();
 
-        ageRestrictions.remove(AgeRestriction.EMPTY);
+        for (AgeRestriction ageRestriction : AgeRestriction.values()) {
+            ageRestrictions.add(ageRestriction.toString());
+        }
+        ageRestrictions.remove(AgeRestriction.EMPTY.toString());
 
         return ageRestrictions;
     }

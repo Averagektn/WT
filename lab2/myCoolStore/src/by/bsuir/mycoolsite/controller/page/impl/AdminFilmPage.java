@@ -2,7 +2,6 @@ package by.bsuir.mycoolsite.controller.page.impl;
 
 import by.bsuir.mycoolsite.bean.Category;
 import by.bsuir.mycoolsite.bean.Film;
-import by.bsuir.mycoolsite.bean.enums.AgeRestriction;
 import by.bsuir.mycoolsite.controller.JSPPageName;
 import by.bsuir.mycoolsite.controller.page.Page;
 import by.bsuir.mycoolsite.controller.page.exception.PageException;
@@ -24,7 +23,7 @@ public class AdminFilmPage implements Page {
     public String generate(HttpServletRequest request) throws PageException {
         String response;
 
-        List<AgeRestriction> ageRestrictions;
+        List<String> ageRestrictions;
         List<Category> categories;
         Film film;
         boolean isEditFilm = request.getParameter("filmID") != null;

@@ -11,8 +11,8 @@ import java.util.List;
 
 public class AgeRestrictionServiceImpl implements AgeRestrictionService {
     @Override
-    public List<AgeRestriction> getAgeRestrictions() throws ServiceException {
-        List<AgeRestriction> ageRestrictions;
+    public List<String> getAgeRestrictions() throws ServiceException {
+        List<String> ageRestrictions;
 
         DAOFactory daoObjectFactory = DAOFactory.getInstance();
         AgeRestrictionDAO ageRestrictionDAO = daoObjectFactory.getAgeRestrictionDAO();

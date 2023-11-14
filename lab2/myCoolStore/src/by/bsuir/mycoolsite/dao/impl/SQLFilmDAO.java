@@ -9,17 +9,18 @@ import by.bsuir.mycoolsite.dao.FilmDAO;
 import by.bsuir.mycoolsite.dao.exception.DAOException;
 
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SQLFilmDAO implements FilmDAO {
-    private static final String QUERY_INSERT_FILM =
-            "INSERT INTO film (flm_description, flm_price, flm_media, flm_discount, flm_author, flm_age, flm_name) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private static final String QUERY_ADD_FILM_CATEGORY =
+            "INSERT INTO m2m_film_category (fc_film, fc_category) VALUES (?, ?)";
+    private static final String QUERY_ADD_FILM =
+                    "INSERT INTO film (flm_description, flm_price, flm_discount, flm_author, flm_age, flm_name)" +
+                    "VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String QUERY_ADD_MEDIA =
+            "INSERT INTO film_media (fm_id, fm_film_path, fm_trailer_path) VALUES (?, ?, ?)";
     private static final String QUERY_GET_FILM_BY_ID =
             "SELECT flm_description, flm_price, flm_discount, flm_author, flm_age, flm_name " +
                     "FROM film " +
@@ -47,7 +48,7 @@ public class SQLFilmDAO implements FilmDAO {
                 "flm_name, " +
                 "cat_name " +
             "FROM film " +
-                "LEFT JOIN film_media ON flm_media = fm_id " +
+                "LEFT JOIN film_media ON flm_id = fm_id " +
                 "LEFT JOIN m2m_film_category ON flm_id = fc_film " +
                 "LEFT JOIN mycoolstore.category ON cat_id = fc_category";
 
@@ -176,7 +177,83 @@ public class SQLFilmDAO implements FilmDAO {
 
     @Override
     public void addFilm(Film film) throws DAOException {
+        Connection con;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        DBConnection dbConnection = DBConnection.getInstance();
 
+        String description = film.getDescription();
+        BigDecimal price = film.getPrice();
+        int discount = film.getDiscount();
+        String author = film.getAuthor();
+        String ageRestriction = film.getAgeRestriction().toString();
+        String name = film.getName();
+
+        String trailer = film.getMedia().getTrailerPath();
+        String filmFile = film.getMedia().getFilmPath();
+
+        List<Category> categories = film.getCategories();
+
+        try{
+            con = dbConnection.getConnection();
+
+            ps = con.prepareStatement(QUERY_ADD_FILM, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, description);
+            ps.setBigDecimal(2, price);
+            ps.setInt(3, discount);
+            ps.setString(4, author);
+            ps.setString(5, ageRestriction);
+            ps.setString(6, name);
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                rs = ps.getGeneratedKeys();
+
+                if (rs.next()) {
+                    long filmId = rs.getLong(1);
+
+                    for (Category cat: categories){
+                        ps = con.prepareStatement(QUERY_ADD_FILM_CATEGORY);
+
+                        ps.setLong(1, filmId);
+                        ps.setLong(2, cat.getId());
+
+                        rowsAffected = ps.executeUpdate();
+                        if (rowsAffected < 0){
+                            //LOG
+                            System.out.println("Query failed");
+                            throw new DAOException("Query " + QUERY_ADD_FILM_CATEGORY + " failed");
+                        }
+                    }
+
+                    ps = con.prepareStatement(QUERY_ADD_MEDIA);
+                    ps.setLong(1, filmId); // fm_id
+                    ps.setString(2, filmFile); // fm_film_path
+                    ps.setString(3, trailer); // fm_trailer_path
+
+                    rowsAffected = ps.executeUpdate();
+
+                    if (rowsAffected < 0){
+                        //LOG
+                        System.out.println("Query failed");
+                        throw new DAOException("Query " + QUERY_ADD_MEDIA + " failed");
+                    }
+                } else {
+                    //LOG
+                    System.out.println("Query failed");
+                    throw new DAOException("ID not found");
+                }
+            } else {
+                //LOG
+                System.out.println("Query failed");
+                throw new DAOException("Query " + QUERY_ADD_FILM + " failed");
+            }
+
+        } catch (SQLException e) {
+            throw new DAOException("Query failed");
+        } finally {
+            dbConnection.close(ps, null);
+        }
     }
 
     @Override

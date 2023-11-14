@@ -9,7 +9,7 @@ import by.bsuir.mycoolsite.controller.command.Command;
 import by.bsuir.mycoolsite.controller.command.exception.CommandException;
 import by.bsuir.mycoolsite.controller.page.PageName;
 import by.bsuir.mycoolsite.service.FilmService;
-import by.bsuir.mycoolsite.service.MediaService;
+import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -41,32 +41,17 @@ public class AddFilm implements Command {
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         FilmService filmService = serviceFactory.getFilmService();
-        MediaService mediaService = serviceFactory.getMediaService();
 
         try {
             Film film = getFilm(request);
 
-            //long mediaId = mediaService.addMedia(film.getMedia());
-            //film.getMedia().setId(mediaId);
-/*            System.out.println(film.getDiscount());
-            System.out.println(film.getMedia().getFilmPath());
-            System.out.println(film.getMedia().getTrailerPath());
-            System.out.println(film.getAuthor());
-            System.out.println(film.getName());
-            System.out.println(film.getAgeRestriction().toString());
-            System.out.println(film.getDescription());
-            System.out.println(film.getPrice());*/
-            for (Category cat: film.getCategories()){
-                System.out.println(cat.getName() + " " + cat.getId());
-            }
-
-            //filmService.addNewFilm(film);
+            filmService.addNewFilm(film);
 
             response = PageName.ADD_FILM.getUrlPattern();
-        /*} catch (ServiceException e) {
+        } catch (ServiceException e) {
             //LOG
             System.out.println("Service exception: " + e);
-            throw new CommandException("Service exception: ", e);*/
+            throw new CommandException("Service exception: ", e);
         } catch (ServletException e) {
             throw new CommandException("Servlet exception in film adder: " + e);
         } catch (IOException e) {
@@ -77,14 +62,6 @@ public class AddFilm implements Command {
     }
 
     private Film getFilm(HttpServletRequest request) throws ServletException, IOException {
-        System.out.println(request.getParameter(FILM_TITLE));
-        System.out.println(request.getParameter(FILM_AUTHOR));
-        System.out.println(request.getParameter(FILM_DESCRIPTION));
-        System.out.println(request.getParameter(FILM_AGE_RESTRICTION));
-        System.out.println(request.getParameter(FILM_PRICE));
-        System.out.println(request.getParameter(FILM_DISCOUNT));
-        System.out.println(request.getParameter(FILM_CATEGORIES));
-
         String title = request.getParameter(FILM_TITLE);
         String author = request.getParameter(FILM_AUTHOR);
         String description = request.getParameter(FILM_DESCRIPTION);
@@ -95,10 +72,8 @@ public class AddFilm implements Command {
         Media media = loadFiles(request);
 
         List<Category> categories = new ArrayList<>();
-        List<Long> categoryNames = List.of(Long.valueOf(request.getParameter(FILM_CATEGORIES)));
-        for (Long cat: categoryNames){
-            System.out.println(cat);
-            categories.add(new Category(cat));
+        for (String cat: request.getParameterValues(FILM_CATEGORIES)){
+            categories.add(new Category(Long.parseLong(cat)));
         }
 
         return new Film(description, price, media, discount, author, ageRestriction, title, categories);
