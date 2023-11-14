@@ -15,12 +15,14 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 public class VideoController extends HttpServlet {
+    private static final String FILM_ID = "filmId";
+    private static final String TRAILER_ID = "trailerId";
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         Object userIdParam = session.getAttribute(SessionAttribute.ID);
-        String filmIdParam = request.getParameter("filmId");
-        String trailerIdParam = request.getParameter("trailerId");
+        String filmIdParam = request.getParameter(FILM_ID);
+        String trailerIdParam = request.getParameter(TRAILER_ID);
 
         String filePath;
         File file = null;
@@ -28,14 +30,14 @@ public class VideoController extends HttpServlet {
         if (trailerIdParam != null){
             // get filename from DB
             // get path from config
-            filePath = Config.VIDEO_DIRECTORY_PATH + "/trailer/1699956403234_Adolf Hitler Speech at Krupp Factory in Germany (1935) British Pathé.mp4";
+            filePath = Config.VIDEO_DIRECTORY_PATH + Config.TRAILER_DIR + "/1699956403234_Adolf Hitler Speech at Krupp Factory in Germany (1935) British Pathé.mp4";
             file = new File(filePath);
 
         } else if (filmIdParam != null && userIdParam != null){
             // check if user is owner
             // get film name
             // get path from config
-            filePath = Config.VIDEO_DIRECTORY_PATH + "/film/1699956403234_Adolf Hitler Speech at Krupp Factory in Germany (1935) British Pathé.mp4";
+            filePath = Config.VIDEO_DIRECTORY_PATH + Config.FILM_DIR + "/1699956403234_Adolf Hitler Speech at Krupp Factory in Germany (1935) British Pathé.mp4";
             file = new File(filePath);
 
         } else {

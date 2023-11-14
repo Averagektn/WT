@@ -31,10 +31,10 @@
     <label for="filmCategory">Категория:</label>
     <select id="filmCategory" name="filmCategory" multiple>
         <c:forEach var="category" items="${film.categories}">
-            <option value="${category}" selected>${category.name}</option>
+            <option value="${category.id}" selected>${category.name}</option>
         </c:forEach>
         <c:forEach var="category" items="${categories}">
-            <option value="${category}">${category.name}</option>
+            <option value="${category.id}">${category.name}</option>
         </c:forEach>
     </select><br>
 

@@ -9,6 +9,10 @@ public class Category {
         this.name = name;
     }
 
+    public Category(long id){
+        this(id, "");
+    }
+
     public Category(String name) {
         this(-1, name);
     }

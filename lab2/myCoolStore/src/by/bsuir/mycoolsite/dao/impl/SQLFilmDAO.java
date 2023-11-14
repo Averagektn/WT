@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SQLFilmDAO implements FilmDAO {
+    private static final String QUERY_INSERT_FILM =
+            "INSERT INTO film (flm_description, flm_price, flm_media, flm_discount, flm_author, flm_age, flm_name) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
     private static final String QUERY_GET_FILM_BY_ID =
             "SELECT flm_description, flm_price, flm_discount, flm_author, flm_age, flm_name " +
                     "FROM film " +

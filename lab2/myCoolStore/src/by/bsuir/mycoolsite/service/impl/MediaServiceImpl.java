@@ -9,7 +9,9 @@ import by.bsuir.mycoolsite.service.exception.ServiceException;
 
 public class MediaServiceImpl implements MediaService {
     @Override
-    public void addMedia(Media media) throws ServiceException {
+    public long addMedia(Media media) throws ServiceException {
+        long id;
+
         if (media.getFilmPath().isEmpty()) {
             throw new ServiceException("media filmpath is empty");
         }
@@ -21,9 +23,11 @@ public class MediaServiceImpl implements MediaService {
         MediaDAO mediaDAO = daoFactory.getMediaDAO();
 
         try {
-            mediaDAO.addMedia(media);
+            id = mediaDAO.addMedia(media);
         } catch (DAOException e) {
             throw new ServiceException("DAO: " + e);
         }
+
+        return id;
     }
 }

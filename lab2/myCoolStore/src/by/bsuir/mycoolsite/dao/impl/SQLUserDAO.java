@@ -165,7 +165,6 @@ public class SQLUserDAO implements UserDAO {
             ps.setNull(4, Types.NULL);
 
             int rowsAffected = ps.executeUpdate();
-
             if (rowsAffected <= 0) {
                 //LOG
                 System.out.println("0 rows affected. Insertion error");
