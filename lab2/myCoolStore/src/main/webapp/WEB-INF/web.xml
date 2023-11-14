@@ -14,11 +14,11 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 
+<!--
   <context-param>
     <param-name>filesPath</param-name>
     <param-value>C:/Archive/5 semester/WT/tomcat/webapps/files</param-value>
   </context-param>
-
 
   <servlet>
     <servlet-name>default</servlet-name>
@@ -34,10 +34,20 @@
     <servlet-name>default</servlet-name>
     <url-pattern>/files/*</url-pattern>
   </servlet-mapping>
+-->
 
   <session-config>
     <session-timeout>10</session-timeout>
   </session-config>
+
+  <servlet>
+    <servlet-name>Video</servlet-name>
+    <servlet-class>by.bsuir.mycoolsite.controller.VideoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Video</servlet-name>
+    <url-pattern>/VideoDisplay</url-pattern>
+  </servlet-mapping>
 
   <servlet>
     <servlet-name>Controller</servlet-name>
@@ -50,6 +60,7 @@
     <url-pattern>/Cart</url-pattern>
     <url-pattern>/Library</url-pattern>
     <url-pattern>/Admin/Film</url-pattern>
+    <url-pattern>/Video</url-pattern>
   </servlet-mapping>
   
   <servlet>
