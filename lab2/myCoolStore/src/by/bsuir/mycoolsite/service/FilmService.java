@@ -12,5 +12,5 @@ public interface FilmService {
 
     void addNewFilm(Film film) throws ServiceException;
 
-    void addEditedFilm(Film film) throws ServiceException;
+    void editFilm(Film film) throws ServiceException;
 }

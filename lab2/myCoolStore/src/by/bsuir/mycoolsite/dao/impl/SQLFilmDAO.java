@@ -177,6 +177,11 @@ public class SQLFilmDAO implements FilmDAO {
     }
 
     @Override
+    public void editFilm(Film film) throws DAOException {
+
+    }
+
+    @Override
     public void deleteFilm(long idFilm) throws DAOException {
 
     }
