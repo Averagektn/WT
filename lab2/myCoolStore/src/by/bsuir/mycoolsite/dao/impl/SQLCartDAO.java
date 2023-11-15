@@ -25,7 +25,7 @@ public class SQLCartDAO implements CartDAO {
     private static final String QUERY_ADD_FILM =
             "INSERT INTO cart (crt_film, crt_user) VALUES (?, ?)";
     private static final String QUERY_GET_CART_FILMS =
-            "SELECT flm_id, flm_description, flm_price, flm_media, flm_discount, flm_author, flm_age, flm_name " +
+            "SELECT flm_id, flm_description, flm_price, flm_discount, flm_author, flm_age, flm_name " +
                     "FROM film " +
                     "JOIN cart ON flm_id = crt_film " +
                     "WHERE crt_user = ?";
@@ -73,13 +73,13 @@ public class SQLCartDAO implements CartDAO {
                 long filmId = rs.getLong(1);
                 String description = rs.getString(2);
                 BigDecimal price = rs.getBigDecimal(3);
-                Media media = new Media(rs.getLong(4));
-                int discount = rs.getInt(5);
-                String author = rs.getString(6);
-                AgeRestriction age = AgeRestriction.getAgeRestrictionFromString(rs.getString(7));
-                String name = rs.getString(8);
+                int discount = rs.getInt(4);
+                String author = rs.getString(5);
+                AgeRestriction age = AgeRestriction.getAgeRestrictionFromString(rs.getString(6));
+                String name = rs.getString(7);
 
-                Film film = new Film(filmId, description, price, media, discount, author, age, name, new ArrayList<>());
+                Film film = new Film(filmId, description, price, new Media(filmId), discount, author, age, name,
+                        new ArrayList<>());
 
                 cartFilms.add(film);
             }

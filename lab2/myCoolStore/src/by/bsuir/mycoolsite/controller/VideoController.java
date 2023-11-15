@@ -2,12 +2,9 @@ package by.bsuir.mycoolsite.controller;
 
 import by.bsuir.mycoolsite.config.Config;
 import by.bsuir.mycoolsite.controller.page.PageName;
-import by.bsuir.mycoolsite.controller.session.SessionAttribute;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,29 +12,27 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 public class VideoController extends HttpServlet {
-    private static final String FILM_ID = "filmId";
-    private static final String TRAILER_ID = "trailerId";
+    private static final String FILM_NAME = "filmPath";
+    private static final String TRAILER_NAME = "trailerPath";
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-        Object userIdParam = session.getAttribute(SessionAttribute.ID);
-        String filmIdParam = request.getParameter(FILM_ID);
-        String trailerIdParam = request.getParameter(TRAILER_ID);
+            throws IOException {
+        String filmNameParam = request.getParameter(FILM_NAME);
+        String trailerNameParam = request.getParameter(TRAILER_NAME);
+        System.out.println("FILM: " + filmNameParam);
+        System.out.println("TRAILER: " + trailerNameParam);
 
         String filePath;
         File file = null;
 
-        if (trailerIdParam != null){
-            // get filename from DB
-            // get path from config
-            filePath = Config.VIDEO_DIRECTORY_PATH + Config.TRAILER_DIR + "/1699956403234_Adolf Hitler Speech at Krupp Factory in Germany (1935) British Pathé.mp4";
+        if (trailerNameParam != null){
+            filePath = Config.VIDEO_DIRECTORY_PATH + Config.TRAILER_DIR + File.separator + trailerNameParam;
+            System.out.println("TRAILER: " + filePath);
             file = new File(filePath);
 
-        } else if (filmIdParam != null && userIdParam != null){
-            // check if user is owner
-            // get film name
-            // get path from config
-            filePath = Config.VIDEO_DIRECTORY_PATH + Config.FILM_DIR + "/1699956403234_Adolf Hitler Speech at Krupp Factory in Germany (1935) British Pathé.mp4";
+        } else if (filmNameParam != null){
+
+            filePath = Config.VIDEO_DIRECTORY_PATH + Config.FILM_DIR + File.separator + filmNameParam;
+            System.out.println("FILM: " + filePath);
             file = new File(filePath);
 
         } else {
@@ -64,6 +59,6 @@ public class VideoController extends HttpServlet {
 
     // Add film saving
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+        doGet(request, response);
     }
 }

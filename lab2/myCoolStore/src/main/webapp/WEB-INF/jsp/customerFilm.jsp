@@ -20,7 +20,7 @@
 
 <c:if test="${not empty sessionScope.userID}">
     <form action="${pageContext.request.contextPath}/Controller" method="post">
-        <input type="submit"  value="Выйти"/>
+        <input type="submit" value="Выйти"/>
         <input type="hidden" name="command" value="sign_out"/>
     </form>
 </c:if>
@@ -58,28 +58,18 @@
 <c:forEach var="category" items="${film.categories}">
     ${category.name}
 </c:forEach><br>
-<%--            <video width="320" height="240" controls>
-                <source src="${film.media.trailerPath}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video><br>--%>
+
+<video width="320" height="240" controls>
+    <source src="${pageContext.request.contextPath}/VideoDisplay?trailerPath=${film.media.trailerPath}" type="video/mp4">
+</video><br>
+
 <p>${film.description}</p>
 
-<c:if test="${isPaid && not isBanned}">
-    <%--        <video width="320" height="240" controls>
-                <source src="${film.media.filmPath}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video><br>
-            "C:\Archive\5 semester\WT\tomcat\webapps\myCoolStore\film\turnip turns up.mp4"
-            --%>
+<c:if test="${(isPaid && not isBanned) || not empty sessionScope.isAdmin}">
+    <video width="320" height="240" controls>
+        <source src="${pageContext.request.contextPath}/VideoDisplay?filmPath=${film.media.filmPath}" type="video/mp4">
+    </video><br>
 </c:if>
-
-<video width="320" height="240" controls>
-    <source src="${pageContext.request.contextPath}/VideoDisplay?filmId=${film.id}" type="video/mp4">
-</video><br>
-<video width="320" height="240" controls>
-    <source src="${pageContext.request.contextPath}/VideoDisplay?trailerId=${film.id}" type="video/mp4">
-</video><br>
-
 
 <c:forEach var="feedback" items="${feedbacks}">
     ${feedback.author.email}<br>
