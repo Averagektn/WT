@@ -16,10 +16,16 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+/**
+ * Implementation of the Page interface for handling the library page.
+ */
 public class LibraryPage implements Page {
     private static final Logger logger = LogManager.getLogger(LibraryPage.class);
     private static final String FILMS = "films";
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String generate(HttpServletRequest request) throws PageException {
         String response;

@@ -17,6 +17,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
+/**
+ * Controller class that handles HTTP requests and responses.
+ */
 @MultipartConfig
 public class Controller extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(Controller.class);
@@ -25,6 +28,14 @@ public class Controller extends HttpServlet {
         super();
     }
 
+    /**
+     * Handles HTTP GET requests.
+     *
+     * @param request  The HttpServletRequest object.
+     * @param response The HttpServletResponse object.
+     * @throws ServletException If a servlet-specific error occurs.
+     * @throws IOException      If an I/O error occurs.
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String requestURI = request.getRequestURI();
@@ -47,11 +58,18 @@ public class Controller extends HttpServlet {
         if (dispatcher != null) {
             dispatcher.forward(request, response);
         } else {
-            logger.error("RequestDispatcher in NULL");
+            logger.error("RequestDispatcher is NULL");
             errorMessageDirectlyFromResponse(response);
         }
     }
 
+    /**
+     * Handles HTTP POST requests.
+     *
+     * @param request  The HttpServletRequest object.
+     * @param response The HttpServletResponse object.
+     * @throws IOException If an I/O error occurs.
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String commandName = request.getParameter(RequestParameterName.COMMAND_NAME);
         Command command = CommandProvider.getInstance().getCommand(commandName);
@@ -78,6 +96,12 @@ public class Controller extends HttpServlet {
         }
     }
 
+    /**
+     * Outputs an error message directly to the HttpServletResponse object.
+     *
+     * @param response The HttpServletResponse object.
+     * @throws IOException If an I/O error occurs.
+     */
     private void errorMessageDirectlyFromResponse(HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         response.getWriter().println("E R R O R");

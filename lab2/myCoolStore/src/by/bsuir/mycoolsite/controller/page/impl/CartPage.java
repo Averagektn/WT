@@ -17,11 +17,17 @@ import org.apache.logging.log4j.Logger;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * Implementation of the Page interface for handling the cart page.
+ */
 public class CartPage implements Page {
     private static final Logger logger = LogManager.getLogger(CartPage.class);
     private static final String FILMS = "films";
     private static final String TOTAL = "total";
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String generate(HttpServletRequest request) throws PageException {
         String response;

@@ -19,6 +19,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+/**
+ * Implementation of the Page interface for handling the film page.
+ */
 public class FilmPage implements Page {
     private static final Logger logger = LogManager.getLogger(FilmPage.class);
     private static final String FEEDBACKS = "feedbacks";
@@ -28,6 +31,9 @@ public class FilmPage implements Page {
     private static final String IS_BANNED = "isBanned";
     private static final String FILM_ID = "filmId";
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String generate(HttpServletRequest request) throws PageException {
         String response;

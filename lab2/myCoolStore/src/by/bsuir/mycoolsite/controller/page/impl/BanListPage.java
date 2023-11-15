@@ -13,6 +13,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+/**
+ * Implementation of the Page interface for the ban list page.
+ */
 public class BanListPage implements Page {
     private static final Logger logger = LogManager.getLogger(BanListPage.class);
     private static final String BANNED_USERS = "users";

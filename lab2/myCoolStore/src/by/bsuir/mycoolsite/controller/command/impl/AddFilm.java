@@ -23,6 +23,9 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of the {@code Command} interface for adding a new film.
+ */
 public class AddFilm implements Command {
     private static final Logger logger = LogManager.getLogger(AddFilm.class);
     private static final String FILM_TITLE = "filmTitle";
@@ -37,6 +40,13 @@ public class AddFilm implements Command {
     private static final String FILM_DIRECTORY = "film";
     private static final String TRAILER_DIRECTORY = "trailer";
 
+    /**
+     * Executes the command to add a new film.
+     *
+     * @param request The HTTP servlet request.
+     * @return The response URL after executing the command.
+     * @throws CommandException If there is an issue executing the command.
+     */
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         String response;
@@ -53,17 +63,22 @@ public class AddFilm implements Command {
         } catch (ServiceException e) {
             logger.error("Service exception", e);
             throw new CommandException("Service exception: ", e);
-        } catch (ServletException e) {
-            logger.error("Servlet exception in film adder", e);
-            throw new CommandException("Servlet exception in film adder: " + e);
-        } catch (IOException e) {
-            logger.error("IO exception in film adder" , e);
-            throw new CommandException("IO exception in film adder: " + e);
+        } catch (ServletException | IOException e) {
+            logger.error("Exception in film adder", e);
+            throw new CommandException("Exception in film adder: " + e.getMessage(), e);
         }
 
         return response;
     }
 
+    /**
+     * Extracts film information from the request.
+     *
+     * @param request The HTTP servlet request.
+     * @return The film object with extracted information.
+     * @throws ServletException If there is an issue with the servlet.
+     * @throws IOException      If there is an issue with input or output.
+     */
     private Film getFilm(HttpServletRequest request) throws ServletException, IOException {
         String title = request.getParameter(FILM_TITLE);
         String author = request.getParameter(FILM_AUTHOR);
@@ -80,6 +95,14 @@ public class AddFilm implements Command {
         return new Film(description, price, media, discount, author, ageRestriction, title, categories);
     }
 
+    /**
+     * Loads film and trailer files from the request.
+     *
+     * @param request The HTTP servlet request.
+     * @return The media object containing file information.
+     * @throws ServletException If there is an issue with the servlet.
+     * @throws IOException      If there is an issue with input or output.
+     */
     private Media loadFiles(HttpServletRequest request) throws ServletException, IOException {
         Part trailerPart = request.getPart(FILM_TRAILER);
         String trailerFileName = generateUniqueFileName(getFileName(trailerPart));
@@ -99,10 +122,22 @@ public class AddFilm implements Command {
         return new Media(trailerFileName, filmFileName);
     }
 
+    /**
+     * Generates a unique file name based on the current timestamp.
+     *
+     * @param fileName The original file name.
+     * @return The generated unique file name.
+     */
     private String generateUniqueFileName(String fileName) {
         return System.currentTimeMillis() + "_" + fileName;
     }
 
+    /**
+     * Gets the file name from the part's content disposition.
+     *
+     * @param part The Part object.
+     * @return The file name extracted from the part's content disposition.
+     */
     private String getFileName(final Part part) {
         String partHeader = part.getHeader("content-disposition");
 

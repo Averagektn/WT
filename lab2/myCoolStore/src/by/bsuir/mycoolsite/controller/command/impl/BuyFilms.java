@@ -16,9 +16,19 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+/**
+ * Implementation of the {@code Command} interface for buying films and adding them to the user's library.
+ */
 public class BuyFilms implements Command {
     private static final Logger logger = LogManager.getLogger(BuyFilms.class);
 
+    /**
+     * Executes the command to buy films and add them to the user's library.
+     *
+     * @param request The HTTP servlet request.
+     * @return The response URL after executing the command.
+     * @throws CommandException If there is an issue executing the command.
+     */
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         String response;

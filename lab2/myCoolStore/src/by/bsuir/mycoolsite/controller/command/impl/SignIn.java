@@ -13,11 +13,21 @@ import jakarta.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Implementation of the {@code Command} interface for user sign-in.
+ */
 public class SignIn implements Command {
     private static final Logger logger = LogManager.getLogger(SignIn.class);
     private static final String PARAM_EMAIL = "emailAuthorization";
     private static final String PARAM_PASSWORD = "passwordAuthorization";
 
+    /**
+     * Executes the command for user sign-in.
+     *
+     * @param request The HTTP servlet request.
+     * @return The response URL after executing the command.
+     * @throws CommandException If there is an issue executing the command.
+     */
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         String response;
@@ -49,3 +59,4 @@ public class SignIn implements Command {
         return response;
     }
 }
+

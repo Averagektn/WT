@@ -16,6 +16,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+/**
+ * Implementation of the Page interface for the admin film page.
+ */
 public class AdminFilmPage implements Page {
     private static final Logger logger = LogManager.getLogger(AdminFilmPage.class);
     private static final String FILM_ID = "filmId";

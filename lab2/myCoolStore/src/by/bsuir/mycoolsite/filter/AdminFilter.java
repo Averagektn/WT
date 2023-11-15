@@ -11,7 +11,22 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
+/**
+ * Filter class for restricting access to admin-only pages.
+ * Extends HttpFilter and redirects non-admin users to the main page if not authenticated as an admin.
+ */
 public class AdminFilter extends HttpFilter {
+
+    /**
+     * Filters incoming requests, allowing only admin users to proceed.
+     * If the user is not an admin, redirects to the main page.
+     *
+     * @param req   the HttpServletRequest object representing the incoming request
+     * @param res   the HttpServletResponse object representing the response
+     * @param chain the FilterChain object for invoking the next filter in the chain
+     * @throws IOException      if an I/O error occurs during the filter execution
+     * @throws ServletException if the filter encounters an exception during processing
+     */
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
             throws IOException, ServletException {

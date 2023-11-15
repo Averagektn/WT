@@ -12,10 +12,20 @@ import jakarta.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Implementation of the {@code Command} interface for removing a film from the user's cart.
+ */
 public class RemoveFromCart implements Command {
     private static final Logger logger = LogManager.getLogger(RemoveFromCart.class);
     private static final String FILM_ID = "filmID";
 
+    /**
+     * Executes the command to remove a film from the user's cart.
+     *
+     * @param request The HTTP servlet request.
+     * @return The response URL after executing the command.
+     * @throws CommandException If there is an issue executing the command.
+     */
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         String response;

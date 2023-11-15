@@ -15,12 +15,22 @@ import jakarta.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Implementation of the {@code Command} interface for adding feedback.
+ */
 public class AddFeedback implements Command {
     private static final Logger logger = LogManager.getLogger(AddFeedback.class);
     private static final String FILM_ID = "filmID";
     private static final String FILM_FEEDBACK = "filmFeedback";
     private static final String FILM_RATING = "rating";
 
+    /**
+     * Executes the command to add feedback.
+     *
+     * @param request The HTTP servlet request.
+     * @return The response URL after executing the command.
+     * @throws CommandException If there is an issue executing the command.
+     */
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         String response;

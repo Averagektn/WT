@@ -11,7 +11,22 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
+/**
+ * Filter class for restricting access to customer-only pages.
+ * Extends HttpFilter and redirects non-customer or admin users to the main page.
+ */
 public class CustomerFilter extends HttpFilter {
+
+    /**
+     * Filters incoming requests, allowing only customer users to proceed.
+     * Redirects non-customer or admin users to the main page.
+     *
+     * @param req   the HttpServletRequest object representing the incoming request
+     * @param res   the HttpServletResponse object representing the response
+     * @param chain the FilterChain object for invoking the next filter in the chain
+     * @throws IOException      if an I/O error occurs during the filter execution
+     * @throws ServletException if the filter encounters an exception during processing
+     */
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
             throws IOException, ServletException {

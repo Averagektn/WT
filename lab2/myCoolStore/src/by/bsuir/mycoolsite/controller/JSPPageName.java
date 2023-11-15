@@ -1,5 +1,8 @@
 package by.bsuir.mycoolsite.controller;
 
+/**
+ * Constants for common JSP page names.
+ */
 public class JSPPageName {
     public static final String PAGE_BAN = "/WEB-INF/jsp/ban.jsp";
     public static final String PAGE_LIBRARY = "/WEB-INF/jsp/library.jsp";

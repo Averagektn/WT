@@ -7,12 +7,18 @@ import org.apache.logging.log4j.Logger;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class responsible for providing instances of pages based on their names.
+ */
 public final class PageProvider {
     private static final Logger logger = LogManager.getLogger(PageProvider.class);
     private static final PageProvider instance = new PageProvider();
     private final Map<PageName, Page> repository = new HashMap<>();
 
-    public PageProvider() {
+    /**
+     * Private constructor to enforce singleton pattern.
+     */
+    private PageProvider() {
         repository.put(PageName.MAIN, new MainPage());
         repository.put(PageName.WRONG_REQUEST, new WrongRequestPage());
         repository.put(PageName.FILM, new FilmPage());
@@ -22,10 +28,21 @@ public final class PageProvider {
         repository.put(PageName.BAN_LIST, new BanListPage());
     }
 
+    /**
+     * Gets the instance of the PageProvider.
+     *
+     * @return PageProvider instance
+     */
     public static PageProvider getInstance() {
         return instance;
     }
 
+    /**
+     * Gets the instance of the page based on the provided mapping.
+     *
+     * @param mapping String representing the mapping or URI
+     * @return Page instance corresponding to the mapping, or WrongRequestPage if not found
+     */
     public Page getPage(String mapping) {
         PageName pageName;
         Page page;

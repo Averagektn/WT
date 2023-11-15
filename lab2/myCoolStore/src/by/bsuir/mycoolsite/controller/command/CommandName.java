@@ -1,5 +1,8 @@
 package by.bsuir.mycoolsite.controller.command;
 
+/**
+ * Enumeration of command names.
+ */
 public enum CommandName {
     SIGN_IN,
     REGISTER,

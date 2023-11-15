@@ -1,5 +1,8 @@
 package by.bsuir.mycoolsite.bean.enums;
 
+/**
+ * Contains age restrictions for films
+ */
 public enum AgeRestriction {
     EMPTY(""),
     ZERO("0+"),
@@ -15,11 +18,22 @@ public enum AgeRestriction {
         this.stringValue = stringValue;
     }
 
+    /**
+     * String converter
+     *
+     * @return String representation of AgeRestriction
+     */
     @Override
     public String toString() {
         return stringValue;
     }
 
+    /**
+     * Create enum element from String
+     *
+     * @param ageString String of AgeRestriction
+     * @return AgeRestriction element
+     */
     public static AgeRestriction getAgeRestrictionFromString(String ageString) {
         for (AgeRestriction ageRestriction : AgeRestriction.values()) {
             if (ageRestriction.toString().equals(ageString)) {
