@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
 <jsp:useBean id="films" scope="request" type="java.util.List"/>
+
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : 'en'}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="lang" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -11,31 +16,38 @@
 </head>
 <body>
 
+<form>
+    <select id="language" name="language" onchange="submit()">
+        <option value="en" ${language == 'en' ? 'selected' : ''}><fmt:message key="language.text.english" /></option>
+        <option value="ru" ${language == 'ru' ? 'selected' : ''}><fmt:message key="language.text.russian" /></option>
+    </select>
+</form>
+
 <c:choose>
     <c:when test="${empty sessionScope.userID}">
         <form action="Register" method="post">
-            <input type="submit" value="Регистрация"/>
+            <input type="submit" value="<fmt:message key="registration"/>"/>
             <input type="hidden" name="command" value="register"/>
         </form>
         <form action="Authorization" method="post">
-            <input type="submit" value="Авторизация"/>
+            <input type="submit" value="<fmt:message key="authorisation"/>"/>
             <input type="hidden" name="command" value="authorization"/>
         </form>
     </c:when>
     <c:otherwise>
         <form action="${pageContext.request.contextPath}/Controller" method="post">
-            <input type="submit" value="Выйти"/>
+            <input type="submit" value="<fmt:message key="exit"/>"/>
             <input type="hidden" name="command" value="sign_out"/>
         </form>
         <c:choose>
             <c:when test="${not empty sessionScope.isAdmin}">
-                <h1>ADMIN MODE</h1>
-                <a href="Admin/Film">Добавить фильм</a><br>
-                <a href="Admin/BanList">К списку заблокированных пользователей</a>
+                <h1><fmt:message key="admin_mode"/></h1>
+                <a href="Admin/Film"><fmt:message key="add_film"/></a><br>
+                <a href="Admin/BanList"><fmt:message key="to_ban_list"/></a>
             </c:when>
             <c:otherwise>
-                <a href="Library">Библиотека фильмов</a><br>
-                <a href="Cart">Корзина</a><br>
+                <a href="Library"><fmt:message key="library"/></a><br>
+                <a href="Cart"><fmt:message key="cart"/></a><br>
             </c:otherwise>
         </c:choose>
     </c:otherwise>
@@ -54,15 +66,15 @@
                 </c:otherwise>
             </c:choose>
 
-            Возрастные ограничения: ${film.ageRestriction.toString()}<br>
-            Автор: ${film.author}<br>
-            Категории:
+            <fmt:message key="age_restriction"/>: ${film.ageRestriction.toString()}<br>
+            <fmt:message key="author"/>: ${film.author}<br>
+            <fmt:message key="categories"/>:
             <c:forEach var="category" items="${film.categories}">
                 ${category.name}
             </c:forEach><br>
         </li>
         <c:if test="${not empty sessionScope.isAdmin}">
-            <a href="Admin/Film?filmId=${film.id}">Редактировать фильм</a><br>
+            <a href="Admin/Film?filmId=${film.id}"><fmt:message key="edit_film"/></a><br>
         </c:if>
     </c:forEach>
 </ul>

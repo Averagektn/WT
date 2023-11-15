@@ -13,7 +13,6 @@ public class WrongRequestPage implements Page {
      */
     @Override
     public String generate(HttpServletRequest request) throws PageException {
-        // Implementation can be added based on how you want to handle wrong requests
         return null;
     }
 }

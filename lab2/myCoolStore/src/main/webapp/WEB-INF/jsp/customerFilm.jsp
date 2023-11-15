@@ -1,11 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
 <jsp:useBean id="film" scope="request" type="by.bsuir.mycoolsite.bean.Film"/>
 <jsp:useBean id="feedbacks" scope="request" type="java.util.List"/>
 <jsp:useBean id="isPaid" scope="request" type="java.lang.Boolean"/>
 <jsp:useBean id="isBanned" scope="request" type="java.lang.Boolean"/>
 <jsp:useBean id="isFilmInCart" scope="request" type="java.lang.Boolean"/>
+
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : 'en'}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="lang" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -16,21 +21,21 @@
 <body>
 <h1>${film.name}</h1><br>
 
-<a href="${pageContext.request.contextPath}">На главную страницу</a><br>
+<a href="${pageContext.request.contextPath}"><fmt:message key="to_main_page"/></a><br>
 
 <c:if test="${not empty sessionScope.userID}">
     <form action="${pageContext.request.contextPath}/Controller" method="post">
-        <input type="submit" value="Выйти"/>
+        <input type="submit" value="<fmt:message key="exit"/>"/>
         <input type="hidden" name="command" value="sign_out"/>
     </form>
 </c:if>
 
 <c:if test="${not isBanned && empty sessionScope.isAdmin}">
-    <a href="Cart">В корзину</a><br>
+    <a href="Cart"><fmt:message key="cart"/></a><br>
 </c:if>
 
 <c:if test="${not isBanned && empty sessionScope.isAdmin}">
-    <a href="Library">В библиотеку</a><br>
+    <a href="Library"><fmt:message key="library"/></a><br>
 </c:if>
 
 <c:if test="${not isPaid}">
@@ -47,21 +52,20 @@
         <form action="${pageContext.request.contextPath}/Controller" method="post">
             <input type="hidden" name="filmID" value="${film.id}">
             <input type="hidden" name="command" value="add_to_cart"/>
-            <input type="submit" value="Добавить в корзину">
+            <input type="submit" value="<fmt:message key="add_to_cart"/>">
         </form>
     </c:if>
 </c:if>
 
-Возрастные ограничения: ${film.ageRestriction.toString()}<br>
-Автор: ${film.author}<br>
-Категории:
+<fmt:message key="age_restriction"/>: ${film.ageRestriction.toString()}<br>
+<fmt:message key="author"/>: ${film.author}<br>
+<fmt:message key="categories"/>:
 <c:forEach var="category" items="${film.categories}">
     ${category.name}
 </c:forEach><br>
 
 <video width="320" height="240" controls>
-    <source src="${pageContext.request.contextPath}/VideoDisplay?trailerPath=${film.media.trailerPath}"
-            type="video/mp4">
+    <source src="${pageContext.request.contextPath}/VideoDisplay?trailerPath=${film.media.trailerPath}" type="video/mp4">
 </video>
 <br>
 
@@ -82,7 +86,7 @@
             <input type="hidden" name="filmId" value="${film.id}">
             <input type="hidden" name="command" value="ban"/>
 
-            <input type="submit" value="Забанить"/>
+            <input type="submit" value="<fmt:message key="ban"/>"/>
         </form>
     </c:if>
     ${feedback.rating}<br>
@@ -91,16 +95,16 @@
 
 <c:if test="${not isBanned && empty sessionScope.isAdmin && isPaid}">
     <form action="${pageContext.request.contextPath}/Controller" method="post">
-        <label for="filmFeedback">Отзыв:</label>
+        <label for="filmFeedback"><fmt:message key="feedback"/>:</label>
         <textarea id="filmFeedback" name="filmFeedback" maxlength="5000"></textarea>
 
-        <label for="rating">Оценка:</label>
+        <label for="rating"><fmt:message key="mark"/>:</label>
         <input type="number" min="0" max="10" id="rating" name="rating"><br>
 
         <input type="hidden" name="filmID" value="${film.id}">
         <input type="hidden" name="command" value="add_feedback"/>
 
-        <input type="submit" value="Оставить отзыв">
+        <input type="submit" value="<fmt:message key="leave_feedback"/>">
     </form>
 </c:if>
 
