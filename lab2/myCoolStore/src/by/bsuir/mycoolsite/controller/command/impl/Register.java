@@ -11,20 +11,22 @@ import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Register implements Command {
-
+    private static final Logger logger = LogManager.getLogger(Register.class);
     private static final String PARAM_EMAIL = "emailRegister";
     private static final String PARAM_PASSWORD = "passwordRegister";
 
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
-        String email;
-        String password;
         String response;
 
-        email = request.getParameter(PARAM_EMAIL);
-        password = request.getParameter(PARAM_PASSWORD);
+        HttpSession session = request.getSession(true);
+
+        String email = request.getParameter(PARAM_EMAIL);
+        String password = request.getParameter(PARAM_PASSWORD);
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         UserService userService = serviceFactory.getUserService();
@@ -33,13 +35,11 @@ public class Register implements Command {
         try {
             long id = userService.registration(user);
 
-            HttpSession session = request.getSession(true);
             session.setAttribute(SessionAttribute.ID, id);
 
             response = PageName.MAIN.getUrlPattern();
         } catch (ServiceException e) {
-            //LOG
-            System.out.println("Service exception: " + e);
+            logger.error("Service exception: ", e);
             throw new CommandException("Service exception: ", e);
         }
 

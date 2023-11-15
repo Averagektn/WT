@@ -9,7 +9,7 @@ public class Category {
         this.name = name;
     }
 
-    public Category(long id){
+    public Category(long id) {
         this(id, "");
     }
 

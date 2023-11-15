@@ -17,7 +17,8 @@ public class Film {
     private String author;
     private AgeRestriction ageRestriction;
     private String name;
-    public Film(long id){
+
+    public Film(long id) {
         this.id = id;
         this.description = "";
         this.price = BigDecimal.ZERO;
@@ -55,7 +56,6 @@ public class Film {
 
         return result;
     }
-
 
     public String getName() {
         return name;

@@ -14,13 +14,17 @@ import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.Part;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AddFilm implements Command {
+    private static final Logger logger = LogManager.getLogger(AddFilm.class);
     private static final String FILM_TITLE = "filmTitle";
     private static final String FILM_AUTHOR = "filmAuthor";
     private static final String FILM_CATEGORIES = "filmCategory";
@@ -47,12 +51,13 @@ public class AddFilm implements Command {
 
             response = PageName.ADD_FILM.getUrlPattern();
         } catch (ServiceException e) {
-            //LOG
-            System.out.println("Service exception: " + e);
+            logger.error("Service exception", e);
             throw new CommandException("Service exception: ", e);
         } catch (ServletException e) {
+            logger.error("Servlet exception in film adder", e);
             throw new CommandException("Servlet exception in film adder: " + e);
         } catch (IOException e) {
+            logger.error("IO exception in film adder" , e);
             throw new CommandException("IO exception in film adder: " + e);
         }
 
@@ -66,11 +71,9 @@ public class AddFilm implements Command {
         AgeRestriction ageRestriction = AgeRestriction.getAgeRestrictionFromString(request.getParameter(FILM_AGE_RESTRICTION));
         BigDecimal price = new BigDecimal(request.getParameter(FILM_PRICE));
         int discount = Integer.parseInt(request.getParameter(FILM_DISCOUNT));
-
         Media media = loadFiles(request);
-
         List<Category> categories = new ArrayList<>();
-        for (String cat: request.getParameterValues(FILM_CATEGORIES)){
+        for (String cat : request.getParameterValues(FILM_CATEGORIES)) {
             categories.add(new Category(Long.parseLong(cat)));
         }
 
@@ -80,15 +83,18 @@ public class AddFilm implements Command {
     private Media loadFiles(HttpServletRequest request) throws ServletException, IOException {
         Part trailerPart = request.getPart(FILM_TRAILER);
         String trailerFileName = generateUniqueFileName(getFileName(trailerPart));
-        String trailerFilePath = Config.VIDEO_DIRECTORY_PATH + "/" + TRAILER_DIRECTORY + "/" + trailerFileName;
-        System.out.println("trailer path: " + trailerFilePath);
+        String trailerFilePath = Config.VIDEO_DIRECTORY_PATH + File.separator + TRAILER_DIRECTORY + File.separator +
+                trailerFileName;
         trailerPart.write(trailerFilePath);
 
         Part filmPart = request.getPart(FILM_FILE);
         String filmFileName = generateUniqueFileName(getFileName(filmPart));
-        String filmFilePath = Config.VIDEO_DIRECTORY_PATH + "/" + FILM_DIRECTORY + "/" + filmFileName;
-        System.out.println("film path: " + filmFilePath);
+        String filmFilePath = Config.VIDEO_DIRECTORY_PATH + File.separator + FILM_DIRECTORY + File.separator +
+                filmFileName;
         filmPart.write(filmFilePath);
+
+        logger.info("Adding film " + filmFileName);
+        logger.info("Adding trailer " + trailerFileName);
 
         return new Media(trailerFileName, filmFileName);
     }
@@ -98,7 +104,7 @@ public class AddFilm implements Command {
     }
 
     private String getFileName(final Part part) {
-        final String partHeader = part.getHeader("content-disposition");
+        String partHeader = part.getHeader("content-disposition");
 
         for (String content : partHeader.split(";")) {
             if (content.trim().startsWith("filename")) {

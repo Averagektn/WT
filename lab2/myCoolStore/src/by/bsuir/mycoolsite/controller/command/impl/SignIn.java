@@ -1,7 +1,6 @@
 package by.bsuir.mycoolsite.controller.command.impl;
 
 import by.bsuir.mycoolsite.bean.User;
-import by.bsuir.mycoolsite.controller.JSPPageName;
 import by.bsuir.mycoolsite.controller.command.Command;
 import by.bsuir.mycoolsite.controller.command.exception.CommandException;
 import by.bsuir.mycoolsite.controller.page.PageName;
@@ -11,23 +10,24 @@ import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SignIn implements Command {
-
+    private static final Logger logger = LogManager.getLogger(SignIn.class);
     private static final String PARAM_EMAIL = "emailAuthorization";
     private static final String PARAM_PASSWORD = "passwordAuthorization";
 
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
-        String email;
-        String password;
         String response;
 
-        email = request.getParameter(PARAM_EMAIL);
-        password = request.getParameter(PARAM_PASSWORD);
+        HttpSession session = request.getSession(true);
 
-        //LOG
-        System.out.println("Authorization of " + email);
+        String email = request.getParameter(PARAM_EMAIL);
+        String password = request.getParameter(PARAM_PASSWORD);
+
+        logger.info("Authorisation of " + email);
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         UserService clientService = serviceFactory.getUserService();
@@ -35,17 +35,15 @@ public class SignIn implements Command {
         try {
             User user = clientService.signIn(email, password);
 
-            response = PageName.MAIN.getUrlPattern();
-            HttpSession session = request.getSession(true);
             session.setAttribute(SessionAttribute.ID, user.getId());
-
             if (user.isAdmin()) {
                 session.setAttribute(SessionAttribute.IS_ADMIN, true);
             }
+
+            response = PageName.MAIN.getUrlPattern();
         } catch (ServiceException e) {
-            //LOG
-            System.out.println("Authorization error " + e);
-            response = JSPPageName.PAGE_ERROR;
+            logger.error("Service exception: ", e);
+            throw new CommandException("Service exception", e);
         }
 
         return response;

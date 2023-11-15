@@ -12,12 +12,15 @@ import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
 @MultipartConfig
 public class Controller extends HttpServlet {
-    public static final String REAL_PATH = "resourcesPath";
+    private static final Logger logger = LogManager.getLogger(Controller.class);
+
     public Controller() {
         super();
     }
@@ -25,22 +28,18 @@ public class Controller extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String requestURI = request.getRequestURI();
-        System.out.println(requestURI);
         Page pageContent = PageProvider.getInstance().getPage(requestURI);
         String page;
 
-        // LOG
-        System.out.println("URI " + requestURI + " received");
+        logger.info("URI " + requestURI + " received");
 
         try {
             page = pageContent.generate(request);
         } catch (PageException e) {
-            //LOG
-            System.out.println("Page exception in Controller " + e);
+            logger.error("Page exception in Controller", e);
             page = JSPPageName.PAGE_ERROR;
         } catch (Exception e) {
-            //LOG
-            System.out.println("Exception in Controller " + e);
+            logger.error("Exception in Controller", e);
             page = JSPPageName.PAGE_ERROR;
         }
 
@@ -48,8 +47,7 @@ public class Controller extends HttpServlet {
         if (dispatcher != null) {
             dispatcher.forward(request, response);
         } else {
-            //LOG
-            System.out.println("RequestDispatcher is NULL");
+            logger.error("RequestDispatcher in NULL");
             errorMessageDirectlyFromResponse(response);
         }
     }
@@ -59,8 +57,7 @@ public class Controller extends HttpServlet {
         Command command = CommandProvider.getInstance().getCommand(commandName);
         String page;
 
-        // LOG
-        System.out.println("Command " + commandName + " received");
+        logger.info("Command " + commandName + " received");
 
         try {
             page = command.execute(request);
@@ -75,9 +72,9 @@ public class Controller extends HttpServlet {
             page = JSPPageName.PAGE_ERROR;
         }
 
-        try{
+        try {
             response.sendRedirect(page);
-        } catch (IOException e){
+        } catch (IOException e) {
             //LOG
             System.out.println("Send redirect exception: " + e);
             errorMessageDirectlyFromResponse(response);

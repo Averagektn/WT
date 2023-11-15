@@ -11,19 +11,23 @@ import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
 public class LibraryPage implements Page {
+    private static final Logger logger = LogManager.getLogger(LibraryPage.class);
     private static final String FILMS = "films";
 
     @Override
     public String generate(HttpServletRequest request) throws PageException {
         String response;
 
+        HttpSession session = request.getSession(false);
+
         List<Film> films;
 
-        HttpSession session = request.getSession(false);
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         LibraryService libraryService = serviceFactory.getLibraryService();
         UserService userService = serviceFactory.getUserService();
@@ -41,8 +45,7 @@ public class LibraryPage implements Page {
 
             response = JSPPageName.PAGE_LIBRARY;
         } catch (ServiceException e) {
-            //LOG
-            System.out.println("Page exception: " + e);
+            logger.error("Service exception: ", e);
             throw new PageException("Service exception: ", e);
         }
 

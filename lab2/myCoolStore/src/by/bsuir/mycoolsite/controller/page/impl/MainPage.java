@@ -8,19 +8,23 @@ import by.bsuir.mycoolsite.service.FilmService;
 import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.http.HttpServletRequest;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
 public class MainPage implements Page {
+    private static final Logger logger = LogManager.getLogger(MainPage.class);
     private static final String FILMS = "films";
 
     @Override
     public String generate(HttpServletRequest request) throws PageException {
         String response;
 
+        List<Film> films;
+
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         FilmService filmService = serviceFactory.getFilmService();
-        List<Film> films;
 
         try {
             films = filmService.getFilms();
@@ -29,8 +33,7 @@ public class MainPage implements Page {
 
             response = JSPPageName.PAGE_MAIN;
         } catch (ServiceException e) {
-            //LOG
-            System.out.println("Page exception: " + e);
+            logger.error("Service exception: ", e);
             throw new PageException("Service exception: ", e);
         }
 

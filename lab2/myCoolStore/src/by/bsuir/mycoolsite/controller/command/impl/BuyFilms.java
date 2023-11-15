@@ -11,10 +11,14 @@ import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
 public class BuyFilms implements Command {
+    private static final Logger logger = LogManager.getLogger(BuyFilms.class);
+
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         String response;
@@ -29,15 +33,16 @@ public class BuyFilms implements Command {
 
         try {
             List<Film> films = cartService.getCart(userId);
-            cartService.clear(userId);
 
-            for (Film film: films){
+            cartService.clear(userId);
+            for (Film film : films) {
                 libraryService.addFilm(userId, film.getId());
             }
 
             response = PageName.MAIN.getUrlPattern();
         } catch (ServiceException e) {
-            throw new RuntimeException(e);
+            logger.error("Service exception", e);
+            throw new CommandException("Service exception", e);
         }
 
         return response;

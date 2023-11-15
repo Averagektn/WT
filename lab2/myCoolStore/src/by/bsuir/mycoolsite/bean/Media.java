@@ -4,7 +4,8 @@ public class Media {
     private long id;
     private String trailerPath;
     private String filmPath;
-    public Media(long id){
+
+    public Media(long id) {
         this(id, "", "");
     }
 

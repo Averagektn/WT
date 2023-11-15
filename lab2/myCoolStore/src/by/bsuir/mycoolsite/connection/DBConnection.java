@@ -2,10 +2,13 @@ package by.bsuir.mycoolsite.connection;
 
 import by.bsuir.mycoolsite.config.Config;
 import by.bsuir.mycoolsite.connection.exception.DBConnectionException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 
 public class DBConnection {
+    private static final Logger logger = LogManager.getLogger(DBConnection.class);
     private static DBConnection instance;
     private final Connection connection;
 
@@ -14,10 +17,10 @@ public class DBConnection {
             Class.forName(Config.DBConnectionClassname);
             connection = DriverManager.getConnection(Config.DBConnectionURL, Config.DBUser, Config.DBPassword);
         } catch (ClassNotFoundException e) {
-            System.out.println("ClassNotFound exception in DBConnection");
+            logger.error("ClassNotFound exception in DBConnection: class name: " + Config.DBConnectionClassname, e);
             throw new DBConnectionException("Class not found");
         } catch (SQLException e) {
-            System.out.println("SQL Exception in DBConnection: " + e.toString());
+            logger.error("SQL Exception in DBConnection", e);
             throw new DBConnectionException("SQL error");
         }
     }
@@ -27,10 +30,11 @@ public class DBConnection {
             try {
                 instance = new DBConnection();
             } catch (DBConnectionException e) {
-                //LOG
+                logger.error("DBConnectionException while creating new connection", e);
                 throw new RuntimeException("Failed to create DBConnection instance", e);
             }
         }
+
         return instance;
     }
 
@@ -44,7 +48,7 @@ public class DBConnection {
                 connection.close();
             }
         } catch (SQLException e) {
-            //LOG
+            logger.error("Connection closing exception", e);
             throw new RuntimeException("Connection closing exception", e);
         }
     }
@@ -54,11 +58,12 @@ public class DBConnection {
             if (ps != null) {
                 ps.close();
             }
+
             if (rs != null) {
                 rs.close();
             }
         } catch (SQLException e) {
-            //LOG
+            logger.error("Connection closing exception", e);
             throw new RuntimeException("Connection closing exception", e);
         }
     }

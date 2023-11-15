@@ -14,25 +14,30 @@ import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
 public class FilmPage implements Page {
-
+    private static final Logger logger = LogManager.getLogger(FilmPage.class);
     private static final String FEEDBACKS = "feedbacks";
     private static final String FILM = "film";
     private static final String IS_FILM_PAID = "isPaid";
     private static final String IS_FILM_IN_CART = "isFilmInCart";
     private static final String IS_BANNED = "isBanned";
     private static final String FILM_ID = "filmId";
+
     @Override
     public String generate(HttpServletRequest request) throws PageException {
         String response;
+
+        HttpSession session = request.getSession(false);
+
         boolean isFilmOwner, isBanned, isFilmInCart;
         Film film;
         List<Feedback> feedbacks;
 
-        HttpSession session = request.getSession(false);
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         FilmService filmService = serviceFactory.getFilmService();
         FeedbackService feedbackService = serviceFactory.getFeedbackService();
@@ -41,14 +46,13 @@ public class FilmPage implements Page {
 
         try {
             long filmId = Long.parseLong(request.getParameter(FILM_ID));
-
             feedbacks = feedbackService.getFilmFeedbacks(filmId);
             film = filmService.getFilmById(filmId);
             request.setAttribute(FILM, film);
             request.setAttribute(FEEDBACKS, feedbacks);
 
-            if (session != null && session.getAttribute(SessionAttribute.ID) != null){
-                long userId = (long)session.getAttribute(SessionAttribute.ID);
+            if (session != null && session.getAttribute(SessionAttribute.ID) != null) {
+                long userId = (long) session.getAttribute(SessionAttribute.ID);
 
                 isFilmOwner = userService.isFilmOwner(userId, filmId);
                 isBanned = userService.isBanned(userId);
@@ -65,8 +69,7 @@ public class FilmPage implements Page {
 
             response = JSPPageName.PAGE_FILM;
         } catch (ServiceException e) {
-            //LOG
-            System.out.println("Page exception: " + e);
+            logger.error("Service exception: ", e);
             throw new PageException("Service exception: ", e);
         }
 

@@ -6,6 +6,8 @@ import by.bsuir.mycoolsite.bean.enums.AgeRestriction;
 import by.bsuir.mycoolsite.connection.DBConnection;
 import by.bsuir.mycoolsite.dao.CartDAO;
 import by.bsuir.mycoolsite.dao.exception.DAOException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SQLCartDAO implements CartDAO {
+    private static final Logger logger = LogManager.getLogger(SQLCartDAO.class);
     private static final String QUERY_GET_FILM =
             "SELECT crt_film FROM cart WHERE crt_user = ? AND crt_film = ?";
     private static final String QUERY_CLEAR_CART =
@@ -29,13 +32,14 @@ public class SQLCartDAO implements CartDAO {
                     "FROM film " +
                     "JOIN cart ON flm_id = crt_film " +
                     "WHERE crt_user = ?";
+
     @Override
     public void addFilm(long filmId, long userId) throws DAOException {
         DBConnection dbConnection = DBConnection.getInstance();
         Connection con;
         PreparedStatement ps = null;
 
-        try{
+        try {
             con = dbConnection.getConnection();
 
             ps = con.prepareStatement(QUERY_ADD_FILM);
@@ -62,14 +66,14 @@ public class SQLCartDAO implements CartDAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        try{
+        try {
             con = dbConnection.getConnection();
 
             ps = con.prepareStatement(QUERY_GET_CART_FILMS);
             ps.setLong(1, userId);
             rs = ps.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 long filmId = rs.getLong(1);
                 String description = rs.getString(2);
                 BigDecimal price = rs.getBigDecimal(3);
@@ -101,7 +105,7 @@ public class SQLCartDAO implements CartDAO {
         Connection con;
         PreparedStatement ps = null;
 
-        try{
+        try {
             con = dbConnection.getConnection();
 
             ps = con.prepareStatement(QUERY_REMOVE_FILM);
@@ -109,7 +113,7 @@ public class SQLCartDAO implements CartDAO {
             ps.setLong(2, userId);
 
             int rowsAffected = ps.executeUpdate();
-            if (rowsAffected == 0){
+            if (rowsAffected == 0) {
                 //LOG
                 System.out.println("Deleting from cart DAO error");
                 throw new DAOException("Deleting from cart DAO error");
@@ -129,7 +133,7 @@ public class SQLCartDAO implements CartDAO {
         Connection con = dbConnection.getConnection();
         PreparedStatement ps = null;
 
-        try{
+        try {
             ps = con.prepareStatement(QUERY_CLEAR_CART);
             ps.setLong(1, userId);
 
@@ -152,14 +156,14 @@ public class SQLCartDAO implements CartDAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        try{
+        try {
             ps = con.prepareStatement(QUERY_GET_FILM);
             ps.setLong(1, userId);
             ps.setLong(2, filmId);
 
             rs = ps.executeQuery();
 
-            if (rs.next()){
+            if (rs.next()) {
                 contains = true;
             }
         } catch (SQLException e) {

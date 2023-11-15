@@ -7,9 +7,13 @@ import by.bsuir.mycoolsite.service.UserService;
 import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.http.HttpServletRequest;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Unban implements Command {
+    private static final Logger logger = LogManager.getLogger(Unban.class);
     private static final String USER_ID = "userId";
+
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         String response;
@@ -24,8 +28,7 @@ public class Unban implements Command {
 
             response = PageName.BAN_LIST.getUrlPattern();
         } catch (ServiceException e) {
-            //LOG
-            System.out.println("Service exception: " + e);
+            logger.error("Service exception: ", e);
             throw new CommandException("Service exception: ", e);
         }
 

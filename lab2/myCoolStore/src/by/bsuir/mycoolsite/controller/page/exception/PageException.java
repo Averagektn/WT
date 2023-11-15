@@ -5,6 +5,7 @@ import by.bsuir.mycoolsite.exception.ProjectException;
 import java.io.Serial;
 
 public class PageException extends ProjectException {
+
     @Serial
     private static final long serialVersionUID = 1L;
 

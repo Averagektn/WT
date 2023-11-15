@@ -12,6 +12,8 @@ import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EditFilm implements Command {
+    private static final Logger logger = LogManager.getLogger(EditFilm.class);
     private static final String FILM_ID = "filmId";
     private static final String FILM_TITLE = "filmTitle";
     private static final String FILM_AUTHOR = "filmAuthor";
@@ -42,13 +45,14 @@ public class EditFilm implements Command {
 
             response = PageName.MAIN.getUrlPattern();
         } catch (ServiceException e) {
-            //LOG
-            System.out.println("Service exception: " + e);
+            logger.error("Service exception", e);
             throw new CommandException("Service exception: ", e);
         } catch (ServletException e) {
-            throw new CommandException("Servlet exception in film adder: " + e);
+            logger.error("Servlet exception in film editor", e);
+            throw new CommandException("Servlet exception in film editor: " + e);
         } catch (IOException e) {
-            throw new CommandException("IO exception in film adder: " + e);
+            logger.error("IO exception in film editor", e);
+            throw new CommandException("IO exception in film editor: " + e);
         }
 
         return response;
@@ -62,9 +66,8 @@ public class EditFilm implements Command {
         AgeRestriction ageRestriction = AgeRestriction.getAgeRestrictionFromString(request.getParameter(FILM_AGE_RESTRICTION));
         BigDecimal price = new BigDecimal(request.getParameter(FILM_PRICE));
         int discount = Integer.parseInt(request.getParameter(FILM_DISCOUNT));
-
         List<Category> categories = new ArrayList<>();
-        for (String cat: request.getParameterValues(FILM_CATEGORIES)){
+        for (String cat : request.getParameterValues(FILM_CATEGORIES)) {
             categories.add(new Category(Long.parseLong(cat)));
         }
 

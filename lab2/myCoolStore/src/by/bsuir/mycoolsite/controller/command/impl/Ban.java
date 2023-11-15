@@ -10,15 +10,20 @@ import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Ban implements Command {
+    private static final Logger logger = LogManager.getLogger(Ban.class);
     private static final String USER_ID = "authorId";
     private static final String FILM_ID = "filmId";
+
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         String response;
 
         HttpSession session = request.getSession(false);
+
         long userId = Long.parseLong(request.getParameter(USER_ID));
         long filmId = Long.parseLong(request.getParameter(FILM_ID));
         long adminId = (long) session.getAttribute(SessionAttribute.ID);
@@ -29,12 +34,12 @@ public class Ban implements Command {
 
         try {
             userService.ban(userId, adminId);
+
             feedbackService.deleteUserFeedbacks(userId);
 
             response = PageName.FILM.getUrlPattern() + "?filmId=" + filmId;
         } catch (ServiceException e) {
-            //LOG
-            System.out.println("Service exception: " + e);
+            logger.error("Service exception", e);
             throw new CommandException("Service exception: ", e);
         }
 

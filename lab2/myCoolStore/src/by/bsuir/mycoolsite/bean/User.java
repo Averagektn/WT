@@ -12,9 +12,10 @@ public class User {
     private String password;
     private Role role;
     private long bannedBy;
+
     public static final int NOT_BANNED = -1;
 
-    public User(long id){
+    public User(long id) {
         this(id, "", "", Role.CUSTOMER, 0);
     }
 
@@ -34,7 +35,7 @@ public class User {
         this(-1, email, password, Role.CUSTOMER, NOT_BANNED);
     }
 
-    public boolean isAdmin(){
+    public boolean isAdmin() {
         return role == Role.ADMIN;
     }
 
@@ -106,5 +107,4 @@ public class User {
     public void setId(long id) {
         this.id = id;
     }
-
 }

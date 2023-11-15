@@ -11,15 +11,21 @@ import by.bsuir.mycoolsite.service.FilmService;
 import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.http.HttpServletRequest;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
 public class AdminFilmPage implements Page {
+    private static final Logger logger = LogManager.getLogger(AdminFilmPage.class);
     private static final String FILM_ID = "filmId";
     private static final String CATEGORIES = "categories";
     private static final String AGE_RESTRICTIONS = "ageRestrictions";
     private static final String FILM = "film";
     private static final String COMMAND = "command";
+    private static final String COMMAND_EDIT = "edit_film";
+    private static final String COMMAND_ADD = "add_film";
+
     @Override
     public String generate(HttpServletRequest request) throws PageException {
         String response;
@@ -38,15 +44,15 @@ public class AdminFilmPage implements Page {
             ageRestrictions = ageRestrictionService.getAgeRestrictions();
             categories = categoryService.getCategories();
 
-            if (isEditFilm){
+            if (isEditFilm) {
                 long filmId = Long.parseLong(request.getParameter(FILM_ID));
                 film = filmService.getFilmById(filmId);
                 ageRestrictions.remove(film.getAgeRestriction().toString());
                 categories.removeIf(c1 -> film.getCategories().stream().anyMatch(c2 -> c2.getName().equals(c1.getName())));
-                request.setAttribute(COMMAND, "edit_film");
+                request.setAttribute(COMMAND, COMMAND_EDIT);
             } else {
                 film = new Film(0);
-                request.setAttribute(COMMAND, "add_film");
+                request.setAttribute(COMMAND, COMMAND_ADD);
             }
 
             request.setAttribute(FILM, film);
@@ -55,8 +61,7 @@ public class AdminFilmPage implements Page {
 
             response = JSPPageName.PAGE_ADMIN_FILM;
         } catch (ServiceException e) {
-            //LOG
-            System.out.println("Page exception: " + e);
+            logger.error("Service exception: ", e);
             throw new PageException("Service exception: ", e);
         }
 

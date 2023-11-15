@@ -8,11 +8,15 @@ import by.bsuir.mycoolsite.service.UserService;
 import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.http.HttpServletRequest;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
 public class BanListPage implements Page {
+    private static final Logger logger = LogManager.getLogger(BanListPage.class);
     private static final String BANNED_USERS = "users";
+
     @Override
     public String generate(HttpServletRequest request) throws PageException {
         String response;
@@ -29,8 +33,7 @@ public class BanListPage implements Page {
 
             response = JSPPageName.PAGE_BAN_LIST;
         } catch (ServiceException e) {
-            //LOG
-            System.out.println("Page exception: " + e);
+            logger.error("Service exception: ", e);
             throw new PageException("Service exception: ", e);
         }
 

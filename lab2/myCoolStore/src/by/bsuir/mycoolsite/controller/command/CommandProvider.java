@@ -1,11 +1,14 @@
 package by.bsuir.mycoolsite.controller.command;
 
 import by.bsuir.mycoolsite.controller.command.impl.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public final class CommandProvider {
+    private static final Logger logger = LogManager.getLogger(CommandProvider.class);
     private static final CommandProvider instance = new CommandProvider();
     private final Map<CommandName, Command> repository = new HashMap<>();
 
@@ -22,10 +25,9 @@ public final class CommandProvider {
         repository.put(CommandName.BAN, new Ban());
         repository.put(CommandName.UNBAN, new Unban());
         repository.put(CommandName.EDIT_FILM, new EditFilm());
-        //...
     }
 
-    public static CommandProvider getInstance(){
+    public static CommandProvider getInstance() {
         return instance;
     }
 
@@ -37,8 +39,7 @@ public final class CommandProvider {
             commandName = CommandName.valueOf(name.toUpperCase());
             command = repository.get(commandName);
         } catch (IllegalArgumentException | NullPointerException e) {
-            //LOG
-            System.out.println("Command provider didn't find command: " + name);
+            logger.error("Command provider didn't find command: " + name, e);
             command = repository.get(CommandName.WRONG_REQUEST);
         }
 

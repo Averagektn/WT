@@ -12,8 +12,11 @@ import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class AddFeedback implements Command {
+    private static final Logger logger = LogManager.getLogger(AddFeedback.class);
     private static final String FILM_ID = "filmID";
     private static final String FILM_FEEDBACK = "filmFeedback";
     private static final String FILM_RATING = "rating";
@@ -21,12 +24,13 @@ public class AddFeedback implements Command {
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         String response;
+
         HttpSession session = request.getSession(false);
 
         long filmId = Long.parseLong(request.getParameter(FILM_ID));
-        String text = request.getParameter(FILM_FEEDBACK);
         long author = (long) session.getAttribute(SessionAttribute.ID);
         int rating = Integer.parseInt(request.getParameter(FILM_RATING));
+        String text = request.getParameter(FILM_FEEDBACK);
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         FeedbackService feedbackService = serviceFactory.getFeedbackService();
@@ -37,8 +41,7 @@ public class AddFeedback implements Command {
 
             response = PageName.FILM.getUrlPattern() + "?filmId=" + filmId;
         } catch (ServiceException e) {
-            //LOG
-            System.out.println("Service exception: " + e);
+            logger.error("Service exception", e);
             throw new CommandException("Service exception: ", e);
         }
 
