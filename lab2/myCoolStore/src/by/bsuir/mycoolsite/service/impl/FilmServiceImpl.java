@@ -88,6 +88,10 @@ public class FilmServiceImpl implements FilmService {
             throw new ServiceException("");
         }
 
+        if (film.getCategories() == null || film.getCategories().isEmpty()){
+            throw new ServiceException("");
+        }
+
         DAOFactory daoFactory = DAOFactory.getInstance();
         FilmDAO filmDAO = daoFactory.getFilmDAO();
 
@@ -100,6 +104,45 @@ public class FilmServiceImpl implements FilmService {
 
     @Override
     public void editFilm(Film film) throws ServiceException {
+        if (film.getId() < 1){
+            throw new ServiceException("");
+        }
 
+        if (film.getDescription().isEmpty()){
+            throw new ServiceException("");
+        }
+
+        if (film.getPrice().compareTo(BigDecimal.ZERO) < 0){
+            throw new ServiceException("");
+        }
+
+        if (film.getDiscount() < 0 || film.getDiscount() > 100){
+            throw new ServiceException("");
+        }
+
+        if (film.getAuthor().isEmpty()){
+            throw new ServiceException("");
+        }
+
+        if (film.getName().isEmpty()){
+            throw new ServiceException("");
+        }
+
+        if (film.getAgeRestriction() == AgeRestriction.EMPTY || film.getAgeRestriction() == null){
+            throw new ServiceException("");
+        }
+
+        if (film.getCategories() == null || film.getCategories().isEmpty()){
+            throw new ServiceException("");
+        }
+
+        DAOFactory daoFactory = DAOFactory.getInstance();
+        FilmDAO filmDAO = daoFactory.getFilmDAO();
+
+        try {
+            filmDAO.editFilm(film);
+        } catch (DAOException e) {
+            throw new ServiceException("DAO failed: " + e);
+        }
     }
 }

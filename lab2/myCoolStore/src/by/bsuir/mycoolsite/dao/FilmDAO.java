@@ -12,9 +12,4 @@ public interface FilmDAO {
 
     void addFilm(Film film) throws DAOException;
     void editFilm(Film film) throws DAOException;
-
-    void deleteFilm(long idFilm) throws DAOException;
-
-    void delete(Film film) throws DAOException;
-
 }

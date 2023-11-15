@@ -14,10 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SQLFilmDAO implements FilmDAO {
+    private static final String QUERY_EDIT_FILM =
+            "UPDATE film SET flm_description = ?, flm_price = ?, flm_discount = ?, flm_author = ?, flm_age = ?, " +
+                    "flm_name = ? WHERE flm_id = ?";
+    private static final String QUERY_CLEAR_FILM_CATEGORIES =
+            "DELETE FROM m2m_film_category WHERE fc_film = ?";
     private static final String QUERY_ADD_FILM_CATEGORY =
             "INSERT INTO m2m_film_category (fc_film, fc_category) VALUES (?, ?)";
     private static final String QUERY_ADD_FILM =
-                    "INSERT INTO film (flm_description, flm_price, flm_discount, flm_author, flm_age, flm_name)" +
+            "INSERT INTO film (flm_description, flm_price, flm_discount, flm_author, flm_age, flm_name)" +
                     "VALUES (?, ?, ?, ?, ?, ?)";
     private static final String QUERY_ADD_MEDIA =
             "INSERT INTO film_media (fm_id, fm_film_path, fm_trailer_path) VALUES (?, ?, ?)";
@@ -31,26 +36,26 @@ public class SQLFilmDAO implements FilmDAO {
                     "FROM film_media " +
                     "WHERE fm_id = ?";
 
-    private static final String QUERY_GET_CATEGORIES_BY_FILM_ID=
+    private static final String QUERY_GET_CATEGORIES_BY_FILM_ID =
             "SELECT cat_name " +
                     "FROM category " +
                     "LEFT JOIN m2m_film_category ON cat_id = fc_category " +
                     "WHERE fc_film = ?";
     private static final String QUERY_GET_FILMS =
             "SELECT " +
-                "flm_id, " +
-                "flm_description, " +
-                "flm_price, " +
-                "fm_trailer_path, " +
-                "flm_discount, " +
-                "flm_author, " +
-                "flm_age, " +
-                "flm_name, " +
-                "cat_name " +
-            "FROM film " +
-                "LEFT JOIN film_media ON flm_id = fm_id " +
-                "LEFT JOIN m2m_film_category ON flm_id = fc_film " +
-                "LEFT JOIN mycoolstore.category ON cat_id = fc_category";
+                    "flm_id, " +
+                    "flm_description, " +
+                    "flm_price, " +
+                    "fm_trailer_path, " +
+                    "flm_discount, " +
+                    "flm_author, " +
+                    "flm_age, " +
+                    "flm_name, " +
+                    "cat_name " +
+                    "FROM film " +
+                    "LEFT JOIN film_media ON flm_id = fm_id " +
+                    "LEFT JOIN m2m_film_category ON flm_id = fc_film " +
+                    "LEFT JOIN mycoolstore.category ON cat_id = fc_category";
 
     @Override
     public List<Film> getFilms() throws DAOException {
@@ -152,7 +157,7 @@ public class SQLFilmDAO implements FilmDAO {
                 Media media = new Media(trailerPath, filmPath);
 
                 List<Category> categories = new ArrayList<>();
-                while(rsCategories.next()) {
+                while (rsCategories.next()) {
                     categories.add(new Category(rsCategories.getString(1)));
                 }
 
@@ -194,7 +199,7 @@ public class SQLFilmDAO implements FilmDAO {
 
         List<Category> categories = film.getCategories();
 
-        try{
+        try {
             con = dbConnection.getConnection();
 
             ps = con.prepareStatement(QUERY_ADD_FILM, Statement.RETURN_GENERATED_KEYS);
@@ -212,14 +217,14 @@ public class SQLFilmDAO implements FilmDAO {
                 if (rs.next()) {
                     long filmId = rs.getLong(1);
 
-                    for (Category cat: categories){
+                    for (Category cat : categories) {
                         ps = con.prepareStatement(QUERY_ADD_FILM_CATEGORY);
 
                         ps.setLong(1, filmId);
                         ps.setLong(2, cat.getId());
 
                         rowsAffected = ps.executeUpdate();
-                        if (rowsAffected < 0){
+                        if (rowsAffected < 0) {
                             //LOG
                             System.out.println("Query failed");
                             throw new DAOException("Query " + QUERY_ADD_FILM_CATEGORY + " failed");
@@ -233,7 +238,7 @@ public class SQLFilmDAO implements FilmDAO {
 
                     rowsAffected = ps.executeUpdate();
 
-                    if (rowsAffected < 0){
+                    if (rowsAffected < 0) {
                         //LOG
                         System.out.println("Query failed");
                         throw new DAOException("Query " + QUERY_ADD_MEDIA + " failed");
@@ -252,22 +257,68 @@ public class SQLFilmDAO implements FilmDAO {
         } catch (SQLException e) {
             throw new DAOException("Query failed");
         } finally {
-            dbConnection.close(ps, null);
+            dbConnection.close(ps, rs);
         }
     }
 
     @Override
     public void editFilm(Film film) throws DAOException {
+        Connection con;
+        PreparedStatement ps = null;
+        DBConnection dbConnection = DBConnection.getInstance();
 
-    }
+        String description = film.getDescription();
+        BigDecimal price = film.getPrice();
+        int discount = film.getDiscount();
+        String author = film.getAuthor();
+        String ageRestriction = film.getAgeRestriction().toString();
+        String name = film.getName();
+        long filmId = film.getId();
+        List<Category> categories = film.getCategories();
 
-    @Override
-    public void deleteFilm(long idFilm) throws DAOException {
+        try {
+            con = dbConnection.getConnection();
 
-    }
+            ps = con.prepareStatement(QUERY_EDIT_FILM);
+            ps.setString(1, description);
+            ps.setBigDecimal(2, price);
+            ps.setInt(3, discount);
+            ps.setString(4, author);
+            ps.setString(5, ageRestriction);
+            ps.setString(6, name);
+            ps.setLong(7, filmId);
 
-    @Override
-    public void delete(Film film) throws DAOException {
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                ps = con.prepareStatement(QUERY_CLEAR_FILM_CATEGORIES);
 
+                ps.setLong(1, filmId);
+
+                ps.executeUpdate();
+
+                for (Category cat : categories) {
+                    ps = con.prepareStatement(QUERY_ADD_FILM_CATEGORY);
+
+                    ps.setLong(1, filmId);
+                    ps.setLong(2, cat.getId());
+
+                    rowsAffected = ps.executeUpdate();
+                    if (rowsAffected < 0) {
+                        //LOG
+                        System.out.println("Query failed");
+                        throw new DAOException("Query failed");
+                    }
+                }
+            } else {
+                //LOG
+                System.out.println("Query failed");
+                throw new DAOException("Query " + " failed");
+            }
+
+        } catch (SQLException e) {
+            throw new DAOException("Query failed");
+        } finally {
+            dbConnection.close(ps, null);
+        }
     }
 }

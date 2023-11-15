@@ -21,6 +21,7 @@ public final class CommandProvider {
         repository.put(CommandName.BUY, new BuyFilms());
         repository.put(CommandName.BAN, new Ban());
         repository.put(CommandName.UNBAN, new Unban());
+        repository.put(CommandName.EDIT_FILM, new EditFilm());
         //...
     }
 

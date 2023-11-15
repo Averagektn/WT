@@ -4,6 +4,7 @@
 <jsp:useBean id="categories" scope="request" type="java.util.List"/>
 <jsp:useBean id="ageRestrictions" scope="request" type="java.util.List"/>
 <jsp:useBean id="film" scope="request" type="by.bsuir.mycoolsite.bean.Film"/>
+<jsp:useBean id="command" scope="request" type="java.lang.String"/>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -17,7 +18,7 @@
 <a href="${pageContext.request.contextPath}">На главную страницу</a><br>
 
 <form action="${pageContext.request.contextPath}/Controller" method="post">
-    <input type="submit"  value="Выйти"/>
+    <input type="submit" value="Выйти"/>
     <input type="hidden" name="command" value="sign_out"/>
 </form>
 
@@ -46,11 +47,18 @@
         </c:forEach>
     </select><br>
 
-    <label for="filmFile">Файл фильма:</label>
-    <input type="file" id="filmFile" name="filmFile"><br>
+    <c:choose>
+        <c:when test="${film.id == 0}">
+            <label for="filmFile">Файл фильма:</label>
+            <input type="file" id="filmFile" name="filmFile" required><br>
 
-    <label for="trailerFile">Файл трейлера:</label>
-    <input type="file" id="trailerFile" name="trailerFile"><br>
+            <label for="trailerFile">Файл трейлера:</label>
+            <input type="file" id="trailerFile" name="trailerFile" required><br>
+        </c:when>
+        <c:otherwise>
+            <input type="hidden" name="filmId" value="${film.id}">
+        </c:otherwise>
+    </c:choose>
 
     <label for="filmDescription">Описание фильма:</label>
     <textarea id="filmDescription" name="filmDescription" required></textarea><br>
@@ -61,7 +69,7 @@
     <label for="filmDiscount">Скидка:</label>
     <input type="number" id="filmDiscount" name="filmDiscount" min="0" max="100" value="${film.discount}" required><br>
 
-    <input type="hidden" name="command" value="add_film">
+    <input type="hidden" name="command" value="${command}">
 
     <input type="submit" value="Добавить фильм">
 </form>

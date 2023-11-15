@@ -4,7 +4,6 @@ import by.bsuir.mycoolsite.bean.Category;
 import by.bsuir.mycoolsite.bean.Film;
 import by.bsuir.mycoolsite.bean.Media;
 import by.bsuir.mycoolsite.bean.enums.AgeRestriction;
-import by.bsuir.mycoolsite.config.Config;
 import by.bsuir.mycoolsite.controller.command.Command;
 import by.bsuir.mycoolsite.controller.command.exception.CommandException;
 import by.bsuir.mycoolsite.controller.page.PageName;
@@ -13,25 +12,21 @@ import by.bsuir.mycoolsite.service.exception.ServiceException;
 import by.bsuir.mycoolsite.service.factory.ServiceFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.Part;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddFilm implements Command {
+public class EditFilm implements Command {
+    private static final String FILM_ID = "filmId";
     private static final String FILM_TITLE = "filmTitle";
     private static final String FILM_AUTHOR = "filmAuthor";
     private static final String FILM_CATEGORIES = "filmCategory";
     private static final String FILM_AGE_RESTRICTION = "filmAgeRestriction";
-    private static final String FILM_FILE = "filmFile";
-    private static final String FILM_TRAILER = "trailerFile";
     private static final String FILM_DESCRIPTION = "filmDescription";
     private static final String FILM_PRICE = "filmPrice";
     private static final String FILM_DISCOUNT = "filmDiscount";
-    private static final String FILM_DIRECTORY = "film";
-    private static final String TRAILER_DIRECTORY = "trailer";
 
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
@@ -43,9 +38,9 @@ public class AddFilm implements Command {
         try {
             Film film = getFilm(request);
 
-            filmService.addNewFilm(film);
+            filmService.editFilm(film);
 
-            response = PageName.ADD_FILM.getUrlPattern();
+            response = PageName.MAIN.getUrlPattern();
         } catch (ServiceException e) {
             //LOG
             System.out.println("Service exception: " + e);
@@ -60,6 +55,7 @@ public class AddFilm implements Command {
     }
 
     private Film getFilm(HttpServletRequest request) throws ServletException, IOException {
+        long filmId = Long.parseLong(request.getParameter(FILM_ID));
         String title = request.getParameter(FILM_TITLE);
         String author = request.getParameter(FILM_AUTHOR);
         String description = request.getParameter(FILM_DESCRIPTION);
@@ -67,45 +63,11 @@ public class AddFilm implements Command {
         BigDecimal price = new BigDecimal(request.getParameter(FILM_PRICE));
         int discount = Integer.parseInt(request.getParameter(FILM_DISCOUNT));
 
-        Media media = loadFiles(request);
-
         List<Category> categories = new ArrayList<>();
         for (String cat: request.getParameterValues(FILM_CATEGORIES)){
             categories.add(new Category(Long.parseLong(cat)));
         }
 
-        return new Film(description, price, media, discount, author, ageRestriction, title, categories);
-    }
-
-    private Media loadFiles(HttpServletRequest request) throws ServletException, IOException {
-        Part trailerPart = request.getPart(FILM_TRAILER);
-        String trailerFileName = generateUniqueFileName(getFileName(trailerPart));
-        String trailerFilePath = Config.VIDEO_DIRECTORY_PATH + "/" + TRAILER_DIRECTORY + "/" + trailerFileName;
-        System.out.println("trailer path: " + trailerFilePath);
-        trailerPart.write(trailerFilePath);
-
-        Part filmPart = request.getPart(FILM_FILE);
-        String filmFileName = generateUniqueFileName(getFileName(filmPart));
-        String filmFilePath = Config.VIDEO_DIRECTORY_PATH + "/" + FILM_DIRECTORY + "/" + filmFileName;
-        System.out.println("film path: " + filmFilePath);
-        filmPart.write(filmFilePath);
-
-        return new Media(trailerFileName, filmFileName);
-    }
-
-    private String generateUniqueFileName(String fileName) {
-        return System.currentTimeMillis() + "_" + fileName;
-    }
-
-    private String getFileName(final Part part) {
-        final String partHeader = part.getHeader("content-disposition");
-
-        for (String content : partHeader.split(";")) {
-            if (content.trim().startsWith("filename")) {
-                return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
-            }
-        }
-
-        return null;
+        return new Film(filmId, description, price, new Media(0), discount, author, ageRestriction, title, categories);
     }
 }

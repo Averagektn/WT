@@ -19,6 +19,7 @@ public class AdminFilmPage implements Page {
     private static final String CATEGORIES = "categories";
     private static final String AGE_RESTRICTIONS = "ageRestrictions";
     private static final String FILM = "film";
+    private static final String COMMAND = "command";
     @Override
     public String generate(HttpServletRequest request) throws PageException {
         String response;
@@ -42,8 +43,10 @@ public class AdminFilmPage implements Page {
                 film = filmService.getFilmById(filmId);
                 ageRestrictions.remove(film.getAgeRestriction().toString());
                 categories.removeIf(c1 -> film.getCategories().stream().anyMatch(c2 -> c2.getName().equals(c1.getName())));
+                request.setAttribute(COMMAND, "edit_film");
             } else {
                 film = new Film(0);
+                request.setAttribute(COMMAND, "add_film");
             }
 
             request.setAttribute(FILM, film);
