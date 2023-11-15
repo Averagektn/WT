@@ -23,13 +23,13 @@
 
 <form action="${pageContext.request.contextPath}/Controller" method="post" enctype="multipart/form-data">
     <label for="filmTitle">Название фильма:</label>
-    <input type="text" id="filmTitle" name="filmTitle" value="${film.name}"> <br>
+    <input type="text" id="filmTitle" name="filmTitle" value="${film.name}" required> <br>
 
     <label for="filmAuthor">Автор фильма:</label>
-    <input type="text" id="filmAuthor" name="filmAuthor" value="${film.author}"><br>
+    <input type="text" id="filmAuthor" name="filmAuthor" value="${film.author}" required><br>
 
     <label for="filmCategory">Категория:</label>
-    <select id="filmCategory" name="filmCategory" multiple>
+    <select id="filmCategory" name="filmCategory" multiple required>
         <c:forEach var="category" items="${film.categories}">
             <option value="${category.id}" selected>${category.name}</option>
         </c:forEach>
@@ -39,7 +39,7 @@
     </select><br>
 
     <label for="filmAgeRestriction">Возрастная категория:</label>
-    <select id="filmAgeRestriction" name="filmAgeRestriction">
+    <select id="filmAgeRestriction" name="filmAgeRestriction" required>
         <option value="${film.ageRestriction}" selected>${film.ageRestriction.toString()}</option>
         <c:forEach var="ageRestriction" items="${ageRestrictions}">
             <option value="${ageRestriction}">${ageRestriction}</option>
@@ -53,13 +53,13 @@
     <input type="file" id="trailerFile" name="trailerFile"><br>
 
     <label for="filmDescription">Описание фильма:</label>
-    <textarea id="filmDescription" name="filmDescription"></textarea><br>
+    <textarea id="filmDescription" name="filmDescription" required></textarea><br>
 
     <label for="filmPrice">Цена:</label>
-    <input type="number" step="0.01" id="filmPrice" name="filmPrice" min="0" value="${film.price}"><br>
+    <input type="number" step="0.01" id="filmPrice" name="filmPrice" min="0" value="${film.price}" required><br>
 
     <label for="filmDiscount">Скидка:</label>
-    <input type="number" id="filmDiscount" name="filmDiscount" min="0" max="100" value="${film.discount}"><br>
+    <input type="number" id="filmDiscount" name="filmDiscount" min="0" max="100" value="${film.discount}" required><br>
 
     <input type="hidden" name="command" value="add_film">
 

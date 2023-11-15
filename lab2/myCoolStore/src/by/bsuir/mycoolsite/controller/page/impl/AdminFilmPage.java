@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class AdminFilmPage implements Page {
-    private static final String FILM_ID = "filmID";
+    private static final String FILM_ID = "filmId";
     private static final String CATEGORIES = "categories";
     private static final String AGE_RESTRICTIONS = "ageRestrictions";
     private static final String FILM = "film";
@@ -26,7 +26,7 @@ public class AdminFilmPage implements Page {
         List<String> ageRestrictions;
         List<Category> categories;
         Film film;
-        boolean isEditFilm = request.getParameter("filmID") != null;
+        boolean isEditFilm = request.getParameter(FILM_ID) != null;
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         FilmService filmService = serviceFactory.getFilmService();
@@ -34,21 +34,21 @@ public class AdminFilmPage implements Page {
         AgeRestrictionService ageRestrictionService = serviceFactory.getAgeRestrictionService();
 
         try {
-
-            //long filmId = Long.parseLong(request.getParameter(FILM_ID));
-            //film = filmService.getFilmById(filmId);
-
             ageRestrictions = ageRestrictionService.getAgeRestrictions();
             categories = categoryService.getCategories();
 
             if (isEditFilm){
-
+                long filmId = Long.parseLong(request.getParameter(FILM_ID));
+                film = filmService.getFilmById(filmId);
+                ageRestrictions.remove(film.getAgeRestriction().toString());
+                categories.removeIf(c1 -> film.getCategories().stream().anyMatch(c2 -> c2.getName().equals(c1.getName())));
             } else {
                 film = new Film(0);
-                request.setAttribute(FILM, film);
-                request.setAttribute(AGE_RESTRICTIONS, ageRestrictions);
-                request.setAttribute(CATEGORIES, categories);
             }
+
+            request.setAttribute(FILM, film);
+            request.setAttribute(AGE_RESTRICTIONS, ageRestrictions);
+            request.setAttribute(CATEGORIES, categories);
 
             response = JSPPageName.PAGE_ADMIN_FILM;
         } catch (ServiceException e) {

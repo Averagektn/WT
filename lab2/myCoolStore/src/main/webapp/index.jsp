@@ -62,10 +62,7 @@
             </c:forEach><br>
         </li>
         <c:if test="${not empty sessionScope.isAdmin}">
-            <form action="${pageContext.request.contextPath}/Controller" method="post">
-                <input type="submit"  value="Редактировать фильм"/>
-                <input type="hidden" name="command" value="edit_film"/>
-            </form>
+            <a href="Admin/Film?filmId=${film.id}">Редактировать фильм</a><br>
         </c:if>
     </c:forEach>
 </ul>
