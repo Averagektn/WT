@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface LibraryService {
     void addFilm(long userId, long filmId) throws ServiceException;
+
     List<Film> getUserFilms(long userId) throws ServiceException;
 }

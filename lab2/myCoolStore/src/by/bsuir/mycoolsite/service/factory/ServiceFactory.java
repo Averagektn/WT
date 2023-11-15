@@ -12,21 +12,39 @@ public final class ServiceFactory {
     private final LibraryService libraryService = new LibraryServiceImpl();
     private final AgeRestrictionService ageRestrictionService = new AgeRestrictionServiceImpl();
     private final CategoryService categoryService = new CategoryServiceImpl();
+
     private ServiceFactory() {
     }
 
     public static ServiceFactory getInstance() {
         return instance;
     }
-    public AgeRestrictionService getAgeRestrictionService() { return ageRestrictionService; }
-    public CategoryService getCategoryService() { return categoryService; }
+
+    public AgeRestrictionService getAgeRestrictionService() {
+        return ageRestrictionService;
+    }
+
+    public CategoryService getCategoryService() {
+        return categoryService;
+    }
+
     public UserService getUserService() {
         return userService;
     }
+
     public FilmService getFilmService() {
         return filmService;
     }
-    public FeedbackService getFeedbackService() { return feedbackService; }
-    public CartService getCartService() { return cartService; }
-    public LibraryService getLibraryService() { return libraryService; }
+
+    public FeedbackService getFeedbackService() {
+        return feedbackService;
+    }
+
+    public CartService getCartService() {
+        return cartService;
+    }
+
+    public LibraryService getLibraryService() {
+        return libraryService;
+    }
 }

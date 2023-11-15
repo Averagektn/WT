@@ -6,21 +6,23 @@ import by.bsuir.mycoolsite.dao.exception.DAOException;
 import by.bsuir.mycoolsite.dao.factory.DAOFactory;
 import by.bsuir.mycoolsite.service.CartService;
 import by.bsuir.mycoolsite.service.exception.ServiceException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
 public class CartServiceImpl implements CartService {
+    private static final Logger logger = LogManager.getLogger(CartService.class);
+
     @Override
     public void addFilm(long filmId, long userId) throws ServiceException {
         if (filmId < 1) {
-            //LOG
-            System.out.println("Invalid film id in addFilm");
+            logger.error("Invalid film id in addFilm");
             throw new ServiceException("Invalid film id in addFilm");
         }
 
         if (userId < 1) {
-            //LOG
-            System.out.println("Invalid user id in addFilm");
+            logger.error("Invalid user id in addFilm");
             throw new ServiceException("Invalid user id in addFilm");
         }
 
@@ -30,8 +32,7 @@ public class CartServiceImpl implements CartService {
         try {
             cartDAO.addFilm(filmId, userId);
         } catch (DAOException e) {
-            //LOG
-            System.out.println("DAO: " + e);
+            logger.error("DAO Exception", e);
             throw new ServiceException(e);
         }
     }
@@ -41,8 +42,7 @@ public class CartServiceImpl implements CartService {
         List<Film> cartFilms;
 
         if (userId < 1) {
-            //LOG
-            System.out.println("Invalid user id in getCart");
+            logger.error("Invalid user id in getCart");
             throw new ServiceException("Invalid user id in getCart");
         }
 
@@ -52,8 +52,7 @@ public class CartServiceImpl implements CartService {
         try {
             cartFilms = cartDAO.getCart(userId);
         } catch (DAOException e) {
-            //LOG
-            System.out.println("DAO: " + e);
+            logger.error("DAO Exception" + e);
             throw new ServiceException(e);
         }
 
@@ -63,14 +62,12 @@ public class CartServiceImpl implements CartService {
     @Override
     public void remove(long filmId, long userId) throws ServiceException {
         if (filmId < 1) {
-            //LOG
-            System.out.println("Invalid film id in remove");
+            logger.error("Invalid film id in remove");
             throw new ServiceException("Invalid film id in remove");
         }
 
         if (userId < 1) {
-            //LOG
-            System.out.println("Invalid user id in remove");
+            logger.error("Invalid user id in remove");
             throw new ServiceException("Invalid user id in remove");
         }
 
@@ -80,8 +77,7 @@ public class CartServiceImpl implements CartService {
         try {
             cartDAO.remove(filmId, userId);
         } catch (DAOException e) {
-            //LOG
-            System.out.println("DAO: " + e);
+            logger.error("DAO Exception" + e);
             throw new ServiceException(e);
         }
     }
@@ -89,8 +85,7 @@ public class CartServiceImpl implements CartService {
     @Override
     public void clear(long userId) throws ServiceException {
         if (userId < 1) {
-            //LOG
-            System.out.println("Invalid user id in clear");
+            logger.error("Invalid user id in clear");
             throw new ServiceException("Invalid user id in clear");
         }
 
@@ -111,14 +106,12 @@ public class CartServiceImpl implements CartService {
         boolean contains;
 
         if (filmId < 1) {
-            //LOG
-            System.out.println("Invalid film id in contains");
+            logger.error("Invalid film id in contains");
             throw new ServiceException("Invalid film id in contains");
         }
 
         if (userId < 1) {
-            //LOG
-            System.out.println("Invalid user id in contains");
+            logger.error("Invalid user id in contains");
             throw new ServiceException("Invalid user id in contains");
         }
 
@@ -128,8 +121,7 @@ public class CartServiceImpl implements CartService {
         try {
             contains = cartDAO.contains(userId, filmId);
         } catch (DAOException e) {
-            //LOG
-            System.out.println("DAO: " + e);
+            logger.error("DAO Exception " + e);
             throw new ServiceException(e);
         }
 

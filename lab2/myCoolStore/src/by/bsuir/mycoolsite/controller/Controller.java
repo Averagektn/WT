@@ -63,20 +63,17 @@ public class Controller extends HttpServlet {
             page = command.execute(request);
             System.out.println(page);
         } catch (CommandException e) {
-            //LOG
-            System.out.println("Command exception in Controller " + e);
+            logger.error("Command exception in Controller ", e);
             page = JSPPageName.PAGE_ERROR;
         } catch (Exception e) {
-            //LOG
-            System.out.println("Exception in Controller " + e);
+            logger.error("Exception in Controller ", e);
             page = JSPPageName.PAGE_ERROR;
         }
 
         try {
             response.sendRedirect(page);
         } catch (IOException e) {
-            //LOG
-            System.out.println("Send redirect exception: " + e);
+            logger.error("Send redirect exception in Controller", e);
             errorMessageDirectlyFromResponse(response);
         }
     }

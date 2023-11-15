@@ -14,7 +14,7 @@
 <c:choose>
     <c:when test="${empty sessionScope.userID}">
         <form action="Register" method="post">
-            <input type="submit"  value="Регистрация"/>
+            <input type="submit" value="Регистрация"/>
             <input type="hidden" name="command" value="register"/>
         </form>
         <form action="Authorization" method="post">
@@ -24,7 +24,7 @@
     </c:when>
     <c:otherwise>
         <form action="${pageContext.request.contextPath}/Controller" method="post">
-            <input type="submit"  value="Выйти"/>
+            <input type="submit" value="Выйти"/>
             <input type="hidden" name="command" value="sign_out"/>
         </form>
         <c:choose>

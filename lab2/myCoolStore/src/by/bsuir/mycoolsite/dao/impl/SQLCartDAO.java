@@ -20,11 +20,17 @@ import java.util.List;
 public class SQLCartDAO implements CartDAO {
     private static final Logger logger = LogManager.getLogger(SQLCartDAO.class);
     private static final String QUERY_GET_FILM =
-            "SELECT crt_film FROM cart WHERE crt_user = ? AND crt_film = ?";
+            "SELECT crt_film " +
+                    "FROM cart " +
+                    "WHERE crt_user = ? AND crt_film = ?";
     private static final String QUERY_CLEAR_CART =
-            "DELETE FROM cart WHERE crt_user = ?";
+            "DELETE " +
+                    "FROM cart " +
+                    "WHERE crt_user = ?";
     private static final String QUERY_REMOVE_FILM =
-            "DELETE FROM cart WHERE crt_film = ? AND crt_user = ?";
+            "DELETE " +
+                    "FROM cart " +
+                    "WHERE crt_film = ? AND crt_user = ?";
     private static final String QUERY_ADD_FILM =
             "INSERT INTO cart (crt_film, crt_user) VALUES (?, ?)";
     private static final String QUERY_GET_CART_FILMS =
@@ -49,9 +55,8 @@ public class SQLCartDAO implements CartDAO {
 
             ps.executeUpdate();
         } catch (SQLException e) {
-            //LOG
-            System.out.println("Query error while adding film to cart");
-            throw new DAOException("Query error while adding film to cart");
+            logger.error("Query error while adding film to cart", e);
+            throw new DAOException("Query error while adding film to cart", e);
         } finally {
             dbConnection.close(ps, null);
         }
@@ -89,9 +94,8 @@ public class SQLCartDAO implements CartDAO {
             }
 
         } catch (SQLException e) {
-            //LOG
-            System.out.println("Query error while receiving films from cart");
-            throw new DAOException("Query error while receiving films from cart");
+            logger.error("Query error while receiving films from cart", e);
+            throw new DAOException("Query error while receiving films from cart", e);
         } finally {
             dbConnection.close(ps, rs);
         }
@@ -114,14 +118,12 @@ public class SQLCartDAO implements CartDAO {
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected == 0) {
-                //LOG
-                System.out.println("Deleting from cart DAO error");
+                logger.error("Deleting from cart DAO error");
                 throw new DAOException("Deleting from cart DAO error");
             }
         } catch (SQLException e) {
-            //LOG
-            System.out.println("Deleting from cart DAO error");
-            throw new DAOException("Deleting from cart DAO error");
+            logger.error("Deleting from cart DAO error", e);
+            throw new DAOException("Deleting from cart DAO error", e);
         } finally {
             dbConnection.close(ps, null);
         }
@@ -139,9 +141,8 @@ public class SQLCartDAO implements CartDAO {
 
             ps.executeUpdate();
         } catch (SQLException e) {
-            //LOG
-            System.out.println("Clear query DAO error");
-            throw new DAOException("Clear query DAO error");
+            logger.error("Clear query DAO error", e);
+            throw new DAOException("Clear query DAO error", e);
         } finally {
             dbConnection.close(ps, null);
         }
@@ -167,9 +168,8 @@ public class SQLCartDAO implements CartDAO {
                 contains = true;
             }
         } catch (SQLException e) {
-            //LOG
-            System.out.println("Contains in cart query DAO error");
-            throw new DAOException("Contains in cart query DAO error");
+            logger.error("Contains in cart query DAO error", e);
+            throw new DAOException("Contains in cart query DAO error", e);
         } finally {
             dbConnection.close(ps, rs);
         }

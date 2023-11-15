@@ -39,6 +39,7 @@ public class DBConnection {
     }
 
     public Connection getConnection() {
+        logger.error("Connection provided");
         return connection;
     }
 

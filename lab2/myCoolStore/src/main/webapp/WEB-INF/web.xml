@@ -1,104 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-        xmlns="http://java.sun.com/xml/ns/javaee"
-        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
         http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-        id="WebApp_ID" version="2.5">
+         id="WebApp_ID" version="2.5">
 
-  <display-name>SimpleServletAppStructure</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+    <display-name>SimpleServletAppStructure</display-name>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.htm</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+    </welcome-file-list>
 
-<!--
-  <context-param>
-    <param-name>filesPath</param-name>
-    <param-value>C:/Archive/5 semester/WT/tomcat/webapps/files</param-value>
-  </context-param>
+    <session-config>
+        <session-timeout>10</session-timeout>
+    </session-config>
 
-  <servlet>
-    <servlet-name>default</servlet-name>
-    <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
-    <init-param>
-      <param-name>readonly</param-name>
-      <param-value>false</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
+    <servlet>
+        <servlet-name>Video</servlet-name>
+        <servlet-class>by.bsuir.mycoolsite.controller.VideoController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Video</servlet-name>
+        <url-pattern>/VideoDisplay</url-pattern>
+    </servlet-mapping>
 
-  <servlet-mapping>
-    <servlet-name>default</servlet-name>
-    <url-pattern>/files/*</url-pattern>
-  </servlet-mapping>
--->
+    <servlet>
+        <servlet-name>Controller</servlet-name>
+        <servlet-class>by.bsuir.mycoolsite.controller.Controller</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/</url-pattern>
+        <url-pattern>/Film</url-pattern>
+        <url-pattern>/Cart</url-pattern>
+        <url-pattern>/Library</url-pattern>
+        <url-pattern>/Admin/Film</url-pattern>
+        <url-pattern>/Video</url-pattern>
+    </servlet-mapping>
 
-  <session-config>
-    <session-timeout>10</session-timeout>
-  </session-config>
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <jsp-file>/WEB-INF/jsp/register.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/Register</url-pattern>
+    </servlet-mapping>
 
-  <servlet>
-    <servlet-name>Video</servlet-name>
-    <servlet-class>by.bsuir.mycoolsite.controller.VideoController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Video</servlet-name>
-    <url-pattern>/VideoDisplay</url-pattern>
-  </servlet-mapping>
+    <servlet>
+        <servlet-name>Authorization</servlet-name>
+        <jsp-file>/WEB-INF/jsp/authorization.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Authorization</servlet-name>
+        <url-pattern>/Authorization</url-pattern>
+    </servlet-mapping>
 
-  <servlet>
-    <servlet-name>Controller</servlet-name>
-    <servlet-class>by.bsuir.mycoolsite.controller.Controller</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Controller</servlet-name>
-    <url-pattern>/</url-pattern>
-    <url-pattern>/Film</url-pattern>
-    <url-pattern>/Cart</url-pattern>
-    <url-pattern>/Library</url-pattern>
-    <url-pattern>/Admin/Film</url-pattern>
-    <url-pattern>/Video</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <servlet-name>Register</servlet-name>
-    <jsp-file>/WEB-INF/jsp/register.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Register</servlet-name>
-    <url-pattern>/Register</url-pattern>
-  </servlet-mapping>
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>by.bsuir.mycoolsite.filter.AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/Admin/*</url-pattern>
+    </filter-mapping>
 
-  <servlet>
-    <servlet-name>Authorization</servlet-name>
-    <jsp-file>/WEB-INF/jsp/authorization.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Authorization</servlet-name>
-    <url-pattern>/Authorization</url-pattern>
-  </servlet-mapping>
-
-  <filter>
-    <filter-name>AdminFilter</filter-name>
-    <filter-class>by.bsuir.mycoolsite.filter.AdminFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>AdminFilter</filter-name>
-    <url-pattern>/Admin/*</url-pattern>
-  </filter-mapping>
-
-  <filter>
-    <filter-name>CustomerFilter</filter-name>
-    <filter-class>by.bsuir.mycoolsite.filter.CustomerFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>CustomerFilter</filter-name>
-    <url-pattern>/Customer/*</url-pattern>
-    <url-pattern>/Cart/*</url-pattern>
-    <url-pattern>/Library/*</url-pattern>
-  </filter-mapping>
+    <filter>
+        <filter-name>CustomerFilter</filter-name>
+        <filter-class>by.bsuir.mycoolsite.filter.CustomerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CustomerFilter</filter-name>
+        <url-pattern>/Customer/*</url-pattern>
+        <url-pattern>/Cart/*</url-pattern>
+        <url-pattern>/Library/*</url-pattern>
+    </filter-mapping>
 
 </web-app> 

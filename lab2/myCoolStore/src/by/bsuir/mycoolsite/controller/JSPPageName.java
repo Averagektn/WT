@@ -1,9 +1,6 @@
 package by.bsuir.mycoolsite.controller;
 
 public class JSPPageName {
-    private JSPPageName() {
-    }
-
     public static final String PAGE_BAN = "/WEB-INF/jsp/ban.jsp";
     public static final String PAGE_LIBRARY = "/WEB-INF/jsp/library.jsp";
     public static final String PAGE_CART = "/WEB-INF/jsp/cart.jsp";

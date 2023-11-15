@@ -5,26 +5,38 @@ import by.bsuir.mycoolsite.bean.enums.Role;
 import by.bsuir.mycoolsite.connection.DBConnection;
 import by.bsuir.mycoolsite.dao.UserDAO;
 import by.bsuir.mycoolsite.dao.exception.DAOException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SQLUserDAO implements UserDAO {
+    private static final Logger logger = LogManager.getLogger(SQLUserDAO.class);
     private static final String QUERY_UNBAN =
-            "UPDATE user SET usr_banned_by = NULL WHERE usr_id = ?";
+            "UPDATE user SET usr_banned_by = NULL " +
+                    "WHERE usr_id = ?";
     private static final String QUERY_GET_BANNED_USERS =
-            "SELECT usr_id, usr_email, usr_banned_by FROM user WHERE usr_banned_by IS NOT NULL";
+            "SELECT usr_id, usr_email, usr_banned_by FROM user " +
+                    "WHERE usr_banned_by IS NOT NULL";
     private static final String QUERY_BAN =
-            "UPDATE user SET usr_banned_by = ? WHERE usr_id = ?";
+            "UPDATE user SET usr_banned_by = ? " +
+                    "WHERE usr_id = ?";
     private static final String QUERY_REGISTER =
             "INSERT INTO user (usr_email, usr_password, usr_role, usr_banned_by) VALUES (?,?,?,?)";
     private static final String QUERY_AUTHORIZATION =
-            "SELECT usr_id, usr_role, usr_banned_by FROM user WHERE usr_email = ? AND usr_password = ?";
+            "SELECT usr_id, usr_role, usr_banned_by " +
+                    "FROM user " +
+                    "WHERE usr_email = ? AND usr_password = ?";
     private static final String QUERY_USER_FILM =
-            "SELECT * FROM user_film WHERE uf_user = ? AND uf_film = ?";
+            "SELECT * " +
+                    "FROM user_film " +
+                    "WHERE uf_user = ? AND uf_film = ?";
     private static final String QUERY_USER_BANNED =
-            "SELECT usr_banned_by FROM user WHERE usr_id = ?";
+            "SELECT usr_banned_by " +
+                    "FROM user " +
+                    "WHERE usr_id = ?";
 
     @Override
     public User signIn(String email, String password) throws DAOException {
@@ -33,8 +45,8 @@ public class SQLUserDAO implements UserDAO {
         ResultSet rs = null;
         DBConnection dbConnection = DBConnection.getInstance();
 
-        // LOG
-        System.out.println("Authorization of " + email);
+        logger.info("Authorization of " + email);
+
         User user = new User(email, password);
 
         try {
@@ -47,24 +59,21 @@ public class SQLUserDAO implements UserDAO {
             rs = ps.executeQuery();
 
             if (!rs.next()) {
-                //LOG
-                System.out.println("0 rows affected. Selection error");
-                throw new DAOException("Authorization failed");
+                logger.error("0 rows affected. Selection error in " + QUERY_AUTHORIZATION);
+                throw new DAOException("0 rows affected. Selection error in " + QUERY_AUTHORIZATION);
             } else {
                 user.setId(rs.getLong(1));
                 user.setRole(Role.valueOf(rs.getString(2).toUpperCase()));
                 rs.getLong(3);
 
                 if (!rs.wasNull()) {
-                    //LOG
-                    System.out.println("User is banned");
+                    logger.error("User is banned");
                     throw new DAOException("User is banned");
                 }
             }
         } catch (SQLException e) {
-            //LOG
-            System.out.println("SQL Exception in SQLUserDAO " + e);
-            throw new DAOException("Sql error");
+            logger.error("Query " + QUERY_AUTHORIZATION + " failed", e);
+            throw new DAOException("Query " + QUERY_AUTHORIZATION + " failed", e);
         } finally {
             dbConnection.close(ps, rs);
         }
@@ -81,8 +90,7 @@ public class SQLUserDAO implements UserDAO {
         ResultSet rs = null;
         DBConnection dbConnection = DBConnection.getInstance();
 
-        // LOG
-        System.out.println("Checking film ownership");
+        logger.info("Checking film ownership");
 
         try {
             con = dbConnection.getConnection();
@@ -97,9 +105,8 @@ public class SQLUserDAO implements UserDAO {
                 isFilmOwner = true;
             }
         } catch (SQLException e) {
-            //LOG
-            System.out.println("SQL Exception " + e);
-            throw new DAOException("Sql error");
+            logger.error("Query " + QUERY_USER_FILM + " failed", e);
+            throw new DAOException("Query " + QUERY_USER_FILM + " failed", e);
         } finally {
             dbConnection.close(ps, rs);
         }
@@ -116,7 +123,7 @@ public class SQLUserDAO implements UserDAO {
         ResultSet rs = null;
         DBConnection dbConnection = DBConnection.getInstance();
 
-        System.out.println("Checking if user is banned");
+        logger.info("Checking if user is banned");
 
         try {
             con = dbConnection.getConnection();
@@ -133,9 +140,8 @@ public class SQLUserDAO implements UserDAO {
                 }
             }
         } catch (SQLException e) {
-            //LOG
-            System.out.println("SQL Exception " + e);
-            throw new DAOException("Sql error in isBanned");
+            logger.error("Query " + QUERY_USER_BANNED + " failed", e);
+            throw new DAOException("Query " + QUERY_USER_BANNED + " failed", e);
         } finally {
             dbConnection.close(ps, rs);
         }
@@ -152,8 +158,7 @@ public class SQLUserDAO implements UserDAO {
 
         long id;
 
-        // LOG
-        System.out.println("Registration of " + user.getEmail());
+        logger.info("Registration of " + user.getEmail());
 
         try {
             con = dbConnection.getConnection();
@@ -166,23 +171,20 @@ public class SQLUserDAO implements UserDAO {
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected <= 0) {
-                //LOG
-                System.out.println("0 rows affected. Insertion error");
-                throw new DAOException("Registration failed");
+                logger.error("Query " + QUERY_REGISTER + " failed");
+                throw new DAOException("Query " + QUERY_REGISTER + " failed");
             }
 
             rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 id = rs.getLong(1);
             } else {
-                System.out.println("0 rows affected. Key getting error");
-                throw new DAOException("Registration failed");
+                logger.error("0 rows affected. Key getting error. Registration failed");
+                throw new DAOException("0 rows affected. Key getting error. Registration failed");
             }
-
         } catch (SQLException e) {
-            //LOG
-            System.out.println("SQL Exception in SQLUserDAO " + e);
-            throw new DAOException("Sql error");
+            logger.error("Query " + QUERY_REGISTER + " failed", e);
+            throw new DAOException("Query " + QUERY_REGISTER + " failed", e);
         } finally {
             dbConnection.close(ps, rs);
         }
@@ -204,14 +206,12 @@ public class SQLUserDAO implements UserDAO {
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected <= 0) {
-                //LOG
-                System.out.println("0 rows affected. Update error");
-                throw new DAOException("Ban failed");
+                logger.error("0 rows affected. Update error. Ban failed");
+                throw new DAOException("0 rows affected. Update error. Ban failed");
             }
         } catch (SQLException e) {
-            //LOG
-            System.out.println("SQL Exception in SQLUserDAO " + e);
-            throw new DAOException("Sql error");
+            logger.error("Query " + QUERY_BAN + " failed", e);
+            throw new DAOException("Query " + QUERY_BAN + " failed", e);
         } finally {
             dbConnection.close(ps, null);
         }
@@ -230,14 +230,12 @@ public class SQLUserDAO implements UserDAO {
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected <= 0) {
-                //LOG
-                System.out.println("0 rows affected. Update error");
-                throw new DAOException("Unban failed");
+                logger.error("0 rows affected. Update error. Unban failed");
+                throw new DAOException("0 rows affected. Update error. Unban failed");
             }
         } catch (SQLException e) {
-            //LOG
-            System.out.println("SQL Exception in SQLUserDAO " + e);
-            throw new DAOException("Sql error");
+            logger.error("Query " + QUERY_UNBAN + " failed");
+            throw new DAOException("Query " + QUERY_UNBAN + " failed");
         } finally {
             dbConnection.close(ps, null);
         }
@@ -256,7 +254,7 @@ public class SQLUserDAO implements UserDAO {
             ps = con.prepareStatement(QUERY_GET_BANNED_USERS);
 
             rs = ps.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 long id = rs.getLong(1);
                 String email = rs.getString(2);
                 long bannedBy = rs.getLong(3);
@@ -266,9 +264,8 @@ public class SQLUserDAO implements UserDAO {
                 users.add(user);
             }
         } catch (SQLException e) {
-            //LOG
-            System.out.println("SQL Exception in SQLUserDAO " + e);
-            throw new DAOException("Sql error");
+            logger.error("Query " + QUERY_GET_BANNED_USERS + " failed", e);
+            throw new DAOException("Query " + QUERY_GET_BANNED_USERS + " failed", e);
         } finally {
             dbConnection.close(ps, rs);
         }

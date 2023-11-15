@@ -11,5 +11,6 @@ public interface FilmDAO {
     Film getFilmById(long id) throws DAOException;
 
     void addFilm(Film film) throws DAOException;
+
     void editFilm(Film film) throws DAOException;
 }

@@ -6,23 +6,25 @@ import by.bsuir.mycoolsite.dao.exception.DAOException;
 import by.bsuir.mycoolsite.dao.factory.DAOFactory;
 import by.bsuir.mycoolsite.service.UserService;
 import by.bsuir.mycoolsite.service.exception.ServiceException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
+    private static final Logger logger = LogManager.getLogger(UserServiceImpl.class);
+
     @Override
     public User signIn(String email, String password) throws ServiceException {
         User user;
 
         if (email == null || email.isEmpty()) {
-            //LOG
-            System.out.println("ServiceException, incorrect email");
+            logger.error("Incorrect email");
             throw new ServiceException("Incorrect email");
         }
 
         if (password.length() < 7) {
-            //LOG
-            System.out.println("Service exception, incorrect password length");
+            logger.error("Incorrect password length");
             throw new ServiceException("Password length is too low");
         }
 
@@ -32,8 +34,7 @@ public class UserServiceImpl implements UserService {
         try {
             user = userDAO.signIn(email, password);
         } catch (DAOException e) {
-            //LOG
-            System.out.println("DAOException in UserServiceImpl " + e);
+            logger.error("DAO Exception", e);
             throw new ServiceException(e);
         }
 
@@ -44,15 +45,13 @@ public class UserServiceImpl implements UserService {
     public boolean isFilmOwner(long userId, long filmId) throws ServiceException {
         boolean isFilmOwner;
 
-        if (userId < 1){
-            //LOG
-            System.out.println("ServiceException, incorrect user ID");
+        if (userId < 1) {
+            logger.error("Incorrect user ID");
             throw new ServiceException("Incorrect user ID");
         }
 
-        if (filmId < 1){
-            //LOG
-            System.out.println("ServiceException, incorrect film ID");
+        if (filmId < 1) {
+            logger.error("Incorrect film ID");
             throw new ServiceException("Incorrect film ID");
         }
 
@@ -62,8 +61,7 @@ public class UserServiceImpl implements UserService {
         try {
             isFilmOwner = userDAO.isFilmOwner(userId, filmId);
         } catch (DAOException e) {
-            //LOG
-            System.out.println("DAOException in UserServiceImpl " + e);
+            logger.error("DAO Exception", e);
             throw new ServiceException(e);
         }
 
@@ -74,9 +72,8 @@ public class UserServiceImpl implements UserService {
     public boolean isBanned(long id) throws ServiceException {
         boolean isBanned;
 
-        if (id < 1){
-            //LOG
-            System.out.println("ServiceException, incorrect user ID");
+        if (id < 1) {
+            logger.error("Incorrect user ID");
             throw new ServiceException("Incorrect user ID");
         }
 
@@ -86,8 +83,7 @@ public class UserServiceImpl implements UserService {
         try {
             isBanned = userDAO.isBanned(id);
         } catch (DAOException e) {
-            //LOG
-            System.out.println("DAOException in UserServiceImpl " + e);
+            logger.error("DAO Exception" + e);
             throw new ServiceException(e);
         }
 
@@ -99,14 +95,12 @@ public class UserServiceImpl implements UserService {
         long id;
 
         if (user.getEmail() == null || user.getEmail().isEmpty()) {
-            //LOG
-            System.out.println("ServiceException, incorrect email");
+            logger.error("Incorrect email");
             throw new ServiceException("Incorrect email");
         }
 
         if (user.getPassword().length() < 7) {
-            //LOG
-            System.out.println("Service exception, incorrect password length");
+            logger.error("Incorrect password length");
             throw new ServiceException("Password length is too low");
         }
 
@@ -115,8 +109,7 @@ public class UserServiceImpl implements UserService {
             UserDAO userDAO = daoObjectFactory.getUserDAO();
             id = userDAO.registration(user);
         } catch (DAOException e) {
-            //LOG
-            System.out.println("DAOException in UserServiceImpl " + e);
+            logger.error("DAO Exception", e);
             throw new ServiceException(e);
         }
 
@@ -125,15 +118,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void ban(long userId, long adminId) throws ServiceException {
-        if (userId < 1){
-            //LOG
-            System.out.println("ServiceException, incorrect user ID");
+        if (userId < 1) {
+            logger.error("Incorrect user ID");
             throw new ServiceException("Incorrect user ID");
         }
 
-        if (adminId < 1){
-            //LOG
-            System.out.println("ServiceException, incorrect admin ID");
+        if (adminId < 1) {
+            logger.error("Incorrect admin ID");
             throw new ServiceException("Incorrect admin ID");
         }
 
@@ -143,17 +134,15 @@ public class UserServiceImpl implements UserService {
         try {
             userDAO.ban(userId, adminId);
         } catch (DAOException e) {
-            //LOG
-            System.out.println("DAOException in UserServiceImpl " + e);
+            logger.error("DAO Exception" + e);
             throw new ServiceException(e);
         }
     }
 
     @Override
     public void unban(long userId) throws ServiceException {
-        if (userId < 1){
-            //LOG
-            System.out.println("ServiceException, incorrect user ID");
+        if (userId < 1) {
+            logger.error("Incorrect user ID");
             throw new ServiceException("Incorrect user ID");
         }
 
@@ -161,10 +150,9 @@ public class UserServiceImpl implements UserService {
         UserDAO userDAO = daoObjectFactory.getUserDAO();
 
         try {
-             userDAO.unban(userId);
+            userDAO.unban(userId);
         } catch (DAOException e) {
-            //LOG
-            System.out.println("DAOException in UserServiceImpl " + e);
+            logger.error("DAO Exception", e);
             throw new ServiceException(e);
         }
     }
@@ -179,8 +167,7 @@ public class UserServiceImpl implements UserService {
         try {
             users = userDAO.getBannedUsers();
         } catch (DAOException e) {
-            //LOG
-            System.out.println("DAOException in UserServiceImpl " + e);
+            logger.error("DAO Exception" + e);
             throw new ServiceException(e);
         }
 

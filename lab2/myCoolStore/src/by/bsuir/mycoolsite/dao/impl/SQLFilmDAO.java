@@ -7,6 +7,8 @@ import by.bsuir.mycoolsite.bean.enums.AgeRestriction;
 import by.bsuir.mycoolsite.connection.DBConnection;
 import by.bsuir.mycoolsite.dao.FilmDAO;
 import by.bsuir.mycoolsite.dao.exception.DAOException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.sql.*;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SQLFilmDAO implements FilmDAO {
+    private static final Logger logger = LogManager.getLogger(SQLFilmDAO.class);
     private static final String QUERY_EDIT_FILM =
             "UPDATE film SET flm_description = ?, flm_price = ?, flm_discount = ?, flm_author = ?, flm_age = ?, " +
                     "flm_name = ? WHERE flm_id = ?";
@@ -67,8 +70,6 @@ public class SQLFilmDAO implements FilmDAO {
 
         DBConnection dbConnection = DBConnection.getInstance();
 
-        System.out.println("Connected");
-
         try {
             con = dbConnection.getConnection();
 
@@ -109,8 +110,8 @@ public class SQLFilmDAO implements FilmDAO {
 
         } catch (SQLException e) {
             //LOG
-            System.out.println("SQL Exception " + e);
-            throw new DAOException("Sql error");
+            logger.error("Query " + QUERY_GET_FILMS + " failed", e);
+            throw new DAOException("Query " + QUERY_GET_FILMS + " failed", e);
         } finally {
             dbConnection.close(ps, rs);
         }
@@ -126,8 +127,6 @@ public class SQLFilmDAO implements FilmDAO {
         PreparedStatement ps = null;
         ResultSet rsFilm = null, rsMedia = null, rsCategories = null;
         DBConnection dbConnection = DBConnection.getInstance();
-
-        System.out.println("Connected");
 
         try {
             con = dbConnection.getConnection();
@@ -163,14 +162,12 @@ public class SQLFilmDAO implements FilmDAO {
 
                 film = new Film(id, description, price, media, discount, author, age, name, categories);
             } else {
-                //LOG
-                System.out.println("Film info not found");
-                throw new DAOException("Film info not found");
+                logger.error("Getting film by id failed");
+                throw new DAOException("Getting film by id failed");
             }
         } catch (SQLException e) {
-            //LOG
-            System.out.println("SQL Exception " + e);
-            throw new DAOException("Sql error");
+            logger.error("Getting film by id failed", e);
+            throw new DAOException("Getting film by id failed", e);
         } finally {
             dbConnection.close(ps, rsFilm);
             dbConnection.close(ps, rsMedia);
@@ -225,37 +222,34 @@ public class SQLFilmDAO implements FilmDAO {
 
                         rowsAffected = ps.executeUpdate();
                         if (rowsAffected < 0) {
-                            //LOG
-                            System.out.println("Query failed");
+                            logger.error("Query " + QUERY_ADD_FILM_CATEGORY + " failed");
                             throw new DAOException("Query " + QUERY_ADD_FILM_CATEGORY + " failed");
                         }
                     }
 
                     ps = con.prepareStatement(QUERY_ADD_MEDIA);
-                    ps.setLong(1, filmId); // fm_id
-                    ps.setString(2, filmFile); // fm_film_path
-                    ps.setString(3, trailer); // fm_trailer_path
+                    ps.setLong(1, filmId);
+                    ps.setString(2, filmFile);
+                    ps.setString(3, trailer);
 
                     rowsAffected = ps.executeUpdate();
 
                     if (rowsAffected < 0) {
-                        //LOG
-                        System.out.println("Query failed");
+                        logger.error("Query " + QUERY_ADD_MEDIA + " failed");
                         throw new DAOException("Query " + QUERY_ADD_MEDIA + " failed");
                     }
                 } else {
-                    //LOG
-                    System.out.println("Query failed");
+                    logger.error("ID not found");
                     throw new DAOException("ID not found");
                 }
             } else {
-                //LOG
-                System.out.println("Query failed");
+                logger.error("Query " + QUERY_ADD_FILM + " failed");
                 throw new DAOException("Query " + QUERY_ADD_FILM + " failed");
             }
 
         } catch (SQLException e) {
-            throw new DAOException("Query failed");
+            logger.error("Film adding query failed", e);
+            throw new DAOException("Film adding query failed", e);
         } finally {
             dbConnection.close(ps, rs);
         }
@@ -304,19 +298,18 @@ public class SQLFilmDAO implements FilmDAO {
 
                     rowsAffected = ps.executeUpdate();
                     if (rowsAffected < 0) {
-                        //LOG
-                        System.out.println("Query failed");
-                        throw new DAOException("Query failed");
+                        logger.error("Query " + QUERY_ADD_FILM_CATEGORY + " failed");
+                        throw new DAOException("Query " + QUERY_ADD_FILM_CATEGORY + " failed");
                     }
                 }
             } else {
-                //LOG
-                System.out.println("Query failed");
-                throw new DAOException("Query " + " failed");
+                System.out.println("Query " + QUERY_EDIT_FILM + " failed");
+                throw new DAOException("Query " + QUERY_EDIT_FILM + " failed");
             }
 
         } catch (SQLException e) {
-            throw new DAOException("Query failed");
+            logger.error("Film editing query failed", e);
+            throw new DAOException("Film editing query failed", e);
         } finally {
             dbConnection.close(ps, null);
         }

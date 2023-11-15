@@ -60,15 +60,18 @@
 </c:forEach><br>
 
 <video width="320" height="240" controls>
-    <source src="${pageContext.request.contextPath}/VideoDisplay?trailerPath=${film.media.trailerPath}" type="video/mp4">
-</video><br>
+    <source src="${pageContext.request.contextPath}/VideoDisplay?trailerPath=${film.media.trailerPath}"
+            type="video/mp4">
+</video>
+<br>
 
 <p>${film.description}</p>
 
 <c:if test="${(isPaid && not isBanned) || not empty sessionScope.isAdmin}">
     <video width="320" height="240" controls>
         <source src="${pageContext.request.contextPath}/VideoDisplay?filmPath=${film.media.filmPath}" type="video/mp4">
-    </video><br>
+    </video>
+    <br>
 </c:if>
 
 <c:forEach var="feedback" items="${feedbacks}">

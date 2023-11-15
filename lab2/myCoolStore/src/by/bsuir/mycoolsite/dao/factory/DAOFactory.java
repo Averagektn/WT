@@ -20,21 +20,32 @@ public final class DAOFactory {
     public static DAOFactory getInstance() {
         return instance;
     }
-    public CategoryDAO getCategoryDAO() { return sqlCategoryImpl; }
-    public AgeRestrictionDAO getAgeRestrictionDAO() { return enumAgeRestrictionImpl; }
+
+    public CategoryDAO getCategoryDAO() {
+        return sqlCategoryImpl;
+    }
+
+    public AgeRestrictionDAO getAgeRestrictionDAO() {
+        return enumAgeRestrictionImpl;
+    }
+
     public FilmDAO getFilmDAO() {
         return sqlFilmImpl;
     }
+
     public UserDAO getUserDAO() {
         return sqlUserImpl;
     }
+
     public FeedbackDAO getFeedbackDAO() {
         return sqlFeedbackImpl;
     }
-    public CartDAO getCartDAO(){
+
+    public CartDAO getCartDAO() {
         return sqlCartImpl;
     }
-    public LibraryDAO getLibraryDAO(){
+
+    public LibraryDAO getLibraryDAO() {
         return sqlLibraryImpl;
     }
 }

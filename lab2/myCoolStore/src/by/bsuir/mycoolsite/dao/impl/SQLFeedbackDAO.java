@@ -7,6 +7,8 @@ import by.bsuir.mycoolsite.bean.enums.Role;
 import by.bsuir.mycoolsite.connection.DBConnection;
 import by.bsuir.mycoolsite.dao.FeedbackDAO;
 import by.bsuir.mycoolsite.dao.exception.DAOException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,8 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SQLFeedbackDAO implements FeedbackDAO {
+    private static final Logger logger = LogManager.getLogger(SQLFeedbackDAO.class);
     private static final String QUERY_DELETE_USER_FEEDBACKS =
-            "DELETE FROM feedback WHERE fbk_author = ?";
+            "DELETE " +
+                    "FROM feedback " +
+                    "WHERE fbk_author = ?";
     private static final String QUERY_ADD_FEEDBACK =
             "INSERT INTO feedback (fbk_author, fbk_film, fbk_text, fbk_rating) VALUES (?,?,?,?)";
     private static final String QUERY_GET_FEEDBACK_BY_FILM_ID =
@@ -25,6 +30,7 @@ public class SQLFeedbackDAO implements FeedbackDAO {
                     "FROM feedback " +
                     "LEFT JOIN user ON fbk_author = usr_id " +
                     "WHERE fbk_film = ?";
+
     @Override
     public List<Feedback> getFilmFeedbacks(long filmId) throws DAOException {
         List<Feedback> feedbacks = new ArrayList<>();
@@ -33,8 +39,6 @@ public class SQLFeedbackDAO implements FeedbackDAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
         DBConnection dbConnection = DBConnection.getInstance();
-
-        System.out.println("Connected");
 
         try {
             con = dbConnection.getConnection();
@@ -57,9 +61,8 @@ public class SQLFeedbackDAO implements FeedbackDAO {
             }
 
         } catch (SQLException e) {
-            //LOG
-            System.out.println("SQL Exception " + e);
-            throw new DAOException("Sql error");
+            logger.error("SQL Exception while receiving feedbacks", e);
+            throw new DAOException("SQL Exception while receiving feedbacks", e);
         } finally {
             dbConnection.close(ps, rs);
         }
@@ -78,7 +81,7 @@ public class SQLFeedbackDAO implements FeedbackDAO {
         String text = feedback.getText();
         int rating = feedback.getRating();
 
-        try{
+        try {
             con = dbConnection.getConnection();
 
             ps = con.prepareStatement(QUERY_ADD_FEEDBACK);
@@ -90,12 +93,13 @@ public class SQLFeedbackDAO implements FeedbackDAO {
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected == 0) {
                 //LOG
-                System.out.println("Query failed");
+                logger.error("Query " + QUERY_ADD_FEEDBACK + " failed");
                 throw new DAOException("Query " + QUERY_ADD_FEEDBACK + " failed");
             }
 
         } catch (SQLException e) {
-            throw new DAOException("Query failed");
+            logger.error("Feedback adding query failed", e);
+            throw new DAOException("Feedback adding query failed", e);
         } finally {
             dbConnection.close(ps, null);
         }
@@ -107,14 +111,15 @@ public class SQLFeedbackDAO implements FeedbackDAO {
         Connection con = dbConnection.getConnection();
         PreparedStatement ps = null;
 
-        try{
+        try {
             ps = con.prepareStatement(QUERY_DELETE_USER_FEEDBACKS);
 
             ps.setLong(1, userId);
 
             ps.executeUpdate();
         } catch (SQLException e) {
-            throw new DAOException("Query failed");
+            logger.error("Query " + QUERY_DELETE_USER_FEEDBACKS + " failed");
+            throw new DAOException("Query " + QUERY_DELETE_USER_FEEDBACKS + " failed");
         } finally {
             dbConnection.close(ps, null);
         }

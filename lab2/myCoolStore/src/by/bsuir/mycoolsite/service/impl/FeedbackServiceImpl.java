@@ -6,33 +6,33 @@ import by.bsuir.mycoolsite.dao.exception.DAOException;
 import by.bsuir.mycoolsite.dao.factory.DAOFactory;
 import by.bsuir.mycoolsite.service.FeedbackService;
 import by.bsuir.mycoolsite.service.exception.ServiceException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
 public class FeedbackServiceImpl implements FeedbackService {
+    private static final Logger logger = LogManager.getLogger(FeedbackServiceImpl.class);
+
     @Override
     public void addFeedback(Feedback feedback) throws ServiceException {
         if (feedback.getAuthor().getId() < 1) {
-            //LOG
-            System.out.println("Invalid user id in feedback adding");
+            logger.error("Invalid user id in feedback adding");
             throw new ServiceException("Invalid user id in feedback adding");
         }
 
         if (feedback.getFilm().getId() < 1) {
-            //LOG
-            System.out.println("Invalid film id in feedback adding");
+            logger.error("Invalid film id in feedback adding");
             throw new ServiceException("Invalid film id in feedback adding");
         }
 
         if (feedback.getText().isEmpty()) {
-            //LOG
-            System.out.println("No feedback text in feedback adding");
+            logger.error("No feedback text in feedback adding");
             throw new ServiceException("No feedback text in feedback adding");
         }
 
         if (feedback.getRating() < 0 || feedback.getRating() > 10) {
-            //LOG
-            System.out.println("Invalid rating value in feedback adding");
+            logger.error("Invalid rating value in feedback adding");
             throw new ServiceException("Invalid rating value in feedback adding");
         }
 
@@ -42,8 +42,7 @@ public class FeedbackServiceImpl implements FeedbackService {
         try {
             feedbackDAO.addFeedback(feedback);
         } catch (DAOException e) {
-            //LOG
-            System.out.println("DAO exception in addFeedback");
+            logger.error("DAO exception", e);
             throw new ServiceException(e);
         }
     }
@@ -53,8 +52,7 @@ public class FeedbackServiceImpl implements FeedbackService {
         List<Feedback> feedbacks;
 
         if (filmId < 1) {
-            //LOG
-            System.out.println("Incorrect film ID");
+            logger.error("Incorrect film ID");
             throw new ServiceException("Incorrect film ID");
         }
 
@@ -64,8 +62,7 @@ public class FeedbackServiceImpl implements FeedbackService {
         try {
             feedbacks = feedbackDAO.getFilmFeedbacks(filmId);
         } catch (DAOException e) {
-            //LOG
-            System.out.println("DAOException in UserServiceImpl " + e);
+            logger.error("DAO Exception", e);
             throw new ServiceException(e);
         }
 
@@ -75,8 +72,7 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Override
     public void deleteUserFeedbacks(long userId) throws ServiceException {
         if (userId < 1) {
-            //LOG
-            System.out.println("Incorrect user ID");
+            logger.error("Incorrect user ID");
             throw new ServiceException("Incorrect user ID");
         }
 
@@ -86,8 +82,7 @@ public class FeedbackServiceImpl implements FeedbackService {
         try {
             feedbackDAO.deleteUserFeedbacks(userId);
         } catch (DAOException e) {
-            //LOG
-            System.out.println("DAOException: " + e);
+            logger.error("DAO Exception", e);
             throw new ServiceException(e);
         }
     }

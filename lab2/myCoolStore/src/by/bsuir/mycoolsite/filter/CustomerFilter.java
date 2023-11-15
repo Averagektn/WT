@@ -20,7 +20,7 @@ public class CustomerFilter extends HttpFilter {
         boolean isCustomer = session.getAttribute(SessionAttribute.ID) != null;
         boolean isAdmin = session.getAttribute(SessionAttribute.IS_ADMIN) != null;
 
-        if (!isCustomer || isAdmin){
+        if (!isCustomer || isAdmin) {
             res.sendRedirect(PageName.MAIN.getUrlPattern());
         } else {
             chain.doFilter(req, res);

@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface LibraryDAO {
     void addFilm(long userId, long filmId) throws DAOException;
+
     List<Film> getUserFilms(long userId) throws DAOException;
 }

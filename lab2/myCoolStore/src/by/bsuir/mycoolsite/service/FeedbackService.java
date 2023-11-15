@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface FeedbackService {
     void addFeedback(Feedback feedback) throws ServiceException;
+
     List<Feedback> getFilmFeedbacks(long filmId) throws ServiceException;
+
     void deleteUserFeedbacks(long userId) throws ServiceException;
 }
