@@ -62,7 +62,7 @@
         ${category.name}
     </c:forEach><br>
 
-    <video width="320" height="240" controls>
+    <video width="640" height="400" controls>
         <source src="${pageContext.request.contextPath}/VideoDisplay?trailerPath=${film.media.trailerPath}"
                 type="video/mp4">
     </video>
@@ -71,7 +71,7 @@
     <p>${film.description}</p>
 
     <c:if test="${(isPaid && not isBanned) || not empty sessionScope.isAdmin}">
-        <video width="320" height="240" controls>
+        <video width="640" height="480" controls>
             <source src="${pageContext.request.contextPath}/VideoDisplay?filmPath=${film.media.filmPath}"
                     type="video/mp4">
         </video>
