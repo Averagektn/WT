@@ -8,105 +8,105 @@
 <jsp:useBean id="isBanned" scope="request" type="java.lang.Boolean"/>
 <jsp:useBean id="isFilmInCart" scope="request" type="java.lang.Boolean"/>
 
-<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : 'en'}" scope="session" />
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="lang" />
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : 'en'}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="lang"/>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/customerFilm.css">
     <title>My Cool Site</title>
 </head>
 <body>
-<h1>${film.name}</h1><br>
-
-<a href="${pageContext.request.contextPath}"><fmt:message key="to_main_page"/></a><br>
-
-<c:if test="${not empty sessionScope.userID}">
-    <form action="${pageContext.request.contextPath}/Controller" method="post">
-        <input type="submit" value="<fmt:message key="exit"/>"/>
-        <input type="hidden" name="command" value="sign_out"/>
-    </form>
-</c:if>
+<div class="header">
+    <a id="to-main-page" class="header-link" href="${pageContext.request.contextPath}"><fmt:message
+            key="to_main_page"/></a><br>
+</div>
 
 <c:if test="${not isBanned && empty sessionScope.isAdmin}">
-    <a href="Cart"><fmt:message key="cart"/></a><br>
+    <div class="user-links">
+        <a class="user-btn" href="Library"><fmt:message key="library"/></a><br>
+        <a class="user-btn" href="Cart"><fmt:message key="cart"/></a><br>
+    </div>
 </c:if>
 
-<c:if test="${not isBanned && empty sessionScope.isAdmin}">
-    <a href="Library"><fmt:message key="library"/></a><br>
-</c:if>
+<div class="content">
+    <h1 class="film-header">${film.name}</h1><br>
 
-<c:if test="${not isPaid}">
-    <c:choose>
-        <c:when test="${film.discount != 0}">
-            <strike>${film.price}</strike> ${film.getRealPrice()}<br>
-        </c:when>
-        <c:otherwise>
-            ${film.price}<br>
-        </c:otherwise>
-    </c:choose>
+    <c:if test="${not isPaid}">
+        <c:choose>
+            <c:when test="${film.discount != 0}">
+                <strike>${film.price}</strike> ${film.getRealPrice()}<br>
+            </c:when>
+            <c:otherwise>
+                ${film.price}<br>
+            </c:otherwise>
+        </c:choose>
 
-    <c:if test="${not isFilmInCart && not isBanned && empty sessionScope.isAdmin}">
-        <form action="${pageContext.request.contextPath}/Controller" method="post">
-            <input type="hidden" name="filmID" value="${film.id}">
-            <input type="hidden" name="command" value="add_to_cart"/>
-            <input type="submit" value="<fmt:message key="add_to_cart"/>">
-        </form>
+        <c:if test="${not isFilmInCart && not isBanned && empty sessionScope.isAdmin}">
+            <form action="${pageContext.request.contextPath}/Controller" method="post">
+                <input type="hidden" name="filmID" value="${film.id}">
+                <input type="hidden" name="command" value="add_to_cart"/>
+                <input type="submit" value="<fmt:message key="add_to_cart"/>">
+            </form>
+        </c:if>
     </c:if>
-</c:if>
 
-<fmt:message key="age_restriction"/>: ${film.ageRestriction.toString()}<br>
-<fmt:message key="author"/>: ${film.author}<br>
-<fmt:message key="categories"/>:
-<c:forEach var="category" items="${film.categories}">
-    ${category.name}
-</c:forEach><br>
+    <fmt:message key="age_restriction"/>: ${film.ageRestriction.toString()}<br>
+    <fmt:message key="author"/>: ${film.author}<br>
+    <fmt:message key="categories"/>:
+    <c:forEach var="category" items="${film.categories}">
+        ${category.name}
+    </c:forEach><br>
 
-<video width="320" height="240" controls>
-    <source src="${pageContext.request.contextPath}/VideoDisplay?trailerPath=${film.media.trailerPath}" type="video/mp4">
-</video>
-<br>
-
-<p>${film.description}</p>
-
-<c:if test="${(isPaid && not isBanned) || not empty sessionScope.isAdmin}">
     <video width="320" height="240" controls>
-        <source src="${pageContext.request.contextPath}/VideoDisplay?filmPath=${film.media.filmPath}" type="video/mp4">
+        <source src="${pageContext.request.contextPath}/VideoDisplay?trailerPath=${film.media.trailerPath}"
+                type="video/mp4">
     </video>
     <br>
-</c:if>
 
-<c:forEach var="feedback" items="${feedbacks}">
-    ${feedback.author.email}<br>
-    <c:if test="${not empty sessionScope.isAdmin}">
+    <p>${film.description}</p>
+
+    <c:if test="${(isPaid && not isBanned) || not empty sessionScope.isAdmin}">
+        <video width="320" height="240" controls>
+            <source src="${pageContext.request.contextPath}/VideoDisplay?filmPath=${film.media.filmPath}"
+                    type="video/mp4">
+        </video>
+        <br>
+    </c:if>
+
+    <c:forEach var="feedback" items="${feedbacks}">
+        ${feedback.author.email}<br>
+        <c:if test="${not empty sessionScope.isAdmin}">
+            <form action="${pageContext.request.contextPath}/Controller" method="post">
+                <input type="hidden" name="authorId" value="${feedback.author.id}">
+                <input type="hidden" name="filmId" value="${film.id}">
+                <input type="hidden" name="command" value="ban"/>
+
+                <input type="submit" value="<fmt:message key="ban"/>"/>
+            </form>
+        </c:if>
+        ${feedback.rating}<br>
+        <p>${feedback.text}</p>
+    </c:forEach>
+
+    <c:if test="${not isBanned && empty sessionScope.isAdmin && isPaid}">
         <form action="${pageContext.request.contextPath}/Controller" method="post">
-            <input type="hidden" name="authorId" value="${feedback.author.id}">
-            <input type="hidden" name="filmId" value="${film.id}">
-            <input type="hidden" name="command" value="ban"/>
+            <label for="filmFeedback"><fmt:message key="feedback"/>:</label>
+            <textarea id="filmFeedback" name="filmFeedback" maxlength="5000"></textarea>
 
-            <input type="submit" value="<fmt:message key="ban"/>"/>
+            <label for="rating"><fmt:message key="mark"/>:</label>
+            <input type="number" min="0" max="10" id="rating" name="rating"><br>
+
+            <input type="hidden" name="filmID" value="${film.id}">
+            <input type="hidden" name="command" value="add_feedback"/>
+
+            <input type="submit" value="<fmt:message key="leave_feedback"/>">
         </form>
     </c:if>
-    ${feedback.rating}<br>
-    <p>${feedback.text}</p>
-</c:forEach>
-
-<c:if test="${not isBanned && empty sessionScope.isAdmin && isPaid}">
-    <form action="${pageContext.request.contextPath}/Controller" method="post">
-        <label for="filmFeedback"><fmt:message key="feedback"/>:</label>
-        <textarea id="filmFeedback" name="filmFeedback" maxlength="5000"></textarea>
-
-        <label for="rating"><fmt:message key="mark"/>:</label>
-        <input type="number" min="0" max="10" id="rating" name="rating"><br>
-
-        <input type="hidden" name="filmID" value="${film.id}">
-        <input type="hidden" name="command" value="add_feedback"/>
-
-        <input type="submit" value="<fmt:message key="leave_feedback"/>">
-    </form>
-</c:if>
-
+</div>
 </body>
 </html>

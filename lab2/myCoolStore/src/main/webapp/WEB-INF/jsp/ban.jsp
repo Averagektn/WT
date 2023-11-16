@@ -11,6 +11,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>My Cool Site</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/error.css">
 </head>
 <body>
 <form>
