@@ -1,5 +1,7 @@
 package by.bsuir.mycoolsite.controller;
 
+import by.bsuir.mycoolsite.broker.RabbitMQ;
+import by.bsuir.mycoolsite.broker.RabbitMQMessageListener;
 import by.bsuir.mycoolsite.controller.command.Command;
 import by.bsuir.mycoolsite.controller.command.CommandProvider;
 import by.bsuir.mycoolsite.controller.command.exception.CommandException;
@@ -7,6 +9,7 @@ import by.bsuir.mycoolsite.controller.page.Page;
 import by.bsuir.mycoolsite.controller.page.PageProvider;
 import by.bsuir.mycoolsite.controller.page.exception.PageException;
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
@@ -23,6 +26,33 @@ import java.io.IOException;
 @MultipartConfig
 public class Controller extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(Controller.class);
+
+    private Thread listenerThread;
+    private RabbitMQMessageListener messageListener;
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+
+        messageListener = new RabbitMQMessageListener();
+        listenerThread = new Thread(() -> {
+            messageListener.startListening();
+        });
+        listenerThread.start();
+    }
+
+    @Override
+    public void destroy() {
+        if (listenerThread != null) {
+            try {
+                listenerThread.join();
+            } catch (InterruptedException ignored) {
+
+            }
+        }
+
+        super.destroy();
+    }
 
     public Controller() {
         super();
@@ -42,6 +72,11 @@ public class Controller extends HttpServlet {
         Page pageContent = PageProvider.getInstance().getPage(requestURI);
         String page;
 
+        try {
+            RabbitMQ.sendMessage("URI " + requestURI + " received");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         logger.info("URI " + requestURI + " received");
 
         try {
