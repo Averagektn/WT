@@ -34,7 +34,7 @@ public class RabbitMQMessageListener {
                     String message = new String(body, StandardCharsets.UTF_8);
                     System.out.println("Received message from RabbitMQ: " + message);
 
-                    // Здесь вы можете выполнить логику обработки полученного сообщения, в соответствии с вашими требованиями
+                    logger.info("Received message from RabbitMQ: " + message);
 
                     channel.basicAck(envelope.getDeliveryTag(), false);
                 }

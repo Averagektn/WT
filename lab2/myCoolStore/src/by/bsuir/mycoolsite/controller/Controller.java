@@ -26,7 +26,6 @@ import java.io.IOException;
 @MultipartConfig
 public class Controller extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(Controller.class);
-
     private Thread listenerThread;
     private RabbitMQMessageListener messageListener;
 
@@ -110,6 +109,7 @@ public class Controller extends HttpServlet {
         Command command = CommandProvider.getInstance().getCommand(commandName);
         String page;
 
+        RabbitMQ.sendMessage("Command " + commandName + " received");
         logger.info("Command " + commandName + " received");
 
         try {
