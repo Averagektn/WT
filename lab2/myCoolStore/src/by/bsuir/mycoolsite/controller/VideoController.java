@@ -1,5 +1,6 @@
 package by.bsuir.mycoolsite.controller;
 
+import by.bsuir.mycoolsite.broker.RabbitMQ;
 import by.bsuir.mycoolsite.config.Config;
 import by.bsuir.mycoolsite.controller.page.PageName;
 import jakarta.servlet.http.HttpServlet;
@@ -43,14 +44,17 @@ public class VideoController extends HttpServlet {
         if (trailerNameParam != null) {
             filePath = Config.VIDEO_DIRECTORY_PATH + Config.TRAILER_DIR + File.separator + trailerNameParam;
             file = new File(filePath);
-            logger.info("Trailer: " + trailerNameParam);
+            RabbitMQ.sendMessage("Trailer: " + trailerNameParam);
+            //logger.info("Trailer: " + trailerNameParam);
         } else if (filmNameParam != null) {
             filePath = Config.VIDEO_DIRECTORY_PATH + Config.FILM_DIR + File.separator + filmNameParam;
             file = new File(filePath);
-            logger.info("Film: " + filmNameParam);
+            RabbitMQ.sendMessage("Film: " + filmNameParam);
+            //logger.info("Film: " + filmNameParam);
         } else {
             response.sendRedirect(PageName.MAIN.getUrlPattern());
-            logger.info("Incorrect request to VideoController");
+            RabbitMQ.sendMessage("Incorrect request to VideoController");
+            //logger.info("Incorrect request to VideoController");
         }
 
         if (file != null && file.exists()) {

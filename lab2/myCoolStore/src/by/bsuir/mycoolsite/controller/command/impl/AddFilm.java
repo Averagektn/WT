@@ -4,6 +4,7 @@ import by.bsuir.mycoolsite.bean.Category;
 import by.bsuir.mycoolsite.bean.Film;
 import by.bsuir.mycoolsite.bean.Media;
 import by.bsuir.mycoolsite.bean.enums.AgeRestriction;
+import by.bsuir.mycoolsite.broker.RabbitMQ;
 import by.bsuir.mycoolsite.config.Config;
 import by.bsuir.mycoolsite.controller.command.Command;
 import by.bsuir.mycoolsite.controller.command.exception.CommandException;
@@ -116,8 +117,10 @@ public class AddFilm implements Command {
                 filmFileName;
         filmPart.write(filmFilePath);
 
-        logger.info("Adding film " + filmFileName);
-        logger.info("Adding trailer " + trailerFileName);
+        RabbitMQ.sendMessage("Adding film " + filmFileName);
+        //logger.info("Adding film " + filmFileName);
+        RabbitMQ.sendMessage("Adding trailer " + trailerFileName);
+        //logger.info("Adding trailer " + trailerFileName);
 
         return new Media(trailerFileName, filmFileName);
     }

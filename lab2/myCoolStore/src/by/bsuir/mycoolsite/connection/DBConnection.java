@@ -1,5 +1,6 @@
 package by.bsuir.mycoolsite.connection;
 
+import by.bsuir.mycoolsite.broker.RabbitMQ;
 import by.bsuir.mycoolsite.config.Config;
 import by.bsuir.mycoolsite.connection.exception.DBConnectionException;
 import org.apache.logging.log4j.LogManager;
@@ -25,9 +26,11 @@ public class DBConnection {
             Class.forName(Config.DBConnectionClassname);
             connection = DriverManager.getConnection(Config.DBConnectionURL, Config.DBUser, Config.DBPassword);
         } catch (ClassNotFoundException e) {
+            RabbitMQ.sendMessage("ClassNotFound exception in DBConnection: class name: " + Config.DBConnectionClassname);
             logger.error("ClassNotFound exception in DBConnection: class name: " + Config.DBConnectionClassname, e);
             throw new DBConnectionException("Class not found");
         } catch (SQLException e) {
+            RabbitMQ.sendMessage("SQL Exception in DBConnection");
             logger.error("SQL Exception in DBConnection", e);
             throw new DBConnectionException("SQL error");
         }
@@ -44,6 +47,7 @@ public class DBConnection {
             try {
                 instance = new DBConnection();
             } catch (DBConnectionException e) {
+                RabbitMQ.sendMessage("DBConnectionException while creating new connection");
                 logger.error("DBConnectionException while creating new connection", e);
                 throw new RuntimeException("Failed to create DBConnection instance", e);
             }
@@ -57,6 +61,7 @@ public class DBConnection {
      * @return The database connection.
      */
     public Connection getConnection() {
+        RabbitMQ.sendMessage("Connection provided");
         logger.error("Connection provided");
         return connection;
     }
@@ -72,6 +77,7 @@ public class DBConnection {
                 connection.close();
             }
         } catch (SQLException e) {
+            RabbitMQ.sendMessage("Connection closing exception");
             logger.error("Connection closing exception", e);
             throw new RuntimeException("Connection closing exception", e);
         }
@@ -94,6 +100,7 @@ public class DBConnection {
                 rs.close();
             }
         } catch (SQLException e) {
+            RabbitMQ.sendMessage("Connection closing exception");
             logger.error("Connection closing exception", e);
             throw new RuntimeException("Connection closing exception", e);
         }

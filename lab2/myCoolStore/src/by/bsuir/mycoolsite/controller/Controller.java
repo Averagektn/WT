@@ -71,12 +71,8 @@ public class Controller extends HttpServlet {
         Page pageContent = PageProvider.getInstance().getPage(requestURI);
         String page;
 
-        try {
-            RabbitMQ.sendMessage("URI " + requestURI + " received");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        logger.info("URI " + requestURI + " received");
+        RabbitMQ.sendMessage("URI " + requestURI + " received");
+        //logger.info("URI " + requestURI + " received");
 
         try {
             page = pageContent.generate(request);
@@ -110,7 +106,7 @@ public class Controller extends HttpServlet {
         String page;
 
         RabbitMQ.sendMessage("Command " + commandName + " received");
-        logger.info("Command " + commandName + " received");
+        //logger.info("Command " + commandName + " received");
 
         try {
             page = command.execute(request);

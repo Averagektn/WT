@@ -1,6 +1,7 @@
 package by.bsuir.mycoolsite.controller.command.impl;
 
 import by.bsuir.mycoolsite.bean.User;
+import by.bsuir.mycoolsite.broker.RabbitMQ;
 import by.bsuir.mycoolsite.controller.command.Command;
 import by.bsuir.mycoolsite.controller.command.exception.CommandException;
 import by.bsuir.mycoolsite.controller.page.PageName;
@@ -37,7 +38,8 @@ public class SignIn implements Command {
         String email = request.getParameter(PARAM_EMAIL);
         String password = request.getParameter(PARAM_PASSWORD);
 
-        logger.info("Authorisation of " + email);
+        RabbitMQ.sendMessage("Authorisation of " + email);
+        //logger.info("Authorisation of " + email);
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         UserService clientService = serviceFactory.getUserService();
