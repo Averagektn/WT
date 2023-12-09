@@ -111,3 +111,7 @@ log.txt
 tomcat
 Done
 Config.java
+*.meta
+lab2/myCoolStore/.idea/dataSources.local.xml
+lab2/myCoolStore/.idea/dataSources/bc04adee-d279-4423-be29-3661f5a441a9.xml
+lab2/myCoolStore/.idea/workspace.xml
