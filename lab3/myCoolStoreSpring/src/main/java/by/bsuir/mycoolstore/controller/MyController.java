@@ -19,19 +19,6 @@ public class MyController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response){
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myCoolStoreSpring");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        EntityTransaction transaction = entityManager.getTransaction();
 
-        transaction.begin();
-
-        UserEntity userEntity = new UserEntity();
-        userEntity.setUsrBannedBy(null);
-        userEntity.setUsrId(null);
-        userEntity.setUsrPassword("Aboba");
-        userEntity.setUsrRole("admin");
-        userEntity.setUsrEmail("aboba@mail");
-        entityManager.persist(userEntity);
-        transaction.commit();
     }
 }
