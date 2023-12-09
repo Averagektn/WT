@@ -113,3 +113,4 @@ Done
 Config.java
 *.meta
 META-INF
+*persitence.xml
