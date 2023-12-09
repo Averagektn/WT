@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="myCoolStore:war" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="62178842-a120-4798-beb2-647de5861687" name="Changes" comment="Ready to pass" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" show_ignored="true" />
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Jsp File" />
+        <option value="Interface" />
+        <option value="CSS File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../.." value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Averagektn&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="7d985487-6827-441f-af7b-692dbc001eda" />
+        <option name="url" value="https://github.com/Averagektn/WT.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2XfS1eUzWvnwuLsP3Tdac8wHnqC" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dar&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Archive/5 semester/WT/lab2/myCoolStore/src/main/webapp/WEB-INF/classes/myapp&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Archive/5 semester/WT/tomcat/webapps/files&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Archive\5 semester\WT\lab2\myCoolStore\src\main\resources" />
+      <recent name="C:\Archive\5 semester\WT\lab2\myCoolStore\src\main\webapp" />
+      <recent name="C:\Archive\5 semester\WT\lab2\myCoolStore\src\main\webapp\WEB-INF\jsp" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Local Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.15" ALTERNATIVE_JRE_ENABLED="false" show_console_on_std_err="true" show_console_on_std_out="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="myCoolStore:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/myCoolStore" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="159cbee4-e9db-47e3-a6de-076b2a29ca5c" />
+      </server-settings>
+      <output_file path="$PROJECT_DIR$/../log.txt" is_save="true" />
+      <log_file alias="Tomcat Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/manager.*" />
+      <log_file alias="Tomcat Host Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/host-manager.*" />
+      <log_file alias="Tomcat Localhost Access Log" path="%IDEA_RUN:CATALINA_BASE%/logs/localhost_access_log.*" />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <extension name="coverage" sample_coverage="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="52574" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="myCoolStore:war" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="62178842-a120-4798-beb2-647de5861687" name="Changes" comment="" />
+      <created>1699018427201</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699018427201</updated>
+      <workItem from="1699018428266" duration="1873000" />
+      <workItem from="1699025203946" duration="11000" />
+      <workItem from="1699035171264" duration="333000" />
+      <workItem from="1699092024200" duration="19000" />
+      <workItem from="1699121446822" duration="5394000" />
+      <workItem from="1699170790379" duration="71000" />
+      <workItem from="1699171184324" duration="1290000" />
+      <workItem from="1699172585107" duration="51000" />
+      <workItem from="1699172723567" duration="62000" />
+      <workItem from="1699172798976" duration="16817000" />
+      <workItem from="1699263030785" duration="14006000" />
+      <workItem from="1699285547233" duration="13266000" />
+      <workItem from="1699347181511" duration="15041000" />
+      <workItem from="1699368022810" duration="11982000" />
+      <workItem from="1699389003037" duration="2668000" />
+      <workItem from="1699428282543" duration="6341000" />
+      <workItem from="1699459928054" duration="6916000" />
+      <workItem from="1699526983799" duration="9214000" />
+      <workItem from="1699615939953" duration="11568000" />
+      <workItem from="1699633815729" duration="93000" />
+      <workItem from="1699634012058" duration="7450000" />
+      <workItem from="1699781956842" duration="40000" />
+      <workItem from="1699782015628" duration="15000" />
+      <workItem from="1699795750358" duration="3064000" />
+      <workItem from="1699804742359" duration="8916000" />
+      <workItem from="1699824445393" duration="144000" />
+      <workItem from="1699855373561" duration="3968000" />
+      <workItem from="1699890525739" duration="17720000" />
+      <workItem from="1699909880917" duration="2321000" />
+      <workItem from="1699949924965" duration="10075000" />
+      <workItem from="1699960311008" duration="82000" />
+      <workItem from="1699966033603" duration="4066000" />
+      <workItem from="1699991499179" duration="4751000" />
+      <workItem from="1700044280790" duration="161000" />
+      <workItem from="1700060552837" duration="39903000" />
+      <workItem from="1700252097265" duration="150000" />
+      <workItem from="1700328725569" duration="611000" />
+      <workItem from="1701509327101" duration="4525000" />
+      <workItem from="1701605590290" duration="648000" />
+      <workItem from="1701712782061" duration="1499000" />
+      <workItem from="1701767712934" duration="851000" />
+      <workItem from="1702117152872" duration="407000" />
+    </task>
+    <task id="LOCAL-00023" summary="Dynamic content finally works">
+      <option name="closed" value="true" />
+      <created>1699355970686</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1699355970686</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Started working on redirection">
+      <option name="closed" value="true" />
+      <created>1699362264849</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1699362264849</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Redirection done">
+      <option name="closed" value="true" />
+      <created>1699370375257</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1699370375257</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Refactoring">
+      <option name="closed" value="true" />
+      <created>1699371305415</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1699371305415</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Connection optimization">
+      <option name="closed" value="true" />
+      <created>1699372870080</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1699372870080</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Session added">
+      <option name="closed" value="true" />
+      <created>1699376006201</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1699376006202</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Sign out implemented">
+      <option name="closed" value="true" />
+      <created>1699376573280</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1699376573281</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Working on filter">
+      <option name="closed" value="true" />
+      <created>1699379955976</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1699379955976</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Fixed visibility by removing jsp directory, working on view">
+      <option name="closed" value="true" />
+      <created>1699391532374</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1699391532374</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Started working on film page for customer">
+      <option name="closed" value="true" />
+      <created>1699431655644</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1699431655645</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Added customer page fixes">
+      <option name="closed" value="true" />
+      <created>1699460086345</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1699460086345</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Filter rework">
+      <option name="closed" value="true" />
+      <created>1699461643721</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1699461643721</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Working on film page">
+      <option name="closed" value="true" />
+      <created>1699466846450</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1699466846450</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Film page v0.5 implemented">
+      <option name="closed" value="true" />
+      <created>1699558300297</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1699558300297</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Forms edited">
+      <option name="closed" value="true" />
+      <created>1699619304089</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1699619304089</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Feedbacks adding implemented">
+      <option name="closed" value="true" />
+      <created>1699622504313</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1699622504313</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Created new entity for feedbacks">
+      <option name="closed" value="true" />
+      <created>1699624165742</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1699624165742</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Adding to cart implemented">
+      <option name="closed" value="true" />
+      <created>1699625505004</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1699625505004</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Working on cart page">
+      <option name="closed" value="true" />
+      <created>1699629450283</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1699629450283</updated>
+    </task>
+    <task id="LOCAL-00042" summary="View headers update">
+      <option name="closed" value="true" />
+      <created>1699635717262</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1699635717262</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Adding films to library implemented">
+      <option name="closed" value="true" />
+      <created>1699638079247</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1699638079247</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Library page created">
+      <option name="closed" value="true" />
+      <created>1699640108436</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1699640108436</updated>
+    </task>
+    <task id="LOCAL-00045" summary="User ban handled">
+      <option name="closed" value="true" />
+      <created>1699640884411</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1699640884411</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Adding to cart bug fixed">
+      <option name="closed" value="true" />
+      <created>1699797473075</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1699797473075</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Film page bug fixes">
+      <option name="closed" value="true" />
+      <created>1699798763491</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1699798763491</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Admin film page view created">
+      <option name="closed" value="true" />
+      <created>1699818412498</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1699818412498</updated>
+    </task>
+    <task id="LOCAL-00049" summary="User ban implemented">
+      <option name="closed" value="true" />
+      <created>1699858916066</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1699858916066</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Banlist added">
+      <option name="closed" value="true" />
+      <created>1699895428910</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1699895428911</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Moved jsps to safer place">
+      <option name="closed" value="true" />
+      <created>1699896081926</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1699896081926</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Adding files finally works">
+      <option name="closed" value="true" />
+      <created>1699912206521</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1699912206522</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Working on video servlet">
+      <option name="closed" value="true" />
+      <created>1699955174096</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1699955174097</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Media adding implemented">
+      <option name="closed" value="true" />
+      <created>1699958651619</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1699958651619</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Working on adding films to DB">
+      <option name="closed" value="true" />
+      <created>1699960239128</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1699960239128</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Working on adding films to DB">
+      <option name="closed" value="true" />
+      <created>1699970097960</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1699970097960</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Database rework: media link removed from film table">
+      <option name="closed" value="true" />
+      <created>1699996141493</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1699996141494</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Film adding implemented, media classes merged into film classes">
+      <option name="closed" value="true" />
+      <created>1699996184574</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1699996184574</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Film adding implemented">
+      <option name="closed" value="true" />
+      <created>1700062472215</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1700062472215</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Working on film editing">
+      <option name="closed" value="true" />
+      <created>1700063636049</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1700063636049</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Film editing implemented">
+      <option name="closed" value="true" />
+      <created>1700066988614</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1700066988614</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Working on logger">
+      <option name="closed" value="true" />
+      <created>1700071366788</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1700071366788</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Logger implemented">
+      <option name="closed" value="true" />
+      <created>1700081065770</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1700081065770</updated>
+    </task>
+    <task id="LOCAL-00064" summary="JavaDoc generated">
+      <option name="closed" value="true" />
+      <created>1700085091115</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1700085091115</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Localisation implemented">
+      <option name="closed" value="true" />
+      <created>1700091240481</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1700091240481</updated>
+    </task>
+    <task id="LOCAL-00066" summary="I HATE FRONTEND">
+      <option name="closed" value="true" />
+      <created>1700102004295</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1700102004295</updated>
+    </task>
+    <task id="LOCAL-00067" summary="DONE">
+      <option name="closed" value="true" />
+      <created>1700105739785</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1700105739785</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Started working with RabbitMQ">
+      <option name="closed" value="true" />
+      <created>1701509752413</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1701509752413</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Sending&amp;receiving implemented">
+      <option name="closed" value="true" />
+      <created>1701513044373</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1701513044373</updated>
+    </task>
+    <task id="LOCAL-00070" summary="WORKS">
+      <option name="closed" value="true" />
+      <created>1701513265303</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1701513265303</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Ready to pass">
+      <option name="closed" value="true" />
+      <created>1701713911043</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1701713911044</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Adding to cart bug fixed" />
+    <MESSAGE value="Film page bug fixes" />
+    <MESSAGE value="Admin film page view created" />
+    <MESSAGE value="User ban implemented" />
+    <MESSAGE value="Banlist added" />
+    <MESSAGE value="Moved jsps to safer place" />
+    <MESSAGE value="Adding files finally works" />
+    <MESSAGE value="Working on video servlet" />
+    <MESSAGE value="Media adding implemented" />
+    <MESSAGE value="Working on adding films to DB" />
+    <MESSAGE value="Database rework: media link removed from film table" />
+    <MESSAGE value="Film adding implemented, media classes merged into film classes" />
+    <MESSAGE value="Film adding implemented" />
+    <MESSAGE value="Working on film editing" />
+    <MESSAGE value="Film editing implemented" />
+    <MESSAGE value="Working on logger" />
+    <MESSAGE value="Logger implemented" />
+    <MESSAGE value="JavaDoc generated" />
+    <MESSAGE value="Localisation implemented" />
+    <MESSAGE value="I HATE FRONTEND" />
+    <MESSAGE value="DONE" />
+    <MESSAGE value="Started working with RabbitMQ" />
+    <MESSAGE value="Sending&amp;receiving implemented" />
+    <MESSAGE value="WORKS" />
+    <MESSAGE value="Ready to pass" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ready to pass" />
+  </component>
+</project>
