@@ -12,25 +12,25 @@ public class CartEntityPK implements Serializable {
     @Column(name = "crt_user")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Object crtUser;
+    private Long crtUser;
     @Column(name = "crt_film")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Object crtFilm;
+    private Long crtFilm;
 
-    public Object getCrtUser() {
+    public Long getCrtUser() {
         return crtUser;
     }
 
-    public void setCrtUser(Object crtUser) {
+    public void setCrtUser(Long crtUser) {
         this.crtUser = crtUser;
     }
 
-    public Object getCrtFilm() {
+    public Long getCrtFilm() {
         return crtFilm;
     }
 
-    public void setCrtFilm(Object crtFilm) {
+    public void setCrtFilm(Long crtFilm) {
         this.crtFilm = crtFilm;
     }
 

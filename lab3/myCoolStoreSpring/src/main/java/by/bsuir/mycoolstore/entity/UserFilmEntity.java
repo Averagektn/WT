@@ -29,7 +29,7 @@ public class UserFilmEntity {
     @jakarta.persistence.Column(name = "uf_film")
     private Long ufFilm;
 
-    public Object getUfFilm() {
+    public Long getUfFilm() {
         return ufFilm;
     }
 

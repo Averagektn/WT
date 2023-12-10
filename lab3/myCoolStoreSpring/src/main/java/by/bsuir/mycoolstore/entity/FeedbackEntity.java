@@ -58,13 +58,13 @@ public class FeedbackEntity {
 
     @Basic
     @Column(name = "fbk_rating")
-    private Object fbkRating;
+    private Short fbkRating;
 
-    public Object getFbkRating() {
+    public Short getFbkRating() {
         return fbkRating;
     }
 
-    public void setFbkRating(Object fbkRating) {
+    public void setFbkRating(Short fbkRating) {
         this.fbkRating = fbkRating;
     }
 

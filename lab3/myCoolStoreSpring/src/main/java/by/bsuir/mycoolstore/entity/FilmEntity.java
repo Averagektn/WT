@@ -1,5 +1,6 @@
 package by.bsuir.mycoolstore.entity;
 
+import by.bsuir.mycoolstore.entity.enums.AgeRestriction;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -47,13 +48,13 @@ public class FilmEntity {
 
     @Basic
     @Column(name = "flm_discount")
-    private Object flmDiscount;
+    private Short flmDiscount;
 
-    public Object getFlmDiscount() {
+    public Short getFlmDiscount() {
         return flmDiscount;
     }
 
-    public void setFlmDiscount(Object flmDiscount) {
+    public void setFlmDiscount(Short flmDiscount) {
         this.flmDiscount = flmDiscount;
     }
 
@@ -71,13 +72,13 @@ public class FilmEntity {
 
     @Basic
     @Column(name = "flm_age")
-    private Object flmAge;
+    private String flmAge;
 
-    public Object getFlmAge() {
+    public String getFlmAge() {
         return flmAge;
     }
 
-    public void setFlmAge(Object flmAge) {
+    public void setFlmAge(String flmAge) {
         this.flmAge = flmAge;
     }
 

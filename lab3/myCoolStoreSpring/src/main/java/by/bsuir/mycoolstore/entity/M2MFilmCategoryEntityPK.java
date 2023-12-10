@@ -12,25 +12,25 @@ public class M2MFilmCategoryEntityPK implements Serializable {
     @Column(name = "fc_film")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Object fcFilm;
+    private Long fcFilm;
     @Column(name = "fc_category")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Object fcCategory;
+    private Long fcCategory;
 
-    public Object getFcFilm() {
+    public Long getFcFilm() {
         return fcFilm;
     }
 
-    public void setFcFilm(Object fcFilm) {
+    public void setFcFilm(Long fcFilm) {
         this.fcFilm = fcFilm;
     }
 
-    public Object getFcCategory() {
+    public Long getFcCategory() {
         return fcCategory;
     }
 
-    public void setFcCategory(Object fcCategory) {
+    public void setFcCategory(Long fcCategory) {
         this.fcCategory = fcCategory;
     }
 

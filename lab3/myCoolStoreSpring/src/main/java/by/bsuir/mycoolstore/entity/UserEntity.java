@@ -1,5 +1,6 @@
 package by.bsuir.mycoolstore.entity;
 
+import by.bsuir.mycoolstore.entity.enums.Role;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -46,25 +47,25 @@ public class UserEntity {
 
     @Basic
     @Column(name = "usr_role")
-    private Object usrRole;
+    private String usrRole;
 
-    public Object getUsrRole() {
+    public String getUsrRole() {
         return usrRole;
     }
 
-    public void setUsrRole(Object usrRole) {
+    public void setUsrRole(String usrRole) {
         this.usrRole = usrRole;
     }
 
     @Basic
     @Column(name = "usr_banned_by")
-    private Object usrBannedBy;
+    private Long usrBannedBy;
 
-    public Object getUsrBannedBy() {
+    public Long getUsrBannedBy() {
         return usrBannedBy;
     }
 
-    public void setUsrBannedBy(Object usrBannedBy) {
+    public void setUsrBannedBy(Long usrBannedBy) {
         this.usrBannedBy = usrBannedBy;
     }
 
