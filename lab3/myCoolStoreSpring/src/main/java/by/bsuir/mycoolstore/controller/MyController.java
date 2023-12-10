@@ -1,52 +1,24 @@
 package by.bsuir.mycoolstore.controller;
 
-import by.bsuir.mycoolstore.entity.UserEntity;
-import by.bsuir.mycoolstore.entity.enums.Role;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import by.bsuir.mycoolstore.service.exception.ServiceException;
+import by.bsuir.mycoolstore.service.impl.FilmService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-@WebServlet(name = "Servlet", value = "/Servlet")
-public class MyController extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response){
+@Controller
+public class MyController {
+    @Autowired
+    private FilmService filmService;
 
-    }
+    @RequestMapping("/film")
+    public ModelAndView filmPage() throws ServiceException {
+        var mav = new ModelAndView("index");
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        UserEntity user = new UserEntity();
-        user.setUsrEmail("testedusasdr@mail");
-        user.setUsrPassword("atested");
-        user.setUsrRole(Role.CUSTOMER.toString());
-        user.setUsrBannedBy(null);
+        var films = filmService.getFilms();
+        mav.addObject("films", films);
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("myCoolStoreSpring");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-
-        try {
-            transaction.begin();
-            em.persist(user);
-            transaction.commit();
-            response.setStatus(HttpServletResponse.SC_OK);
-            response.getWriter().println("New user created successfully.");
-        } catch (Exception e) {
-            if (transaction.isActive()) {
-                transaction.rollback();
-            }
-
-            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            response.getWriter().println("Error creating new user.");
-        } finally {
-            em.close();
-            emf.close();
-        }
+        return mav;
     }
 }

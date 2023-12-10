@@ -10,7 +10,75 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="IT ADDS FINALLY HIBERNATE WORKS I HATE IT">
+      <change afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/config/JpaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/config/WebAppInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/config/WebMvcConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/dao/FilmRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/dao/exception/DAOException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/exception/ServiceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/FilmService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/JSPPageName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/RequestParameterName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/VideoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/command/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/command/CommandName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/command/CommandProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/command/exception/CommandException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/command/impl/AddFeedback.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/command/impl/AddFilm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/command/impl/AddToCart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/command/impl/Ban.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/command/impl/BuyFilms.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/command/impl/EditFilm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/command/impl/Register.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/command/impl/RemoveFromCart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/command/impl/SignIn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/command/impl/SignOut.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/command/impl/Unban.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/command/impl/WrongRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/page/Page.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/page/PageName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/page/PageProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/page/exception/PageException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/page/impl/AdminFilmPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/page/impl/BanListPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/page/impl/CartPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/page/impl/FilmPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/page/impl/LibraryPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/page/impl/MainPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/page/impl/WrongRequestPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/controller/session/SessionAttribute.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/dao/AgeRestrictionDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/dao/CartDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/dao/CategoryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/dao/FeedbackDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/dao/LibraryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/dao/UserDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/dao/impl/EnumAgeRestrictionDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/dao/impl/SQLCartDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/dao/impl/SQLCategoryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/dao/impl/SQLFeedbackDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/dao/impl/SQLLibraryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/dao/impl/SQLUserDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/service/AgeRestrictionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/service/CartService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/service/CategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/service/FeedbackService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/service/LibraryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/service/impl/AgeRestrictionServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/service/impl/CartServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/service/impl/CategoryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/service/impl/FeedbackServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/old/service/impl/LibraryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab2/myCoolStore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab2/myCoolStore/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/844a923f-0ee7-46c4-933d-292219c66967.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/844a923f-0ee7-46c4-933d-292219c66967.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/MyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/MyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,15 +89,16 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -49,12 +118,12 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat Server.Tomcat 10.1.15.executor": "Run",
+    "Tomcat Server.Tomcat 10.1.15.executor": "Debug",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Archive/5 semester/WT/lab3/myCoolStoreSpring",
+    "last_opened_file_path": "C:/Archive/5 semester/WT/lab3/myCoolStoreSpring/src/main/java/old",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -68,6 +137,19 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Archive\5 semester\WT\lab3\myCoolStoreSpring\src\main\java\old" />
+      <recent name="C:\Archive\5 semester\WT\lab3\myCoolStoreSpring\src\main\java\by\bsuir\mycoolstore" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Archive\5 semester\WT\lab3\myCoolStoreSpring\src\main\java\by\bsuir\mycoolstore\dao\impl" />
+      <recent name="C:\Archive\5 semester\WT\lab3\myCoolStoreSpring\src\main\java\by\bsuir\mycoolstore\dao" />
+      <recent name="C:\Archive\5 semester\WT\lab3\myCoolStoreSpring\src\main\java\by\bsuir\mycoolstore\service" />
+      <recent name="C:\Archive\5 semester\WT\lab3\myCoolStoreSpring\src\main\java\by\bsuir\mycoolstore\service\impl" />
+      <recent name="C:\Archive\5 semester\WT\lab3\myCoolStoreSpring\src\main\java\by\bsuir\mycoolstore\service\factory" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Tomcat 10.1.15" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.15" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -175,6 +257,8 @@
       <workItem from="1702195584914" duration="2023000" />
       <workItem from="1702198532943" duration="14000" />
       <workItem from="1702198729563" duration="972000" />
+      <workItem from="1702202656443" duration="1457000" />
+      <workItem from="1702209123275" duration="6150000" />
     </task>
     <task id="LOCAL-00001" summary="IT ADDS FINALLY HIBERNATE WORKS I HATE IT">
       <option name="closed" value="true" />
@@ -193,5 +277,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="IT ADDS FINALLY HIBERNATE WORKS I HATE IT" />
     <option name="LAST_COMMIT_MESSAGE" value="IT ADDS FINALLY HIBERNATE WORKS I HATE IT" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/MyController.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
