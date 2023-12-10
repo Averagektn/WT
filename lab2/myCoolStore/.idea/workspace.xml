@@ -10,75 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62178842-a120-4798-beb2-647de5861687" name="Changes" comment="Ready to pass">
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/config/JpaConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/config/WebAppInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/config/WebMvcConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/dao/FilmRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/dao/exception/DAOException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/service/exception/ServiceException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/service/impl/FilmService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/service/impl/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/JSPPageName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/RequestParameterName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/VideoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/command/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/command/CommandName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/command/CommandProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/command/exception/CommandException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/command/impl/AddFeedback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/command/impl/AddFilm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/command/impl/AddToCart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/command/impl/Ban.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/command/impl/BuyFilms.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/command/impl/EditFilm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/command/impl/Register.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/command/impl/RemoveFromCart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/command/impl/SignIn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/command/impl/SignOut.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/command/impl/Unban.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/command/impl/WrongRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/page/Page.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/page/PageName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/page/PageProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/page/exception/PageException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/page/impl/AdminFilmPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/page/impl/BanListPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/page/impl/CartPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/page/impl/FilmPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/page/impl/LibraryPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/page/impl/MainPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/page/impl/WrongRequestPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/controller/session/SessionAttribute.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/dao/AgeRestrictionDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/dao/CartDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/dao/CategoryDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/dao/FeedbackDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/dao/LibraryDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/dao/UserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/dao/impl/EnumAgeRestrictionDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/dao/impl/SQLCartDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/dao/impl/SQLCategoryDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/dao/impl/SQLFeedbackDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/dao/impl/SQLLibraryDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/dao/impl/SQLUserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/service/AgeRestrictionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/service/CartService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/service/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/service/FeedbackService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/service/LibraryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/service/impl/AgeRestrictionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/service/impl/CartServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/service/impl/CategoryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/service/impl/FeedbackServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/old/service/impl/LibraryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/.idea/dataSources/844a923f-0ee7-46c4-933d-292219c66967.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/.idea/dataSources/844a923f-0ee7-46c4-933d-292219c66967.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/resources/lang_en.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/resources/lang_ru.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/resources/log4j2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/controller/MyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/controller/MyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/service/impl/FilmService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/service/impl/FilmService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -340,6 +282,7 @@
       <workItem from="1702198711817" duration="16000" />
       <workItem from="1702212256957" duration="250000" />
       <workItem from="1702214465675" duration="34000" />
+      <workItem from="1702225663542" duration="204000" />
     </task>
     <task id="LOCAL-00023" summary="Dynamic content finally works">
       <option name="closed" value="true" />

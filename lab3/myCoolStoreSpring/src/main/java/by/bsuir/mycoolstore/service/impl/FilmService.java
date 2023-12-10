@@ -15,8 +15,12 @@ import java.util.List;
 @Transactional
 public class FilmService {
     private static final Logger logger = LogManager.getLogger(FilmService.class);
+    private final FilmRepository filmRepository;
+
     @Autowired
-    private FilmRepository filmRepository;
+    public FilmService(FilmRepository filmRepository) {
+        this.filmRepository = filmRepository;
+    }
 
     public List<FilmEntity> getFilms() throws ServiceException {
         return (List<FilmEntity>) filmRepository.findAll();

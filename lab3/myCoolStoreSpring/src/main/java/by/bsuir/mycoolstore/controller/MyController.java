@@ -9,10 +9,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MyController {
-    @Autowired
-    private FilmService filmService;
+    private final FilmService filmService;
 
-    @RequestMapping("/film")
+    @Autowired
+    public MyController(FilmService filmService) {
+        this.filmService = filmService;
+    }
+
+    @RequestMapping("/")
     public ModelAndView filmPage() throws ServiceException {
         var mav = new ModelAndView("index");
 
