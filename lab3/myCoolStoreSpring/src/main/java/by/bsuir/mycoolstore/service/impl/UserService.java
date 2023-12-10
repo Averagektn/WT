@@ -1,13 +1,35 @@
 package by.bsuir.mycoolstore.service.impl;
 
+import by.bsuir.mycoolstore.dao.UserRepository;
+import by.bsuir.mycoolstore.entity.UserEntity;
+import by.bsuir.mycoolstore.service.exception.ServiceException;
+import jakarta.transaction.Transactional;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+@Transactional
 public class UserService {
-/*    private static final Logger logger = LogManager.getLogger(UserServiceImpl.class);
+    private static final Logger logger = LogManager.getLogger(UserService.class);
+    private final UserRepository userRepository;
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-    @Override
-    public UserService signIn(String email, String password) throws ServiceException {
-        UserService user;
+    public Long registration(UserEntity user) throws ServiceException {
+        var savedUser = userRepository.save(user);
 
-        if (email == null || email.isEmpty()) {
+        logger.info("Registered user: " + savedUser.getUsrId() + " " + savedUser.getUsrEmail());
+
+        return savedUser.getUsrId();
+    }
+
+    public UserEntity signIn(UserEntity user) throws ServiceException {
+        return new UserEntity();
+/*        if (email == null || email.isEmpty()) {
             logger.error("Incorrect email");
             throw new ServiceException("Incorrect email");
         }
@@ -27,8 +49,11 @@ public class UserService {
             throw new ServiceException(e);
         }
 
-        return user;
+        return user;*/
     }
+
+/*    @Override
+
 
     @Override
     public boolean isFilmOwner(long userId, long filmId) throws ServiceException {

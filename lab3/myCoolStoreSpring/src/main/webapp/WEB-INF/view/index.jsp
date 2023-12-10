@@ -27,13 +27,11 @@
 </form>
 <c:choose>
     <c:when test="${empty sessionScope.userID}">
-        <form action="${pageContext.request.contextPath}/Register" method="post" class="reg-form">
+        <form action="${pageContext.request.contextPath}/Register" method="get" class="reg-form">
             <input type="submit" value="<fmt:message key="registration"/>"/>
-            <input type="hidden" name="command" value="register"/>
         </form>
-        <form action="${pageContext.request.contextPath}/Authorization" method="post" class="auth-form">
+        <form action="${pageContext.request.contextPath}/Authorization" method="get" class="auth-form">
             <input type="submit" value="<fmt:message key="authorisation"/>"/>
-            <input type="hidden" name="command" value="authorization"/>
         </form>
     </c:when>
     <c:otherwise>
@@ -85,7 +83,6 @@
         </c:if>
     </c:forEach>
 </ul>
-${pageContext.request.contextPath}
 
 </body>
 </html>

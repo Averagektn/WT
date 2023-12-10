@@ -1,5 +1,6 @@
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : 'en'}"
        scope="session"/>
@@ -23,17 +24,16 @@
 <div class="content">
     <h1 id="registration-header"><fmt:message key="reg_header"/></h1>
 
-    <form action="${pageContext.request.contextPath}/Controller" method="post" class="registration-form">
+    <form:form action="${pageContext.request.contextPath}/Register" method="post" modelAttribute="user"
+               class="registration-form">
         <label for="emailRegister"><fmt:message key="email"/>:</label>
-        <input type="email" id="emailRegister" name="emailRegister" required><br>
+        <form:input type="email" id="emailRegister" name="emailRegister" path="usrEmail"/><br>
 
         <label for="passwordRegister"><fmt:message key="password"/>:</label>
-        <input type="password" id="passwordRegister" name="passwordRegister" required><br>
+        <form:input type="password" id="passwordRegister" name="passwordRegister" path="usrPassword"/><br>
 
         <input id="register-btn" type="submit" value="<fmt:message key="register"/>">
-
-        <input type="hidden" name="command" value="register"/>
-    </form>
+    </form:form>
 </div>
 </body>
 </html>

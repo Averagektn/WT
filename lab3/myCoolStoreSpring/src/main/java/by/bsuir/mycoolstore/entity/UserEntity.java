@@ -3,6 +3,9 @@ package by.bsuir.mycoolstore.entity;
 import by.bsuir.mycoolstore.entity.enums.Role;
 import jakarta.persistence.*;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 @Entity
@@ -43,6 +46,27 @@ public class UserEntity {
 
     public void setUsrPassword(String usrPassword) {
         this.usrPassword = usrPassword;
+    }
+
+    public static String getHashSha512Password(String password) {
+        String passwordHash = null;
+
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            byte[] bytes = md.digest(password.getBytes(StandardCharsets.UTF_8));
+            StringBuilder sb = new StringBuilder();
+
+            for (byte aByte : bytes) {
+                sb.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
+            }
+
+            passwordHash = sb.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println("Algorithm wasn't found: " + e.toString());
+        }
+
+        return passwordHash;
     }
 
     @Basic

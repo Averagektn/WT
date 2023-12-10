@@ -9,19 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="FILM LIST REQUEST WORKS!!!!">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/lang_en.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/lang_ru.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
+    <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="Added old jsps">
+      <change afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/CommonController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/dao/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab2/myCoolStore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab2/myCoolStore/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/MyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/MyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/FilmService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/FilmService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/MyController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/entity/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/register.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +67,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Archive/5 semester/WT/lab3/myCoolStoreSpring/src/main/resources",
+    "last_opened_file_path": "C:/Archive/5 semester/WT/lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -85,6 +84,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Archive\5 semester\WT\lab3\myCoolStoreSpring\src\main\webapp\WEB-INF\view" />
+      <recent name="C:\Archive\5 semester\WT\lab3\myCoolStoreSpring\src\main\webapp" />
       <recent name="C:\Archive\5 semester\WT\lab3\myCoolStoreSpring\src\main\resources" />
       <recent name="C:\Archive\5 semester\WT\lab3\myCoolStoreSpring\src\main\java\old" />
       <recent name="C:\Archive\5 semester\WT\lab3\myCoolStoreSpring\src\main\java\by\bsuir\mycoolstore" />
@@ -206,7 +207,7 @@
       <workItem from="1702198729563" duration="972000" />
       <workItem from="1702202656443" duration="1457000" />
       <workItem from="1702209123275" duration="6296000" />
-      <workItem from="1702221553087" duration="4441000" />
+      <workItem from="1702221553087" duration="9397000" />
     </task>
     <task id="LOCAL-00001" summary="IT ADDS FINALLY HIBERNATE WORKS I HATE IT">
       <option name="closed" value="true" />
@@ -224,7 +225,23 @@
       <option name="project" value="LOCAL" />
       <updated>1702215409382</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Main page implemented">
+      <option name="closed" value="true" />
+      <created>1702226285501</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1702226285501</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added old jsps">
+      <option name="closed" value="true" />
+      <created>1702226755952</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1702226755952</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +250,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="IT ADDS FINALLY HIBERNATE WORKS I HATE IT" />
     <MESSAGE value="FILM LIST REQUEST WORKS!!!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="FILM LIST REQUEST WORKS!!!!" />
+    <MESSAGE value="Main page implemented" />
+    <MESSAGE value="Added old jsps" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added old jsps" />
   </component>
 </project>
