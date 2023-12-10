@@ -32,40 +32,24 @@ public class MyController extends HttpServlet {
         user.setUsrRole(Role.CUSTOMER.toString());
         user.setUsrBannedBy(null);
 
-        // Создание EntityManagerFactory
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myCoolStoreSpring");
-
-        // Создание EntityManager
         EntityManager em = emf.createEntityManager();
-
-        // Создание транзакции
         EntityTransaction transaction = em.getTransaction();
 
         try {
-            // Начало транзакции
             transaction.begin();
-
-            // Сохранение нового пользователя в базе данных
             em.persist(user);
-
-            // Фиксация транзакции
             transaction.commit();
-
-            // Установка статуса успешного выполнения операции
             response.setStatus(HttpServletResponse.SC_OK);
             response.getWriter().println("New user created successfully.");
         } catch (Exception e) {
-            // Откат транзакции в случае ошибки
             if (transaction.isActive()) {
                 transaction.rollback();
             }
 
-            // Установка статуса ошибки и сообщения об ошибке
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             response.getWriter().println("Error creating new user.");
-            e.printStackTrace();
         } finally {
-            // Закрытие EntityManager и EntityManagerFactory
             em.close();
             emf.close();
         }
