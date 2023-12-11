@@ -1,5 +1,6 @@
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : 'en'}"
        scope="session"/>
@@ -22,16 +23,15 @@
 <div class="content">
     <h1 id="authorisation-header"><fmt:message key="authorisation"/></h1>
 
-    <form action="${pageContext.request.contextPath}/Controller" method="post" class="authorisation-form">
+    <form:form action="${pageContext.request.contextPath}/Authorization" method="post" class="authorisation-form" modelAttribute="user">
         <label for="emailAuthorization"><fmt:message key="email"/>:</label>
-        <input type="email" id="emailAuthorization" name="emailAuthorization" required>
+        <form:input type="email" id="emailAuthorization" name="emailAuthorization" path="usrEmail"/>
         <br>
         <label for="passwordAuthorization"><fmt:message key="password"/>:</label>
-        <input type="password" id="passwordAuthorization" name="passwordAuthorization" required>
+        <form:input type="password" id="passwordAuthorization" name="passwordAuthorization" path="usrPassword"/>
         <br>
         <input type="submit" id="authorise-btn" value="<fmt:message key="authorise"/>">
-        <input type="hidden" name="command" value="sign_in"/>
-    </form>
+    </form:form>
 </div>
 </body>
 </html>

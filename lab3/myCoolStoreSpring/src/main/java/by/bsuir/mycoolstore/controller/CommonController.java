@@ -58,4 +58,25 @@ public class CommonController {
 
         return "redirect:/";
     }
+
+    @GetMapping("Authorization")
+    public String authorisationPage(Map<String, Object> model) throws ServiceException {
+        var user = new UserEntity();
+
+        model.put("user", user);
+
+        return "authorization";
+    }
+
+    @PostMapping("Authorization")
+    public String authorization(@ModelAttribute("user") UserEntity user, HttpServletRequest request) throws ServiceException {
+        user.setUsrPassword(UserEntity.getHashSha512Password(user.getUsrPassword()));
+        var signedUser = userService.signIn(user);
+
+        var session = request.getSession();
+        session.setAttribute("isAdmin", signedUser.getUsrRole().equalsIgnoreCase(Role.ADMIN.toString()));
+        session.setAttribute("userID", signedUser.getUsrId());
+
+        return "redirect:/";
+    }
 }

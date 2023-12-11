@@ -28,7 +28,8 @@ public class UserService {
     }
 
     public UserEntity signIn(UserEntity user) throws ServiceException {
-        return new UserEntity();
+        return userRepository.findByUsrEmailAndUsrPassword(user.getUsrEmail(), user.getUsrPassword());
+
 /*        if (email == null || email.isEmpty()) {
             logger.error("Incorrect email");
             throw new ServiceException("Incorrect email");
