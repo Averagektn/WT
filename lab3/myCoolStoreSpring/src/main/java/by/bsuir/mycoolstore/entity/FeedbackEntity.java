@@ -20,15 +20,15 @@ public class FeedbackEntity {
         this.fbkId = fbkId;
     }
 
-    @Basic
-    @Column(name = "fbk_author")
-    private Long fbkAuthor;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fbk_author", referencedColumnName = "usr_id")
+    private UserEntity fbkAuthor;
 
-    public Long getFbkAuthor() {
+    public UserEntity getFbkAuthor() {
         return fbkAuthor;
     }
 
-    public void setFbkAuthor(Long fbkAuthor) {
+    public void setFbkAuthor(UserEntity fbkAuthor) {
         this.fbkAuthor = fbkAuthor;
     }
 

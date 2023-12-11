@@ -2,12 +2,6 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
-<jsp:useBean id="film" scope="request" type="by.bsuir.mycoolstore.entity.FilmEntity"/>
-<jsp:useBean id="feedbacks" scope="request" type="java.util.List"/>
-<jsp:useBean id="isPaid" scope="request" type="java.lang.Boolean"/>
-<jsp:useBean id="isBanned" scope="request" type="java.lang.Boolean"/>
-<jsp:useBean id="isFilmInCart" scope="request" type="java.lang.Boolean"/>
-
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : 'en'}"
        scope="session"/>
 <fmt:setLocale value="${language}"/>
@@ -39,7 +33,7 @@
     <c:if test="${not isPaid}">
         <c:choose>
             <c:when test="${film.flmDiscount != 0}">
-                <strike>${film.flmPrice}</strike> ${film.flmPrice.multiply(film.flmDiscount)}<br>
+                <strike>${film.flmPrice}</strike> ${film.flmPrice.multiply(film.flmDiscount).divide(100)}<br>
             </c:when>
             <c:otherwise>
                 ${film.flmPrice}<br>
@@ -48,7 +42,7 @@
 
         <c:if test="${not isFilmInCart && not isBanned && empty sessionScope.isAdmin}">
             <form action="${pageContext.request.contextPath}/Controller" method="post">
-                <input type="hidden" name="filmID" value="${film.id}">
+                <input type="hidden" name="filmID" value="${film.flmId}">
                 <input type="hidden" name="command" value="add_to_cart"/>
                 <input type="submit" value="<fmt:message key="add_to_cart"/>">
             </form>
@@ -58,39 +52,39 @@
     <fmt:message key="age_restriction"/>: ${film.flmAge}<br>
     <fmt:message key="author"/>: ${film.flmAuthor}<br>
     <fmt:message key="categories"/>:
-<%--    <c:forEach var="category" items="${film.categories}">
-        ${category.name}
-    </c:forEach><br>--%>
+    <c:forEach var="category" items="${film.categories}">
+        ${category.catName}
+    </c:forEach><br>
 
-<%--    <video width="640" height="400" controls>
-        <source src="${pageContext.request.contextPath}/VideoDisplay?trailerPath=${film.media.trailerPath}"
+    <video width="640" height="400" controls>
+        <source src="${pageContext.request.contextPath}/VideoDisplay?trailerPath=${filmMedia.fmTrailerPath}"
                 type="video/mp4">
     </video>
-    <br>--%>
+    <br>
 
     <p>${film.flmDescription}</p>
 
-<%--    <c:if test="${(isPaid && not isBanned) || not empty sessionScope.isAdmin}">
+    <c:if test="${(isPaid && not isBanned) || not empty sessionScope.isAdmin}">
         <video width="640" height="480" controls>
-            <source src="${pageContext.request.contextPath}/VideoDisplay?filmPath=${film.media.filmPath}"
+            <source src="${pageContext.request.contextPath}/VideoDisplay?filmPath=${filmMedia.fmFilmPath}"
                     type="video/mp4">
         </video>
         <br>
-    </c:if>--%>
+    </c:if>
 
     <c:forEach var="feedback" items="${feedbacks}">
-        ${feedback.author.email}<br>
+        ${feedback.fbkAuthor.usrEmail}<br>
         <c:if test="${not empty sessionScope.isAdmin}">
             <form action="${pageContext.request.contextPath}/Controller" method="post">
-                <input type="hidden" name="authorId" value="${feedback.author.id}">
+                <input type="hidden" name="authorId" value="${feedback.fbkAuthor.usrId}">
                 <input type="hidden" name="filmId" value="${film.flmId}">
                 <input type="hidden" name="command" value="ban"/>
 
                 <input type="submit" value="<fmt:message key="ban"/>"/>
             </form>
         </c:if>
-        ${feedback.rating}<br>
-        <p>${feedback.text}</p>
+        ${feedback.fbkRating}<br>
+        <p>${feedback.fbkText}</p>
     </c:forEach>
 
     <c:if test="${not isBanned && empty sessionScope.isAdmin && isPaid}">
@@ -101,7 +95,7 @@
             <label for="rating"><fmt:message key="mark"/>:</label>
             <input type="number" min="0" max="10" id="rating" name="rating"><br>
 
-            <input type="hidden" name="filmID" value="${film.id}">
+            <input type="hidden" name="filmID" value="${film.flmId}">
             <input type="hidden" name="command" value="add_feedback"/>
 
             <input type="submit" value="<fmt:message key="leave_feedback"/>">

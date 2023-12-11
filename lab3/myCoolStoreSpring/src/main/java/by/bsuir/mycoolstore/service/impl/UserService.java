@@ -9,6 +9,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 public class UserService {
@@ -19,6 +21,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    public Boolean isBanned(Long userId){
+        var user = userRepository.findById(userId);
+
+        return user.map(userEntity -> userEntity.getUsrBannedBy() != null).orElse(Boolean.FALSE);
+    }
     public Long registration(UserEntity user) throws ServiceException {
         var savedUser = userRepository.save(user);
 
@@ -27,8 +34,8 @@ public class UserService {
         return savedUser.getUsrId();
     }
 
-    public UserEntity signIn(UserEntity user) throws ServiceException {
-        return userRepository.findByUsrEmailAndUsrPassword(user.getUsrEmail(), user.getUsrPassword());
+    public Optional<UserEntity> signIn(UserEntity user) throws ServiceException {
+        return Optional.ofNullable(userRepository.findByUsrEmailAndUsrPassword(user.getUsrEmail(), user.getUsrPassword()));
 
 /*        if (email == null || email.isEmpty()) {
             logger.error("Incorrect email");

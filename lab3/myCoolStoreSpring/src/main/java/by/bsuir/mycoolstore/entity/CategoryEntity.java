@@ -2,6 +2,7 @@ package by.bsuir.mycoolstore.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -11,6 +12,9 @@ public class CategoryEntity {
     @Id
     @Column(name = "cat_id")
     private Long catId;
+
+    @ManyToMany(mappedBy = "categories")
+    private List<FilmEntity> films;
 
     public Long getCatId() {
         return catId;

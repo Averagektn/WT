@@ -2,8 +2,6 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
-<jsp:useBean id="films" scope="request" type="java.util.List"/>
-
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : 'en'}"
        scope="session"/>
 <fmt:setLocale value="${language}"/>
@@ -64,7 +62,7 @@
             <c:choose>
                 <c:when test="${film.flmDiscount != 0}">
                     <span style="text-decoration: line-through;">${film.flmPrice}</span>
-                    ${film.flmPrice.multiply(film.flmDiscount)}<br>
+                    ${film.flmPrice.multiply(film.flmDiscount).divide(100)}<br>
                 </c:when>
                 <c:otherwise>
                     ${film.flmPrice}<br>
@@ -74,9 +72,9 @@
             <fmt:message key="age_restriction"/>: ${film.flmAge}<br>
             <fmt:message key="author"/>: ${film.flmAuthor}<br>
             <fmt:message key="categories"/>:
-<%--            <c:forEach var="category" items="${film.categories}">
-                ${category.name}
-            </c:forEach><br>--%>
+            <c:forEach var="category" items="${film.categories}">
+                ${category.catName}
+            </c:forEach><br>
         </li>
         <c:if test="${not empty sessionScope.isAdmin}">
             <a href="${pageContext.request.contextPath}/Admin/Film?filmId=${film.flmId}"><fmt:message key="edit_film"/></a><br>

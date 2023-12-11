@@ -3,8 +3,7 @@ package by.bsuir.mycoolstore.controller;
 import by.bsuir.mycoolstore.entity.UserEntity;
 import by.bsuir.mycoolstore.entity.enums.Role;
 import by.bsuir.mycoolstore.service.exception.ServiceException;
-import by.bsuir.mycoolstore.service.impl.FilmService;
-import by.bsuir.mycoolstore.service.impl.UserService;
+import by.bsuir.mycoolstore.service.impl.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,11 +20,20 @@ import java.util.Map;
 public class CommonController {
     private final FilmService filmService;
     private final UserService userService;
+    private final FeedbackService feedbackService;
+    private final CartService cartService;
+    private final LibraryService libraryService;
+    private final MediaService mediaService;
 
     @Autowired
-    public CommonController(FilmService filmService, UserService userService) {
+    public CommonController(FilmService filmService, UserService userService, FeedbackService feedbackService,
+                            CartService cartService, LibraryService libraryService, MediaService mediaService) {
         this.filmService = filmService;
         this.userService = userService;
+        this.feedbackService = feedbackService;
+        this.cartService = cartService;
+        this.libraryService = libraryService;
+        this.mediaService = mediaService;
     }
 
     @GetMapping("/")
@@ -39,7 +47,7 @@ public class CommonController {
     }
 
     @GetMapping("Register")
-    public String registrationPage(Map<String, Object> model) throws ServiceException {
+    public String registrationPage(Map<String, Object> model) {
         var user = new UserEntity();
 
         model.put("user", user);
@@ -60,7 +68,7 @@ public class CommonController {
     }
 
     @GetMapping("Authorization")
-    public String authorisationPage(Map<String, Object> model) throws ServiceException {
+    public String authorisationPage(Map<String, Object> model) {
         var user = new UserEntity();
 
         model.put("user", user);
@@ -73,10 +81,47 @@ public class CommonController {
         user.setUsrPassword(UserEntity.getHashSha512Password(user.getUsrPassword()));
         var signedUser = userService.signIn(user);
 
-        var session = request.getSession();
-        session.setAttribute("isAdmin", signedUser.getUsrRole().equalsIgnoreCase(Role.ADMIN.toString()));
-        session.setAttribute("userID", signedUser.getUsrId());
+        if (signedUser.isPresent()) {
+            var session = request.getSession();
+            if (signedUser.get().getUsrRole().equalsIgnoreCase(Role.ADMIN.toString())) {
+                session.setAttribute("isAdmin", signedUser.get().getUsrRole());
+            }
+            session.setAttribute("userID", signedUser.get().getUsrId());
 
-        return "redirect:/";
+            return "redirect:/";
+        }
+
+        return "error";
+    }
+
+    @GetMapping("Film")
+    public ModelAndView filmPage(HttpServletRequest request) {
+        var session = request.getSession();
+        Long userId = (Long) session.getAttribute("userID");
+
+        var mav = new ModelAndView("customerFilm");
+        Long filmId = Long.valueOf(request.getParameter("filmId"));
+
+        var isFilmInCart = Boolean.FALSE;
+        var isUserBanned = Boolean.TRUE;
+        var isPaid = Boolean.FALSE;
+        if (userId != null){
+            isFilmInCart  = cartService.isInCart(userId, filmId);
+            isUserBanned = userService.isBanned(userId);
+            isPaid = libraryService.isInLibrary(userId, filmId);
+        }
+        mav.addObject("isFilmInCart", isFilmInCart);
+        mav.addObject("isBanned", isUserBanned);
+        mav.addObject("isPaid", isPaid);
+
+        var film = filmService.getFilmById(filmId);
+        var feedbacks = feedbackService.getFilmFeedbacks(filmId);
+        var filmMedia = mediaService.getFIlmMedia(filmId);
+
+        film.ifPresent(filmEntity -> mav.addObject("film", filmEntity));
+        filmMedia.ifPresent(filmMediaEntity -> mav.addObject("filmMedia", filmMediaEntity));
+        mav.addObject("feedbacks", feedbacks);
+
+        return mav;
     }
 }

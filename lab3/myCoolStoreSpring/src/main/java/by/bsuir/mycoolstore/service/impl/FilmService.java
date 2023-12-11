@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -24,6 +25,10 @@ public class FilmService {
 
     public List<FilmEntity> getFilms() throws ServiceException {
         return (List<FilmEntity>) filmRepository.findAll();
+    }
+
+    public Optional<FilmEntity> getFilmById(Long id){
+        return filmRepository.findById(id);
     }
 
 /*    @Override

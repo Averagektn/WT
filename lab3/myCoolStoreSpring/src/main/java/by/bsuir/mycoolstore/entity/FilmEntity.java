@@ -1,9 +1,9 @@
 package by.bsuir.mycoolstore.entity;
 
-import by.bsuir.mycoolstore.entity.enums.AgeRestriction;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -13,6 +13,22 @@ public class FilmEntity {
     @Id
     @Column(name = "flm_id")
     private Long flmId;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "m2m_film_category",
+            joinColumns = @JoinColumn(name = "fc_film"),
+            inverseJoinColumns = @JoinColumn(name = "fc_category")
+    )
+    private List<CategoryEntity> categories;
+
+    public List<CategoryEntity> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<CategoryEntity> categories) {
+        this.categories = categories;
+    }
 
     public Long getFlmId() {
         return flmId;
