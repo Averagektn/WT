@@ -2,8 +2,6 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
-<jsp:useBean id="films" scope="request" type="java.util.List"/>
-
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : 'en'}"
        scope="session"/>
 <fmt:setLocale value="${language}"/>
@@ -25,10 +23,10 @@
 
 <div class="content">
     <c:forEach var="film" items="${films}">
-        <a href="${pageContext.request.contextPath}/Film?filmId=${film.id}">${film.name}</a><br>
+        <a href="${pageContext.request.contextPath}/Film?filmId=${film.flmId}">${film.flmName}</a><br>
 
-        <fmt:message key="age_restriction"/>: ${film.ageRestriction.toString()}<br>
-        <fmt:message key="author"/>: ${film.author}<br>
+        <fmt:message key="age_restriction"/>: ${film.flmAge}<br>
+        <fmt:message key="author"/>: ${film.flmAuthor}<br>
 
     </c:forEach>
 </div>

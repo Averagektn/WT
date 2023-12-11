@@ -22,8 +22,8 @@
 
 <c:if test="${not isBanned && empty sessionScope.isAdmin}">
     <div class="user-links">
-        <a class="user-btn" href="${pageContext.request.contextPath}/Library"><fmt:message key="library"/></a><br>
-        <a class="user-btn" href="${pageContext.request.contextPath}/Cart"><fmt:message key="cart"/></a><br>
+        <a class="user-btn" href="${pageContext.request.contextPath}/User/Library"><fmt:message key="library"/></a><br>
+        <a class="user-btn" href="${pageContext.request.contextPath}/User/Cart"><fmt:message key="cart"/></a><br>
     </div>
 </c:if>
 
@@ -41,7 +41,7 @@
         </c:choose>
 
         <c:if test="${not isFilmInCart && not isBanned && empty sessionScope.isAdmin}">
-            <form action="${pageContext.request.contextPath}/Controller" method="post">
+            <form action="${pageContext.request.contextPath}/User/Cart/Add" method="post">
                 <input type="hidden" name="filmID" value="${film.flmId}">
                 <input type="hidden" name="command" value="add_to_cart"/>
                 <input type="submit" value="<fmt:message key="add_to_cart"/>">
@@ -75,7 +75,7 @@
     <c:forEach var="feedback" items="${feedbacks}">
         ${feedback.fbkAuthor.usrEmail}<br>
         <c:if test="${not empty sessionScope.isAdmin}">
-            <form action="${pageContext.request.contextPath}/Controller" method="post">
+            <form action="${pageContext.request.contextPath}/Admin/Ban" method="post">
                 <input type="hidden" name="authorId" value="${feedback.fbkAuthor.usrId}">
                 <input type="hidden" name="filmId" value="${film.flmId}">
                 <input type="hidden" name="command" value="ban"/>
@@ -88,7 +88,7 @@
     </c:forEach>
 
     <c:if test="${not isBanned && empty sessionScope.isAdmin && isPaid}">
-        <form action="${pageContext.request.contextPath}/Controller" method="post">
+        <form action="${pageContext.request.contextPath}/User/Feedback" method="post">
             <label for="filmFeedback"><fmt:message key="feedback"/>:</label>
             <textarea id="filmFeedback" name="filmFeedback" maxlength="5000"></textarea>
 

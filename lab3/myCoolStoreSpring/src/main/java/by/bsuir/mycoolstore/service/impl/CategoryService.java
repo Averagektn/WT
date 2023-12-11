@@ -12,12 +12,13 @@ import java.util.List;
 @Transactional
 public class CategoryService {
     private final CategoryRepository categoryRepository;
+
     @Autowired
-    public CategoryService(CategoryRepository categoryRepository){
+    public CategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
 
-    public List<CategoryEntity> getCategories(){
+    public List<CategoryEntity> getCategories() {
         return (List<CategoryEntity>) categoryRepository.findAll();
     }
 }

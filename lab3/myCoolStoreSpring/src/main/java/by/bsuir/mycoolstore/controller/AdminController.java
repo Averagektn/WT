@@ -8,7 +8,6 @@ import by.bsuir.mycoolstore.service.impl.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -96,9 +94,19 @@ public class AdminController {
     }
 
     @PostMapping("AddFilm")
-    public String addFilm(@ModelAttribute("filmA") FilmEntity film){
+    public String addFilm(@ModelAttribute("filmA") FilmEntity film) {
         filmService.addFilm(film);
 
         return "redirect:/Admin/AddFilm";
+    }
+
+    @PostMapping("Unban")
+    public void unban(HttpServletRequest request) {
+
+    }
+
+    @PostMapping("Ban")
+    public void ban(HttpServletRequest request) {
+
     }
 }

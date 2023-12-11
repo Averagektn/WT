@@ -11,10 +11,12 @@ import java.util.Optional;
 @Transactional
 public class MediaService {
     private final MediaRepository mediaRepository;
-    public MediaService(MediaRepository mediaRepository){
+
+    public MediaService(MediaRepository mediaRepository) {
         this.mediaRepository = mediaRepository;
     }
-    public Optional<FilmMediaEntity> getFIlmMedia(Long filmId){
+
+    public Optional<FilmMediaEntity> getFIlmMedia(Long filmId) {
         return mediaRepository.findById(filmId);
     }
 }

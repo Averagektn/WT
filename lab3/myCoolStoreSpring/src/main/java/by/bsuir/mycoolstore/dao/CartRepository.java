@@ -5,6 +5,9 @@ import by.bsuir.mycoolstore.entity.CartEntityPK;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CartRepository extends CrudRepository<CartEntity, CartEntityPK> {
+    List<CartEntity> getCartEntityByCrtUser(Long userId);
 }

@@ -2,10 +2,12 @@ package by.bsuir.mycoolstore.service.impl;
 
 import by.bsuir.mycoolstore.dao.CartRepository;
 import by.bsuir.mycoolstore.entity.CartEntityPK;
-import jakarta.persistence.Access;
+import by.bsuir.mycoolstore.entity.FilmEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -17,7 +19,12 @@ public class CartService {
         this.cartRepository = cartRepository;
     }
 
-    public boolean isInCart(Long userId, Long filmId){
+    public List<FilmEntity> getCartFilms(Long userId) {
+        var carts = cartRepository.getCartEntityByCrtUser(userId);
+
+    }
+
+    public boolean isInCart(Long userId, Long filmId) {
         var pk = new CartEntityPK();
         pk.setCrtUser(userId);
         pk.setCrtFilm(filmId);

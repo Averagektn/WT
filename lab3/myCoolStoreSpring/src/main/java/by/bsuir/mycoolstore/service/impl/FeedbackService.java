@@ -12,11 +12,13 @@ import java.util.List;
 @Transactional
 public class FeedbackService {
     private final FeedbackRepository feedbackRepository;
+
     @Autowired
-    public FeedbackService(FeedbackRepository feedbackRepository){
+    public FeedbackService(FeedbackRepository feedbackRepository) {
         this.feedbackRepository = feedbackRepository;
     }
-    public List<FeedbackEntity> getFilmFeedbacks(Long filmId){
+
+    public List<FeedbackEntity> getFilmFeedbacks(Long filmId) {
         return feedbackRepository.findByFbkFilm(filmId);
     }
 }

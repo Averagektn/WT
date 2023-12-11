@@ -23,7 +23,7 @@ public class FilmService {
         this.filmRepository = filmRepository;
     }
 
-    public void addFilm(FilmEntity film){
+    public void addFilm(FilmEntity film) {
         filmRepository.save(film);
     }
 
@@ -31,7 +31,7 @@ public class FilmService {
         return (List<FilmEntity>) filmRepository.findAll();
     }
 
-    public Optional<FilmEntity> getFilmById(Long id){
+    public Optional<FilmEntity> getFilmById(Long id) {
         return filmRepository.findById(id);
     }
 

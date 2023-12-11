@@ -49,9 +49,10 @@
             </c:when>
             <c:otherwise>
                 <div class="user-links">
-                    <a class="user-btn" href="${pageContext.request.contextPath}/Library"><fmt:message
+                    <a class="user-btn" href="${pageContext.request.contextPath}/User/Library"><fmt:message
                             key="library"/></a><br>
-                    <a class="user-btn" href="${pageContext.request.contextPath}/Cart"><fmt:message key="cart"/></a><br>
+                    <a class="user-btn" href="${pageContext.request.contextPath}/User/Cart"><fmt:message
+                            key="cart"/></a><br>
                 </div>
             </c:otherwise>
         </c:choose>

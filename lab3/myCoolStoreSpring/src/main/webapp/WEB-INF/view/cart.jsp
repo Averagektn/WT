@@ -28,28 +28,28 @@
     <h1 class="cart-header"><fmt:message key="cart_header"/></h1>
 
     <c:forEach var="film" items="${films}">
-        <a href="${pageContext.request.contextPath}/Film?filmId=${film.id}">${film.name}</a><br>
+        <a href="${pageContext.request.contextPath}/Film?filmId=${film.flmId}">${film.flmName}</a><br>
         <c:choose>
-            <c:when test="${film.discount != 0}">
-                <strike>${film.price}</strike> ${film.getRealPrice()}<br>
+            <c:when test="${film.flmDiscount != 0}">
+                <strike>${film.flmPrice}</strike> ${film.realPrice}<br>
             </c:when>
             <c:otherwise>
-                ${film.price}<br>
+                ${film.flmPrice}<br>
             </c:otherwise>
         </c:choose>
 
-        <fmt:message key="age_restriction"/>: ${film.ageRestriction.toString()}<br>
-        <fmt:message key="author"/>: ${film.author}<br>
+        <fmt:message key="age_restriction"/>: ${film.flmAge}<br>
+        <fmt:message key="author"/>: ${film.flmAuthor}<br>
 
-        <form action="${pageContext.request.contextPath}/Controller" method="post" class="cart-form">
+        <form action="${pageContext.request.contextPath}/User/Cart/Remove" method="post" class="cart-form">
             <input type="submit" value="<fmt:message key="delete"/>">
-            <input type="hidden" name="filmID" value="${film.id}">
+            <input type="hidden" name="filmID" value="${film.flmId}">
             <input type="hidden" name="command" value="remove_from_cart"/>
         </form>
     </c:forEach>
 
     <c:if test="${total != 0}">
-        <form action="${pageContext.request.contextPath}/Controller" method="post" class="cart-form">
+        <form action="${pageContext.request.contextPath}/User/Cart/Buy" method="post" class="cart-form">
             <input type="submit" value="<fmt:message key="pay"/> ${total}">
             <input type="hidden" name="command" value="buy"/>
         </form>

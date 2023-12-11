@@ -17,16 +17,18 @@ import java.util.Optional;
 public class UserService {
     private static final Logger logger = LogManager.getLogger(UserService.class);
     private final UserRepository userRepository;
+
     @Autowired
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public Boolean isBanned(Long userId){
+    public Boolean isBanned(Long userId) {
         var user = userRepository.findById(userId);
 
         return user.map(userEntity -> userEntity.getUsrBannedBy() != null).orElse(Boolean.FALSE);
     }
+
     public Long registration(UserEntity user) throws ServiceException {
         var savedUser = userRepository.save(user);
 
@@ -35,7 +37,7 @@ public class UserService {
         return savedUser.getUsrId();
     }
 
-    public List<UserEntity> getBannedUsers(){
+    public List<UserEntity> getBannedUsers() {
         return userRepository.findByUsrBannedByIsNotNull();
     }
 

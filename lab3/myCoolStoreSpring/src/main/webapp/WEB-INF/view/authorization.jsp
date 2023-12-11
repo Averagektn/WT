@@ -23,7 +23,8 @@
 <div class="content">
     <h1 id="authorisation-header"><fmt:message key="authorisation"/></h1>
 
-    <form:form action="${pageContext.request.contextPath}/Authorization" method="post" class="authorisation-form" modelAttribute="user">
+    <form:form action="${pageContext.request.contextPath}/Authorization" method="post" class="authorisation-form"
+               modelAttribute="user">
         <label for="emailAuthorization"><fmt:message key="email"/>:</label>
         <form:input type="email" id="emailAuthorization" name="emailAuthorization" path="usrEmail"/>
         <br>

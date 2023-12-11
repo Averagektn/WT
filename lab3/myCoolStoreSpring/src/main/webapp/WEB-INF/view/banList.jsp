@@ -23,10 +23,9 @@
 
 <div class="content">
     <c:forEach var="user" items="${users}">
-        <form action="${pageContext.request.contextPath}/Controller" method="post">
+        <form action="${pageContext.request.contextPath}/Admin/Unban" method="post">
             <p>${user.usrEmail}</p>
             <input type="hidden" name="userId" value="${user.usrId}">
-            <input type="hidden" name="command" value="unban"/>
 
             <input type="submit" value="<fmt:message key="unban"/>"/>
         </form>
