@@ -10,15 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62178842-a120-4798-beb2-647de5861687" name="Changes" comment="Ready to pass">
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/dao/CategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/service/impl/AgeRestrictionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/service/impl/CategoryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/controller/CommonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/controller/CommonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/dao/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/dao/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/entity/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/service/impl/FilmService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/service/impl/FilmService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/service/impl/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/service/impl/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view/adminFilm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view/adminFilm.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view/banList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view/banList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view/customerFilm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view/customerFilm.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,7 +284,7 @@
       <workItem from="1702214465675" duration="34000" />
       <workItem from="1702225663542" duration="204000" />
       <workItem from="1702226085487" duration="1848000" />
-      <workItem from="1702319424197" duration="1235000" />
+      <workItem from="1702319424197" duration="1833000" />
     </task>
     <task id="LOCAL-00023" summary="Dynamic content finally works">
       <option name="closed" value="true" />

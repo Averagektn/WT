@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -32,6 +33,10 @@ public class UserService {
         logger.info("Registered user: " + savedUser.getUsrId() + " " + savedUser.getUsrEmail());
 
         return savedUser.getUsrId();
+    }
+
+    public List<UserEntity> getBannedUsers(){
+        return userRepository.findByUsrBannedByIsNotNull();
     }
 
     public Optional<UserEntity> signIn(UserEntity user) throws ServiceException {

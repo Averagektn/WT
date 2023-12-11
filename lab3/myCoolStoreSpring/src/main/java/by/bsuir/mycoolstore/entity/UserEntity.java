@@ -1,6 +1,5 @@
 package by.bsuir.mycoolstore.entity;
 
-import by.bsuir.mycoolstore.entity.enums.Role;
 import jakarta.persistence.*;
 
 import java.nio.charset.StandardCharsets;
@@ -9,7 +8,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 @Entity
-@jakarta.persistence.Table(name = "user", schema = "mycoolstore")
+@Table(name = "user", schema = "mycoolstore")
 public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

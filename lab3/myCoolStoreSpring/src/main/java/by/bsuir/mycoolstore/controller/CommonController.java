@@ -116,10 +116,10 @@ public class CommonController {
 
         var film = filmService.getFilmById(filmId);
         var feedbacks = feedbackService.getFilmFeedbacks(filmId);
-        var filmMedia = mediaService.getFIlmMedia(filmId);
+        var media = mediaService.getFIlmMedia(filmId);
 
         film.ifPresent(filmEntity -> mav.addObject("film", filmEntity));
-        filmMedia.ifPresent(filmMediaEntity -> mav.addObject("filmMedia", filmMediaEntity));
+        media.ifPresent(filmMediaEntity -> mav.addObject("media", filmMediaEntity));
         mav.addObject("feedbacks", feedbacks);
 
         return mav;

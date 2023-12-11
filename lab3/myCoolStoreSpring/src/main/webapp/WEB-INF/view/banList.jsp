@@ -2,8 +2,6 @@
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<jsp:useBean id="users" scope="request" type="java.util.List"/>
-
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : 'en'}"
        scope="session"/>
 <fmt:setLocale value="${language}"/>
@@ -26,8 +24,8 @@
 <div class="content">
     <c:forEach var="user" items="${users}">
         <form action="${pageContext.request.contextPath}/Controller" method="post">
-            <p>${user.email}</p>
-            <input type="hidden" name="userId" value="${user.id}">
+            <p>${user.usrEmail}</p>
+            <input type="hidden" name="userId" value="${user.usrId}">
             <input type="hidden" name="command" value="unban"/>
 
             <input type="submit" value="<fmt:message key="unban"/>"/>
