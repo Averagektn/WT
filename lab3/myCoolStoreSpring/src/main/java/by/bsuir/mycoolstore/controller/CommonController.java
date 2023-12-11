@@ -105,8 +105,8 @@ public class CommonController {
         var isFilmInCart = Boolean.FALSE;
         var isUserBanned = Boolean.TRUE;
         var isPaid = Boolean.FALSE;
-        if (userId != null){
-            isFilmInCart  = cartService.isInCart(userId, filmId);
+        if (userId != null) {
+            isFilmInCart = cartService.isInCart(userId, filmId);
             isUserBanned = userService.isBanned(userId);
             isPaid = libraryService.isInLibrary(userId, filmId);
         }
@@ -123,5 +123,15 @@ public class CommonController {
         mav.addObject("feedbacks", feedbacks);
 
         return mav;
+    }
+
+    @PostMapping("Exit")
+    public String exit(HttpServletRequest request) {
+        var session = request.getSession();
+
+        session.removeAttribute("userID");
+        session.removeAttribute("isAdmin");
+
+        return "redirect:/";
     }
 }

@@ -33,7 +33,7 @@
         </form>
     </c:when>
     <c:otherwise>
-        <form action="${pageContext.request.contextPath}/Controller" method="post" class="auth-form">
+        <form action="${pageContext.request.contextPath}/Exit" method="post" class="auth-form">
             <input type="submit" value="<fmt:message key="exit"/>"/>
             <input type="hidden" name="command" value="sign_out"/>
         </form>
@@ -41,13 +41,16 @@
             <c:when test="${not empty sessionScope.isAdmin}">
                 <div class="admin-links">
                     <h1><fmt:message key="admin_mode"/></h1>
-                    <a class="admin-btn" href="Admin/Film"><fmt:message key="add_film"/></a><br>
-                    <a class="admin-btn" href="Admin/BanList"><fmt:message key="to_ban_list"/></a>
+                    <a class="admin-btn" href="${pageContext.request.contextPath}/Admin/AddFilm"><fmt:message
+                            key="add_film"/></a><br>
+                    <a class="admin-btn" href="${pageContext.request.contextPath}/Admin/BanList"><fmt:message
+                            key="to_ban_list"/></a>
                 </div>
             </c:when>
             <c:otherwise>
                 <div class="user-links">
-                    <a class="user-btn" href="${pageContext.request.contextPath}/Library"><fmt:message key="library"/></a><br>
+                    <a class="user-btn" href="${pageContext.request.contextPath}/Library"><fmt:message
+                            key="library"/></a><br>
                     <a class="user-btn" href="${pageContext.request.contextPath}/Cart"><fmt:message key="cart"/></a><br>
                 </div>
             </c:otherwise>
@@ -77,7 +80,8 @@
             </c:forEach><br>
         </li>
         <c:if test="${not empty sessionScope.isAdmin}">
-            <a href="${pageContext.request.contextPath}/Admin/Film?filmId=${film.flmId}"><fmt:message key="edit_film"/></a><br>
+            <a href="${pageContext.request.contextPath}/Admin/EditFilm?filmId=${film.flmId}"><fmt:message
+                    key="edit_film"/></a><br>
         </c:if>
     </c:forEach>
 </ul>

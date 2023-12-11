@@ -2,11 +2,6 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
-<jsp:useBean id="categories" scope="request" type="java.util.List"/>
-<jsp:useBean id="ageRestrictions" scope="request" type="java.util.List"/>
-<jsp:useBean id="film" scope="request" type="by.bsuir.mycoolstore.entity.FilmEntity"/>
-<jsp:useBean id="command" scope="request" type="java.lang.String"/>
-
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : 'en'}"
        scope="session"/>
 <fmt:setLocale value="${language}"/>
@@ -27,7 +22,7 @@
 </div>
 
 <div class="content">
-    <form action="${pageContext.request.contextPath}/Controller" method="post" enctype="multipart/form-data">
+    <form action="${pageContext.request.contextPath}/${command}" method="post" enctype="multipart/form-data">
         <h1 class="admin-header"><fmt:message key="admin_mode"/></h1>
 
         <label for="filmTitle"><fmt:message key="film_name"/>:</label>
@@ -38,12 +33,12 @@
 
         <label for="filmCategory"><fmt:message key="categories"/>:</label>
         <select id="filmCategory" name="filmCategory" multiple required>
-<%--            <c:forEach var="category" items="${film.categories}">
-                <option value="${category.id}" selected>${category.name}</option>
-            </c:forEach>--%>
-<%--            <c:forEach var="category" items="${categories}">
-                <option value="${category.id}">${category.name}</option>
-            </c:forEach>--%>
+            <c:forEach var="category" items="${film.categories}">
+                <option value="${category.catId}" selected>${category.catName}</option>
+            </c:forEach>
+            <c:forEach var="category" items="${categories}">
+                <option value="${category.catId}">${category.catName}</option>
+            </c:forEach>
         </select><br>
 
         <label for="filmAgeRestriction"><fmt:message key="age_restriction"/>:</label>
@@ -76,8 +71,6 @@
         <label for="filmDiscount"><fmt:message key="film_discount"/>:</label>
         <input type="number" id="filmDiscount" name="filmDiscount" min="0" max="100" value="${film.flmDiscount}"
                required><br>
-
-        <input type="hidden" name="command" value="${command}">
 
         <input type="submit" value="<fmt:message key="add_film"/>">
     </form>
