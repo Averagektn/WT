@@ -62,7 +62,7 @@
             <c:choose>
                 <c:when test="${film.flmDiscount != 0}">
                     <span style="text-decoration: line-through;">${film.flmPrice}</span>
-                    ${film.flmPrice.multiply(film.flmDiscount).divide(100)}<br>
+                    ${film.realPrice}<br>
                 </c:when>
                 <c:otherwise>
                     ${film.flmPrice}<br>

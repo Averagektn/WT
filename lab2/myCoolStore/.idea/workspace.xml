@@ -10,9 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62178842-a120-4798-beb2-647de5861687" name="Changes" comment="Ready to pass">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/controller/VideoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/controller/VideoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/entity/FilmEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/java/by/bsuir/mycoolstore/entity/FilmEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view/customerFilm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view/customerFilm.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +278,7 @@
       <workItem from="1702214465675" duration="34000" />
       <workItem from="1702225663542" duration="204000" />
       <workItem from="1702226085487" duration="1848000" />
-      <workItem from="1702319424197" duration="388000" />
+      <workItem from="1702319424197" duration="614000" />
     </task>
     <task id="LOCAL-00023" summary="Dynamic content finally works">
       <option name="closed" value="true" />

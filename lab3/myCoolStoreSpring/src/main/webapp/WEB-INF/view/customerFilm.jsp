@@ -33,7 +33,7 @@
     <c:if test="${not isPaid}">
         <c:choose>
             <c:when test="${film.flmDiscount != 0}">
-                <strike>${film.flmPrice}</strike> ${film.flmPrice.multiply(film.flmDiscount).divide(100)}<br>
+                <strike>${film.flmPrice}</strike> ${film.realPrice}<br>
             </c:when>
             <c:otherwise>
                 ${film.flmPrice}<br>

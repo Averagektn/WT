@@ -3,6 +3,7 @@ package by.bsuir.mycoolstore.entity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Objects;
 
@@ -51,11 +52,16 @@ public class FilmEntity {
     }
 
     @Basic
-    @Column(name = "flm_price")
+    @Column(name = "flm_price", precision = 5, scale = 2)
     private BigDecimal flmPrice;
 
     public BigDecimal getFlmPrice() {
+        flmPrice = flmPrice.setScale(2, RoundingMode.HALF_UP);
         return flmPrice;
+    }
+
+    public BigDecimal getRealPrice() {
+        return flmPrice.multiply(BigDecimal.valueOf(flmDiscount)).divide(new BigDecimal(100), RoundingMode.HALF_UP);
     }
 
     public void setFlmPrice(BigDecimal flmPrice) {
