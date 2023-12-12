@@ -52,7 +52,7 @@ public class CartService {
         var library = new ArrayList<UserFilmEntity>();
         var cart = cartRepository.getCartByCrtUser(userId);
 
-        for (var c: cart){
+        for (var c : cart) {
             var ufe = new UserFilmEntity();
             ufe.setUfFilm(c.getCrtFilm());
             ufe.setUfUser(c.getCrtUser());
@@ -64,7 +64,7 @@ public class CartService {
         cartRepository.deleteByCrtUser(userId);
     }
 
-    public void remove(Long userId){
+    public void remove(Long userId) {
         cartRepository.deleteByCrtUser(userId);
     }
 }

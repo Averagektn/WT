@@ -2,7 +2,6 @@ package by.bsuir.mycoolstore.service.impl;
 
 import by.bsuir.mycoolstore.dao.FilmRepository;
 import by.bsuir.mycoolstore.dao.LibraryRepository;
-import by.bsuir.mycoolstore.entity.CartEntity;
 import by.bsuir.mycoolstore.entity.FilmEntity;
 import by.bsuir.mycoolstore.entity.UserFilmEntity;
 import by.bsuir.mycoolstore.entity.UserFilmEntityPK;
@@ -10,7 +9,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,6 +17,7 @@ import java.util.stream.Collectors;
 public class LibraryService {
     private final LibraryRepository libraryRepository;
     private final FilmRepository filmRepository;
+
     @Autowired
     public LibraryService(LibraryRepository libraryRepository, FilmRepository filmRepository) {
         this.libraryRepository = libraryRepository;

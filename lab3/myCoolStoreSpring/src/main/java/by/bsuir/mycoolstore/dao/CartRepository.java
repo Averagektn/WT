@@ -10,5 +10,6 @@ import java.util.List;
 @Repository
 public interface CartRepository extends CrudRepository<CartEntity, CartEntityPK> {
     void deleteByCrtUser(Long crtUser);
+
     List<CartEntity> getCartByCrtUser(Long userId);
 }
