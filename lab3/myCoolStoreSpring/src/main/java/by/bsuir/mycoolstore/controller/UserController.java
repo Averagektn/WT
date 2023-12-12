@@ -1,12 +1,16 @@
 package by.bsuir.mycoolstore.controller;
 
 import by.bsuir.mycoolstore.entity.CartEntity;
+import by.bsuir.mycoolstore.entity.FeedbackEntity;
 import by.bsuir.mycoolstore.entity.FilmEntity;
+import by.bsuir.mycoolstore.entity.UserEntity;
 import by.bsuir.mycoolstore.service.impl.CartService;
+import by.bsuir.mycoolstore.service.impl.FeedbackService;
 import by.bsuir.mycoolstore.service.impl.LibraryService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,10 +22,12 @@ import java.math.BigDecimal;
 public class UserController {
     private final LibraryService libraryService;
     private final CartService cartService;
+    private final FeedbackService feedbackService;
 
-    public UserController(LibraryService libraryService, CartService cartService) {
+    public UserController(LibraryService libraryService, CartService cartService, FeedbackService feedbackService) {
         this.libraryService = libraryService;
         this.cartService = cartService;
+        this.feedbackService = feedbackService;
     }
 
     @GetMapping("Library")
@@ -88,7 +94,13 @@ public class UserController {
     }
 
     @PostMapping("Feedback")
-    public void leaveFeedback() {
+    public String leaveFeedback(@ModelAttribute("feedback")FeedbackEntity feedback, HttpServletRequest request) {
+        var author = new UserEntity();
+        author.setUsrId((Long) request.getSession().getAttribute("userID"));
 
+        feedback.setFbkAuthor(author);
+        feedbackService.save(feedback);
+
+        return "redirect:/Film?filmId=" + feedback.getFbkFilm();
     }
 }

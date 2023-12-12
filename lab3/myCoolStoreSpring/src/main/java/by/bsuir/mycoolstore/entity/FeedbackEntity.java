@@ -20,7 +20,7 @@ public class FeedbackEntity {
         this.fbkId = fbkId;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fbk_author", referencedColumnName = "usr_id")
     private UserEntity fbkAuthor;
 

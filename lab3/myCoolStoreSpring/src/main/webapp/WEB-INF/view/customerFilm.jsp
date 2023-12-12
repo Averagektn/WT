@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : 'en'}"
        scope="session"/>
@@ -87,18 +88,17 @@
     </c:forEach>
 
     <c:if test="${not isBanned && empty sessionScope.isAdmin && isPaid}">
-        <form action="${pageContext.request.contextPath}/User/Feedback" method="post">
+        <form:form action="${pageContext.request.contextPath}/User/Feedback" method="post" modelAttribute="feedback">
             <label for="filmFeedback"><fmt:message key="feedback"/>:</label>
-            <textarea id="filmFeedback" name="filmFeedback" maxlength="5000"></textarea>
+            <form:textarea id="filmFeedback" name="filmFeedback" maxlength="5000" path="fbkText"/>
 
             <label for="rating"><fmt:message key="mark"/>:</label>
-            <input type="number" min="0" max="10" id="rating" name="rating"><br>
+            <form:input type="number" min="0" max="10" id="rating" name="rating" path="fbkRating"/><br>
 
-            <input type="hidden" name="filmID" value="${film.flmId}">
-            <input type="hidden" name="command" value="add_feedback"/>
+            <form:input type="hidden" name="filmID" value="${film.flmId}" path="fbkFilm"/>
 
             <input type="submit" value="<fmt:message key="leave_feedback"/>">
-        </form>
+        </form:form>
     </c:if>
 </div>
 </body>

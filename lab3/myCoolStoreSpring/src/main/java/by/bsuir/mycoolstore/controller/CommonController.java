@@ -1,5 +1,6 @@
 package by.bsuir.mycoolstore.controller;
 
+import by.bsuir.mycoolstore.entity.FeedbackEntity;
 import by.bsuir.mycoolstore.entity.UserEntity;
 import by.bsuir.mycoolstore.entity.enums.Role;
 import by.bsuir.mycoolstore.service.exception.ServiceException;
@@ -95,7 +96,7 @@ public class CommonController {
     }
 
     @GetMapping("Film")
-    public ModelAndView filmPage(HttpServletRequest request) {
+    public ModelAndView filmPage(HttpServletRequest request, Map<String, Object> model) {
         var session = request.getSession();
         Long userId = (Long) session.getAttribute("userID");
 
@@ -106,6 +107,7 @@ public class CommonController {
         var isUserBanned = Boolean.TRUE;
         var isPaid = Boolean.FALSE;
         if (userId != null) {
+            model.put("feedback", new FeedbackEntity());
             isFilmInCart = cartService.isInCart(userId, filmId);
             isUserBanned = userService.isBanned(userId);
             isPaid = libraryService.isInLibrary(userId, filmId);

@@ -21,4 +21,8 @@ public class FeedbackService {
     public List<FeedbackEntity> getFilmFeedbacks(Long filmId) {
         return feedbackRepository.findByFbkFilm(filmId);
     }
+
+    public void save(FeedbackEntity feedback){
+        feedbackRepository.save(feedback);
+    }
 }
