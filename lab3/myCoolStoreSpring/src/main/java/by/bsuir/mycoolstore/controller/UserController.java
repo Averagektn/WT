@@ -59,13 +59,17 @@ public class UserController {
     }
 
     @PostMapping("Cart/Remove")
-    public void remove(HttpServletRequest request) {
+    public String remove(HttpServletRequest request) {
+        cartService.remove((Long) request.getSession().getAttribute("userID"));
 
+        return "redirect:/User/Cart";
     }
 
     @PostMapping("Cart/Buy")
-    public void buy(HttpServletRequest request) {
+    public String buy(HttpServletRequest request) {
+        cartService.buy((Long) request.getSession().getAttribute("userID"));
 
+        return "redirect:/";
     }
 
     @PostMapping("Cart/Add")
@@ -73,13 +77,14 @@ public class UserController {
         var session = request.getSession();
         Long userId = (Long) session.getAttribute("userID");
         Long filmId = Long.valueOf(request.getParameter("filmID"));
+
         var cartItem = new CartEntity();
         cartItem.setCrtUser(userId);
         cartItem.setCrtFilm(filmId);
 
         cartService.save(cartItem);
 
-        return "redirect:/User/Cart/";
+        return "redirect:/User/Cart";
     }
 
     @PostMapping("Feedback")

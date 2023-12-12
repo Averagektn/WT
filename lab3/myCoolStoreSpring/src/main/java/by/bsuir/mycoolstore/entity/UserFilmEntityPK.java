@@ -11,11 +11,9 @@ import java.util.Objects;
 public class UserFilmEntityPK implements Serializable {
     @Column(name = "uf_user")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ufUser;
     @Column(name = "uf_film")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ufFilm;
 
     public Long getUfUser() {

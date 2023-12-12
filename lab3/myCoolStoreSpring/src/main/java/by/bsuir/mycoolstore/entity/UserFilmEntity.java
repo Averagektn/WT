@@ -11,7 +11,6 @@ import java.util.Objects;
 @jakarta.persistence.Table(name = "user_film", schema = "mycoolstore")
 @jakarta.persistence.IdClass(by.bsuir.mycoolstore.entity.UserFilmEntityPK.class)
 public class UserFilmEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @jakarta.persistence.Column(name = "uf_user")
     private Long ufUser;
@@ -24,7 +23,6 @@ public class UserFilmEntity {
         this.ufUser = ufUser;
     }
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @jakarta.persistence.Column(name = "uf_film")
     private Long ufFilm;

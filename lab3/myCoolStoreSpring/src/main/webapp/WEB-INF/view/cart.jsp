@@ -44,14 +44,12 @@
         <form action="${pageContext.request.contextPath}/User/Cart/Remove" method="post" class="cart-form">
             <input type="submit" value="<fmt:message key="delete"/>">
             <input type="hidden" name="filmID" value="${film.flmId}">
-            <input type="hidden" name="command" value="remove_from_cart"/>
         </form>
     </c:forEach>
 
     <c:if test="${total != 0}">
         <form action="${pageContext.request.contextPath}/User/Cart/Buy" method="post" class="cart-form">
             <input type="submit" value="<fmt:message key="pay"/> ${total}">
-            <input type="hidden" name="command" value="buy"/>
         </form>
     </c:if>
 </div>
