@@ -1,5 +1,6 @@
 package by.bsuir.mycoolstore.controller;
 
+import by.bsuir.mycoolstore.entity.CartEntity;
 import by.bsuir.mycoolstore.entity.FilmEntity;
 import by.bsuir.mycoolstore.service.impl.CartService;
 import by.bsuir.mycoolstore.service.impl.LibraryService;
@@ -68,8 +69,17 @@ public class UserController {
     }
 
     @PostMapping("Cart/Add")
-    public void addToCart(HttpServletRequest request) {
+    public String addToCart(HttpServletRequest request) {
+        var session = request.getSession();
+        Long userId = (Long) session.getAttribute("userID");
+        Long filmId = Long.valueOf(request.getParameter("filmID"));
+        var cartItem = new CartEntity();
+        cartItem.setCrtUser(userId);
+        cartItem.setCrtFilm(filmId);
 
+        cartService.save(cartItem);
+
+        return "redirect:/User/Cart/";
     }
 
     @PostMapping("Feedback")

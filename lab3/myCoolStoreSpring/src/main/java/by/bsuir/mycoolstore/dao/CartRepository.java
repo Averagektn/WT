@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface CartRepository extends CrudRepository<CartEntity, CartEntityPK> {
-    List<CartEntity> getCartEntityByCrtUser(Long userId);
+    List<CartEntity> getFilmsByCrtUser(Long userId);
 }

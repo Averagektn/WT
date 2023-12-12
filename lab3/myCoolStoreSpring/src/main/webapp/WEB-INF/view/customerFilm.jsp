@@ -43,7 +43,6 @@
         <c:if test="${not isFilmInCart && not isBanned && empty sessionScope.isAdmin}">
             <form action="${pageContext.request.contextPath}/User/Cart/Add" method="post">
                 <input type="hidden" name="filmID" value="${film.flmId}">
-                <input type="hidden" name="command" value="add_to_cart"/>
                 <input type="submit" value="<fmt:message key="add_to_cart"/>">
             </form>
         </c:if>

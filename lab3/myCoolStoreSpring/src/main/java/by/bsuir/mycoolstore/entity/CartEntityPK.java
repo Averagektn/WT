@@ -11,11 +11,10 @@ import java.util.Objects;
 public class CartEntityPK implements Serializable {
     @Column(name = "crt_user")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long crtUser;
+
     @Column(name = "crt_film")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long crtFilm;
 
     public Long getCrtUser() {

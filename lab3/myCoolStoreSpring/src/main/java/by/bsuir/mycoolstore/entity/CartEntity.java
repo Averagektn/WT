@@ -8,7 +8,6 @@ import java.util.Objects;
 @Table(name = "cart", schema = "mycoolstore")
 @IdClass(CartEntityPK.class)
 public class CartEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "crt_user")
     private Long crtUser;
@@ -21,7 +20,6 @@ public class CartEntity {
         this.crtUser = crtUser;
     }
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "crt_film")
     private Long crtFilm;
