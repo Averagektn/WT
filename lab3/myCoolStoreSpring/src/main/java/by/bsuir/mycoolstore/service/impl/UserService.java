@@ -51,7 +51,7 @@ public class UserService {
     public void ban(Long userId, Long adminId) {
         var user = userRepository.findById(userId);
 
-        if (user.isPresent()){
+        if (user.isPresent()) {
             user.get().setUsrBannedBy(adminId);
             feedbackRepository.deleteAllByFbkAuthor(user.get());
         }

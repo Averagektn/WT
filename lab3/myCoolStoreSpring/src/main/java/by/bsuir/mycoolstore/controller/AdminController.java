@@ -1,17 +1,13 @@
 package by.bsuir.mycoolstore.controller;
 
 import by.bsuir.mycoolstore.entity.FilmEntity;
-import by.bsuir.mycoolstore.service.impl.AgeRestrictionService;
-import by.bsuir.mycoolstore.service.impl.CategoryService;
-import by.bsuir.mycoolstore.service.impl.FilmService;
-import by.bsuir.mycoolstore.service.impl.UserService;
+import by.bsuir.mycoolstore.service.impl.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
@@ -33,7 +29,7 @@ public class AdminController {
     }
 
     @GetMapping("AddFilm")
-    public ModelAndView addPage(Map<String, Object> model) {
+    public ModelAndView addPage() {
         var mav = new ModelAndView("adminFilm");
 
         var ageRestrictions = AgeRestrictionService.getAgeRestrictions();
@@ -52,7 +48,6 @@ public class AdminController {
         mav.addObject("film", film);
         mav.addObject("ageRestrictions", ageRestrictions);
         mav.addObject("categories", categories);
-        model.put("filmA", new FilmEntity());
 
         return mav;
     }
@@ -93,11 +88,18 @@ public class AdminController {
         return mav;
     }
 
-    @PostMapping("AddFilm")
-    public String addFilm(@ModelAttribute("filmA") FilmEntity film) {
-        filmService.addFilm(film);
+    @PostMapping(value = "AddFilm", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String addFilm(@RequestParam("filmTitle") String title, @RequestPart("file") MultipartFile file) {
 
-        return "redirect:/Admin/AddFilm";
+
+        return "redirect:/";
+    }
+
+    @PostMapping("EditFilm")
+    public String editFilm() {
+
+
+        return "redirect:/";
     }
 
     @PostMapping("Unban")

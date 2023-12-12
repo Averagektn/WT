@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : 'en'}"
        scope="session"/>
@@ -22,13 +23,15 @@
 </div>
 
 <div class="content">
-    <form action="${pageContext.request.contextPath}/${command}" method="post" enctype="multipart/form-data">
+    <form action="${pageContext.request.contextPath}/Admin/${command}" method="post" enctype="multipart/form-data">
         <h1 class="admin-header"><fmt:message key="admin_mode"/></h1>
 
         <label for="filmTitle"><fmt:message key="film_name"/>:</label>
-        <input type="text" id="filmTitle" name="filmTitle" value="${film.flmName}" required> <br>
+        <input type="text" value="${film.flmName}" id="filmTitle" name="filmTitle" required> <br>
 
-        <label for="filmAuthor"><fmt:message key="film_author"/>:</label>
+        <input type="file" name="file">
+
+<%--        <label for="filmAuthor"><fmt:message key="film_author"/>:</label>
         <input type="text" id="filmAuthor" name="filmAuthor" value="${film.flmAuthor}" required><br>
 
         <label for="filmCategory"><fmt:message key="categories"/>:</label>
@@ -70,7 +73,7 @@
 
         <label for="filmDiscount"><fmt:message key="film_discount"/>:</label>
         <input type="number" id="filmDiscount" name="filmDiscount" min="0" max="100" value="${film.flmDiscount}"
-               required><br>
+               required><br>--%>
 
         <input type="submit" value="<fmt:message key="add_film"/>">
     </form>
