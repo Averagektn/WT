@@ -101,12 +101,21 @@ public class AdminController {
     }
 
     @PostMapping("Unban")
-    public void unban(HttpServletRequest request) {
+    public String unban(HttpServletRequest request) {
+        Long userId = Long.valueOf(request.getParameter("userId"));
 
+        userService.unban(userId);
+
+        return "redirect:/Admin/BanList";
     }
 
     @PostMapping("Ban")
-    public void ban(HttpServletRequest request) {
+    public String ban(HttpServletRequest request) {
+        Long userId = Long.valueOf(request.getParameter("authorId"));
+        Long adminId = (Long) request.getSession().getAttribute("userID");
 
+        userService.ban(userId, adminId);
+
+        return "redirect:/Admin/BanList";
     }
 }

@@ -77,8 +77,6 @@
         <c:if test="${not empty sessionScope.isAdmin}">
             <form action="${pageContext.request.contextPath}/Admin/Ban" method="post">
                 <input type="hidden" name="authorId" value="${feedback.fbkAuthor.usrId}">
-                <input type="hidden" name="filmId" value="${film.flmId}">
-                <input type="hidden" name="command" value="ban"/>
 
                 <input type="submit" value="<fmt:message key="ban"/>"/>
             </form>
