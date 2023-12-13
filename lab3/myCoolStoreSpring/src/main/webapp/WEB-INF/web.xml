@@ -5,6 +5,11 @@
 
     <display-name>Archetype Created Web Application</display-name>
 
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/style/*</url-pattern>
+    </servlet-mapping>
+
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>
@@ -12,9 +17,5 @@
         </jsp-property-group>
     </jsp-config>
 
-    <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>/style/*</url-pattern>
-    </servlet-mapping>
 
 </web-app>
