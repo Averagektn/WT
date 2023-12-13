@@ -4,9 +4,12 @@ import by.bsuir.mycoolstore.entity.CartEntity;
 import by.bsuir.mycoolstore.entity.FeedbackEntity;
 import by.bsuir.mycoolstore.entity.FilmEntity;
 import by.bsuir.mycoolstore.entity.UserEntity;
+import by.bsuir.mycoolstore.service.exception.ServiceException;
 import by.bsuir.mycoolstore.service.impl.CartService;
 import by.bsuir.mycoolstore.service.impl.FeedbackService;
 import by.bsuir.mycoolstore.service.impl.LibraryService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +19,7 @@ import java.math.BigDecimal;
 @Controller
 @RequestMapping("/User/")
 public class UserController {
+    private static final Logger logger = LogManager.getLogger(UserController.class);
     private final LibraryService libraryService;
     private final CartService cartService;
     private final FeedbackService feedbackService;
@@ -32,6 +36,8 @@ public class UserController {
 
         var films = libraryService.getUserFilms(userId);
         mav.addObject("films", films);
+
+        logger.info("Library GET");
 
         return mav;
     }
@@ -51,6 +57,8 @@ public class UserController {
         mav.addObject("films", films);
         mav.addObject("total", total);
 
+        logger.info("Cart GET");
+
         return mav;
     }
 
@@ -58,12 +66,16 @@ public class UserController {
     public String remove(@SessionAttribute("userID") Long userId) {
         cartService.remove(userId);
 
+        logger.info("Removing from cart");
+
         return "redirect:/User/Cart";
     }
 
     @PostMapping("Cart/Buy")
     public String buy(@SessionAttribute("userID") Long userId) {
         cartService.buy(userId);
+
+        logger.info(userId + " bought films");
 
         return "redirect:/";
     }
@@ -76,6 +88,8 @@ public class UserController {
 
         cartService.save(cartItem);
 
+        logger.info("Adding " + filmId + " to " + userId + " cart");
+
         return "redirect:/User/Cart";
     }
 
@@ -85,7 +99,13 @@ public class UserController {
         author.setUsrId(userId);
 
         feedback.setFbkAuthor(author);
-        feedbackService.save(feedback);
+
+        try {
+            feedbackService.save(feedback);
+        } catch (ServiceException e) {
+            logger.error("Failed adding feedback " + feedback);
+            return "redirect:/Error";
+        }
 
         return "redirect:/Film?filmId=" + feedback.getFbkFilm();
     }

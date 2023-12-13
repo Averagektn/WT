@@ -9,21 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="Film adding works">
-      <change beforePath="$PROJECT_DIR$/../../lab2/db/db.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab2/db/db.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab2/db/db.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab2/db/db.mwb.bak" afterDir="false" />
+    <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="DB">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/CommonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/CommonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/adminFilm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/adminFilm.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/authorization.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/authorization.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/ban.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/ban.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/banList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/banList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/cart.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/customerFilm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/customerFilm.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/error.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/error.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/library.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/library.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/VideoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/VideoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/dao/exception/DAOException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/FeedbackService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/FeedbackService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/FilmService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/FilmService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +211,7 @@
       <workItem from="1702311336441" duration="21803000" />
       <workItem from="1702374085280" duration="23262000" />
       <workItem from="1702458906798" duration="15071000" />
-      <workItem from="1702481635969" duration="1039000" />
+      <workItem from="1702481635969" duration="3321000" />
     </task>
     <task id="LOCAL-00001" summary="IT ADDS FINALLY HIBERNATE WORKS I HATE IT">
       <option name="closed" value="true" />
@@ -418,15 +413,29 @@
       <option name="project" value="LOCAL" />
       <updated>1702473984034</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Language reworked">
+      <option name="closed" value="true" />
+      <created>1702482874558</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1702482874558</updated>
+    </task>
+    <task id="LOCAL-00027" summary="DB">
+      <option name="closed" value="true" />
+      <created>1702482888529</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1702482888529</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="IT ADDS FINALLY HIBERNATE WORKS I HATE IT" />
-    <MESSAGE value="FILM LIST REQUEST WORKS!!!!" />
     <MESSAGE value="Main page implemented" />
     <MESSAGE value="Added old jsps" />
     <MESSAGE value="Registration implemented" />
@@ -450,17 +459,8 @@
     <MESSAGE value="Started editing" />
     <MESSAGE value="Editing works" />
     <MESSAGE value="Film adding works" />
-    <option name="LAST_COMMIT_MESSAGE" value="Film adding works" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/CommonController.java</url>
-          <line>99</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Language reworked" />
+    <MESSAGE value="DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="DB" />
   </component>
 </project>

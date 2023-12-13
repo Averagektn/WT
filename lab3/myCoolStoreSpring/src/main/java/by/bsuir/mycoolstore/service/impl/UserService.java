@@ -16,7 +16,6 @@ import java.util.Optional;
 @Service
 @Transactional
 public class UserService {
-    private static final Logger logger = LogManager.getLogger(UserService.class);
     private final UserRepository userRepository;
     private final FeedbackRepository feedbackRepository;
 
@@ -33,9 +32,21 @@ public class UserService {
     }
 
     public Long registration(UserEntity user) throws ServiceException {
-        var savedUser = userRepository.save(user);
+        UserEntity savedUser;
 
-        logger.info("Registered user: " + savedUser.getUsrId() + " " + savedUser.getUsrEmail());
+        if (user.getUsrPassword().length() < 8) {
+            throw new ServiceException("Password length is less than 8");
+        }
+
+        if (user.getUsrBannedBy() != null) {
+            throw new ServiceException("Registration of banned user");
+        }
+
+        try {
+            savedUser = userRepository.save(user);
+        } catch (Exception e) {
+            throw new ServiceException(e.getMessage());
+        }
 
         return savedUser.getUsrId();
     }
@@ -44,7 +55,7 @@ public class UserService {
         return userRepository.findByUsrBannedByIsNotNull();
     }
 
-    public Optional<UserEntity> signIn(UserEntity user) throws ServiceException {
+    public Optional<UserEntity> signIn(UserEntity user) {
         return Optional.ofNullable(userRepository.findByUsrEmailAndUsrPassword(user.getUsrEmail(), user.getUsrPassword()));
     }
 

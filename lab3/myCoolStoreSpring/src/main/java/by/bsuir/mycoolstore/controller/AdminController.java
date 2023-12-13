@@ -5,6 +5,8 @@ import by.bsuir.mycoolstore.entity.CategoryEntity;
 import by.bsuir.mycoolstore.entity.FilmEntity;
 import by.bsuir.mycoolstore.entity.FilmMediaEntity;
 import by.bsuir.mycoolstore.service.impl.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/Admin/")
 public class AdminController {
+    private static final Logger logger = LogManager.getLogger(AdminController.class);
     private final CategoryService categoryService;
     private final FilmService filmService;
     private final UserService userService;
@@ -62,17 +65,21 @@ public class AdminController {
         mav.addObject("ageRestrictions", ageRestrictions);
         mav.addObject("categories", categories);
 
+        logger.info("Film " + film + " added");
+
         return mav;
     }
 
     @GetMapping("EditFilm")
     public ModelAndView editPage(@RequestParam("filmId") Long filmId, Model model) {
+        FilmEntity film;
+
         var mav = new ModelAndView("adminFilm");
 
         var ageRestrictions = AgeRestrictionService.getAgeRestrictions();
         var categories = categoryService.getCategories();
-        FilmEntity film;
         var filmOpt = filmService.getFilmById(filmId);
+
         if (filmOpt.isPresent()) {
             film = filmOpt.get();
             ageRestrictions.remove(film.getFlmAge());
@@ -83,7 +90,10 @@ public class AdminController {
             mav.addObject("film", film);
             mav.addObject("ageRestrictions", ageRestrictions);
             mav.addObject("categories", categories);
+
+            logger.info("Edit page GET");
         } else {
+            logger.error("Editing " + filmId + " failed");
             mav.setViewName("error");
         }
 
@@ -97,6 +107,8 @@ public class AdminController {
         var users = userService.getBannedUsers();
         mav.addObject("users", users);
 
+        logger.info("Ban list GET");
+
         return mav;
     }
 
@@ -106,7 +118,7 @@ public class AdminController {
             @RequestPart("filmFile") MultipartFile filmFile,
             @RequestPart("trailerFile") MultipartFile trailerFile,
             @RequestParam("filmCategory") List<Long> categories
-    ) throws IOException {
+    ) {
         addCategories(film, categories);
 
         var addedFilm = filmService.save(film);
@@ -120,8 +132,15 @@ public class AdminController {
         media.setFmTrailerPath(trailerFilename);
         mediaService.save(media);
 
-        saveFile(filmFile, FileConfig.VIDEO_DIRECTORY_PATH + FileConfig.FILM_DIR + File.separator + filmFilename);
-        saveFile(trailerFile, FileConfig.VIDEO_DIRECTORY_PATH + FileConfig.TRAILER_DIR + File.separator + trailerFilename);
+        try {
+            saveFile(filmFile, FileConfig.VIDEO_DIRECTORY_PATH + FileConfig.FILM_DIR + File.separator + filmFilename);
+            saveFile(trailerFile, FileConfig.VIDEO_DIRECTORY_PATH + FileConfig.TRAILER_DIR + File.separator +
+                    trailerFilename);
+            logger.info("Film added");
+        } catch (IOException e) {
+            logger.info("Adding film failed");
+            return "redirect:/Error";
+        }
 
         return "redirect:/";
     }
@@ -131,6 +150,7 @@ public class AdminController {
         addCategories(film, categories);
 
         filmService.save(film);
+        logger.info(film + " edited");
 
         return "redirect:/";
     }
@@ -160,12 +180,16 @@ public class AdminController {
     public String unban(@RequestParam("userId") Long userId) {
         userService.unban(userId);
 
+        logger.info(userId + " unbanned");
+
         return "redirect:/Admin/BanList";
     }
 
     @PostMapping("Ban")
     public String ban(@RequestParam("authorId") Long userId, @SessionAttribute("userID") Long adminId) {
         userService.ban(userId, adminId);
+
+        logger.info(userId + " banned");
 
         return "redirect:/Admin/BanList";
     }

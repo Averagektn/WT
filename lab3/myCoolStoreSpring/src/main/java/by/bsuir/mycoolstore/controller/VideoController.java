@@ -58,13 +58,13 @@ public class VideoController {
                     outputStream.write(buffer, 0, bytesRead);
                 }
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                logger.error("Error file saving");
             }
         } else {
             try {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                logger.error("Error file saving");
             }
         }
     }
