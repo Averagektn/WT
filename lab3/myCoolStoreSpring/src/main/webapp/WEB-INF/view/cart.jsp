@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
@@ -30,7 +30,7 @@
         <a href="${pageContext.request.contextPath}/Film?filmId=${film.flmId}">${film.flmName}</a><br>
         <c:choose>
             <c:when test="${film.flmDiscount != 0}">
-                <strike>${film.flmPrice}</strike> ${film.realPrice}<br>
+                <span style="text-decoration: line-through;">${film.flmPrice}</span> ${film.realPrice}<br>
             </c:when>
             <c:otherwise>
                 ${film.flmPrice}<br>

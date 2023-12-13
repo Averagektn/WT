@@ -5,8 +5,6 @@ import by.bsuir.mycoolstore.dao.UserRepository;
 import by.bsuir.mycoolstore.entity.UserEntity;
 import by.bsuir.mycoolstore.service.exception.ServiceException;
 import jakarta.transaction.Transactional;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
