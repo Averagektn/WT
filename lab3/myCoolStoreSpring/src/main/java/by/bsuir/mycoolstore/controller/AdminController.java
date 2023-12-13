@@ -5,14 +5,18 @@ import by.bsuir.mycoolstore.service.impl.AgeRestrictionService;
 import by.bsuir.mycoolstore.service.impl.CategoryService;
 import by.bsuir.mycoolstore.service.impl.FilmService;
 import by.bsuir.mycoolstore.service.impl.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/Admin/")
@@ -29,11 +33,12 @@ public class AdminController {
     }
 
     @GetMapping("AddFilm")
-    public ModelAndView addPage() {
+    public ModelAndView addPage(Model model) {
         var mav = new ModelAndView("adminFilm");
 
         var ageRestrictions = AgeRestrictionService.getAgeRestrictions();
         var categories = categoryService.getCategories();
+
         var film = new FilmEntity();
         film.setCategories(new ArrayList<>());
         film.setFlmId(0L);
@@ -43,6 +48,7 @@ public class AdminController {
         film.setFlmDiscount((short) 0);
         film.setFlmName("");
         film.setFlmPrice(BigDecimal.ZERO);
+        model.addAttribute("filmAdd", film);
 
         mav.addObject("command", "AddFilm");
         mav.addObject("film", film);
@@ -87,7 +93,13 @@ public class AdminController {
     }
 
     @PostMapping(value = "AddFilm", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String addFilm(@RequestParam("filmTitle") String title) {
+    public String addFilm(
+            @ModelAttribute("filmAdd") FilmEntity film,
+            @RequestPart("filmFile") MultipartFile filmFile,
+            @RequestPart("trailerFile") MultipartFile trailerFile,
+            @RequestParam("filmCategory") List<Long> categories,
+            HttpServletRequest request
+    ) {
 
 
         return "redirect:/";
