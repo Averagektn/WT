@@ -1,5 +1,6 @@
 package by.bsuir.mycoolstore.controller;
 
+import by.bsuir.mycoolstore.entity.CategoryEntity;
 import by.bsuir.mycoolstore.entity.FilmEntity;
 import by.bsuir.mycoolstore.service.impl.AgeRestrictionService;
 import by.bsuir.mycoolstore.service.impl.CategoryService;
@@ -107,11 +108,17 @@ public class AdminController {
     }
 
     @PostMapping("EditFilm")
-    public String editFilm(@ModelAttribute("film") FilmEntity film,
-                           @RequestParam("filmCategory") List<Long> categories,
-                           HttpServletRequest request
+    public String editFilm(@ModelAttribute("film") FilmEntity film, @RequestParam("filmCategory") List<Long> categories,
     ) {
+        var dbCatagories = new ArrayList<CategoryEntity>();
+        for (var cat: categories){
+            var c = new CategoryEntity();
+            c.setCatId(cat);
+            dbCatagories.add(c);
+        }
+        film.setCategories(dbCatagories);
 
+        filmService.save(film);
 
         return "redirect:/";
     }

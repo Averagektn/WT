@@ -23,7 +23,7 @@ public class FilmService {
         this.filmRepository = filmRepository;
     }
 
-    public void addFilm(FilmEntity film) {
+    public void save(FilmEntity film) {
         filmRepository.save(film);
     }
 
