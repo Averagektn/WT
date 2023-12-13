@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="Annotations instead of request params">
+    <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="Receiving stable">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/adminFilm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/adminFilm.jsp" afterDir="false" />
@@ -204,7 +204,7 @@
       <workItem from="1702274376988" duration="4171000" />
       <workItem from="1702311336441" duration="21803000" />
       <workItem from="1702374085280" duration="23262000" />
-      <workItem from="1702458906798" duration="6846000" />
+      <workItem from="1702458906798" duration="7661000" />
     </task>
     <task id="LOCAL-00001" summary="IT ADDS FINALLY HIBERNATE WORKS I HATE IT">
       <option name="closed" value="true" />
@@ -374,7 +374,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702463266943</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Receiving stable">
+      <option name="closed" value="true" />
+      <created>1702466172150</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1702466172150</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -402,14 +410,15 @@
     <MESSAGE value="Multipart data doesn't work" />
     <MESSAGE value="Multipart data WORKS FINALLY!" />
     <MESSAGE value="Annotations instead of request params" />
-    <option name="LAST_COMMIT_MESSAGE" value="Annotations instead of request params" />
+    <MESSAGE value="Receiving stable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Receiving stable" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/AdminController.java</url>
-          <line>100</line>
+          <line>105</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>

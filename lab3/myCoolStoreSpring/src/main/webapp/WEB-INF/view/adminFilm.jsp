@@ -24,7 +24,7 @@
 
 <div class="content">
     <form:form action="${pageContext.request.contextPath}/Admin/${command}" method="post" enctype="multipart/form-data"
-               modelAttribute="filmAdd">
+               modelAttribute="film">
         <h1 class="admin-header"><fmt:message key="admin_mode"/></h1>
 
         <label for="filmTitle"><fmt:message key="film_name"/>:</label>

@@ -48,7 +48,7 @@ public class AdminController {
         film.setFlmDiscount((short) 0);
         film.setFlmName("");
         film.setFlmPrice(BigDecimal.ZERO);
-        model.addAttribute("filmAdd", film);
+        model.addAttribute("film", film);
 
         mav.addObject("command", "AddFilm");
         mav.addObject("film", film);
@@ -59,7 +59,7 @@ public class AdminController {
     }
 
     @GetMapping("EditFilm")
-    public ModelAndView editPage(@RequestParam("filmId") Long filmId) {
+    public ModelAndView editPage(@RequestParam("filmId") Long filmId, Model model) {
         var mav = new ModelAndView("adminFilm");
 
         var ageRestrictions = AgeRestrictionService.getAgeRestrictions();
@@ -70,6 +70,7 @@ public class AdminController {
             film = filmOpt.get();
             ageRestrictions.remove(film.getFlmAge());
             categories.removeIf(c1 -> film.getCategories().stream().anyMatch(c2 -> c2.getCatName().equals(c1.getCatName())));
+            model.addAttribute("film", film);
 
             mav.addObject("command", "EditFilm");
             mav.addObject("film", film);
@@ -94,7 +95,7 @@ public class AdminController {
 
     @PostMapping(value = "AddFilm", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String addFilm(
-            @ModelAttribute("filmAdd") FilmEntity film,
+            @ModelAttribute("film") FilmEntity film,
             @RequestPart("filmFile") MultipartFile filmFile,
             @RequestPart("trailerFile") MultipartFile trailerFile,
             @RequestParam("filmCategory") List<Long> categories,
@@ -106,7 +107,10 @@ public class AdminController {
     }
 
     @PostMapping("EditFilm")
-    public String editFilm() {
+    public String editFilm(@ModelAttribute("film") FilmEntity film,
+                           @RequestParam("filmCategory") List<Long> categories,
+                           HttpServletRequest request
+    ) {
 
 
         return "redirect:/";
