@@ -29,9 +29,7 @@
         <label for="filmTitle"><fmt:message key="film_name"/>:</label>
         <input type="text" value="${film.flmName}" id="filmTitle" name="filmTitle" required> <br>
 
-        <input type="file" name="file">
-
-<%--        <label for="filmAuthor"><fmt:message key="film_author"/>:</label>
+        <label for="filmAuthor"><fmt:message key="film_author"/>:</label>
         <input type="text" id="filmAuthor" name="filmAuthor" value="${film.flmAuthor}" required><br>
 
         <label for="filmCategory"><fmt:message key="categories"/>:</label>
@@ -73,7 +71,7 @@
 
         <label for="filmDiscount"><fmt:message key="film_discount"/>:</label>
         <input type="number" id="filmDiscount" name="filmDiscount" min="0" max="100" value="${film.flmDiscount}"
-               required><br>--%>
+               required><br>
 
         <input type="submit" value="<fmt:message key="add_film"/>">
     </form>
