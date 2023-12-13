@@ -2,8 +2,7 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
-<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : 'en'}"
-       scope="session"/>
+<c:set var="language" value="${not empty sessionScope.lang ? sessionScope.lang : 'en'}" scope="session"/>
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="lang"/>
 

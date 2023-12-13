@@ -1,9 +1,9 @@
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 
-<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : 'en'}"
-       scope="session"/>
+<c:set var="language" value="${not empty sessionScope.lang ? sessionScope.lang : 'en'}" scope="session"/>
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="lang"/>
 

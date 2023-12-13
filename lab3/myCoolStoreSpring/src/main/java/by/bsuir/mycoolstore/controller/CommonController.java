@@ -6,6 +6,7 @@ import by.bsuir.mycoolstore.entity.enums.Role;
 import by.bsuir.mycoolstore.service.exception.ServiceException;
 import by.bsuir.mycoolstore.service.impl.*;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/")
@@ -36,7 +38,7 @@ public class CommonController {
     }
 
     @GetMapping("/")
-    public ModelAndView mainPage() throws ServiceException {
+    public ModelAndView mainPage(HttpServletRequest request) throws ServiceException {
         var mav = new ModelAndView("index");
 
         var films = filmService.getFilms();
@@ -128,6 +130,19 @@ public class CommonController {
 
         session.removeAttribute("userID");
         session.removeAttribute("isAdmin");
+
+        return "redirect:/";
+    }
+
+    @PostMapping("Language")
+    public String changeLanguage(HttpServletRequest request){
+        var session = request.getSession();
+
+        if (session.getAttribute("lang") != null){
+            session.removeAttribute("lang");
+        } else {
+            session.setAttribute("lang", "ru");
+        }
 
         return "redirect:/";
     }

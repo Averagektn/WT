@@ -9,13 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="Editing works">
+    <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="Film adding works">
+      <change beforePath="$PROJECT_DIR$/../../lab2/db/db.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab2/db/db.mwb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab2/db/db.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab2/db/db.mwb.bak" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/CommonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/CommonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/entity/FilmMediaEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/entity/FilmMediaEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/FilmService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/FilmService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/MediaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/MediaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/adminFilm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/adminFilm.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/authorization.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/authorization.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/ban.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/ban.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/banList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/banList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/cart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/customerFilm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/customerFilm.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/error.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/error.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/library.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/library.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/register.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,33 +59,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Tomcat Server.Tomcat 10.1.15.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Archive/5 semester/WT/lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.15.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Archive/5 semester/WT/lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Archive\5 semester\WT\lab3\myCoolStoreSpring\src\main\webapp\WEB-INF\view" />
@@ -207,7 +215,8 @@
       <workItem from="1702274376988" duration="4171000" />
       <workItem from="1702311336441" duration="21803000" />
       <workItem from="1702374085280" duration="23262000" />
-      <workItem from="1702458906798" duration="14963000" />
+      <workItem from="1702458906798" duration="15071000" />
+      <workItem from="1702481635969" duration="1039000" />
     </task>
     <task id="LOCAL-00001" summary="IT ADDS FINALLY HIBERNATE WORKS I HATE IT">
       <option name="closed" value="true" />
@@ -401,7 +410,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702467694059</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Film adding works">
+      <option name="closed" value="true" />
+      <created>1702473984034</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1702473984034</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,14 +449,15 @@
     <MESSAGE value="Receiving stable" />
     <MESSAGE value="Started editing" />
     <MESSAGE value="Editing works" />
-    <option name="LAST_COMMIT_MESSAGE" value="Editing works" />
+    <MESSAGE value="Film adding works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Film adding works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/CommonController.java</url>
-          <line>97</line>
+          <line>99</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>

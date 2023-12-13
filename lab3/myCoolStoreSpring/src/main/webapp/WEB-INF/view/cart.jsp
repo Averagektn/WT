@@ -5,8 +5,7 @@
 <jsp:useBean id="films" scope="request" type="java.util.List"/>
 <jsp:useBean id="total" scope="request" type="java.math.BigDecimal"/>
 
-<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : 'en'}"
-       scope="session"/>
+<c:set var="language" value="${not empty sessionScope.lang ? sessionScope.lang : 'en'}" scope="session"/>
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="lang"/>
 
