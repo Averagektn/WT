@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The CategoryEntity class represents a category in the database.
+ */
 @Entity
 @Table(name = "category", schema = "mycoolstore")
 public class CategoryEntity {
@@ -13,25 +16,63 @@ public class CategoryEntity {
     @Column(name = "cat_id")
     private Long catId;
 
-    @ManyToMany(mappedBy = "categories")
-    private List<FilmEntity> films;
-
+    /**
+     * Gets the ID of the category.
+     *
+     * @return The ID of the category.
+     */
     public Long getCatId() {
         return catId;
     }
 
+    /**
+     * Sets the ID of the category.
+     *
+     * @param catId The ID of the category.
+     */
     public void setCatId(Long catId) {
         this.catId = catId;
+    }
+
+    @ManyToMany(mappedBy = "categories")
+    private List<FilmEntity> films;
+
+    /**
+     * Gets the list of films associated with the category.
+     *
+     * @return The list of films.
+     */
+    public List<FilmEntity> getFilms() {
+        return films;
+    }
+
+    /**
+     * Sets the list of films associated with the category.
+     *
+     * @param films The list of films.
+     */
+    public void setFilms(List<FilmEntity> films) {
+        this.films = films;
     }
 
     @Basic
     @Column(name = "cat_name")
     private String catName;
 
+    /**
+     * Gets the name of the category.
+     *
+     * @return The name of the category.
+     */
     public String getCatName() {
         return catName;
     }
 
+    /**
+     * Sets the name of the category.
+     *
+     * @param catName The name of the category.
+     */
     public void setCatName(String catName) {
         this.catName = catName;
     }

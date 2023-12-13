@@ -6,7 +6,15 @@ import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
+/**
+ * The {@code WebAppInitializer} class initializes the web application and configures the DispatcherServlet.
+ */
 public class WebAppInitializer implements WebApplicationInitializer {
+    /**
+     * Configures and initializes the web application.
+     *
+     * @param servletContext The {@link ServletContext} for the web application.
+     */
     @Override
     public void onStartup(ServletContext servletContext) {
         var context = new AnnotationConfigWebApplicationContext();

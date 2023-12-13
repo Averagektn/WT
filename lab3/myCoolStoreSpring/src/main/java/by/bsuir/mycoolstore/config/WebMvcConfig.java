@@ -11,10 +11,18 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+/**
+ * The {@code WebMvcConfig} class provides configuration for the Spring Web MVC framework.
+ */
 @Configuration
 @MultipartConfig
 @ComponentScan("by.bsuir")
 public class WebMvcConfig implements WebMvcConfigurer {
+    /**
+     * Configures the view resolver for resolving JSP views.
+     *
+     * @return The configured {@link InternalResourceViewResolver}.
+     */
     @Bean(name = "viewResolver")
     public InternalResourceViewResolver getNewResolver() {
         var viewResolver = new InternalResourceViewResolver();
@@ -24,6 +32,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return viewResolver;
     }
 
+    /**
+     * Configures resource handlers to serve static resources.
+     *
+     * @param registry The {@link ResourceHandlerRegistry} to register the resource handlers.
+     */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
@@ -31,6 +44,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addResourceLocations("/style/");
     }
 
+    /**
+     * Configures the multipart configuration element for handling file uploads.
+     *
+     * @return The configured {@link MultipartConfigElement}.
+     */
     @Bean
     public MultipartConfigElement multipartConfigElement() {
         return new MultipartConfigElement(
@@ -41,6 +59,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
         );
     }
 
+    /**
+     * Configures the multipart resolver for handling file uploads.
+     *
+     * @return The configured {@link MultipartResolver}.
+     */
     @Bean
     public MultipartResolver multipartResolver() {
         return new StandardServletMultipartResolver();

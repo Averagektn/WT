@@ -7,46 +7,83 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
+/**
+ * The UserEntity class represents a user in the system.
+ */
 @Entity
 @Table(name = "user", schema = "mycoolstore")
 public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @jakarta.persistence.Column(name = "usr_id")
+    @Column(name = "usr_id")
     private Long usrId;
 
+    /**
+     * Gets the user ID.
+     *
+     * @return The user ID.
+     */
     public Long getUsrId() {
         return usrId;
     }
 
+    /**
+     * Sets the user ID.
+     *
+     * @param usrId The user ID.
+     */
     public void setUsrId(Long usrId) {
         this.usrId = usrId;
     }
 
-    @Basic
     @Column(name = "usr_email")
     private String usrEmail;
 
+    /**
+     * Gets the user email.
+     *
+     * @return The user email.
+     */
     public String getUsrEmail() {
         return usrEmail;
     }
 
+    /**
+     * Sets the user email.
+     *
+     * @param usrEmail The user email.
+     */
     public void setUsrEmail(String usrEmail) {
         this.usrEmail = usrEmail;
     }
 
-    @Basic
     @Column(name = "usr_password")
     private String usrPassword;
 
+    /**
+     * Gets the user password.
+     *
+     * @return The user password.
+     */
     public String getUsrPassword() {
         return usrPassword;
     }
 
+    /**
+     * Sets the user password.
+     *
+     * @param usrPassword The user password.
+     */
     public void setUsrPassword(String usrPassword) {
         this.usrPassword = usrPassword;
     }
 
+    /**
+     * Generates SHA-512 hash of the given password.
+     *
+     * @param password The password to hash.
+     * @return The hashed password.
+     */
     public static String getHashSha512Password(String password) {
         String passwordHash = null;
 
@@ -62,32 +99,50 @@ public class UserEntity {
             passwordHash = sb.toString();
 
         } catch (NoSuchAlgorithmException e) {
-            System.out.println("Algorithm wasn't found: " + e.toString());
+            System.out.println("Algorithm wasn't found: " + e);
         }
 
         return passwordHash;
     }
 
-    @Basic
     @Column(name = "usr_role")
     private String usrRole;
 
+    /**
+     * Gets the user role.
+     *
+     * @return The user role.
+     */
     public String getUsrRole() {
         return usrRole;
     }
 
+    /**
+     * Sets the user role.
+     *
+     * @param usrRole The user role.
+     */
     public void setUsrRole(String usrRole) {
         this.usrRole = usrRole;
     }
 
-    @Basic
     @Column(name = "usr_banned_by")
     private Long usrBannedBy;
 
+    /**
+     * Gets the ID of the user who banned this user.
+     *
+     * @return The ID of the user who banned this user.
+     */
     public Long getUsrBannedBy() {
         return usrBannedBy;
     }
 
+    /**
+     * Sets the ID of the user who banned this user.
+     *
+     * @param usrBannedBy The ID of the user who banned this user.
+     */
     public void setUsrBannedBy(Long usrBannedBy) {
         this.usrBannedBy = usrBannedBy;
     }

@@ -16,6 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
 
+/**
+ * The UserController class is responsible for handling user-related requests and actions.
+ */
 @Controller
 @RequestMapping("/User/")
 public class UserController {
@@ -24,12 +27,25 @@ public class UserController {
     private final CartService cartService;
     private final FeedbackService feedbackService;
 
+    /**
+     * Constructs a UserController with the specified services.
+     *
+     * @param ls  The LibraryService to be used.
+     * @param cs  The CartService to be used.
+     * @param fbs The FeedbackService to be used.
+     */
     public UserController(LibraryService ls, CartService cs, FeedbackService fbs) {
         this.libraryService = ls;
         this.cartService = cs;
         this.feedbackService = fbs;
     }
 
+    /**
+     * Handles the library page request.
+     *
+     * @param userId The ID of the user.
+     * @return The ModelAndView for the library page.
+     */
     @GetMapping("Library")
     public ModelAndView libraryPage(@SessionAttribute("userID") Long userId) {
         var mav = new ModelAndView("library");
@@ -42,6 +58,12 @@ public class UserController {
         return mav;
     }
 
+    /**
+     * Handles the cart page request.
+     *
+     * @param userId The ID of the user.
+     * @return The ModelAndView for the cart page.
+     */
     @GetMapping("Cart")
     public ModelAndView cartPage(@SessionAttribute("userID") Long userId) {
         BigDecimal total = BigDecimal.ZERO;
@@ -62,6 +84,12 @@ public class UserController {
         return mav;
     }
 
+    /**
+     * Handles the removal of items from the cart.
+     *
+     * @param userId The ID of the user.
+     * @return The redirection URL.
+     */
     @PostMapping("Cart/Remove")
     public String remove(@SessionAttribute("userID") Long userId) {
         cartService.remove(userId);
@@ -71,6 +99,12 @@ public class UserController {
         return "redirect:/User/Cart";
     }
 
+    /**
+     * Handles the purchase of items in the cart.
+     *
+     * @param userId The ID of the user.
+     * @return The redirection URL.
+     */
     @PostMapping("Cart/Buy")
     public String buy(@SessionAttribute("userID") Long userId) {
         cartService.buy(userId);
@@ -80,6 +114,13 @@ public class UserController {
         return "redirect:/";
     }
 
+    /**
+     * Handles the addition of an item to the cart.
+     *
+     * @param filmId The ID of the film.
+     * @param userId The ID of the user.
+     * @return The redirection URL.
+     */
     @PostMapping("Cart/Add")
     public String addToCart(@RequestParam("filmID") Long filmId, @SessionAttribute("userID") Long userId) {
         var cartItem = new CartEntity();
@@ -93,6 +134,13 @@ public class UserController {
         return "redirect:/User/Cart";
     }
 
+    /**
+     * Handles the submission of feedback for a film.
+     *
+     * @param feedback The FeedbackEntity object containing the feedback information.
+     * @param userId   The ID of the user.
+     * @return The redirection URL.
+     */
     @PostMapping("Feedback")
     public String leaveFeedback(@ModelAttribute("feedback") FeedbackEntity feedback, @SessionAttribute("userID") Long userId) {
         var author = new UserEntity();

@@ -1,34 +1,56 @@
 package by.bsuir.mycoolstore.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
+/**
+ * The UserFilmEntity class represents a user's interaction with a film in the system.
+ */
 @Entity
-@jakarta.persistence.Table(name = "user_film", schema = "mycoolstore")
-@jakarta.persistence.IdClass(by.bsuir.mycoolstore.entity.UserFilmEntityPK.class)
+@Table(name = "user_film", schema = "mycoolstore")
+@IdClass(by.bsuir.mycoolstore.entity.UserFilmEntityPK.class)
 public class UserFilmEntity {
     @Id
-    @jakarta.persistence.Column(name = "uf_user")
+    @Column(name = "uf_user")
     private Long ufUser;
 
+    /**
+     * Gets the ID of the user associated with the film.
+     *
+     * @return The ID of the user.
+     */
     public Long getUfUser() {
         return ufUser;
     }
 
+    /**
+     * Sets the ID of the user associated with the film.
+     *
+     * @param ufUser The ID of the user.
+     */
     public void setUfUser(Long ufUser) {
         this.ufUser = ufUser;
     }
 
     @Id
-    @jakarta.persistence.Column(name = "uf_film")
+    @Column(name = "uf_film")
     private Long ufFilm;
 
+    /**
+     * Gets the ID of the film associated with the user.
+     *
+     * @return The ID of the film.
+     */
     public Long getUfFilm() {
         return ufFilm;
     }
 
+    /**
+     * Sets the ID of the film associated with the user.
+     *
+     * @param ufFilm The ID of the film.
+     */
     public void setUfFilm(Long ufFilm) {
         this.ufFilm = ufFilm;
     }

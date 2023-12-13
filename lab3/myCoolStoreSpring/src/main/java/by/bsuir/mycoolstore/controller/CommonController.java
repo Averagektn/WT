@@ -16,6 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
 
+/**
+ * The CommonController class is responsible for handling common requests and actions related to the application.
+ */
 @Controller
 @RequestMapping("/")
 public class CommonController {
@@ -27,6 +30,16 @@ public class CommonController {
     private final LibraryService libraryService;
     private final MediaService mediaService;
 
+    /**
+     * Constructs a CommonController with the specified services.
+     *
+     * @param fs  The FilmService to be used.
+     * @param us  The UserService to be used.
+     * @param fbs The FeedbackService to be used.
+     * @param cs  The CartService to be used.
+     * @param ls  The LibraryService to be used.
+     * @param ms  The MediaService to be used.
+     */
     @Autowired
     public CommonController(FilmService fs, UserService us, FeedbackService fbs, CartService cs, LibraryService ls,
                             MediaService ms) {
@@ -38,6 +51,11 @@ public class CommonController {
         this.mediaService = ms;
     }
 
+    /**
+     * Handles the main page request.
+     *
+     * @return The ModelAndView for the main page.
+     */
     @GetMapping("/")
     public ModelAndView mainPage() {
         var mav = new ModelAndView("index");
@@ -50,6 +68,12 @@ public class CommonController {
         return mav;
     }
 
+    /**
+     * Handles the registration page request.
+     *
+     * @param model The Model object.
+     * @return The registration page view name.
+     */
     @GetMapping("Register")
     public String registrationPage(Model model) {
         var user = new UserEntity();
@@ -60,6 +84,13 @@ public class CommonController {
         return "register";
     }
 
+    /**
+     * Handles the registration form submission.
+     *
+     * @param user    The UserEntity object containing the registration information.
+     * @param request The HttpServletRequest object.
+     * @return The redirection URL.
+     */
     @PostMapping("Register")
     public String registration(@ModelAttribute("user") UserEntity user, HttpServletRequest request) {
         user.setUsrRole(Role.CUSTOMER.toString());
@@ -69,24 +100,37 @@ public class CommonController {
             request.getSession().setAttribute("userID", id);
             logger.info("Registration of " + user.getUsrEmail());
         } catch (ServiceException e) {
-            logger.error("Registration od " + user.getUsrEmail() + " failed");
+            logger.error("Registration of " + user.getUsrEmail() + " failed");
             return "redirect:/Error";
         }
 
         return "redirect:/";
     }
 
+    /**
+     * Handles the authorization page request.
+     *
+     * @param model The Map object containing the model attributes.
+     * @return The authorization page view name.
+     */
     @GetMapping("Authorization")
     public String authorisationPage(Map<String, Object> model) {
         var user = new UserEntity();
 
         model.put("user", user);
 
-        logger.info("Authorisation GET");
+        logger.info("Authorization GET");
 
         return "authorization";
     }
 
+    /**
+     * Handles the authorization form submission.
+     *
+     * @param user    The UserEntity object containing the authorization information.
+     * @param request The HttpServletRequest object.
+     * @return The redirection URL.
+     */
     @PostMapping("Authorization")
     public String authorization(@ModelAttribute("user") UserEntity user, HttpServletRequest request) {
         user.setUsrPassword(UserEntity.getHashSha512Password(user.getUsrPassword()));
@@ -105,6 +149,14 @@ public class CommonController {
         return "error";
     }
 
+    /**
+     * Handles the film page request.
+     *
+     * @param filmId  The ID of the film.
+     * @param request The HttpServletRequest object.
+     * @param model   The Model object.
+     * @return The ModelAndView for the film page.
+     */
     @GetMapping("Film")
     public ModelAndView filmPage(@RequestParam("filmId") Long filmId, HttpServletRequest request, Model model) {
         Long userId = (Long) request.getSession().getAttribute("userID");
@@ -128,7 +180,7 @@ public class CommonController {
 
         var film = filmService.getFilmById(filmId);
         var feedbacks = feedbackService.getFilmFeedbacks(filmId);
-        var media = mediaService.getFIlmMedia(filmId);
+        var media = mediaService.getFilmMedia(filmId);
 
         film.ifPresent(filmEntity -> mav.addObject("film", filmEntity));
         media.ifPresent(filmMediaEntity -> mav.addObject("media", filmMediaEntity));
@@ -139,6 +191,12 @@ public class CommonController {
         return mav;
     }
 
+    /**
+     * Handles the exit action.
+     *
+     * @param request The HttpServletRequest object.
+     * @return The redirection URL.
+     */
     @PostMapping("Exit")
     public String exit(HttpServletRequest request) {
         var session = request.getSession();
@@ -151,6 +209,12 @@ public class CommonController {
         return "redirect:/";
     }
 
+    /**
+     * Handles the language change action.
+     *
+     * @param request The HttpServletRequest object.
+     * @return The redirection URL.
+     */
     @PostMapping("Language")
     public String changeLanguage(HttpServletRequest request) {
         var session = request.getSession();
@@ -166,6 +230,11 @@ public class CommonController {
         return "redirect:/";
     }
 
+    /**
+     * Handles the error page request.
+     *
+     * @return The ModelAndView for the error page.
+     */
     @GetMapping("Error")
     public ModelAndView error() {
         return new ModelAndView("error");

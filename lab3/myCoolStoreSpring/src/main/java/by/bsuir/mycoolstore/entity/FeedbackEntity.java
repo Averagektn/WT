@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 
+/**
+ * The FeedbackEntity class represents a feedback entry in the database.
+ */
 @Entity
 @Table(name = "feedback", schema = "mycoolstore")
 public class FeedbackEntity {
@@ -12,10 +15,20 @@ public class FeedbackEntity {
     @Column(name = "fbk_id")
     private Long fbkId;
 
+    /**
+     * Gets the ID of the feedback entry.
+     *
+     * @return The ID of the feedback entry.
+     */
     public Long getFbkId() {
         return fbkId;
     }
 
+    /**
+     * Sets the ID of the feedback entry.
+     *
+     * @param fbkId The ID of the feedback entry.
+     */
     public void setFbkId(Long fbkId) {
         this.fbkId = fbkId;
     }
@@ -24,10 +37,20 @@ public class FeedbackEntity {
     @JoinColumn(name = "fbk_author", referencedColumnName = "usr_id")
     private UserEntity fbkAuthor;
 
+    /**
+     * Gets the author of the feedback.
+     *
+     * @return The author of the feedback.
+     */
     public UserEntity getFbkAuthor() {
         return fbkAuthor;
     }
 
+    /**
+     * Sets the author of the feedback.
+     *
+     * @param fbkAuthor The author of the feedback.
+     */
     public void setFbkAuthor(UserEntity fbkAuthor) {
         this.fbkAuthor = fbkAuthor;
     }
@@ -36,10 +59,20 @@ public class FeedbackEntity {
     @Column(name = "fbk_film")
     private Long fbkFilm;
 
+    /**
+     * Gets the ID of the film associated with the feedback.
+     *
+     * @return The ID of the film.
+     */
     public Long getFbkFilm() {
         return fbkFilm;
     }
 
+    /**
+     * Sets the ID of the film associated with the feedback.
+     *
+     * @param fbkFilm The ID of the film.
+     */
     public void setFbkFilm(Long fbkFilm) {
         this.fbkFilm = fbkFilm;
     }
@@ -48,10 +81,20 @@ public class FeedbackEntity {
     @Column(name = "fbk_text")
     private String fbkText;
 
+    /**
+     * Gets the text content of the feedback.
+     *
+     * @return The text content of the feedback.
+     */
     public String getFbkText() {
         return fbkText;
     }
 
+    /**
+     * Sets the text content of the feedback.
+     *
+     * @param fbkText The text content of the feedback.
+     */
     public void setFbkText(String fbkText) {
         this.fbkText = fbkText;
     }
@@ -60,10 +103,20 @@ public class FeedbackEntity {
     @Column(name = "fbk_rating")
     private Short fbkRating;
 
+    /**
+     * Gets the rating of the feedback.
+     *
+     * @return The rating of the feedback.
+     */
     public Short getFbkRating() {
         return fbkRating;
     }
 
+    /**
+     * Sets the rating of the feedback.
+     *
+     * @param fbkRating The rating of the feedback.
+     */
     public void setFbkRating(Short fbkRating) {
         this.fbkRating = fbkRating;
     }

@@ -13,6 +13,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+/**
+ * The VideoController class is responsible for handling video-related requests and actions.
+ */
 @Controller
 @RequestMapping("/Video/")
 public class VideoController {
@@ -20,6 +23,12 @@ public class VideoController {
     private static final String FILM_NAME = "filmPath";
     private static final String TRAILER_NAME = "trailerPath";
 
+    /**
+     * Retrieves and streams the trailer video.
+     *
+     * @param request  The HttpServletRequest containing the request parameters.
+     * @param response The HttpServletResponse used to send the response.
+     */
     @GetMapping("Trailer")
     public void getTrailer(HttpServletRequest request, HttpServletResponse response) {
         String trailerNameParam = request.getParameter(TRAILER_NAME);
@@ -33,6 +42,12 @@ public class VideoController {
         getFile(response, file);
     }
 
+    /**
+     * Retrieves and streams the film video.
+     *
+     * @param request  The HttpServletRequest containing the request parameters.
+     * @param response The HttpServletResponse used to send the response.
+     */
     @GetMapping("Film")
     public void getFilm(HttpServletRequest request, HttpServletResponse response) {
         String filmNameParam = request.getParameter(FILM_NAME);
@@ -46,6 +61,12 @@ public class VideoController {
         getFile(response, file);
     }
 
+    /**
+     * Retrieves the file and streams it in the response.
+     *
+     * @param response The HttpServletResponse used to send the response.
+     * @param file     The File object representing the file to be streamed.
+     */
     private void getFile(HttpServletResponse response, File file) {
         if (file.exists()) {
             response.setContentType("video/mp4");

@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 
+/**
+ * The M2MFilmCategoryEntity class represents a many-to-many relationship between films and categories in the database.
+ */
 @Entity
 @Table(name = "m2m_film_category", schema = "mycoolstore")
 @IdClass(M2MFilmCategoryEntityPK.class)
@@ -13,10 +16,20 @@ public class M2MFilmCategoryEntity {
     @Column(name = "fc_film")
     private Long fcFilm;
 
+    /**
+     * Gets the ID of the film in the relationship.
+     *
+     * @return The ID of the film.
+     */
     public Long getFcFilm() {
         return fcFilm;
     }
 
+    /**
+     * Sets the ID of the film in the relationship.
+     *
+     * @param fcFilm The ID of the film.
+     */
     public void setFcFilm(Long fcFilm) {
         this.fcFilm = fcFilm;
     }
@@ -26,10 +39,20 @@ public class M2MFilmCategoryEntity {
     @Column(name = "fc_category")
     private Long fcCategory;
 
+    /**
+     * Gets the ID of the category in the relationship.
+     *
+     * @return The ID of the category.
+     */
     public Long getFcCategory() {
         return fcCategory;
     }
 
+    /**
+     * Sets the ID of the category in the relationship.
+     *
+     * @param fcCategory The ID of the category.
+     */
     public void setFcCategory(Long fcCategory) {
         this.fcCategory = fcCategory;
     }

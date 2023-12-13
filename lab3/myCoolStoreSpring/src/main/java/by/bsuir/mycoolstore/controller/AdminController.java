@@ -25,6 +25,9 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The {@code AdminController} class handles the administrative operations for the application.
+ */
 @Controller
 @RequestMapping("/Admin/")
 public class AdminController {
@@ -42,6 +45,12 @@ public class AdminController {
         this.mediaService = ms;
     }
 
+    /**
+     * Handles the GET request for the add film page.
+     *
+     * @param model The {@link Model} to add attributes to.
+     * @return The {@link ModelAndView} for the add film page.
+     */
     @GetMapping("AddFilm")
     public ModelAndView addPage(Model model) {
         var mav = new ModelAndView("adminFilm");
@@ -70,6 +79,13 @@ public class AdminController {
         return mav;
     }
 
+    /**
+     * Handles the GET request for the edit film page.
+     *
+     * @param filmId The ID of the film to edit.
+     * @param model  The {@link Model} to add attributes to.
+     * @return The {@link ModelAndView} for the edit film page.
+     */
     @GetMapping("EditFilm")
     public ModelAndView editPage(@RequestParam("filmId") Long filmId, Model model) {
         FilmEntity film;
@@ -100,6 +116,11 @@ public class AdminController {
         return mav;
     }
 
+    /**
+     * Handles the GET request for the ban list page.
+     *
+     * @return The {@link ModelAndView} for the ban list page.
+     */
     @GetMapping("BanList")
     public ModelAndView banListPage() {
         var mav = new ModelAndView("banList");
@@ -112,6 +133,15 @@ public class AdminController {
         return mav;
     }
 
+    /**
+     * Handles the POST request for adding a film.
+     *
+     * @param film        The film entity to add.
+     * @param filmFile    The film file to upload.
+     * @param trailerFile The trailer file to upload.
+     * @param categories  The list of category IDs for the film.
+     * @return The redirect URL after adding the film.
+     */
     @PostMapping(value = "AddFilm", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String addFilm(
             @ModelAttribute("film") FilmEntity film,
@@ -145,6 +175,13 @@ public class AdminController {
         return "redirect:/";
     }
 
+    /**
+     * Handles the POST request for editing a film.
+     *
+     * @param film       The film entity to edit.
+     * @param categories The list of category IDs for the film.
+     * @return The redirect URL after editing the film.
+     */
     @PostMapping("EditFilm")
     public String editFilm(@ModelAttribute("film") FilmEntity film, @RequestParam("filmCategory") List<Long> categories) {
         addCategories(film, categories);
@@ -155,6 +192,12 @@ public class AdminController {
         return "redirect:/";
     }
 
+    /**
+     * Adds the specified categories to the film entity.
+     *
+     * @param film       The film entity to add categories to.
+     * @param categories The list of category IDs to add.
+     */
     private void addCategories(FilmEntity film, List<Long> categories) {
         var dbCategories = new ArrayList<CategoryEntity>();
 
@@ -167,15 +210,28 @@ public class AdminController {
         film.setCategories(dbCategories);
     }
 
+    /**
+     * Saves the uploaded file to the specified file path.
+     *
+     * @param file     The file to save.
+     * @param filePath The file path to save the file to.
+     * @throws IOException If an I/O error occurs while saving the file.
+     */
     private void saveFile(MultipartFile file, String filePath) throws IOException {
         try {
             Path targetPath = Path.of(filePath);
             Files.copy(file.getInputStream(), targetPath, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
-            throw new IOException("Не удалось сохранить файл: " + filePath, e);
+            throw new IOException("Failed to save file: " + filePath, e);
         }
     }
 
+    /**
+     * Handles the POST request for unbanning a user.
+     *
+     * @param userId The ID of the user to unban.
+     * @return The redirect URL after unbanning the user.
+     */
     @PostMapping("Unban")
     public String unban(@RequestParam("userId") Long userId) {
         userService.unban(userId);
@@ -185,6 +241,13 @@ public class AdminController {
         return "redirect:/Admin/BanList";
     }
 
+    /**
+     * Handles the POST request for banning a user.
+     *
+     * @param userId  The ID of the user to ban.
+     * @param adminId The ID of the admin performing the ban.
+     * @return The redirect URL after banning the user.
+     */
     @PostMapping("Ban")
     public String ban(@RequestParam("authorId") Long userId, @SessionAttribute("userID") Long adminId) {
         userService.ban(userId, adminId);
