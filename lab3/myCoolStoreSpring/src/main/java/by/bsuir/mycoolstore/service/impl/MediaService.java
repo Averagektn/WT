@@ -19,4 +19,8 @@ public class MediaService {
     public Optional<FilmMediaEntity> getFIlmMedia(Long filmId) {
         return mediaRepository.findById(filmId);
     }
+
+    public void save(FilmMediaEntity filmMedia) {
+        mediaRepository.save(filmMedia);
+    }
 }

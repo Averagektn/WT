@@ -1,12 +1,10 @@
 package by.bsuir.mycoolstore.controller;
 
+import by.bsuir.mycoolstore.config.file.FileConfig;
 import by.bsuir.mycoolstore.entity.CategoryEntity;
 import by.bsuir.mycoolstore.entity.FilmEntity;
-import by.bsuir.mycoolstore.service.impl.AgeRestrictionService;
-import by.bsuir.mycoolstore.service.impl.CategoryService;
-import by.bsuir.mycoolstore.service.impl.FilmService;
-import by.bsuir.mycoolstore.service.impl.UserService;
-import jakarta.servlet.http.HttpServletRequest;
+import by.bsuir.mycoolstore.entity.FilmMediaEntity;
+import by.bsuir.mycoolstore.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -15,7 +13,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,12 +29,14 @@ public class AdminController {
     private final CategoryService categoryService;
     private final FilmService filmService;
     private final UserService userService;
+    private final MediaService mediaService;
 
     @Autowired
-    public AdminController(CategoryService cs, FilmService fs, UserService us) {
+    public AdminController(CategoryService cs, FilmService fs, UserService us, MediaService ms) {
         this.categoryService = cs;
         this.filmService = fs;
         this.userService = us;
+        this.mediaService = ms;
     }
 
     @GetMapping("AddFilm")
@@ -99,28 +105,55 @@ public class AdminController {
             @ModelAttribute("film") FilmEntity film,
             @RequestPart("filmFile") MultipartFile filmFile,
             @RequestPart("trailerFile") MultipartFile trailerFile,
-            @RequestParam("filmCategory") List<Long> categories,
-            HttpServletRequest request
-    ) {
+            @RequestParam("filmCategory") List<Long> categories
+    ) throws IOException {
+        addCategories(film, categories);
 
+        var addedFilm = filmService.save(film);
+
+        String filmFilename = Instant.now().toEpochMilli() + filmFile.getOriginalFilename();
+        String trailerFilename = Instant.now().toEpochMilli() + trailerFile.getOriginalFilename();
+
+        var media = new FilmMediaEntity();
+        media.setFmId(addedFilm.getFlmId());
+        media.setFmFilmPath(filmFilename);
+        media.setFmTrailerPath(trailerFilename);
+        mediaService.save(media);
+
+        saveFile(filmFile, FileConfig.VIDEO_DIRECTORY_PATH + FileConfig.FILM_DIR + File.separator + filmFilename);
+        saveFile(trailerFile, FileConfig.VIDEO_DIRECTORY_PATH + FileConfig.TRAILER_DIR + File.separator + trailerFilename);
 
         return "redirect:/";
     }
 
     @PostMapping("EditFilm")
-    public String editFilm(@ModelAttribute("film") FilmEntity film, @RequestParam("filmCategory") List<Long> categories,
-    ) {
-        var dbCatagories = new ArrayList<CategoryEntity>();
-        for (var cat: categories){
-            var c = new CategoryEntity();
-            c.setCatId(cat);
-            dbCatagories.add(c);
-        }
-        film.setCategories(dbCatagories);
+    public String editFilm(@ModelAttribute("film") FilmEntity film, @RequestParam("filmCategory") List<Long> categories) {
+        addCategories(film, categories);
 
         filmService.save(film);
 
         return "redirect:/";
+    }
+
+    private void addCategories(FilmEntity film, List<Long> categories) {
+        var dbCategories = new ArrayList<CategoryEntity>();
+
+        for (var cat : categories) {
+            var c = new CategoryEntity();
+            c.setCatId(cat);
+            dbCategories.add(c);
+        }
+
+        film.setCategories(dbCategories);
+    }
+
+    private void saveFile(MultipartFile file, String filePath) throws IOException {
+        try {
+            Path targetPath = Path.of(filePath);
+            Files.copy(file.getInputStream(), targetPath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            throw new IOException("Не удалось сохранить файл: " + filePath, e);
+        }
     }
 
     @PostMapping("Unban")

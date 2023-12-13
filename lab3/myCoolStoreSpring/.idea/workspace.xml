@@ -9,10 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="Started editing">
+    <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="Editing works">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/CommonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/CommonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/entity/FilmMediaEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/entity/FilmMediaEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/FilmService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/FilmService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/MediaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/service/impl/MediaService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +207,7 @@
       <workItem from="1702274376988" duration="4171000" />
       <workItem from="1702311336441" duration="21803000" />
       <workItem from="1702374085280" duration="23262000" />
-      <workItem from="1702458906798" duration="8605000" />
+      <workItem from="1702458906798" duration="14963000" />
     </task>
     <task id="LOCAL-00001" summary="IT ADDS FINALLY HIBERNATE WORKS I HATE IT">
       <option name="closed" value="true" />
@@ -390,7 +393,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702466768285</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Editing works">
+      <option name="closed" value="true" />
+      <created>1702467694059</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1702467694059</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,20 +431,16 @@
     <MESSAGE value="Annotations instead of request params" />
     <MESSAGE value="Receiving stable" />
     <MESSAGE value="Started editing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started editing" />
+    <MESSAGE value="Editing works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Editing works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/AdminController.java</url>
-          <line>106</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/AdminController.java</url>
-          <line>118</line>
-          <option name="timeStamp" value="16" />
+          <url>file://$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/CommonController.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

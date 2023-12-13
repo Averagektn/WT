@@ -23,8 +23,8 @@ public class FilmService {
         this.filmRepository = filmRepository;
     }
 
-    public void save(FilmEntity film) {
-        filmRepository.save(film);
+    public FilmEntity save(FilmEntity film) {
+        return filmRepository.save(film);
     }
 
     public List<FilmEntity> getFilms() throws ServiceException {

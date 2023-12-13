@@ -7,7 +7,6 @@ import java.util.Objects;
 @Entity
 @Table(name = "film_media", schema = "mycoolstore")
 public class FilmMediaEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "fm_id")
     private Long fmId;

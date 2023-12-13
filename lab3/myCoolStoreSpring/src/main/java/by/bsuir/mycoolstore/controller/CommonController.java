@@ -94,14 +94,15 @@ public class CommonController {
     }
 
     @GetMapping("Film")
-    public ModelAndView filmPage(@RequestParam("filmId") Long filmId, @SessionAttribute("userID") Long userId, Model model) {
+    public ModelAndView filmPage(@RequestParam("filmId") Long filmId, HttpServletRequest request, Model model) {
         var mav = new ModelAndView("customerFilm");
 
         var isFilmInCart = Boolean.FALSE;
         var isUserBanned = Boolean.TRUE;
         var isPaid = Boolean.FALSE;
+        Long userId = (Long) request.getSession().getAttribute("userID");
+        model.addAttribute("feedback", new FeedbackEntity());
         if (userId != null) {
-            model.addAttribute("feedback", new FeedbackEntity());
             isFilmInCart = cartService.isInCart(userId, filmId);
             isUserBanned = userService.isBanned(userId);
             isPaid = libraryService.isInLibrary(userId, filmId);
