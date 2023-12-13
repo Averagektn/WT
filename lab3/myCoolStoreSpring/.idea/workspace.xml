@@ -9,9 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="Added comments">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-    </list>
+    <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="Docs generated" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -205,7 +203,7 @@
       <workItem from="1702458906798" duration="15071000" />
       <workItem from="1702481635969" duration="3868000" />
       <workItem from="1702485604105" duration="96000" />
-      <workItem from="1702489385623" duration="4063000" />
+      <workItem from="1702489385623" duration="4427000" />
     </task>
     <task id="LOCAL-00001" summary="IT ADDS FINALLY HIBERNATE WORKS I HATE IT">
       <option name="closed" value="true" />
@@ -455,14 +453,45 @@
       <option name="project" value="LOCAL" />
       <updated>1702493272620</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Docs generated">
+      <option name="closed" value="true" />
+      <created>1702493497270</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1702493497270</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Docs generated">
+      <option name="closed" value="true" />
+      <created>1702493799933</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1702493799933</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Docs generated">
+      <option name="closed" value="true" />
+      <created>1702493813297</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1702493813297</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Docs generated">
+      <option name="closed" value="true" />
+      <created>1702493815493</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1702493815493</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Film page implemented" />
     <MESSAGE value=".gitignore updated" />
     <MESSAGE value="Files loading implemented" />
     <MESSAGE value="Fixed prices" />
@@ -487,6 +516,7 @@
     <MESSAGE value="DONE" />
     <MESSAGE value="WAT???" />
     <MESSAGE value="Added comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added comments" />
+    <MESSAGE value="Docs generated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Docs generated" />
   </component>
 </project>
