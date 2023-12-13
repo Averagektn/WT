@@ -7,12 +7,8 @@ import by.bsuir.mycoolstore.entity.UserEntity;
 import by.bsuir.mycoolstore.service.impl.CartService;
 import by.bsuir.mycoolstore.service.impl.FeedbackService;
 import by.bsuir.mycoolstore.service.impl.LibraryService;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
@@ -24,17 +20,14 @@ public class UserController {
     private final CartService cartService;
     private final FeedbackService feedbackService;
 
-    public UserController(LibraryService libraryService, CartService cartService, FeedbackService feedbackService) {
-        this.libraryService = libraryService;
-        this.cartService = cartService;
-        this.feedbackService = feedbackService;
+    public UserController(LibraryService ls, CartService cs, FeedbackService fbs) {
+        this.libraryService = ls;
+        this.cartService = cs;
+        this.feedbackService = fbs;
     }
 
     @GetMapping("Library")
-    public ModelAndView libraryPage(HttpServletRequest request) {
-        var session = request.getSession();
-        Long userId = (Long) session.getAttribute("userID");
-
+    public ModelAndView libraryPage(@SessionAttribute("userID") Long userId) {
         var mav = new ModelAndView("library");
 
         var films = libraryService.getUserFilms(userId);
@@ -44,10 +37,7 @@ public class UserController {
     }
 
     @GetMapping("Cart")
-    public ModelAndView cartPage(HttpServletRequest request) {
-        var session = request.getSession();
-        Long userId = (Long) session.getAttribute("userID");
-
+    public ModelAndView cartPage(@SessionAttribute("userID") Long userId) {
         BigDecimal total = BigDecimal.ZERO;
 
         var mav = new ModelAndView("cart");
@@ -65,25 +55,21 @@ public class UserController {
     }
 
     @PostMapping("Cart/Remove")
-    public String remove(HttpServletRequest request) {
-        cartService.remove((Long) request.getSession().getAttribute("userID"));
+    public String remove(@SessionAttribute("userID") Long userId) {
+        cartService.remove(userId);
 
         return "redirect:/User/Cart";
     }
 
     @PostMapping("Cart/Buy")
-    public String buy(HttpServletRequest request) {
-        cartService.buy((Long) request.getSession().getAttribute("userID"));
+    public String buy(@SessionAttribute("userID") Long userId) {
+        cartService.buy(userId);
 
         return "redirect:/";
     }
 
     @PostMapping("Cart/Add")
-    public String addToCart(HttpServletRequest request) {
-        var session = request.getSession();
-        Long userId = (Long) session.getAttribute("userID");
-        Long filmId = Long.valueOf(request.getParameter("filmID"));
-
+    public String addToCart(@RequestParam("filmID") Long filmId, @SessionAttribute("userID") Long userId) {
         var cartItem = new CartEntity();
         cartItem.setCrtUser(userId);
         cartItem.setCrtFilm(filmId);
@@ -94,9 +80,9 @@ public class UserController {
     }
 
     @PostMapping("Feedback")
-    public String leaveFeedback(@ModelAttribute("feedback")FeedbackEntity feedback, HttpServletRequest request) {
+    public String leaveFeedback(@ModelAttribute("feedback") FeedbackEntity feedback, @SessionAttribute("userID") Long userId) {
         var author = new UserEntity();
-        author.setUsrId((Long) request.getSession().getAttribute("userID"));
+        author.setUsrId(userId);
 
         feedback.setFbkAuthor(author);
         feedbackService.save(feedback);

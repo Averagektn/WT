@@ -9,10 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="Multipart data doesn't work">
+    <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="Multipart data WORKS FINALLY!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/config/WebAppInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/config/WebAppInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/config/WebMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/CommonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/CommonController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +204,7 @@
       <workItem from="1702274376988" duration="4171000" />
       <workItem from="1702311336441" duration="21803000" />
       <workItem from="1702374085280" duration="23262000" />
-      <workItem from="1702458906798" duration="2618000" />
+      <workItem from="1702458906798" duration="3745000" />
     </task>
     <task id="LOCAL-00001" summary="IT ADDS FINALLY HIBERNATE WORKS I HATE IT">
       <option name="closed" value="true" />
@@ -358,7 +358,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702400077313</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Multipart data WORKS FINALLY!">
+      <option name="closed" value="true" />
+      <created>1702461948238</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1702461948238</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,14 +392,15 @@
     <MESSAGE value="Feedback adding implemented" />
     <MESSAGE value="Bans implemented" />
     <MESSAGE value="Multipart data doesn't work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Multipart data doesn't work" />
+    <MESSAGE value="Multipart data WORKS FINALLY!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Multipart data WORKS FINALLY!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/by/bsuir/mycoolstore/controller/AdminController.java</url>
-          <line>94</line>
+          <line>92</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>

@@ -8,10 +8,8 @@ import by.bsuir.mycoolstore.service.impl.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
@@ -27,14 +25,14 @@ public class CommonController {
     private final MediaService mediaService;
 
     @Autowired
-    public CommonController(FilmService filmService, UserService userService, FeedbackService feedbackService,
-                            CartService cartService, LibraryService libraryService, MediaService mediaService) {
-        this.filmService = filmService;
-        this.userService = userService;
-        this.feedbackService = feedbackService;
-        this.cartService = cartService;
-        this.libraryService = libraryService;
-        this.mediaService = mediaService;
+    public CommonController(FilmService fs, UserService us, FeedbackService fbs, CartService cs, LibraryService ls,
+                            MediaService ms) {
+        this.filmService = fs;
+        this.userService = us;
+        this.feedbackService = fbs;
+        this.cartService = cs;
+        this.libraryService = ls;
+        this.mediaService = ms;
     }
 
     @GetMapping("/")
@@ -48,10 +46,10 @@ public class CommonController {
     }
 
     @GetMapping("Register")
-    public String registrationPage(Map<String, Object> model) {
+    public String registrationPage(Model model) {
         var user = new UserEntity();
 
-        model.put("user", user);
+        model.addAttribute("user", user);
 
         return "register";
     }
@@ -96,18 +94,14 @@ public class CommonController {
     }
 
     @GetMapping("Film")
-    public ModelAndView filmPage(HttpServletRequest request, Map<String, Object> model) {
-        var session = request.getSession();
-        Long userId = (Long) session.getAttribute("userID");
-
+    public ModelAndView filmPage(@RequestParam("filmId") Long filmId, @SessionAttribute("userID") Long userId, Model model) {
         var mav = new ModelAndView("customerFilm");
-        Long filmId = Long.valueOf(request.getParameter("filmId"));
 
         var isFilmInCart = Boolean.FALSE;
         var isUserBanned = Boolean.TRUE;
         var isPaid = Boolean.FALSE;
         if (userId != null) {
-            model.put("feedback", new FeedbackEntity());
+            model.addAttribute("feedback", new FeedbackEntity());
             isFilmInCart = cartService.isInCart(userId, filmId);
             isUserBanned = userService.isBanned(userId);
             isPaid = libraryService.isInLibrary(userId, filmId);
