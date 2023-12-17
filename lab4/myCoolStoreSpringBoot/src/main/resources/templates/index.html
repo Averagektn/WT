@@ -44,7 +44,7 @@
         <a th:href="@{/Film(filmId=${film.flmId})}" th:text="${film.flmName}"></a>
         <br>
         <span th:if="${film.flmDiscount != 0}" style="text-decoration: line-through;" th:text="${film.flmPrice}"></span>
-        <span th:unless="${film.flmDiscount != 0}" th:text="${film.realPrice}"></span>
+        <span th:text="${film.realPrice}"></span>
         <br>
         <span>Age Restriction: </span><span th:text="${film.flmAge}"></span>
         <br>

@@ -15,9 +15,9 @@
     <h1 class="cart-header">Cart</h1>
 
     <div th:each="film : ${films}">
-        <a th:href="@{/Film(filmId=${film.flmId})}">${film.flmName}</a><br>
-        <span th:if="${film.flmDiscount != 0}" style="text-decoration: line-through;">${film.flmPrice}</span>
-        <span th:unless="${film.flmDiscount != 0}">${film.flmPrice}</span>
+        <a th:href="@{/Film(filmId=${film.flmId})}" th:value="${film.flmName}"></a><br>
+        <span th:if="${film.flmDiscount != 0}" style="text-decoration: line-through;" th:value="${film.flmPrice}"></span>
+        <span th:unless="${film.flmDiscount != 0}" th:value="${film.flmPrice}"></span>
         <span th:text="${film.realPrice}"></span><br>
         Age restriction: <span th:text="${film.flmAge}"></span><br>
         Author: <span th:text="${film.flmAuthor}"></span><br>
@@ -30,7 +30,7 @@
 
     <div th:if="${total != 0}">
         <form th:action="@{/User/Cart/Buy}" method="post" class="cart-form">
-            <input type="submit" th:value="Pay + ${total}">
+            <input type="submit" th:value="${total}">
         </form>
     </div>
 </div>
