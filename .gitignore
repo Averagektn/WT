@@ -113,4 +113,5 @@ Done
 Config.java
 *.meta
 META-INF
+*.seb
 *persitence.xml

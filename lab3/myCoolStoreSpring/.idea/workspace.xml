@@ -9,7 +9,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="web.xml changed" />
+    <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="web.xml changed">
+      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/lang_en.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/lang_ru.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/log4j2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/adminFilm.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/authorisation.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/banList.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/cart.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/customerFilm.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/error.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/library.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/register.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,7 +75,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Archive/5 semester/WT/lab3/myCoolStoreSpring/src/main/webapp/WEB-INF/view",
+    "last_opened_file_path": "C:/Archive/5 semester/WT/lab3/myCoolStoreSpring",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -209,6 +224,10 @@
       <workItem from="1702485604105" duration="96000" />
       <workItem from="1702489385623" duration="4427000" />
       <workItem from="1702493834970" duration="264000" />
+      <workItem from="1702764460467" duration="75000" />
+      <workItem from="1702764548336" duration="4000" />
+      <workItem from="1702765041342" duration="189000" />
+      <workItem from="1702810994012" duration="155000" />
     </task>
     <task id="LOCAL-00001" summary="IT ADDS FINALLY HIBERNATE WORKS I HATE IT">
       <option name="closed" value="true" />
