@@ -10,20 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1a31342-0949-4019-a773-0e7cea208620" name="Changes" comment="web.xml changed">
-      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/lang_en.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/lang_ru.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/log4j2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/adminFilm.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/authorisation.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/banList.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/cart.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/customerFilm.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/error.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/library.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../test/demo/src/main/resources/static/style/register.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/myCoolStoreSpringBoot/src/main/resources/templates/adminFilm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/myCoolStoreSpringBoot/src/main/resources/templates/authorization.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/myCoolStoreSpringBoot/src/main/resources/templates/ban.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/myCoolStoreSpringBoot/src/main/resources/templates/banList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/myCoolStoreSpringBoot/src/main/resources/templates/cart.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/myCoolStoreSpringBoot/src/main/resources/templates/customerFilm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/myCoolStoreSpringBoot/src/main/resources/templates/error.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/myCoolStoreSpringBoot/src/main/resources/templates/library.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/myCoolStoreSpringBoot/src/main/resources/templates/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,34 +57,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Tomcat Server.Tomcat 10.1.15.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Archive/5 semester/WT/lab3/myCoolStoreSpring",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.15.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Archive/5 semester/WT/lab3/myCoolStoreSpring&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Archive\5 semester\WT\lab3\myCoolStoreSpring\src\main\webapp\WEB-INF\view" />
@@ -228,6 +223,7 @@
       <workItem from="1702764548336" duration="4000" />
       <workItem from="1702765041342" duration="189000" />
       <workItem from="1702810994012" duration="155000" />
+      <workItem from="1702811522288" duration="3278000" />
     </task>
     <task id="LOCAL-00001" summary="IT ADDS FINALLY HIBERNATE WORKS I HATE IT">
       <option name="closed" value="true" />

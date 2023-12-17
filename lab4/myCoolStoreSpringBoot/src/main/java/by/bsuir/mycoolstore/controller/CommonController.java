@@ -5,6 +5,7 @@ import by.bsuir.mycoolstore.entity.UserEntity;
 import by.bsuir.mycoolstore.entity.enums.Role;
 import by.bsuir.mycoolstore.service.exception.ServiceException;
 import by.bsuir.mycoolstore.service.impl.*;
+import jakarta.jws.WebParam;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -56,7 +57,7 @@ public class CommonController {
      *
      * @return The ModelAndView for the main page.
      */
-    @GetMapping("/")
+    @GetMapping("")
     public String mainPage(Model model) {
         var films = filmService.getFilms();
         model.addAttribute("films", films);
@@ -112,10 +113,10 @@ public class CommonController {
      * @return The authorization page view name.
      */
     @GetMapping("Authorization")
-    public String authorisationPage(Map<String, Object> model) {
+    public String authorisationPage(Model model) {
         var user = new UserEntity();
 
-        model.put("user", user);
+        model.addAttribute("user", user);
 
         logger.info("Authorization GET");
 
