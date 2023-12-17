@@ -2,17 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" type="text/css" th:href="/style/adminFilm.css">
+    <link rel="stylesheet" type="text/css" href="/style/adminFilm.css">
     <title>My Cool Site</title>
 </head>
 <body>
 
 <div class="header">
-    <a id="to-main-page" class="header-link" th:href="/">To Main Page</a><br>
+    <a id="to-main-page" class="header-link" th:href="@{/}">To Main Page</a><br>
 </div>
 
 <div class="content">
-    <form action="/Admin/${command}" method="post" enctype="multipart/form-data" th:object="${film}">
+    <form th:action="@{/Admin/{command}(command=${command})}" method="post" enctype="multipart/form-data"
+          th:object="${film}">
         <h1 class="admin-header">Admin Mode</h1>
 
         <label for="filmTitle">Film Name:</label>

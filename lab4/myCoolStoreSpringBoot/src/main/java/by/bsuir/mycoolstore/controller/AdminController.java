@@ -52,9 +52,7 @@ public class AdminController {
      * @return The {@link ModelAndView} for the add film page.
      */
     @GetMapping("AddFilm")
-    public ModelAndView addPage(Model model) {
-        var mav = new ModelAndView("adminFilm");
-
+    public String addPage(Model model) {
         var ageRestrictions = AgeRestrictionService.getAgeRestrictions();
         var categories = categoryService.getCategories();
 
@@ -69,14 +67,14 @@ public class AdminController {
         film.setFlmPrice(BigDecimal.ZERO);
         model.addAttribute("film", film);
 
-        mav.addObject("command", "AddFilm");
-        mav.addObject("film", film);
-        mav.addObject("ageRestrictions", ageRestrictions);
-        mav.addObject("categories", categories);
+        model.addAttribute("command", "AddFilm");
+        model.addAttribute("film", film);
+        model.addAttribute("ageRestrictions", ageRestrictions);
+        model.addAttribute("categories", categories);
 
         logger.info("Film " + film + " added");
 
-        return mav;
+        return "adminFilm";
     }
 
     /**
@@ -87,10 +85,8 @@ public class AdminController {
      * @return The {@link ModelAndView} for the edit film page.
      */
     @GetMapping("EditFilm")
-    public ModelAndView editPage(@RequestParam("filmId") Long filmId, Model model) {
+    public String editPage(@RequestParam("filmId") Long filmId, Model model) {
         FilmEntity film;
-
-        var mav = new ModelAndView("adminFilm");
 
         var ageRestrictions = AgeRestrictionService.getAgeRestrictions();
         var categories = categoryService.getCategories();
@@ -102,18 +98,18 @@ public class AdminController {
             categories.removeIf(c1 -> film.getCategories().stream().anyMatch(c2 -> c2.getCatName().equals(c1.getCatName())));
             model.addAttribute("film", film);
 
-            mav.addObject("command", "EditFilm");
-            mav.addObject("film", film);
-            mav.addObject("ageRestrictions", ageRestrictions);
-            mav.addObject("categories", categories);
+            model.addAttribute("command", "EditFilm");
+            model.addAttribute("film", film);
+            model.addAttribute("ageRestrictions", ageRestrictions);
+            model.addAttribute("categories", categories);
 
             logger.info("Edit page GET");
         } else {
             logger.error("Editing " + filmId + " failed");
-            mav.setViewName("error");
+            return "error";
         }
 
-        return mav;
+        return "adminFilm";
     }
 
     /**
@@ -122,15 +118,13 @@ public class AdminController {
      * @return The {@link ModelAndView} for the ban list page.
      */
     @GetMapping("BanList")
-    public ModelAndView banListPage() {
-        var mav = new ModelAndView("banList");
-
+    public String banListPage(Model model) {
         var users = userService.getBannedUsers();
-        mav.addObject("users", users);
+        model.addAttribute("users", users);
 
         logger.info("Ban list GET");
 
-        return mav;
+        return "banList";
     }
 
     /**

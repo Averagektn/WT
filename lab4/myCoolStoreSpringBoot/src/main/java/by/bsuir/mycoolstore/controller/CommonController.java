@@ -157,11 +157,9 @@ public class CommonController {
      * @return The ModelAndView for the film page.
      */
     @GetMapping("Film")
-    public ModelAndView filmPage(@RequestParam("filmId") Long filmId, HttpServletRequest request, Model model) {
+    public String filmPage(@RequestParam("filmId") Long filmId, HttpServletRequest request, Model model) {
         Long userId = (Long) request.getSession().getAttribute("userID");
         model.addAttribute("feedback", new FeedbackEntity());
-
-        var mav = new ModelAndView("customerFilm");
 
         var isFilmInCart = Boolean.FALSE;
         var isUserBanned = Boolean.TRUE;
@@ -173,21 +171,21 @@ public class CommonController {
             isPaid = libraryService.isInLibrary(userId, filmId);
         }
 
-        mav.addObject("isFilmInCart", isFilmInCart);
-        mav.addObject("isBanned", isUserBanned);
-        mav.addObject("isPaid", isPaid);
+        model.addAttribute("isFilmInCart", isFilmInCart);
+        model.addAttribute("isBanned", isUserBanned);
+        model.addAttribute("isPaid", isPaid);
 
         var film = filmService.getFilmById(filmId);
         var feedbacks = feedbackService.getFilmFeedbacks(filmId);
         var media = mediaService.getFilmMedia(filmId);
 
-        film.ifPresent(filmEntity -> mav.addObject("film", filmEntity));
-        media.ifPresent(filmMediaEntity -> mav.addObject("media", filmMediaEntity));
-        mav.addObject("feedbacks", feedbacks);
+        film.ifPresent(filmEntity -> model.addAttribute("film", filmEntity));
+        media.ifPresent(filmMediaEntity -> model.addAttribute("media", filmMediaEntity));
+        model.addAttribute("feedbacks", feedbacks);
 
         logger.info("Film page GET");
 
-        return mav;
+        return "customerFilm";
     }
 
     /**
@@ -235,7 +233,7 @@ public class CommonController {
      * @return The ModelAndView for the error page.
      */
     @GetMapping("Error")
-    public ModelAndView error() {
-        return new ModelAndView("error");
+    public String error() {
+        return "error";
     }
 }

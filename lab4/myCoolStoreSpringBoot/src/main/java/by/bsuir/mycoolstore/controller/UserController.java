@@ -8,9 +8,11 @@ import by.bsuir.mycoolstore.service.exception.ServiceException;
 import by.bsuir.mycoolstore.service.impl.CartService;
 import by.bsuir.mycoolstore.service.impl.FeedbackService;
 import by.bsuir.mycoolstore.service.impl.LibraryService;
+import jakarta.jws.WebParam;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -47,15 +49,13 @@ public class UserController {
      * @return The ModelAndView for the library page.
      */
     @GetMapping("Library")
-    public ModelAndView libraryPage(@SessionAttribute("userID") Long userId) {
-        var mav = new ModelAndView("library");
-
+    public String libraryPage(@SessionAttribute("userID") Long userId, Model model) {
         var films = libraryService.getUserFilms(userId);
-        mav.addObject("films", films);
+        model.addAttribute("films", films);
 
         logger.info("Library GET");
 
-        return mav;
+        return "library";
     }
 
     /**
@@ -65,10 +65,8 @@ public class UserController {
      * @return The ModelAndView for the cart page.
      */
     @GetMapping("Cart")
-    public ModelAndView cartPage(@SessionAttribute("userID") Long userId) {
+    public String cartPage(@SessionAttribute("userID") Long userId, Model model) {
         BigDecimal total = BigDecimal.ZERO;
-
-        var mav = new ModelAndView("cart");
 
         var films = cartService.getCartFilms(userId);
 
@@ -76,12 +74,12 @@ public class UserController {
             total = total.add(film.getRealPrice());
         }
 
-        mav.addObject("films", films);
-        mav.addObject("total", total);
+        model.addAttribute("films", films);
+        model.addAttribute("total", total);
 
         logger.info("Cart GET");
 
-        return mav;
+        return "cart";
     }
 
     /**
