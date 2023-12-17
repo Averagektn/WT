@@ -30,7 +30,7 @@
         <div th:if="${!isFilmInCart && !isBanned && session.isAdmin == null}">
             <form th:action="@{/User/Cart/Add}" method="post">
                 <input type="hidden" name="filmID" th:value="${film.flmId}">
-                <input type="submit" value="Add to cart" />
+                <input type="submit" value="Add to cart"/>
             </form>
         </div>
     </div>
@@ -61,7 +61,7 @@
         <div th:if="${session.isAdmin != null}">
             <form th:action="@{/Admin/Ban}" method="post">
                 <input type="hidden" name="authorId" th:value="${feedback.fbkAuthor.usrId}">
-                <input type="submit" value="Ban" />
+                <input type="submit" value="Ban"/>
             </form>
         </div>
         <span th:text="${feedback.fbkRating}"></span><br>
@@ -74,11 +74,11 @@
             <textarea id="filmFeedback" name="filmFeedback" maxlength="5000" th:field="*{fbkText}"></textarea>
 
             <label for="rating">Mark:</label>
-            <input type="number" min="0" max="10" id="rating" name="rating" th:field="*{fbkRating}" /><br>
+            <input type="number" min="0" max="10" id="rating" name="rating" th:field="*{fbkRating}"/><br>
 
-            <input type="hidden" name="filmID" th:value="${film.flmId}" th:field="*{fbkFilm}" />
+            <input type="hidden" name="filmID" th:value="${film.flmId}" th:field="*{fbkFilm}"/>
 
-            <input type="submit" value="Leave Feedback" />
+            <input type="submit" value="Leave Feedback"/>
         </form>
     </div>
 </div>

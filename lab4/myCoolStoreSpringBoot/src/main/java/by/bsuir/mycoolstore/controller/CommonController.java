@@ -5,7 +5,6 @@ import by.bsuir.mycoolstore.entity.UserEntity;
 import by.bsuir.mycoolstore.entity.enums.Role;
 import by.bsuir.mycoolstore.service.exception.ServiceException;
 import by.bsuir.mycoolstore.service.impl.*;
-import jakarta.jws.WebParam;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,9 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.Map;
 
 /**
  * The CommonController class is responsible for handling common requests and actions related to the application.
