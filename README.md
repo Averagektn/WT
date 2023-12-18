@@ -137,3 +137,4 @@ Create JUnit tests that check the correctness of sorting.
 Для работы с БД в приложении должен быть использован любой встроенный пул соединений
 ---
 ## Lab №4
+ Реализовать разработанное приложение на Spring Boot
