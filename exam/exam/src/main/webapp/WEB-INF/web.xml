@@ -11,15 +11,14 @@
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
         <url-pattern>/Table</url-pattern>
-        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>/</servlet-name>
-        <jsp-file>/WEB-INF/index.jsp</jsp-file>
+        <servlet-name>Main</servlet-name>
+        <jsp-file>/WEB-INF/view/index.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>/</servlet-name>
-        <url-pattern>/main</url-pattern>
+        <servlet-name>Main</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 </web-app>

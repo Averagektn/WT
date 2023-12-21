@@ -2,7 +2,6 @@ package by.bsuir.exam.controller;
 
 import by.bsuir.exam.controller.command.Command;
 import by.bsuir.exam.controller.command.CommandProvider;
-import by.bsuir.exam.controller.command.exception.CommandException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -17,7 +16,6 @@ public class Controller extends HttpServlet {
 
         try {
             page = command.execute(request);
-            System.out.println(page);
         } catch (Exception e) {
             page = JSPPageName.PAGE_ERROR;
         }

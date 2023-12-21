@@ -15,10 +15,38 @@
       <change afterPath="$PROJECT_DIR$/../../exam/exam/.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../exam/exam/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/JSPPageName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/RequestParameterName.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/command/Command.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/command/CommandName.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/command/CommandProvider.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/command/exception/CommandException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/command/impl/DomParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/command/impl/SaxParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/command/impl/StaxParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/command/impl/WrongRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/DomDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/SaxDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/StaxDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/exception/ProjectException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/DomService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/SaxService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/StaxService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/webapp/WEB-INF/view/error.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/webapp/WEB-INF/view/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/webapp/WEB-INF/view/table.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/HelloServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/exception/DAOException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/exception/DAOException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/factory/DAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/factory/DAOFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/impl/DomDAOClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/impl/DomDAOClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/impl/SaxDAOClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/impl/SaxDAOClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/impl/StaxDAOClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/impl/StaxDAOClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/exception/ServiceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/exception/ServiceException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/factory/ServiceFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/factory/ServiceFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/impl/DomServiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/impl/DomServiceClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/impl/SaxServiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/impl/SaxServiceClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/impl/StaxServiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/impl/StaxServiceClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -285,7 +313,7 @@
       <workItem from="1702226085487" duration="1848000" />
       <workItem from="1702319424197" duration="1833000" />
       <workItem from="1702374092251" duration="598000" />
-      <workItem from="1703173741791" duration="362000" />
+      <workItem from="1703173741791" duration="2671000" />
     </task>
     <task id="LOCAL-00023" summary="Dynamic content finally works">
       <option name="closed" value="true" />

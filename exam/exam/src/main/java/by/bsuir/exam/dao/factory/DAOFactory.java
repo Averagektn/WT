@@ -20,7 +20,7 @@ public class DAOFactory {
         return instance;
     }
 
-    public StaxDAO getFeedbackDAO() {
+    public StaxDAO getStaxDAO() {
         return staxDAO;
     }
 
