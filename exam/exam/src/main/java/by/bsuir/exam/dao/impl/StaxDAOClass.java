@@ -1,4 +1,6 @@
 package by.bsuir.exam.dao.impl;
 
-public class StaxDAOClass {
+import by.bsuir.exam.dao.StaxDAO;
+
+public class StaxDAOClass implements StaxDAO {
 }

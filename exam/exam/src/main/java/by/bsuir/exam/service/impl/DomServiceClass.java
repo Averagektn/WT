@@ -1,4 +1,6 @@
 package by.bsuir.exam.service.impl;
 
-public class DomServiceClass {
+import by.bsuir.exam.service.DomService;
+
+public class DomServiceClass implements DomService {
 }

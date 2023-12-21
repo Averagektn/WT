@@ -1,4 +1,6 @@
 package by.bsuir.exam.dao.impl;
 
-public class DomDAOClass {
+import by.bsuir.exam.dao.DomDAO;
+
+public class DomDAOClass implements DomDAO {
 }

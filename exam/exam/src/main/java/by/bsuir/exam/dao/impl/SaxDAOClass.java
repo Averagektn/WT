@@ -1,4 +1,6 @@
 package by.bsuir.exam.dao.impl;
 
-public class SaxDAOClass {
+import by.bsuir.exam.dao.SaxDAO;
+
+public class SaxDAOClass implements SaxDAO {
 }

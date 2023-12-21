@@ -1,4 +1,6 @@
 package by.bsuir.exam.service.impl;
 
-public class SaxServiceClass {
+import by.bsuir.exam.service.SaxService;
+
+public class SaxServiceClass implements SaxService {
 }

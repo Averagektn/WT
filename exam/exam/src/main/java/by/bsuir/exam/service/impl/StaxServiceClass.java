@@ -1,4 +1,6 @@
 package by.bsuir.exam.service.impl;
 
-public class StaxServiceClass {
+import by.bsuir.exam.service.StaxService;
+
+public class StaxServiceClass implements StaxService {
 }
