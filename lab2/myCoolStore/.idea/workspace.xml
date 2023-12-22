@@ -10,6 +10,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62178842-a120-4798-beb2-647de5861687" name="Changes" comment="Ready to pass">
+      <change afterPath="$PROJECT_DIR$/../../exam/exam/src/main/resources/sample.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/bean/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/bean/Data.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/command/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/command/impl/DomParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/command/impl/DomParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/command/impl/SaxParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/command/impl/SaxParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/command/impl/StaxParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/controller/command/impl/StaxParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/DomDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/DomDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/SaxDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/SaxDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/StaxDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/StaxDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/impl/DomDAOClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/impl/DomDAOClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/impl/SaxDAOClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/impl/SaxDAOClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/impl/StaxDAOClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/dao/impl/StaxDAOClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/DomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/DomService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/SaxService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/SaxService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/StaxService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/StaxService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/impl/DomServiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/impl/DomServiceClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/impl/SaxServiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/impl/SaxServiceClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/impl/StaxServiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/java/by/bsuir/exam/service/impl/StaxServiceClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/webapp/WEB-INF/view/error.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/webapp/WEB-INF/view/error.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exam/exam/src/main/webapp/WEB-INF/view/table.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../exam/exam/src/main/webapp/WEB-INF/view/table.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -278,6 +299,7 @@
       <workItem from="1702374092251" duration="598000" />
       <workItem from="1703173741791" duration="4194000" />
       <workItem from="1703177956864" duration="20000" />
+      <workItem from="1703243539564" duration="439000" />
     </task>
     <task id="LOCAL-00023" summary="Dynamic content finally works">
       <option name="closed" value="true" />

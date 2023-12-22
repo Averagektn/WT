@@ -20,6 +20,7 @@
     </style>
 </head>
 <body>
+
 <table>
     <thead>
     <tr>
@@ -38,5 +39,6 @@
     </c:forEach>
     </tbody>
 </table>
+
 </body>
 </html>
