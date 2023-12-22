@@ -6,10 +6,12 @@ import by.bsuir.exam.dao.factory.DAOFactory;
 import by.bsuir.exam.service.DomService;
 import by.bsuir.exam.service.exception.ServiceException;
 
+import java.util.List;
+
 public class DomServiceClass implements DomService {
     @Override
-    public Data getData() throws ServiceException {
-        Data data;
+    public List<Data> getData() throws ServiceException {
+        List<Data> data;
 
         var dao = DAOFactory.getInstance();
         var domDAO = dao.getDomDAO();

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<people>
+    <person>
+        <firstName>Иван</firstName>
+        <lastName>Иванов</lastName>
+        <middleName>Иванович</middleName>
+    </person>
+    <person>
+        <firstName>Анна</firstName>
+        <lastName>Сидорова</lastName>
+        <middleName>Петровна</middleName>
+    </person>
+    <person>
+        <firstName>Петр</firstName>
+        <lastName>Смирнов</lastName>
+        <middleName>Алексеевич</middleName>
+    </person>
+</people>

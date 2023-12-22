@@ -18,7 +18,7 @@ public class DomParser implements Command {
 
         try{
             var data = domService.getData();
-            request.setAttribute("data", data);
+            request.setAttribute("dataset", data);
 
             response = JSPPageName.PAGE_TABLE;
         } catch (ServiceException e) {

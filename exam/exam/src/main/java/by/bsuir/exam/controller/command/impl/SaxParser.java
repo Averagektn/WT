@@ -17,7 +17,7 @@ public class SaxParser implements Command {
 
         try{
             var data = saxService.getData();
-            request.setAttribute("data", data);
+            request.setAttribute("dataset", data);
 
             response = JSPPageName.PAGE_TABLE;
         } catch (ServiceException e) {

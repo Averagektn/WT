@@ -17,7 +17,7 @@ public class StaxParser implements Command {
 
         try{
             var data = staxService.getData();
-            request.setAttribute("data", data);
+            request.setAttribute("dataset", data);
 
             response = JSPPageName.PAGE_TABLE;
         } catch (ServiceException e) {

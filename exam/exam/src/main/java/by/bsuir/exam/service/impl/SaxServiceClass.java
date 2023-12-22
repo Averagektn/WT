@@ -6,10 +6,12 @@ import by.bsuir.exam.dao.factory.DAOFactory;
 import by.bsuir.exam.service.SaxService;
 import by.bsuir.exam.service.exception.ServiceException;
 
+import java.util.List;
+
 public class SaxServiceClass implements SaxService {
     @Override
-    public Data getData() throws ServiceException {
-        Data data;
+    public List<Data> getData() throws ServiceException {
+        List<Data> data;
 
         var dao = DAOFactory.getInstance();
         var saxDAO = dao.getSaxDAO();
