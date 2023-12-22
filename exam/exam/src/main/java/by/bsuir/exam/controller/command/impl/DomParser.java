@@ -6,7 +6,6 @@ import by.bsuir.exam.controller.command.exception.CommandException;
 import by.bsuir.exam.service.exception.ServiceException;
 import by.bsuir.exam.service.factory.ServiceFactory;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 
 public class DomParser implements Command {
     @Override
@@ -16,7 +15,7 @@ public class DomParser implements Command {
         var serviceFactory = ServiceFactory.getInstance();
         var domService = serviceFactory.getDomService();
 
-        try{
+        try {
             var data = domService.getData();
             request.setAttribute("dataset", data);
 

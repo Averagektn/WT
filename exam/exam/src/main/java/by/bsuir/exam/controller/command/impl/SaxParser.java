@@ -15,7 +15,7 @@ public class SaxParser implements Command {
         var serviceFactory = ServiceFactory.getInstance();
         var saxService = serviceFactory.getSaxService();
 
-        try{
+        try {
             var data = saxService.getData();
             request.setAttribute("dataset", data);
 

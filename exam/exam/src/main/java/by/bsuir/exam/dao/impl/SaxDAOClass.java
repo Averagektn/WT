@@ -3,7 +3,6 @@ package by.bsuir.exam.dao.impl;
 import by.bsuir.exam.bean.Data;
 import by.bsuir.exam.dao.SaxDAO;
 import by.bsuir.exam.dao.exception.DAOException;
-import org.w3c.dom.Document;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;

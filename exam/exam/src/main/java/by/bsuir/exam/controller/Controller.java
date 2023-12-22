@@ -22,7 +22,7 @@ public class Controller extends HttpServlet {
         }
 
         var dispatcher = request.getRequestDispatcher(page);
-        if (dispatcher != null){
+        if (dispatcher != null) {
             dispatcher.forward(request, response);
         } else {
             errorMessageDirectlyFromResponse(response);

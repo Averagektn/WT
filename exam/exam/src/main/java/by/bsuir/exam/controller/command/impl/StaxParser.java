@@ -15,7 +15,7 @@ public class StaxParser implements Command {
         var serviceFactory = ServiceFactory.getInstance();
         var staxService = serviceFactory.getStaxService();
 
-        try{
+        try {
             var data = staxService.getData();
             request.setAttribute("dataset", data);
 

@@ -3,7 +3,6 @@ package by.bsuir.exam.dao.impl;
 import by.bsuir.exam.bean.Data;
 import by.bsuir.exam.dao.StaxDAO;
 import by.bsuir.exam.dao.exception.DAOException;
-import org.w3c.dom.Document;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
