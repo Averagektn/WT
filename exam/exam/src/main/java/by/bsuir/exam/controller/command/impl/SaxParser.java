@@ -12,12 +12,14 @@ public class SaxParser implements Command {
     public String execute(HttpServletRequest request) throws CommandException {
         String response;
 
+        int page = Integer.parseInt(request.getParameter("page"));
         var serviceFactory = ServiceFactory.getInstance();
         var saxService = serviceFactory.getSaxService();
 
         try {
             var data = saxService.getData();
-            request.setAttribute("dataset", data);
+            request.setAttribute("dataset", data.subList((page - 1) * 5, Math.min(page * 5, data.size())));
+            request.setAttribute("pagesCount", (int)Math.ceil((double) data.size() / 5));
 
             response = JSPPageName.PAGE_TABLE;
         } catch (ServiceException e) {

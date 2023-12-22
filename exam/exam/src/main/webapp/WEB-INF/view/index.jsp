@@ -6,14 +6,17 @@
 <body>
 <form action="${pageContext.request.contextPath}/Table" method="get">
     <input type="hidden" name="parser" value="dom">
+    <input type="hidden" name="page" value="1">
     <input type="submit" value="DOM">
 </form>
 <form action="${pageContext.request.contextPath}/Table" method="get">
     <input type="hidden" name="parser" value="sax">
+    <input type="hidden" name="page" value="1">
     <input type="submit" value="SAX">
 </form>
 <form action="${pageContext.request.contextPath}/Table" method="get">
     <input type="hidden" name="parser" value="stax">
+    <input type="hidden" name="page" value="1">
     <input type="submit" value="STAX">
 </form>
 </body>

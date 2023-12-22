@@ -3,6 +3,7 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 
 <jsp:useBean id="dataset" scope="request" type="java.util.List"/>
+<jsp:useBean id="pagesCount" scope="request" type="java.lang.Integer"/>
 
 <html>
 <head>
@@ -39,6 +40,16 @@
     </c:forEach>
     </tbody>
 </table>
+
+<div>
+    <c:forEach var="pageNumber" begin="1" end="${pagesCount}">
+        <c:url value="/Table" var="pageUrl">
+            <c:param name="parser" value="${param.parser}" />
+            <c:param name="page" value="${pageNumber}" />
+        </c:url>
+        <a href="${pageUrl}">${pageNumber}</a>
+    </c:forEach>
+</div>
 
 </body>
 </html>
