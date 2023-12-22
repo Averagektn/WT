@@ -1,4 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+
+<jsp:useBean id="dataset" scope="request" type="java.util.List"/>
+
 <html>
 <head>
     <title>Exam task</title>
@@ -15,19 +20,23 @@
     </style>
 </head>
 <body>
-    <table>
-        <thead>
-            <tr>
-                <td>A</td>
-                <td>B</td>
-                <td>C</td>
-            </tr>
-        </thead>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Patronymic</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="data" items="${dataset}">
         <tr>
-            <td>DATA A</td>
-            <td>DATA B</td>
-            <td>DATA C</td>
+            <td>${data.name}</td>
+            <td>${data.surname}</td>
+            <td>${data.patronymic}</td>
         </tr>
-    </table>
+    </c:forEach>
+    </tbody>
+</table>
 </body>
 </html>
